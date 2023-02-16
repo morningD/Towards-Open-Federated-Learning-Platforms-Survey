@@ -8,7 +8,7 @@ Four roles in FL systems design: the data owners, the model users, the coordinat
 In recent years, federated learning has become a buzzword in various fields, leading to the emergence of numerous FL studies.
 These works can be classified into three primary categories: FL systems design, FL appllications and FL toolkits. Extensive surveys are available to summarized the advancement of federated learning, as shown in Table~\ref{table:surveys}.
 The initial architectures and concepts for FL systems were summaried by Yang \textit{et al.}~\cite{yang2019federated}. 
-They categorize FL into horizontal FL, vertical FL and federated transfer learning based on the distribution characteristics of data, 
+They categorized FL into horizontal FL, vertical FL and federated transfer learning based on the distribution characteristics of data, 
 which are written in IEEE Standard 3652.1-2020~\cite{yang2021white, IEEEstd3652}. 
 Following this, an increasing number of surveys have emerged focusing on enhancing FL system design~\cite{li2020federated,aledhari2020federated, kairouz2021advances, zhang2021survey, li2021survey}. 
 From the algorithmic perspective, personlized FL~\cite{kulkarni2020survey, tan2022towards} aims to learn personlized models for each client to address the challenge of statistical heterogeneity~\cite{ma2022state}.
@@ -72,10 +72,19 @@ This survey focuses on exploring the innovative cooperation frameworks in FL, wh
 In this section, we will distinguish our survey by highlingting the similarities and differences between these related concepts.
 
 \textbf{Dcentralized FL}.
+ref:
+given the high scalability of modern edge computing networks, a single MEC server cannot manage to aggregate all updates offloaded from millions of devices.
+Therefore, there is an urgent need to develop a more decentralized FL approach without using a central server so as to solve security and scalability issues for enabling the next generation intelligent edge networks.
 
 \textbf{Blockchain-based FL}.
 
 \textbf{Few-shot FL}.
+
+\textbf{FL Cloud Platforms}.
+
+Federated Learning as a Service~\cite{kourtellis2020flaas} provides high-level and extensible APIs aim to enabling 3rd-party applications to build collaborative, decentralized, privacy-preserving ML models.
+
+Cross-device FL framework from Huawei~\cite{zhang2022felicitas}
 
 \subsection{FAIR in FL}
 FAIR Data Principles: Findable, Accessible, Interoperable, Reusable.

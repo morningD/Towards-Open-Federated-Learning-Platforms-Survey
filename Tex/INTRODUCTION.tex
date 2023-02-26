@@ -1,6 +1,41 @@
 \section{Introduction}
-Introduction:
-Federated Learning~\cite{li2020federated}.
+
+
+In recent years, the barriers to the development of Artificial Intelligence (AI) have been broken down with the rapid progress of ABC technologies in computing: AI, Big Data, and Cloud Computing, as well as the emergence of cost-effective specialized hardware~\cite{sze2017efficient} and software~\cite{jia2014caffe}. This has led to the world entering the third wave of AI development: Deep Learning~\cite{lecun2015deep}.
+The success of current data-driven AI relies on massive amounts of training data and follows a gather-and-analyze paradigm~\cite{whang2023data}, which confronts with challenges of complying with rigorous data protection regulations such as OECD Privacy Guidelines~\cite{tene2011privacy} and General and Data Protection Regulation (GDPR)~\cite{voigt2017eu}.
+So although data-centric AI is now the mainstream, a novel model-centric distributed collaborative training framework called Federated Learning is gaining popularity in both academia and industry due to its advantages in complying with privacy regulations.
+So although data-centric AI is currently mainstream, Federated Learning (FL)~\cite{li2020federated}, a novel model-centric distributed collaborative training framework, is gaining popularity in both academia and industry for its advantages in complying with privacy regulations~\cite{truong2021privacy}.
+
+According to the definitions of IEEE Standard for Federated Machine Learning (FML, aka FL)~\cite{IEEEstd3652}, \textit{FL is a framework or system that enables multiple participants to collaboratively build and use machine learning models without disclosing the raw and private data owned by the participants while achieving good performance.}
+For example, a typical workflow of FL systems is that the entity with modeling demand (aka FL server) first deploys the FL services and initializes the model training task, and then distributing this task to participants with training data (aka FL clients) for modeling~\cite{bonawitz2019towards}.
+Based on this workflow pattern, many FL frameworks have been derived with specialized improvements in communication~\cite{konevcny2016federated, mcmahan2017communication, xu2021asynchronous}, optimizaiton~\cite{li2018federated, karimireddy2020scaffold, li2021model}, robustness~\cite{duan2020self, sattler2019robust, li2022federated} and privacy~\cite{bonawitz2017practical, geyer2017differentially, cheng2021secureboost}.
+While these fascinating improvements greatly enhance the utility of FL, they all follow a task-based interaction paradigm, in which an FL server dominates the cooperation between FL participants.
+In this narrow interpretation of FL, the data owner is treated more like a worker than a collaborator and performs training primarily for the benefit of the server's goals.
+Due to the above defects, clients have little enthusiasm to participate, and the potential for redundant training also leads to low model reuse rate, further diminishing the efficiency of the FL systems.
+This explains why current FL frameworks are more akin to private distributed modeling services rather than sustainable and privacy-preserving modeling platforms for everyone as expected.
+
+In this paper, we try to answer a crucial question: Can we establish a sustainable open FL platform based on a novel mutually beneficial cooperation framework?
+Obviously, to answer this quesion, it is insufficient simply study the basic concepts of FL and investigate existing FL techniques.
+We also need to conduct a wide survey of potential techniques that can facilitate the construction of an open FL platform.
+To aid understanding, Fig.~\ref{fig:coop} provides a first glimpse of two novel FL cooperation frameworks we advocated: query-based FL and contract-based FL.
+It's worth noting that the definitions of the four roles (i.e., model user, coordinator, data owner, auditor) are adopted for compatibility with the IEEE standard~\cite{IEEEstd3652}, and our proposals are also within the scope of FML definitions. 
+Query-based FL follows a loosely-coupled cooperation framework between entities (we use "entities" instead of "participants" to emphasizes equality), where any entity can freely upload their local models or retrieve models from the open repository named Model Community.
+There are many valuable challenges that can be explored, such as how to query for models, how to "assemble" the retrieved models, or how to transfer knowledge from these models (see Section~\ref{}). %TODO: 
+Contract-based FL follows a mutual choice cooperation framework, where each entity can deploy a model training contract with specialized requirements such as task modality, execution environment, model architecture and license. Meanwhile, entities holding data can choose whether to accept the contract.
+The topics can be studied include
+
+is proactive 
+
+how to detect scalping?
+
+\begin{figure}[b]
+    \centering
+    \includegraphics[width=\linewidth]{fig/coop_frame.pdf}
+    \caption{Cooperation frameworks of FML.}
+    \Description{}
+    \label{fig:coop}
+  \end{figure}
+
 
 Four roles in FL systems design: the data owners, the model users, the coordinators, the auditors.
 
@@ -20,12 +55,12 @@ The massive real-time data generated by IoT devices in smart cities~\cite{zhang2
 
 As summarized in Table~\ref{table:surveys}, most surveys extensively discuss the challenges of efficiency, heterogeneity, privacy in FL systems design, with the surveys from blockchain fileds offering the most comprehensive review.
 However, except for a few blockchain-based FL studies, most of the above surveys just present the same story from slightly different angles or backgrounds, i.e a server sets the model training task and delegate it to data holders to complete. 
-This \textit{server-domincated} cooperation framework is a narrow implementation of the FL systems.
+This \textit{server-dominated} cooperation framework is a narrow implementation of the FL systems.
 Therefore, this survey aim to fill the gap by investigating and surveying the associated tenchnologies that support more open and inclusive cooperation frameworks in FL systems, where all entities, whether they own the data or not, can benefit from it. 
 The challenges investigated in this survey are not listed in the Table~\ref{table:surveys}, to the best of our knowledge, this is the first survey that focuses on the cooperation frameworks of FL.
 In the following section, we will differentiate this survey from other related concepts in the field of FL.
 
-\begin{table}[]
+\begin{table}[t]
     \footnotesize
     \caption{Summary of existing FL surveys, SYS denotes FL Systems Design, APP denotes FL Applications, SDC denotes Server-Dominated Cooperation frameworks.}
     \label{table:surveys}
@@ -83,22 +118,17 @@ Therefore, there is an urgent need to develop a more decentralized FL approach w
 \subsubsection{FL Systems}
 Federated learning, with its nature advantages in privacy-preserving decision sharing, has garnered significant attention in both industry and academia, leading to the rapid development of federated learning systems.
 The earliest attempt at the large-scale FL system was by Google, where FL was used to improve next-word prediction~\cite{hard2018federated} and query suggesion~\cite{yang2018applied} for Gboard applications.
-Subsequently, many novel FL systems have emerged to adapt to diverse federated training scenarios, such as Horizontal FL (e.g. TFF~\cite{abadi2016tensorflow}, FedLab~\cite{zeng2021fedlab}, Felicitas~\cite{zhang2022felicitas}), Vertical FL or both (e.g. FATE~\cite{liu2021fate}, FedML~\cite{he2020fedml}, PaddleFL~\cite{ma2019paddlepaddle}, FedTree~\cite{li2022fedtree}).
+Subsequently, many novel FL systems have emerged to adapt to diverse federated training scenarios, such as Horizontal FL (e.g. TFF~\cite{abadi2016tensorflow}, FedLab~\cite{zeng2021fedlab}, Felicitas~\cite{zhang2022felicitas}), Vertical FL~\cite{wu2022practical} or both (e.g. FATE~\cite{liu2021fate}, FedML~\cite{he2020fedml}, PaddleFL~\cite{ma2019paddlepaddle}, Flower~\cite{beutel2020flower}, FedTree~\cite{li2022fedtree}, NVFLARE~\cite{roth2022nvidia}).
+Despite these frameworks covering a wide range of application scenarios, they all follow the server-dominated cooperation mechanism.
+This business model restricts FL to function as a collaborative modeling software, rather than an open platform that provides FL services to the public.
 
-
-More recently, 
-Tensorflow Federated (TFF)~\cite{abadi2016tensorflow}
-PySyft~\cite{ziller2021pysyft}
-PySyTFF\footnote{https://blog.openmined.org/announcing-proof-of-concept-support-for-tff-in-pysyft-0-7/}
-FATE~\cite{liu2021fate}
-FedML~\cite{he2020fedml}
-FedLab~\cite{zeng2021fedlab}
-PaddleFL~\cite{ma2019paddlepaddle}
-Flower~\cite{beutel2020flower}
-
-Cross-device FL framework from Huawei~\cite{zhang2022felicitas}
-
-We aim to provide an open and shared ecosystem where every user is free to collaborate on the training of machine learning models and where privacy is protected
+Unlike the FL systems mentioned above, PySyft~\cite{ziller2021pysyft} developed by OpenMined depicts a novel FL cooperation frameworks which is closely realted to our focus. 
+PySyft encourages data owners to share their data on a private domain server, which provides data management and privacy controls, as well as limited machine learning analysis APIs for third-party data scientists.
+Besides, a public network server will provide connections between data owners and data scientist, enabling datasets search and discovery for platform users.
+Recently, a new FL platform named PySyTFF\footnote{https://blog.openmined.org/announcing-proof-of-concept-support-for-tff-in-pysyft-0-7/} was announced. It integrates TFF and PySyft, allowing data scientists to train models under the coordination of TFF and the datasets provided by PySyft domain servers.
+However, even with inference controls of datasets, there is still a high security risk associated with exposing access to sensitive data on the Internet~\cite{gamundani2018review}.
+To preserve the privacy advantages of FL, in this survey, we aim to discuss an open and data-free FL platform under the scope of model-centric ML~\cite{lou2020towards}.
+In such FL platform, every user is free to collaborate on the training of machine learning models while privacy is protected.
 
 \subsubsection{As-a-Service Business Model}
 
@@ -119,7 +149,7 @@ Rather, the FL framework we focus on emphasizes a collaborative framework where 
 Recently, Kourtellis \textit{et al.}~\cite{kourtellis2020flaas} propose Federated Learning as a Service (FLaaS) that provides high-level and extensible APIs aim to enabling 3rd-party applications to build collaborative, decentralized, privacy-preserving ML models.
 However, this approach also follows the traditional server-dominated cooperation framework, which falls under the scope of previous FL surveys\cite{yang2019federated, li2020federated,kairouz2021advances}.
 
-\begin{table}[]
+\begin{table}[t]
     \caption{Summary of existing deep learning model repositories.}
     \label{table:repository}
     \footnotesize

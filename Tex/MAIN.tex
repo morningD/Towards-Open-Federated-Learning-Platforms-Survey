@@ -106,8 +106,15 @@
 
 \usepackage{comment}
 \usepackage{multirow}
-\usepackage{tablefootnote}
 \usepackage{amsmath,pifont}
+\usepackage{booktabs}
+\usepackage{rotating}
+\usepackage{array}
+\newcolumntype{P}[2]{%
+  >{\begin{turn}{#1}\begin{minipage}{#2}\footnotesize\raggedright\hspace{1pt}}c%
+  <{\end{minipage}\end{turn}}%
+}
+\usepackage{tablefootnote}
 
 %%
 %% end of the preamble, start of the body of the document source.

@@ -77,7 +77,7 @@ Therefore, the server-client coupling design of traditional FL systems make them
 \subsubsection{Low Model Reusability} % 模型的移植性 不可持续 模型的可发现性
 The traditional FL scheduling follows a task-centric manner and erminates once the training reaches a preset number of rounds or meets traget metrics on global model set by FL server~\cite{bonawitz2019towards}.
 As a result, only FL server can guarantee having the latest global model after the task is terminated.
-This disposable modeling paradigm results in low model reusability and transportability.
+This ad-hoc modeling paradigm results in low model reusability and transportability.
 For example, if a client who participated in the previous training turn wants to continue training, they can only start the task from scratch unless they have the up-to-date global model.
 Since only FL server is able to maintain the complete modeling trajectory, it is difficult for the client to roll back the training itself to eliminate the potential privacy risk.
 Furthermore, the non-deliverable scheduling mechanism of FL tasks also hinders inter-task model reuse, which leads to unnecessary wasted energy and time on participants that have been involved in similar tasks.
@@ -86,4 +86,4 @@ Furthermore, the non-deliverable scheduling mechanism of FL tasks also hinders i
 As we mention in Sec.~\ref{sec:flsystems}, except PySyft~\cite{ziller2021pysyft}, the application scenarios of mainstream FL frameworks~\cite{liu2021fate, abadi2016tensorflow, zeng2021fedlab, caldas2018leaf, ibmfl2020ibm, he2020fedml, beutel2020flower, roth2022nvidia} aim to provide private collaborative ML traning service, and there is no any accessible FL platform for the public.
 Although there have been real-world deployment practices of FL for the public with scales of millions~\cite{bonawitz2019towards} and billions~\cite{niu2020billion}, these have been carried out only by tech giants with a massive base of active users. For an individual user, there is no practical way to organize such a large-scale FL training network.
 
-But in fact, due to the limitations in the cooperation mechanism mentioned above, data owners are not sufficiently motivated to participate in this server-take-all FL training even if it is public accessible. So the cornerstone of buliding a sustainable open FL platform is to establish a mutually beneficial FL cooperation framework, followed by corresponding mulit-source knowledge aggregation strategies, which we discuss in the following sections.
+But in fact, due to the limitations in the cooperation mechanism mentioned above, data owners are not sufficiently motivated to participate in this server-take-all FL training even if it is public accessible. Therefore, the cornerstone of buliding a sustainable open FL platform is to establish a reciprocal FL cooperation framework, followed by corresponding mulit-source knowledge aggregation strategies, which we discuss in the following sections.

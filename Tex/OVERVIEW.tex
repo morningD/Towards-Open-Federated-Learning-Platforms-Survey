@@ -48,7 +48,7 @@ Thirdly, the coordinator discovers the availability of clients' FL services, boa
 Finally, the server aggregates the trained resultes received from various clients into the global model and begins a new round based on this aggregated global model. 
 The aggregation strategy adopted in FedAvg is the weighted model parameters based on the size of local dataset, which means the global objective of FL can be regarded as a joint objective function of clients. 
 By this way, the FL server can learn a generalized global model by jointly optimizing all local optimization objectives and incorporating the latent knowledge from the local models.
-Althout the auditor component was not included in earlier FedAvg, it play an important role in the later business-ready FL frameworks~\cite{liu2021fate,roth2022nvidia, ziller2021pysyft}.
+Although the auditor component was not included in earlier FedAvg, it play an important role in the later business-ready FL frameworks~\cite{liu2021fate,roth2022nvidia, ziller2021pysyft}.
 
 However, in comparing FedAvg workflow described above with Fig.~\ref{fig:fl}, it is easy to notice that the client part has been excluded.
 This is because we are elaborating from a server-side perspective, which is usual way FL is presented~\cite{mcmahan2017communication, li2020ditto, caldas2018leaf}.

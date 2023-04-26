@@ -6,7 +6,7 @@ An overview of this platform is presented in Fig.~\ref{fig:query}, the desin phi
 In the query-based FL systems, all traditional FL roles and components are maintained on an open model repository called Model Community. The Model Community privdes a one-stop ML models redistribution and reuse service, including model indexing, automatic batch model reuse, license management, privacy control and so on.
 In addition to large-scale pretrained models like BERT~\cite{devlin2018bert}, BLOOM~\cite{scao2022bloom} with great generalization abilities, we also encourage individuals to upload their task-specific models trained on limited domain data to boost the knowledge mining within models~\cite{you2021workshop}.
 The derivatives of knowledge mining can learn representations from multiple domains, resulting in more promising performance that can be evaluated by platform users.
-Furthermore, the contributors can open models under applicable licenses, granting them distribution control and legal protection of their intellectual property.
+Furthermore, the contributors can open models under applicable licenses, granting them distribution control and legal protection of their intellectual property (IP).
 In summary, the properties of query-based FL are:
 (1) \textbf{Model Agnostic}, as there are no restrictions on the types and architectures of the models uploaded by users;
 (2) \textbf{Contactless}, as coomunication channels need not be maintained; 
@@ -85,7 +85,7 @@ However, there are additional requirements depending on the reuse mechanisms of 
 For example, FedAvg~\cite{mcmahan2017communication} aggregates the local models weights element-wise, which requires full access to the models. 
 In contrast, MoE with a gating network~\cite{jacobs1991adaptive} only ensembles a batch of model outputs, so the individual models can remain blackboxes in this scenario.
 So, in the context of software licenses or model licenses, the batch models reused by FedAvg should be released as source code, while those reused by MoE can be released as binary object code (static linking).
-The above distinction is critical for ensuring that model reuse results meet the legal framework, and this has been overlooked in traditional FL.
+The above distinction is crucial for ensuring that model reuse results meet the legal framework, and this has been overlooked in traditional FL.
 We will expand on this topic in the following section.
 
 \subsection{How to Reuse Batch of Models}
@@ -98,7 +98,7 @@ Innovatively, we study how to reuse batch of models, from the perspective of \te
 %Therefore, the focus of this section is how to reuse batch of models, from the perspective of legal compliance.
 
 The machine learning community benefits from the openness of ideas and code, and many high-impact ML conferences and journals encourage authors to publish their source code and dataset to research platforms like Papers With Code~\footnote{https://paperswithcode.com} and Code Ocean~\footnote{https://codeocean.com} to increase exposure and facilitate reproducibility.
-To restrict the use of ML techniques for unethical purposes (i.e. Deepfakes~\cite{mirsky2021creation}) and protect the intellectual property (IP) of creators, models are typically published under a license agreed upon by the licensor.
+To restrict the use of ML techniques for unethical purposes (i.e. Deepfakes~\cite{mirsky2021creation}) and protect the IP of creators, models are typically published under a license agreed upon by the licensor.
 Here, we summary the licenses, granted rights, restrictions and enforcements for ML models posted on Hugging Face in Table.~\ref{tab:licenses}.
 
 \subsubsection{Model Licensing Forms}
@@ -118,7 +118,7 @@ These representations can be regarded as a translation of corpus and fall under 
 A more complex scenario arises when the model is fine-tuned with other data that has a different license, for example, fine-tune RoBERTa~\cite{liu2019roberta} (MIT license) with SQuAD2~\cite{rajpurkar2016squad} (CC BY 4.0).
 The resulting model can be interpreted as both derived works and combined works.
 
-Not only limited to protecting the intellectual property and controlling the diffusion of ideas, but AI companies and researchers are also concerned about licensees using their models for unethical purposes~\cite{jobin2019global, awad2018moral, yuste2017four}, which is not restricted by traditional licenses based on the context of software and content.
+Not only limited to protecting the IP and controlling the diffusion of ideas, but AI companies and researchers are also concerned about licensees using their models for unethical purposes~\cite{jobin2019global, awad2018moral, yuste2017four}, which is not restricted by traditional licenses based on the context of software and content.
 We can infer the concerns of the inventors of GPT-2~\cite{radford2019language} about the unethical use of the model from its modified MIT license, which states, \textit{We don't claim ownership of the content you create with GPT-2, so it is yours to do with as you please. We only ask that you use GPT-2 responsibly and clearly indicate your content was created using GPT-2.} 
 However, such a statement lacks legal enforcement, and users may avoid accountability by convincing themselves that despite their efforts to minimize harm, they could not predict the AI artifact they generated would be used for harmful purposes.
 Besides, the original licensing frameworks (e.g. MIT, CC BY) for software and content are not well suited to the data-driven ML. 
@@ -129,34 +129,6 @@ The CreativeML OpenRAIL-M license, proposed by Responsible AI~\cite{contractor20
 By accepting this license, licensees must adhere to the use-based restrictions stated by the licensor, and these restrictions must also apply to derivative works.
 With a multitude of different model licenses available, it becomes a challenging and tedious task to reuse them in bulk. 
 It is therefore imperative to establish guidelines for selecting a license for models that are ready for query-based FL.
-
-\subsubsection{Model License Choosing Preferences}
-In query-based FL, the model community automatically reuses models contributed by users, which raises unique concerns about licensing rights.
-Firstly, the license should allow the modification, combination and redistribution of the works and any derived works.
-Secondly, the sublicensing right can lubricate the republication of derived works resulting from knowledge mining.
-Thirdly, some licenses require the source of the derived works to be disclosed and prohibit their commercial use, which hinders model selling~\cite{chen2019towards}.
-Lastly, some licenses are copyleft (denoted by * in Table.~\ref{tab:licenses}), which means the derivatives should be licensed under the same license or a compatible one, leading to potential license conflicts and license proliferation~\cite{gomulkiewicz2009open}.
-
-In summary, the 
-
-Another example is finetune the pretrained model RoBERTa~\cite{liu2019roberta} (MIT license) with SQuAD2~\cite{rajpurkar2016squad} licensed under CC-BY-4.0.
-%许可扩散问题
-
-%LEAGLE-BERT 的问题
-However, BERT~\cite{devlin2018bert} pretrained corpus using English Wikipedia document CC BY-SA 3.0 no compatible with Apache-2.0
-
-difussion of ideas
-
-The 
-
-Therefore, the focus of this section is how to reuse batch of models, 
-
-There are many efforts deal with model reuse.
-
-Single Model Reuse
-
-Batch Model Reuse
-
 
 \begin{table}[t]
   \centering
@@ -226,18 +198,19 @@ Batch Model Reuse
     \hline
     \hline
 
-    CC-BY-4.0\&3.0\&2.5\&2.0 & \checkmark & \checkmark & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & 1,740 & RoBERTa-SQuAD2.0~\cite{rajpurkar2016squad} \\
+    CC-BY-4.0\&3.0\&2.5\&2.0 & \checkmark & \checkmark & \textbf{!} & \checkmark & \ding{55} & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & 1,740 & RoBERTa-SQuAD2.0~\cite{rajpurkar2016squad} \\
     *CC-BY-SA-4.0\&3.0 &  \checkmark & \checkmark & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & \checkmark & \ding{55} & \checkmark & 590 & LEGAL-BERT~\cite{chalkidis2020legal} \\
     *CC-BY-NC-SA-4.0\&3.0 & \checkmark & \checkmark & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \checkmark & \checkmark & \ding{55} & \checkmark & 556 & LayoutLMv3~\cite{huang2022layoutlmv3} \\
     CC-BY-NC-4.0\&3.0\&2.0 & \checkmark & \checkmark & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & 499 & GALACTICA~\cite{taylor2022galactica} \\
-    CC0-1.0 & \checkmark & \checkmark & \ding{55} & \checkmark & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & 165 & BlueBERT~\cite{peng2019transfer} \\
+    CC0-1.0 & \checkmark & \checkmark & \textbf{!} & \checkmark & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & 165 & BlueBERT~\cite{peng2019transfer} \\
     CC-BY-NC-ND-4.0\&3.0 & \checkmark & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \checkmark & 21 & NonCommercial, NoDerivatives \\
     PDDL & \checkmark & \checkmark & \ding{55} & \checkmark & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & 16 & Database-specific license \\
     C-UDA & \checkmark & \checkmark & \checkmark & \ding{55} & \textbf{!} & \textbf{!} & \ding{55} & \ding{55} & \checkmark & \checkmark & 13 & Data for computational use only \\
     *LGPL-LR & \checkmark & \checkmark & \ding{55} & \checkmark & \textbf{!} & \textbf{!} & \checkmark & \checkmark & \ding{55} & \checkmark & 12 & LGPL for linguistic resources \\ %如果仅仅发布embedding模型，那么属于“使用语言资源的作品”，如果包含了语言资源或者加密后的资源，那么属于“使用语言资源的衍生物”，包含在此license范围
     *GFDL &  \multicolumn{10}{l|}{>Same as GPL, a free document license} & 12 & txtai-wikipedia \\
     CC-BY-ND-4.0 & \checkmark & \ding{55} & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & 11 & Disallow making derivatives \\
-    ODC-By & \checkmark & \checkmark & \ding{55} & \checkmark & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \checkmark & 7 & Database license w/o sublicense \\
+    ODC-By & \checkmark & \checkmark & \ding{55} & \checkmark & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \checkmark & 7 & Automatic relicensing \\
+    %但是只对derivative dataset有定义，对于model来可能不适用
     *ODbL & \checkmark & \checkmark & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & \checkmark & \ding{55} & \checkmark & 6 & Automatic relicensing \\
     \bottomrule
   \end{tabular}
@@ -247,13 +220,159 @@ Batch Model Reuse
 
 %OPT-175B/SEER LICENSE is not a copyleft license, as it does not require derivative works to be licensed under the same license or a compatible one. It is a proprietary license that allows users to use and reproduce the licensed models subject to certain restrictions.
 
-\begin{figure}[b]
+\subsubsection{License Choosing Preferences}
+In query-based FL, the model community automatically reuses models contributed by users, which raises unique concerns about licensing of models:
+\begin{itemize}
+  \item A model license ready for open FL paltforms should allow the \textbf{modification, combination and redistribution} of original works and any derived works; and
+  \item \textbf{Sublicensing} right should be granted to lubricate the republication of derived works resulting from knowledge mining; note
+  \item Some licenses enforce the source of the derived works to be \textbf{disclosed} and prohibit their \textbf{commercial use}, which hinders model selling~\cite{chen2019towards}; and
+  \item Some licenses are \textbf{copyleft} (marked with * in Table.~\ref{tab:licenses}), which means the derivatives must be licensed under the same license or a compatible one, leading to potential license conflicts and proliferation~\cite{gomulkiewicz2009open}; last
+  \item All granted rights are preferably \textbf{irrevocable} by the licensors~\cite{reddy2009jacobsen}.
+\end{itemize}
+
+Besides, it is important to consider the licensing of two other components when building and reusing models: data and algorithms, which may have entirely different license terms. 
+Here, we present several strategies for selecting licenses in query-based FL to minimize conflicts.
+
+\textbf{Preferences for Datasets or Databases}: CC0-1.0, ODC-By > CC BY > C-UDA > LGPL-LR.
+% 对于数据：训练：C-UDA 可以sublicense，但是不能商用。CC0 和 CC-BY 可用但是没明确sublicense，ODbL 自动license，但是copyleft，必须开源。对于finetune，除了上述数据外还可LGPL-LP
+   
+  Our recommended licenses for training datasets and databases for query-based FL are CC0-1.0, ODC-By, and CC BY. CC BY-4.0 is preferred due to the grant of \textit{Sui Generis Database Rights (Art.1c)}. 
+  CC0-1.0 and ODC-By are more permissive than CC BY since they do not require licensees to disclose any modifications made to the dataset or database, and CC0-1.0 does not require the declaration of the original license. 
+  Although these licenses do not explicitly grant sublicensing rights, they provide an automatic licensing policy for downstream recipients.
+  
+  C-UDA is an alternative license that grants sublicensing rights, but it includes additional usage restrictions that limit its application to computational use only, which indicates commercial use is not allowed.
+  To avoid license proliferation, it is not recommended to use any data under copyleft licenses for building models, as the resulted models could be seen as remixing and making derivatives of the original datasets, leading to potential conflicts between licenses.
+  Among them, LGPL-LR is an exception because it contains an exemption clause for \textit{work that uses the Linguistic Resource (Art.3)}, which is suitable for end-to-end training, fine-tuning, and embedding. 
+  But it is worth noting that the embedded representations may be considered \textit{translated straightforwardly into another language (Art.0)}, which falls within the scope of LGPL-LR license.
+  
+  An example of license proliferation is LEGAL-BERT~\cite{chalkidis2020legal}, which was trained on data from the Case Law Access Project~\footnote{https://case.law} (licensed under CC BY-SA 4.0). This restricts LEGAL-BERT to the same license and prevents further model reusing on datasets or models licensed under incompatible copyleft licenses, such as LGPL-LR and GPL.
+
+  \textbf{Preferences for Software}: Apache-2.0, AFL-3.0, Artistic-2.0, ECL-2.0 > MIT, BSD-3-Clause\&-Clear, BSL-1.0, BSD-2-Clause, NCSA $\approx$ Ms-PL > WTFPL-2.0, Unlicense, ISC, Zlib, PostgreSQL.
+  % 必须: sublicense, permissive. 
+  % Rank1: Permissive Licenses with Patent right (But State Change)
+  % Rank2: Not Explicitly Permited Patent or Trademark (No need State Change), Ms-PL weak permissive, 对object无需求, code需要为Ms-PL license
+  % Rank3: 非常自由的协议，但是没有明确grant sublicense
+  
+  Our top recommended software licenses for training and reusing models are Apache, AFL, Artistic, and ECL.
+  These permissive licenses allow modification and sublicensing, explicitly grant the use of patents and permit commercial use, and do not require the disclosure of the source code but only the stating of any changes made to the original work.
+
+  The next set of recommendations are MIT, BSD, BSL, and NCSA. 
+  These licenses do not explicitly grant patent rights but instead, do not require the stating of modifications made to the original work, thus avoiding the tedious task of tracking model reusing or incremental training procedures. 
+  Ms-PL offers two advantages simultaneously, but it is a weak copyleft license that requires the modified source code to also be licensed under Ms-PL, and the derivative object code to be compliant with a license compatible with Ms-PL.
+  However, open software licenses do not provide a clear definition for software-generated outputs such as models. 
+  It is unclear whether models are considered a portion of the software, and whether they are in source code form or object code form. 
+  This ambiguity makes it difficult to determine the applicable clauses for models.
+  
+  Our latest recommended licenses include WTFPL, Unlicense, ISC, Zlib, and PostgreSQL.
+  These licenses are very permissive and allow almost anything without restrictions.
+  However, it's important to note that these licenses do not explicitly grant sublicensing rights and patent, which can lead to ambiguity in interpreting the license clauses.
+  For the avoidance of doubt, copyleft licenses such as GPL, AGPL, LGPL, OSL, MPL, EPL, and EUPL are not recommended, despite the loophole that they do not have a specific definition for models.
+  Furthermore, although some of those copyleft licenses can be made compliant with others, we recommend isolating the software license from the resulting models to preserve the freedom to use the models further (e.g., close-source or relicense).
+  
+  \textbf{Preferences for Models}: Apache-2.0, AFL-3.0, Artistic-2.0, ECL-2.0 > OpenRAIL and its derivatives
+  % The crux of the issue is really about control over the outputs.
+  
+  There are two recommended choices for model licenses for query-based FL. 
+  The first is permissive open software licenses like Apache, AFL, Artistic, and ECL. 
+  The second is open model-specific licenses like OpenRAIL and its derivatives.
+  As shown in Table~\ref{tab:licenses}, the main difference between the two choices is that OpenRAIL offers additional user behavioral restriction clauses and enforces these restrictions via a copyleft-style agreement.
+  For example, CreativeML OpenRAIL-M license claims \textit{Therefore You cannot use the Model and the Derivatives of the Model for the specified restricted uses ... You shall require all of Your users who use the Model or a Derivative of the Model to comply with the terms of this paragraph}.
+  The restricted uses include actions that could cause harm, provide medical advice, generate or disseminate verifiably false information, and more.
+  So, the model owners may adopt these licenses for the purpose of responsible model use.
+
+  However, in practice, such discrimination of user behavior cannot completely guarantee that the models will not be misused, and may potentially compromise the openness of the models~\cite{perens1999open, greenbaum2016the}.
+  The user behavioral restrictions in licenses can be compared to manufacturers prohibiting the use of their laptops for hacking, and furthermore, the vendors can be held jointly and severally liable for any future violations, which is unreasonable and may lead to the licensed materials becoming closed source. 
+  Furthermore, to enable remote control for the responsible use of AI, CreativeML OpenRAIL-M includes the clause \textit{You shall undertake reasonable efforts to use the latest version of the Model}, which requires licensees to keep up with the updates of the original work and may render their prior development efforts useless.
+  Therefore, traditional permissive licenses, which follow worse-is-better design philosophy~\cite{gabriel1991rise}, are good choices for model licensing in query-based FL, as they promote openness and facilitate the sharing of publicly contributed models.
+
+  The remaining model licenses, OPT-175B and SEER, are proprietary licenses that allow licensees to use and reproduce the licensed models subject to certain restrictions. 
+  Given that their granted rights are revocable, we do not recommend using any content of works and derivatives under these licenses in query-based FL.
+
+It is worth noting that the above discussion only deals with the licenses of inputs for open FL platforms, which aim to provide legal compliance and freedom of outputs as much as possible, but does not involve the copyright issue for the outputs.
+In fact, except for some public domain dedication licenses like CC0-1.0, PDDL, Unlicense, and WTFPL, most licenses only grant non-exclusive rights for use and distribution, and the original copyright and attribution are retained by the licensors.
+Whether the reused models are copyrightable is crucial for incentivizing model sharing and mining, so we will elaborate on this topic in the next section.
+
+\subsubsection{Copyright of Reused Model}
+Software and computer code are indisputably copyrightable, but what about computer-generated content such as distillation and ensembles of models?
+The copyrightable of a computer-generated work is controversial, which may depend on such as the level of creativity and originality and \textit{presence of at least minimal human creative effort at the time the work is produced.}~\cite{national1979final}.
+According to this definition, programmers who engage in model design and training meet the threshold requirements of copyrightability and own the copyright of the model. 
+That is why all the licenses listed in Table~\ref{tab:licenses} contain claims of copyright.
+But the debating point is whether the reused models also copyrightable?
+Unfortunately, there is no universal answer to this question as it can depend on the specific case and fact pattern.
+The crux is whether the efforts involved in reusing the model meet the minimum creative requirements for copyrightability.
+For example, if we simply stack two models end-to-end, it may not meet the threshold for copyrightability. 
+However, if we improve a basis model using distilled knowledge from other domains, that would be more likely to meet the requirements for copyrightability.
+Except for copyrightability, the authorship of a reused model is also open to controversy, as it depends on whose \textit{original intellectual conceptions} the work embodies, and joint authorship is also possible~\cite{hedrick2019ithink}.
+
+The determination of copyrightability and authorship of computer-generated content is an open issue that needs to be addressed through corresponding legislation~\cite{national1979final, hedrick2019ithink}.
+The possible answers to the question of authorship of computer-generated models are model authors, model users, data owners, any combination of them, or no one~\cite{hedrick2019ithink}.
+Licensors can also make efforts to clarify this issue by including relevant claims in their licenses.
+For example, the license of Stable Diffusion~\cite{rombach2022high} explicitly states that \textit{Licensor claims no rights in the Output You generate using the Model}. 
+Similarly, ChatGPT~\footnote{https://openai.com/blog/chatgpt}, even though it is a proprietary software of OpenAI company, its sharing \& publication policy~\footnote{https://openai.com/policies/sharing-publication-policy} states \textit{The published content is attributed to your name or company}.
+Therefore, we are free to use their generated content for model reusing and can claim the copyright of reused models.
+On the contrary, the licenses of OPT~\cite{zhang2022opt} and SEER~\cite{goyal2022vision} do not grant any copyright for the data produced by the licensed software. 
+Given that, we should avoid using their derivatives and generated content in query-based FL to prevent copyright infringement.
+Once we obtain the right to relicense the modification models, the choice of a new license depends on the application scenario of models. 
+We provide a flowchart in Fig.~\ref{fig:flowchart}(a) to guide license selection.
+For now, we have provided a comprehensive perspective and suggestions regarding the regulations and legal issues related to batch model reusing with only one piece missing: the definition of terms and corresponding clauses for different reusing mechanisms in different licenses.
+We leave this content in the following section.
+
+\subsubsection{Batch Model Reuse Mechanisms}
+The definition of terms for model reusing in different licenses is a novel and interesting issue that is rarely discussed. 
+For example, interpreting model reusing as creating derivatives or combinations would involve different clauses in the licenses.
+Therefore, instead of summarizing the batch model reuse mechanisms from a technological and algorithmic aspect, we group these mechanisms based on the classification of their resulting outputs for ease of justifying license clauses.
+As shown in Fig.~\ref{fig:flowchart}(b), there are four categories of batch model reuse mechanisms: \textbf{Combination, Aggregation, Distillation, and Generation}, each resulting in different forms of outputs.
+
+\begin{figure}[t]
     \centering
     \includegraphics[width=\linewidth]{fig/flowchart.pdf}
     \caption{flowchart}
     \Description{}
     \label{fig:flowchart}
 \end{figure}
+
+\textbf{Combination}~\cite{zhou2012ensemble} is a straightforward way to reuse batch of models (aka. base learners), in which multiple models jointly contribute to the output by combination strategies such as averaging, voting, learning~\cite{jacobs1991adaptive, wolpert1992stacked}.
+For regression estimates, averaging can improve the generalization by taking the mean of the outputs of all weak learners in a population. Additionally, the outputs of each learner can be weighted by extra parameters~\cite{perrone1995networks}, which can be trained by stacking estimators~\cite{wolpert1992stacked} or by backpropagation of gating networks~\cite{jacobs1991adaptive}. 
+Voting is a workaround for classification tasks and also applicable for stacking and gating.
+Both stacking and gating rely on an additional holdout dataset for training extra parameters, marked as * in Fig.~\ref{fig:flowchart}(b). 
+The difference is that gating can adapt the weights of each model's estimation based on the inputs, providing better generalizability performance of the combined model.
+
+There are many advantages of combination mechanisms from the perspective of FL.
+First, the input spaces of base models can be unaligned, which is ideal for the scenario of vertical FL~\cite{wu2022practical} where each client may have inconsistent features in their data.
+Secondly, especially for query-based FL, it can simultaneously support multiple types and heterogeneous models, which means that it does not rely on any prior assumptions of the models, such as whether they are DNNs or decision trees, released with weights (whitebox) or binary forms (blackbox).
+Thirdly, the tasks of models can be different if we pipeline the base models end-to-end, which is usually overlooked as a combination mechanism of models. 
+Pipelining can fully leverage the transferability of models to solve previously unexplored ML problems.
+% 举例说明 pipeline
+For instance, Gao \textit{et al.}~\cite{gao2022precise} proposed a zero-shot dense retrieval system named HyDE by pipelining a natural language generation (NLG) model~\cite{ouyang2022training} and a natural language understanding (NLU) model~\cite{izacard2021towards}.
+The generated content, which may lack factual grounding, from the NLG model is used as query embeddings to facilitate real document retrieval by the NLU model.
+Through query-based FL, we can query a vicarious NLG model for a novel scenario, such as ProGen~\cite{madani2023large} for protein sequences generation, and quickly adapt this system to proteomics.
+Not limited to that, we can query batch of NLG models by a well-chosen filter condition and then combine models through averaging or gating to significantly expand the exploration space for knowledge discovery.
+
+The combinated models have strong separation from each other, meaning that we can add or remove a batch of models without significant changes to the remaining ones.
+Furthermore, combination mechanisms do not rely on the transparency of models and support blackbox sharing. 
+Thus, the base model can establish loose connections with other models only through run scripts, providing revocability of such combination and circumvention of the restrictions of licenses.
+
+\begin{table}[]
+  \centering
+  \footnotesize
+  \caption{model reuse}
+  \label{tab:reuse}
+  \begin{tabular}{|p{2.2cm}|p{3.55cm}|p{2.8cm}|p{2.8cm}|p{2.7cm}|}
+    \hline
+    & Combinated Work \newline with Strong Separation & Combinated Work \newline with Weak Separation & Derivative Work \newline from Concepts & Derivative Work \newline from Distributions \\ \hline
+    Apache-2.0 & Separable -> Independent Work & Modify -> Derivative & \ding{55} & \ding{55} \\ \hline
+    MIT & \ding{55} & \ding{55} & \ding{55} & \ding{55} \\ \hline
+    AFL-3.0 & \ding{55} & Modify -> Derivative & \ding{55} & \ding{55} \\ \hline
+    GPL-3.0 & Blackbox: Aggregate -> \newline Independent Work \newline Other: Link -> Modified Version  & Modify -> Covered Work & Output no consititutes a covered work -> \newline Independent Work & Output no consititutes a covered work -> \newline Independent Work  \\ \hline
+    Artistic-2.0 & Blackbox: MereAggregation ->\newline Independent Work \newline Other: Link -> Modified Version & Aggregate -> \newline Modified Version & \ding{55} & \ding{55} \\ \hline
+    BSD-3-Clause & Blackbox: Rredsitribution in \newline binary forms -> \ding{55} \newline Other: Redistribution of source code -> \ding{55} & \ding{55} & \ding{55} & \ding{55} \\ \hline
+    WTFPL-2.0 & \ding{55} & \ding{55} & \ding{55} & \ding{55} \\ \hline
+    OpenRAIL Licenses & Transfer of patterns of \newline output -> Derivative & Transfer of patterns of weights -> Derivative & Transfer of patterns of activations -> Derivative & Transfer of patterns of output -> Derivative \\ \hline
+    Creative Commons \newline Licenses & Reproduce -> Adapted Material & Adapt -> \newline Adapated Material & \ding{55} & \ding{55} \\ \hline
+    CC0-1.0 & Reproduce -> \newline Independent Work & Adapt -> \newline Independent Work & \ding{55} & \ding{55} \\ \hline
+  \end{tabular}
+\end{table}
+
 
 Model type?
 

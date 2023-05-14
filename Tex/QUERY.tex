@@ -292,9 +292,9 @@ It is worth noting that the above discussion only deals with the licenses of inp
 In fact, except for some public domain dedication licenses like CC0-1.0, PDDL, Unlicense, and WTFPL, most licenses only grant non-exclusive rights for use and distribution, and the original copyright and attribution are retained by the licensors.
 Whether the reused models are copyrightable is crucial for incentivizing model sharing and mining, so we will elaborate on this topic in the next section.
 
-\subsubsection{Copyright of Reused Model}
+\subsubsection{Copyright of Reused Models}
 Software and computer code are indisputably copyrightable, but what about computer-generated content such as distillation and ensembles of models?
-The copyrightable of a computer-generated work is controversial, which may depend on such as the level of creativity and originality and \textit{presence of at least minimal human creative effort at the time the work is produced.}~\cite{national1979final}.
+The copyrightable of a computer-generated work is controversial, which may depend on such as the level of creativity and originality and \textit{presence of at least minimal human creative effort at the time the work is produced}~\cite{national1979final}.
 According to this definition, programmers who engage in model design and training meet the threshold requirements of copyrightability and own the copyright of the model. 
 That is why all the licenses listed in Table~\ref{tab:licenses} contain claims of copyright.
 But the debating point is whether the reused models also copyrightable?
@@ -321,7 +321,7 @@ We leave this content in the following section.
 The definition of terms for model reusing in different licenses is a novel and interesting issue that is rarely discussed. 
 For example, interpreting model reusing as creating derivatives or combinations would involve different clauses in the licenses.
 Therefore, instead of summarizing the batch model reuse mechanisms from a technological and algorithmic aspect, we group these mechanisms based on the classification of their resulting outputs for ease of justifying license clauses.
-As shown in Fig.~\ref{fig:flowchart}(b), there are four categories of batch model reuse mechanisms: \textbf{Combination, Aggregation, Distillation, and Generation}, each resulting in different forms of outputs.
+As shown in Fig.~\ref{fig:flowchart}(b), there are four categories of batch model reuse mechanisms: \textbf{Combination, Amalgamation, Distillation, and Generation}, each resulting in different forms of outputs.
 
 \begin{figure}[t]
     \centering
@@ -332,9 +332,10 @@ As shown in Fig.~\ref{fig:flowchart}(b), there are four categories of batch mode
 \end{figure}
 
 \textbf{Combination}~\cite{zhou2012ensemble} is a straightforward way to reuse batch of models (aka. base learners), in which multiple models jointly contribute to the output by combination strategies such as averaging, voting, learning~\cite{jacobs1991adaptive, wolpert1992stacked}.
-For regression estimates, averaging can improve the generalization by taking the mean of the outputs of all weak learners in a population. Additionally, the outputs of each learner can be weighted by extra parameters~\cite{perrone1995networks}, which can be trained by stacking estimators~\cite{wolpert1992stacked} or by backpropagation of gating networks~\cite{jacobs1991adaptive}. 
+For regression estimates, averaging can improve the generalization by taking the mean of the outputs of all weak learners in a population. Additionally, the outputs of each learner can be weighted by extra parameters~\cite{perrone1995networks}, which can be determined by stacking estimators~\cite{wolpert1992stacked}, Bayes approach~\cite{clarke2003comparing} or backpropagation of gating networks~\cite{jacobs1991adaptive}. 
+% Bayesian Model Averaging (BMA) -> Stacking with probabilities
 Voting is a workaround for classification tasks and also applicable for stacking and gating.
-Both stacking and gating rely on an additional holdout dataset for training extra parameters, marked as * in Fig.~\ref{fig:flowchart}(b). 
+Both stacking and gating rely on an additional holdout or validation dataset for calculating extra parameters, marked as * in Fig.~\ref{fig:flowchart}(b). 
 The difference is that gating can adapt the weights of each model's estimation based on the inputs, providing better generalizability performance of the combined model.
 
 There are many advantages of combination mechanisms from the perspective of FL.
@@ -346,11 +347,118 @@ Pipelining can fully leverage the transferability of models to solve previously 
 For instance, Gao \textit{et al.}~\cite{gao2022precise} proposed a zero-shot dense retrieval system named HyDE by pipelining a natural language generation (NLG) model~\cite{ouyang2022training} and a natural language understanding (NLU) model~\cite{izacard2021towards}.
 The generated content, which may lack factual grounding, from the NLG model is used as query embeddings to facilitate real document retrieval by the NLU model.
 Through query-based FL, we can query a vicarious NLG model for a novel scenario, such as ProGen~\cite{madani2023large} for protein sequences generation, and quickly adapt this system to proteomics.
-Not limited to that, we can query batch of NLG models by a well-chosen filter condition and then combine models through averaging or gating to significantly expand the exploration space for knowledge discovery.
-
-The combinated models have strong separation from each other, meaning that we can add or remove a batch of models without significant changes to the remaining ones.
+Not limited to that, we can query a batch of NLG models by a well-chosen filter condition and then combine models through averaging or gating to significantly expand the exploration space for knowledge discovery.
+Lastly, the combinated models have strong separation from each other, meaning that we can add or remove a batch of models without significant changes to the remaining ones.
 Furthermore, combination mechanisms do not rely on the transparency of models and support blackbox sharing. 
 Thus, the base model can establish loose connections with other models only through run scripts, providing revocability of such combination and circumvention of the restrictions of licenses.
+
+On the other hand, instead of being treated as a challenge for FL~\cite{ma2022state}, the statistical heterogeneity and model heterogeneity nature of these crowdsourced models can actually enrich population diversity, which is crucial for creating a good ensemble~\cite{maclin1995combining, opitz1995generating}.
+
+\textbf{Amalgamation} involves combining models through model parameters granularity operations, such as median~\cite{blanchard2017machine, pillutla2022robust} and coordinate-wise averaging with consideration of heterogeneity~\cite{mcmahan2017communication, li2018federated}, security~\cite{sun2019can}, scalability~\cite{reisizadeh2020fedpaq}, matching~\cite{wang2020federated, yu2021fed2}, specificality~\cite{gudur2020resource}, generalizability~\cite{qu2022generalized}, resulting in a combination with weak separation.
+This reusing approach is widely used in FL works and is often referred to as "aggregation" procedures for local models.
+Here, we avoid using the term "aggregation" to distinguish it from "combination". The latter is often used interchangeably with "combination" in software licenses (e.g. Artistic, GPL).
+
+FedAvg~\cite{mcmahan2017communication} is the most popular model averaging method in FL with many follow-up works. 
+For instance, Sun \textit{et al.}~\cite{sun2019can} proposed applying norm thresholding of local model updates to defend against backdoor attacks.
+Similarly, Blanchard \textit{et al.}~\cite{blanchard2017machine} proposed using more robust median-based amalgamation strategies for resilience against Byzantine behavior.
+Consider the ordering of parameters, Wang \textit{et al.}~\cite{wang2020federated} match and average the neural parameters layer-wise across local models, based on their similarities.
+However, these methods require multiple rounds of communication to converge, which is not applicable in a query-based FL setting.
+
+Another group of studies leverages Bayesian nonparametrics to learn the shared global latent structures among local models~\cite{yurochkin2019bayesian, yurochkin2019statistical, lam2021model}. 
+These methods, known as Model Fusion, can identify distributions of neural components across local models and only fuse the components with the same distribution, which can be explained as a model compression between FedAvg (coordinate-wise averaging) and combination (w/o averaging).
+However, the model fusion strategies rely on multiple communication rounds to boost the fusion efficiency, and the model performance of one-shot fusion is even worse than that of Ensemble.
+
+It is worth noting that our taxonomy is based on the form of the resulting model, which may not be entirely consistent with the terminology used in the technical perspective.
+For example, Bayes Model Averaging (BMA)~\cite{clarke2003comparing} estimates posterior probabilities of each model given the observed data, which results in a separable weighted model. 
+Therefore, it should be classified as Combination instead of Amalgamation like FedAvg.
+This novel taxonomy method is useful for analyzing compatibility with licenses. 
+For instance, coordinate-wise operations and fusion of model parameters generate fine-grained combinations of models that are almost irreversible, which corresponds to clauses such as adapt, modify, dynamic link, etc., in software licenses.
+
+\textbf{Distillation} was initially proposed by Hinton \textit{et al.}~\cite{hinton2015distilling} to transfer knowledge from a batch of independently trained neural network models (Specialists) to create a new Generalist model.
+Their motivation was to explore the parallelization of training of specialists and improve the efficiency of distributed NNs modeling\cite{dean2012large}.
+Each specialist only learns fine-grained distinctions of a subset of classes, which is very similar to the non-IID setting in FL~\cite{li2021federated}.
+Therefore, it is natural to extend the knowledge distillation to FL filed~\cite{jiang2020federated, li2020practical, li2019fedmd, wu2022communication, chen2020fedbe, lin2020ensemble, gong2021ensemble, sun2020federated}.
+
+Data-Free Knowledge Distillation(DFKD)~\cite{lopes2017data}
+
+
+% KD 是用于加速网络训练，属于分布式机器学习范畴
+
+% KD 的优点：不需要相同的模型结构，缺点：依赖数据, extracted soft labels
+
+\textbf{Generation}
+
+\begin{table}[]
+  \centering
+  \footnotesize
+  \caption{FL model reuse; \textcolor{purple}{Server} \textcolor{blue}{Client} Knowledge Distillation (KD) Challenges: \textbf{E}fficiency \textbf{H}eterogeneity \textbf{P}rivacy}
+  \label{tab:flreuse}
+  \begin{tabular}{|p{1.9cm}|p{1.55cm}|p{1.5cm}|p{4.0cm}|p{2cm}|p{1.3cm}|p{0.5cm}|}
+    \hline
+    \multicolumn{1}{|c|}{FL Studies} & \multicolumn{1}{c|}{\textbf{C}ombination} & \multicolumn{1}{c|}{\textbf{A}malgamation} & \multicolumn{1}{c|}{\textbf{D}istillation} & \multicolumn{1}{c|}{\textbf{G}eneration} & \multicolumn{1}{c|}{Process}& \multicolumn{1}{c|}{Goals} \\ \hline
+    FedAvg~\cite{mcmahan2017communication} & &  \textcolor{purple}{Model Avg}  &  &  & [\textcolor{purple}{A}]*N & EH   \\ \hline
+
+    FedAD~\cite{gong2021ensemble} & & & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Attention, Logits}}  & & [\textcolor{purple}{D}]*1 & HP \\ \hline %CC
+
+    FedKD\textsubscript{1}~\cite{gong2022preserving}& & & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Weighted Logits}} & &[\textcolor{purple}{D}]*1 & EHP \\ \hline %CC
+
+    FedMD~\cite{li2019fedmd} &&&\textcolor{blue}{KD \textbf{Logits Avg}} &&[\textcolor{blue}{D}]*N & H \\ \hline %CC
+
+    FedMD-NFDP\newline\cite{sun2020federated}& & & \textcolor{blue}{KD \textbf{Logits/Softmax/Argmax Avg}} & &[\textcolor{blue}{D}]*N & HP \\ \hline %CC
+
+    RHFL~\cite{fang2022robust}& & & \textcolor{blue}{KD \textbf{Weighted Logits}} & &[\textcolor{blue}{D}]*N & EH \\ \hline %CC
+
+    One-Shot FL~\cite{guha2018one} & \textcolor{purple}{Output Avg} & & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax}} & & [\textcolor{purple}{CD}]*1 & EP \\ \hline %CC
+
+    FedDF~\cite{lin2020ensemble} &  & \textcolor{purple}{Model Avg} & \textcolor{purple}{KD}  \textcolor{blue}{\textbf{Logits Avg}} & & [\textcolor{purple}{AD}]*N & HP \\ \hline %CC
+
+    PerAda~\cite{xie2023perada} &  & \textcolor{purple}{Adapter Avg} & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Logits Avg}} & & [\textcolor{purple}{AD}]*N & EHP \\ \hline
+
+    FedDistill~\cite{jiang2020federated}& & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD \textit{Softmax}}& &[\textcolor{blue}{D}\textcolor{purple}{A}]*N & H \\ \hline %CC
+
+    FedFusion~\cite{yao2019towards} & & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD} \textcolor{purple}{\textbf{Hidden}} & & [\textcolor{blue}{D}\textcolor{purple}{A}]*N & E \\ \hline %CC
+
+    FedMLB~\cite{kim2022multi} & & \textcolor{purple}{Model Avg} &\textcolor{blue}{KD} \textcolor{purple}{\textit{Softmax, Scaled Softmax}} & & [\textcolor{blue}{D}\textcolor{purple}{A}]*N & EH \\ \hline %CC
+
+    FedAlign~\cite{mendieta2022local}& &\textcolor{purple}{Model Avg}&\textcolor{blue}{KD}  \textcolor{purple}{\textit{Lipschitz Constants}}~\cite{shang2021lipschitz}& & [\textcolor{blue}{D}\textcolor{purple}{A}]*N & EH \\ \hline %CC
+
+    FedNTD~\cite{lee2022preservation} & & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD} \textcolor{purple}{\textit{Not-True Classes Softmax}} & & [\textcolor{blue}{D}\textcolor{purple}{A}]*N & H \\ \hline %CC
+
+    FedKC~\cite{wang2022fedkc} & & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD} \textcolor{blue}{\textit{Clustered Hidden Avg}} & & [\textcolor{blue}{D}\textcolor{purple}{A}]*N & HP \\ \hline %CC
+
+    MOON~\cite{li2021model} & & \textcolor{purple}{Model Avg} & \textcolor{blue}{Contrastive Learning} \newline \textcolor{purple}{\textit{Hidden}}, \textcolor{blue}{\textit{Hidden}} &&[\textcolor{blue}{D}\textcolor{purple}{A}]*N & EH \\ \hline %CC
+
+    FedCAD~\cite{he2022class} & & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD} \textcolor{purple}{\textbf{Class-Wise Softmax}} &&[\textcolor{blue}{D}\textcolor{purple}{A}]*N & H \\ \hline %CC
+
+    FCCL~\cite{huang2022learn} & & & \textcolor{purple}{Contrastive Learning} \textcolor{blue}{\textbf{Logits Avg}} \textcolor{blue}{Continual Learning} \textcolor{blue}{\textit{Logits}} & & [\textcolor{purple}{D}\textcolor{blue}{D}]*N & H \\ \hline %CC
+    
+    GFL~\cite{cheng2023gfl} & & \textcolor{purple}{Model Avg} & & \textcolor{blue}{Synthetic Data} & \textcolor{blue}{G}[\textcolor{purple}{A}]*N & HP \\ \hline
+
+    FedSage+~\cite{zhang2021subgraph} & & \textcolor{purple}{Gradient Avg}\newline\textcolor{purple}{Model Avg} & &\textcolor{blue}{Synthetic Node} & [\textcolor{blue}{G}\textcolor{purple}{A}]*N \newline [\textcolor{purple}{A}]*N & H \\ \hline
+    
+    Fed-ZDAC~\cite{hao2021towards} & & \textcolor{purple}{Model Avg} & & \textcolor{blue}{Synthetic Data of}\newline \textcolor{blue}{Global Model}  & [\textcolor{blue}{G}\textcolor{purple}{A}]*N & HP \\ \hline
+    Fed-ZDAS~\cite{hao2021towards} & & \textcolor{purple}{Model Avg} & & \textcolor{purple}{Synthetic Data of} \newline \textcolor{purple}{Local Models} & [\textcolor{purple}{GA}]*N & HP \\ \hline
+
+    DENSE~\cite{zhang2022dense} & \textcolor{purple}{Collection} & & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Logits}} & \textcolor{purple}{Synthetic Data} & [\textcolor{purple}{GCD}]*N & HP \\ \hline %CC
+
+    FedBE~\cite{chen2020fedbe} & & \textcolor{purple}{Model Avg} & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax Avg}} & \textcolor{purple}{Synthetic Model}& [\textcolor{purple}{AGD}]*1 & H \\ \hline %CC
+
+    FedAUX~\cite{sattler2021fedaux}& & \textcolor{purple}{Model Avg} & \textcolor{blue}{Contrastive Learning} \textcolor{purple}{\textbf{Hidden}} \newline \textcolor{purple}{KD} \textcolor{blue}{\textbf{Weighted Logits}} & & \textcolor{blue}{D}[\textcolor{purple}{AD}]*N \newline \textcolor{blue}{D}[\textcolor{purple}{AD}]*1 & HP \\ \hline %CC
+    
+    FedKD\textsubscript{2}~\cite{wu2022communication} & & \textcolor{purple}{Gradient Avg} & \textcolor{blue}{KD} \textcolor{purple}{\textit{Hidden, Attention, Logits}} \newline \textcolor{blue}{KD} \textcolor{blue}{\textit{Hidden, Attention, Logits}} & & [\textcolor{blue}{D}\textcolor{purple}{A}\textcolor{blue}{D}]*N & EH \\ \hline %CC
+
+    FedKT~\cite{li2020practical} & \textcolor{blue}{Voting} \textcolor{purple}{Voting} & & \textcolor{blue}{KD} \textcolor{blue}{\textbf{Argmax}} \textcolor{purple}{KD} \textcolor{blue}{\textbf{Argmax}} & & [\textcolor{blue}{CD}\textcolor{purple}{CD}]*1 & HP \\ \hline %CC
+
+    FedMatch~\cite{jeong2020federated} & \textcolor{blue}{Voting} & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD} \textcolor{blue}{\textbf{Argmax}} & & [\textcolor{blue}{CD}\textcolor{purple}{AA}]*N \newline [\textcolor{blue}{CD}\textcolor{purple}{A}]*N & EH \\ \hline %CC
+
+    FedGen~\cite{zhu2021data} & & \textcolor{purple}{Model Avg} &\textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax}} \textcolor{purple}{KD} \textcolor{blue}{\textbf{Logits Avg}} & \textcolor{purple}{Augmented Data} & \textcolor{purple}{D}[\textcolor{blue}{G}\textcolor{purple}{AD}]*N & EHP \\ \hline %CC
+
+    &                       &                       &                       &                       &         &              \\ \hline
+    &                       &                       &                       &                       &         &              \\ \hline
+    &                       &                       &                       &                       &         &              \\ \hline
+  \end{tabular}
+\end{table}
+
 
 \begin{table}[]
   \centering
@@ -373,7 +481,7 @@ Thus, the base model can establish loose connections with other models only thro
   \end{tabular}
 \end{table}
 
-
+\begin{comment}
 Model type?
 
 Model heterogeneity?
@@ -386,6 +494,7 @@ Horizontal or Vertical?
 
 Query syntax: Table.~\ref{table:repository}, data description, workflow metadata/history of ML pipeline (Scientific workflow management), model performance and profile (task-specific), software dependency,
 model use mode
+\end{comment}
 
 CreativeML Open RAIL-M:
 we added use-based restrictions not permitting the use of the Model in very specific scenarios, in order for the licensor to be able to enforce the license in case potential misuses of the Model may occur.

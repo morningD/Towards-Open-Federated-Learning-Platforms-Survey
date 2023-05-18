@@ -367,6 +367,10 @@ However, these methods require multiple rounds of communication to converge, whi
 Another group of studies leverages Bayesian nonparametrics to learn the shared global latent structures among local models~\cite{yurochkin2019bayesian, yurochkin2019statistical, lam2021model}. 
 These methods, known as Model Fusion, can identify distributions of neural components across local models and only fuse the components with the same distribution, which can be explained as a model compression between FedAvg (coordinate-wise averaging) and combination (w/o averaging).
 However, the model fusion strategies rely on multiple communication rounds to boost the fusion efficiency, and the model performance of one-shot fusion is even worse than that of Ensemble.
+Most recently, Su \textit{et al.}~\cite{su2023one}, inspired by null-space in continual learning~\cite{wang2021training, kong2022balancing}, propose MA-Echo which leverages layer-wise projection matrices to preserve the original loss of local models after amalgamation.
+Their evaluation results present a moderate improvement in one-shot setting compared to FedAvg and ensemble strategies.
+Unfortunately, this improvement is not consistently observed in multiple-round experiments.
+Meanwhile, to tackle the issue of catastrophic forgetting, FedPR~\cite{feng2023learning} follows similar ideas to facilitate the server's learning of visual prompts from clients for MRI reconstruction applications, but the improvement compared to FedAvg is limited even in multi-round setting.
 
 It is worth noting that our taxonomy is based on the form of the resulting model, which may not be entirely consistent with the terminology used in the technical perspective.
 For example, Bayes Model Averaging (BMA)~\cite{clarke2003comparing} estimates posterior probabilities of each model given the observed data, which results in a separable weighted model. 
@@ -390,10 +394,16 @@ Data-Free Knowledge Distillation(DFKD)~\cite{lopes2017data}
 
 \begin{table}[]
   \centering
-  \footnotesize
-  \caption{FL model reuse; \textcolor{purple}{Server} \textcolor{blue}{Client} Knowledge Distillation (KD) Challenges: \textbf{E}fficiency \textbf{H}eterogeneity \textbf{P}rivacy}
+  \tiny
+  \caption{Summary of FL works categorized by our taxonomy for batch model reuse mechanisms.
+  \textcolor{purple}{Purple} denotes operations completed on \textcolor{purple}{Server}, or knowledge distilled from \textcolor{purple}{Global or Consensus Model}; 
+  \textcolor{blue}{Blue} denotes operations completed on \textcolor{blue}{Clients}, or knowledge distilled from \textcolor{blue}{Local, Personlized, or Generative Models}; 
+  \textbf{Knowledge} is distilled from \textbf{Open, Proxy, Unlabelled or Generated} data, and \textit{Knowledge} is distilled from \textit{Private, Sensitive} data;
+  [~]*1 denotes one-shot, [~]*N denotes multiple rounds of communication;
+  Goals of works are denoted as \textbf{E}fficiency \textbf{H}eterogeneity \textbf{P}rivacy, and only those with explicit designs, experiments or proof are counted.}
   \label{tab:flreuse}
-  \begin{tabular}{|p{1.9cm}|p{1.55cm}|p{1.5cm}|p{4.0cm}|p{2cm}|p{1.3cm}|p{0.5cm}|}
+  %\setlength\arrayrulewidth{0.001pt}
+  \begin{longtable}{|p{1.68cm}|p{1.2cm}|p{1.15cm}|p{5.0cm}|p{2.6cm}|p{1.5cm}|p{0.35cm}|}
     \hline
     \multicolumn{1}{|c|}{FL Studies} & \multicolumn{1}{c|}{\textbf{C}ombination} & \multicolumn{1}{c|}{\textbf{A}malgamation} & \multicolumn{1}{c|}{\textbf{D}istillation} & \multicolumn{1}{c|}{\textbf{G}eneration} & \multicolumn{1}{c|}{Process}& \multicolumn{1}{c|}{Goals} \\ \hline
     FedAvg~\cite{mcmahan2017communication} & &  \textcolor{purple}{Model Avg}  &  &  & [\textcolor{purple}{A}]*N & EH   \\ \hline
@@ -402,9 +412,13 @@ Data-Free Knowledge Distillation(DFKD)~\cite{lopes2017data}
 
     FedKD\textsubscript{1}~\cite{gong2022preserving}& & & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Weighted Logits}} & &[\textcolor{purple}{D}]*1 & EHP \\ \hline %CC
 
+    FRD~\cite{cha2019federated}& & & \textcolor{blue}{KD} \textcolor{purple}{\textit{Softmax Avg}} & &[\textcolor{blue}{D}]*1 & EHP \\ \hline 
+
     FedMD~\cite{li2019fedmd} &&&\textcolor{blue}{KD \textbf{Logits Avg}} &&[\textcolor{blue}{D}]*N & H \\ \hline %CC
 
-    FedMD-NFDP\newline\cite{sun2020federated}& & & \textcolor{blue}{KD \textbf{Logits/Softmax/Argmax Avg}} & &[\textcolor{blue}{D}]*N & HP \\ \hline %CC
+    FedIris~\cite{luo2022fediris} &&&\textcolor{blue}{KD \textit{Hidden}} &&[\textcolor{blue}{D}]*N & H \\ \hline %CC
+
+    FedMD-NFDP~\cite{sun2020federated}& & & \textcolor{blue}{KD \textbf{Logits/Softmax/Argmax Avg}} & &[\textcolor{blue}{D}]*N & HP \\ \hline %CC
 
     RHFL~\cite{fang2022robust}& & & \textcolor{blue}{KD \textbf{Weighted Logits}} & &[\textcolor{blue}{D}]*N & EH \\ \hline %CC
 
@@ -414,7 +428,9 @@ Data-Free Knowledge Distillation(DFKD)~\cite{lopes2017data}
 
     PerAda~\cite{xie2023perada} &  & \textcolor{purple}{Adapter Avg} & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Logits Avg}} & & [\textcolor{purple}{AD}]*N & EHP \\ \hline
 
-    FedDistill~\cite{jiang2020federated}& & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD \textit{Softmax}}& &[\textcolor{blue}{D}\textcolor{purple}{A}]*N & H \\ \hline %CC
+    FedDistill~\cite{jiang2020federated}& & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD \textit{Softmax of Latest Local Model}}& &[\textcolor{blue}{D}\textcolor{purple}{A}]*N & H \\ \hline %CC
+
+    pFedSD~\cite{jin2022personalized}& & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD \textit{Softmax of Pervious Local Model}}& &[\textcolor{blue}{D}\textcolor{purple}{A}]*N & H \\ \hline
 
     FedFusion~\cite{yao2019towards} & & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD} \textcolor{purple}{\textbf{Hidden}} & & [\textcolor{blue}{D}\textcolor{purple}{A}]*N & E \\ \hline %CC
 
@@ -426,37 +442,43 @@ Data-Free Knowledge Distillation(DFKD)~\cite{lopes2017data}
 
     FedKC~\cite{wang2022fedkc} & & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD} \textcolor{blue}{\textit{Clustered Hidden Avg}} & & [\textcolor{blue}{D}\textcolor{purple}{A}]*N & HP \\ \hline %CC
 
-    MOON~\cite{li2021model} & & \textcolor{purple}{Model Avg} & \textcolor{blue}{Contrastive Learning} \newline \textcolor{purple}{\textit{Hidden}}, \textcolor{blue}{\textit{Hidden}} &&[\textcolor{blue}{D}\textcolor{purple}{A}]*N & EH \\ \hline %CC
+    MOON~\cite{li2021model} & & \textcolor{purple}{Model Avg} & \textcolor{blue}{Contrastive Learning} \textcolor{purple}{\textit{Hidden}}, \textcolor{blue}{\textit{Hidden}} &&[\textcolor{blue}{D}\textcolor{purple}{A}]*N & EH \\ \hline %CC
 
     FedCAD~\cite{he2022class} & & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD} \textcolor{purple}{\textbf{Class-Wise Softmax}} &&[\textcolor{blue}{D}\textcolor{purple}{A}]*N & H \\ \hline %CC
 
     FCCL~\cite{huang2022learn} & & & \textcolor{purple}{Contrastive Learning} \textcolor{blue}{\textbf{Logits Avg}} \textcolor{blue}{Continual Learning} \textcolor{blue}{\textit{Logits}} & & [\textcolor{purple}{D}\textcolor{blue}{D}]*N & H \\ \hline %CC
     
+    FD+FAug~\cite{jeong2018communication} & & & \textcolor{blue}{KD} \textcolor{blue}{\textit{Per-Class Logits Avg}} & \textcolor{blue}{Synthetic Data} & [\textcolor{blue}{D}]*N[\textcolor{blue}{G}]*N & EP \\ \hline
+
     GFL~\cite{cheng2023gfl} & & \textcolor{purple}{Model Avg} & & \textcolor{blue}{Synthetic Data} & \textcolor{blue}{G}[\textcolor{purple}{A}]*N & HP \\ \hline
+
+    FOSTER~\cite{yu2023turning} & & \textcolor{purple}{Model Avg} & & \textcolor{blue}{Synthetic Outliers} & [\textcolor{blue}{G}\textcolor{purple}{A}]*N & EH \\ \hline
 
     FedSage+~\cite{zhang2021subgraph} & & \textcolor{purple}{Gradient Avg}\newline\textcolor{purple}{Model Avg} & &\textcolor{blue}{Synthetic Node} & [\textcolor{blue}{G}\textcolor{purple}{A}]*N \newline [\textcolor{purple}{A}]*N & H \\ \hline
     
-    Fed-ZDAC~\cite{hao2021towards} & & \textcolor{purple}{Model Avg} & & \textcolor{blue}{Synthetic Data of}\newline \textcolor{blue}{Global Model}  & [\textcolor{blue}{G}\textcolor{purple}{A}]*N & HP \\ \hline
-    Fed-ZDAS~\cite{hao2021towards} & & \textcolor{purple}{Model Avg} & & \textcolor{purple}{Synthetic Data of} \newline \textcolor{purple}{Local Models} & [\textcolor{purple}{GA}]*N & HP \\ \hline
+    Fed-ZDAC~\cite{hao2021towards} & & \textcolor{purple}{Model Avg} & & \textcolor{blue}{Synthetic Data of Global Model} & [\textcolor{blue}{G}\textcolor{purple}{A}]*N & HP \\
+    Fed-ZDAS~\cite{hao2021towards} & &  & & \textcolor{purple}{Synthetic Data of Local Models}& [\textcolor{purple}{GA}]*N & \\ \hline
 
-    DENSE~\cite{zhang2022dense} & \textcolor{purple}{Collection} & & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Logits}} & \textcolor{purple}{Synthetic Data} & [\textcolor{purple}{GCD}]*N & HP \\ \hline %CC
+    FedDyn~\cite{jin2023feddyn} & & & \textcolor{purple}{KD} \textcolor{blue}{\textit{Hidden, Logits Avg}} & \textcolor{blue}{Synthetic Data} & [\textcolor{blue}{G}\textcolor{purple}{D}]*N & E \\ \hline
 
     FedBE~\cite{chen2020fedbe} & & \textcolor{purple}{Model Avg} & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax Avg}} & \textcolor{purple}{Synthetic Model}& [\textcolor{purple}{AGD}]*1 & H \\ \hline %CC
 
-    FedAUX~\cite{sattler2021fedaux}& & \textcolor{purple}{Model Avg} & \textcolor{blue}{Contrastive Learning} \textcolor{purple}{\textbf{Hidden}} \newline \textcolor{purple}{KD} \textcolor{blue}{\textbf{Weighted Logits}} & & \textcolor{blue}{D}[\textcolor{purple}{AD}]*N \newline \textcolor{blue}{D}[\textcolor{purple}{AD}]*1 & HP \\ \hline %CC
+    FedAUX~\cite{sattler2021fedaux}& & \textcolor{purple}{Model Avg} & \textcolor{blue}{Contrastive Learning} \textcolor{purple}{\textbf{Hidden}} \textcolor{purple}{KD} \textcolor{blue}{\textbf{Weighted Logits}} & & \textcolor{blue}{D}[\textcolor{purple}{AD}]*N \newline \textcolor{blue}{D}[\textcolor{purple}{AD}]*1 & HP \\ \hline %CC
     
-    FedKD\textsubscript{2}~\cite{wu2022communication} & & \textcolor{purple}{Gradient Avg} & \textcolor{blue}{KD} \textcolor{purple}{\textit{Hidden, Attention, Logits}} \newline \textcolor{blue}{KD} \textcolor{blue}{\textit{Hidden, Attention, Logits}} & & [\textcolor{blue}{D}\textcolor{purple}{A}\textcolor{blue}{D}]*N & EH \\ \hline %CC
+    FedKD\textsubscript{2}~\cite{wu2022communication} & & \textcolor{purple}{Gradient Avg} & \textcolor{blue}{KD} \textcolor{purple}{\textit{Hidden, Attention, Logits}} \textcolor{blue}{KD} \textcolor{blue}{\textit{Hidden, Attention, Logits}} & & [\textcolor{blue}{D}\textcolor{purple}{A}\textcolor{blue}{D}]*N & EH \\ \hline %CC
+
+    DENSE~\cite{zhang2022dense} & \textcolor{purple}{Collection} & & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Logits Avg}, \textit{Batch-Wise Statistics}}, \textcolor{purple}{\textbf{Softmax}} \newline \textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax}}, \textcolor{purple}{\textbf{Softmax}} & \textcolor{purple}{Synthetic Data} & \textcolor{purple}{C}[\textcolor{purple}{DGD}]*1 & HP \\ \hline %CC
 
     FedKT~\cite{li2020practical} & \textcolor{blue}{Voting} \textcolor{purple}{Voting} & & \textcolor{blue}{KD} \textcolor{blue}{\textbf{Argmax}} \textcolor{purple}{KD} \textcolor{blue}{\textbf{Argmax}} & & [\textcolor{blue}{CD}\textcolor{purple}{CD}]*1 & HP \\ \hline %CC
 
     FedMatch~\cite{jeong2020federated} & \textcolor{blue}{Voting} & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD} \textcolor{blue}{\textbf{Argmax}} & & [\textcolor{blue}{CD}\textcolor{purple}{AA}]*N \newline [\textcolor{blue}{CD}\textcolor{purple}{A}]*N & EH \\ \hline %CC
 
+    FedFTG~\cite{zhang2022fine} & & \textcolor{purple}{Model Avg} &\textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax}}, \textcolor{purple}{\textbf{Softmax}} \textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax}} & \textcolor{purple}{Synthetic Data} & [\textcolor{purple}{AGDD}]*N & EH \\ \hline
+
     FedGen~\cite{zhu2021data} & & \textcolor{purple}{Model Avg} &\textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax}} \textcolor{purple}{KD} \textcolor{blue}{\textbf{Logits Avg}} & \textcolor{purple}{Augmented Data} & \textcolor{purple}{D}[\textcolor{blue}{G}\textcolor{purple}{AD}]*N & EHP \\ \hline %CC
 
     &                       &                       &                       &                       &         &              \\ \hline
-    &                       &                       &                       &                       &         &              \\ \hline
-    &                       &                       &                       &                       &         &              \\ \hline
-  \end{tabular}
+  \end{longtable}
 \end{table}
 
 

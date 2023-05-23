@@ -315,13 +315,13 @@ Given that, we should avoid using their derivatives and generated content in que
 Once we obtain the right to relicense the modification models, the choice of a new license depends on the application scenario of models. 
 We provide a flowchart in Fig.~\ref{fig:flowchart}(a) to guide license selection.
 For now, we have provided a comprehensive perspective and suggestions regarding the regulations and legal issues related to batch model reusing with only one piece missing: the definition of terms and corresponding clauses for different reusing mechanisms in different licenses.
-We leave this content in the following section.
+The terms definition for model reusing in different licenses is a novel and interesting issue that is rarely discussed. 
+For example, interpreting model reusing as creating derivatives or combinations would involve different clauses in the licenses.
+To provide a better understanding of these implications, let's first provide an overview of typical model reuse mechanisms.
 
 \subsubsection{Batch Model Reuse Mechanisms}
-The definition of terms for model reusing in different licenses is a novel and interesting issue that is rarely discussed. 
-For example, interpreting model reusing as creating derivatives or combinations would involve different clauses in the licenses.
-Therefore, instead of summarizing the batch model reuse mechanisms from a technological and algorithmic aspect, we group these mechanisms based on the classification of their resulting outputs for ease of justifying license clauses.
-As shown in Fig.~\ref{fig:flowchart}(b), there are four categories of batch model reuse mechanisms: \textbf{Combination, Amalgamation, Distillation, and Generation}, each resulting in different forms of outputs.
+Instead of summarizing the batch model reuse mechanisms from a technological and algorithmic aspect, we propose grouping these mechanisms based on the classification of their resulting outputs for ease of justifying license clauses.
+As shown in Fig.~\ref{fig:flowchart}(b), there are four categories of batch model reuse mechanisms: \textbf{Combination, Amalgamation, Distillation, and Generation}, each resulting in different forms of outputs and may correspond to different regulations in licenses.
 
 \begin{figure}[t]
     \centering
@@ -338,7 +338,7 @@ Voting is a workaround for classification tasks and also applicable for stacking
 Both stacking and gating rely on an additional holdout or validation dataset for calculating extra parameters, marked as * in Fig.~\ref{fig:flowchart}(b). 
 The difference is that gating can adapt the weights of each model's estimation based on the inputs, providing better generalizability performance of the combined model.
 
-There are many advantages of combination mechanisms from the perspective of FL.
+There are many \textbf{advantages} of combination mechanisms from the perspective of FL.
 First, the input spaces of base models can be unaligned, which is ideal for the scenario of vertical FL~\cite{wu2022practical} where each client may have inconsistent features in their data.
 Secondly, especially for query-based FL, it can simultaneously support multiple types and heterogeneous models, which means that it does not rely on any prior assumptions of the models, such as whether they are DNNs or decision trees, released with weights (whitebox) or binary forms (blackbox).
 Thirdly, the tasks of models can be different if we pipeline the base models end-to-end, which is usually overlooked as a combination mechanism of models. 
@@ -349,10 +349,12 @@ The generated content, which may lack factual grounding, from the NLG model is u
 Through query-based FL, we can query a vicarious NLG model for a novel scenario, such as ProGen~\cite{madani2023large} for protein sequences generation, and quickly adapt this system to proteomics.
 Not limited to that, we can query a batch of NLG models by a well-chosen filter condition and then combine models through averaging or gating to significantly expand the exploration space for knowledge discovery.
 Lastly, the combinated models have strong separation from each other, meaning that we can add or remove a batch of models without significant changes to the remaining ones.
-Furthermore, combination mechanisms do not rely on the transparency of models and support blackbox sharing. 
+Meanwhile, combination mechanisms do not rely on the transparency of models and support blackbox sharing. 
 Thus, the base model can establish loose connections with other models only through run scripts, providing revocability of such combination and circumvention of the restrictions of licenses.
 
-On the other hand, instead of being treated as a challenge for FL~\cite{ma2022state}, the statistical heterogeneity and model heterogeneity nature of these crowdsourced models can actually enrich population diversity, which is crucial for creating a good ensemble~\cite{maclin1995combining, opitz1995generating}.
+On the other hand, instead of being treated as a challenge for FL~\cite{ma2022state}, the statistical heterogeneity and model heterogeneity nature of these crowdsourced models can actually enrich population diversity, which is crucial for creating a good ensemble~\cite{maclin1995combining, opitz1995generating}. 
+\textbf{However}, the storage consumption of combined models increases linearly with the number of base learners, which can deplete the communication resources of a model distribution network. 
+Therefore, alternative approaches are to amalgamate or merge multiple models into a new consensus model. We summarize these methods in the following.
 
 \textbf{Amalgamation} involves combining models through model parameters granularity operations, such as median~\cite{blanchard2017machine, pillutla2022robust} and coordinate-wise averaging with consideration of heterogeneity~\cite{mcmahan2017communication, li2018federated}, security~\cite{sun2019can}, scalability~\cite{reisizadeh2020fedpaq}, matching~\cite{wang2020federated, yu2021fed2}, specificality~\cite{gudur2020resource}, generalizability~\cite{qu2022generalized}, resulting in a combination with weak separation.
 This reusing approach is widely used in FL works and is often referred to as "aggregation" procedures for local models.
@@ -360,17 +362,19 @@ Here, we avoid using the term "aggregation" to distinguish it from "combination"
 
 FedAvg~\cite{mcmahan2017communication} is the most popular model averaging method in FL with many follow-up works. 
 For instance, Sun \textit{et al.}~\cite{sun2019can} proposed applying norm thresholding of local model updates to defend against backdoor attacks.
-Similarly, Blanchard \textit{et al.}~\cite{blanchard2017machine} proposed using more robust median-based amalgamation strategies for resilience against Byzantine behavior.
-Consider the ordering of parameters, Wang \textit{et al.}~\cite{wang2020federated} match and average the neural parameters layer-wise across local models, based on their similarities.
-However, these methods require multiple rounds of communication to converge, which is not applicable in a query-based FL setting.
+Similarly, Blanchard \textit{et al.}~\cite{blanchard2017machine} proposed using more robust median-based amalgamation for resilience against Byzantine behavior.
+Consider the ordering of parameters, Wang \textit{et al.}~\cite{wang2020federated} match and average the NNs parameters layer-wise across clients, based on their similarities.
+Yu \textit{et al.}~\cite{yu2021fed2} further attribute the misalignment in FL models to the non-IID training data, propose allocating an independent structure for each class and updating models through a feature paired averaging strategy.
+\textbf{Even though} amalgamation mechanisms can achieve a balance between model performance and resource efficiency by maintaining only one global model, they often rely on multiple rounds of communication to converge, which is not applicable in a query-based FL scenario.
+So, instead of trying to directly concatenate multiple sources of models while dealing with intricate parameter mismatch, transferring the latent knowledge derived from local models to a new model is a good alternative (i.e. Federated Distillation~\cite{jeong2018communication, jin2023feddyn}).
 
-Another group of studies leverages Bayesian nonparametrics to learn the shared global latent structures among local models~\cite{yurochkin2019bayesian, yurochkin2019statistical, lam2021model}. 
-These methods, known as Model Fusion, can identify distributions of neural components across local models and only fuse the components with the same distribution, which can be explained as a model compression between FedAvg (coordinate-wise averaging) and combination (w/o averaging).
+Another direction of model amalgamation is leveraging Bayesian nonparametrics to learn the shared global latent structures among local models~\cite{yurochkin2019bayesian, yurochkin2019statistical, lam2021model}. 
+These methods, known as Model Fusion, can identify distributions of neural components across local models and only fuse the components with the same distribution, which can be regarded as a model compression between FedAvg (coordinate-wise averaging) and combination (w/o averaging).
 However, the model fusion strategies rely on multiple communication rounds to boost the fusion efficiency, and the model performance of one-shot fusion is even worse than that of Ensemble.
 Most recently, Su \textit{et al.}~\cite{su2023one}, inspired by null-space in continual learning~\cite{wang2021training, kong2022balancing}, propose MA-Echo which leverages layer-wise projection matrices to preserve the original loss of local models after amalgamation.
-Their evaluation results present a moderate improvement in one-shot setting compared to FedAvg and ensemble strategies.
-Unfortunately, this improvement is not consistently observed in multiple-round experiments.
-Meanwhile, to tackle the issue of catastrophic forgetting, FedPR~\cite{feng2023learning} follows similar ideas to facilitate the server's learning of visual prompts from clients for MRI reconstruction applications, but the improvement compared to FedAvg is limited even in multi-round setting.
+Their evaluation results present a moderate improvement in one-shot setting compared to FedAvg and ensemble.
+\textbf{Unfortunately}, this improvement is not consistently observed in multiple-round experiments.
+Meanwhile, to tackle the issue of catastrophic forgetting, FedPR~\cite{feng2023learning} follows similar ideas to facilitate the server's learning of visual prompts from clients for MRI reconstruction applications, \textbf{but} the improvement compared to FedAvg is limited even in multi-round setting.
 
 It is worth noting that our taxonomy is based on the form of the resulting model, which may not be entirely consistent with the terminology used in the technical perspective.
 For example, Bayes Model Averaging (BMA)~\cite{clarke2003comparing} estimates posterior probabilities of each model given the observed data, which results in a separable weighted model. 
@@ -381,16 +385,26 @@ For instance, coordinate-wise operations and fusion of model parameters generate
 \textbf{Distillation} was initially proposed by Hinton \textit{et al.}~\cite{hinton2015distilling} to transfer knowledge from a batch of independently trained neural network models (Specialists) to create a new Generalist model.
 Their motivation was to explore the parallelization of training of specialists and improve the efficiency of distributed NNs modeling\cite{dean2012large}.
 Each specialist only learns fine-grained distinctions of a subset of classes, which is very similar to the non-IID setting in FL~\cite{li2021federated}.
-Therefore, it is natural to extend the knowledge distillation to FL filed~\cite{jiang2020federated, li2020practical, li2019fedmd, wu2022communication, chen2020fedbe, lin2020ensemble, gong2021ensemble, sun2020federated}.
+Besides, by using Knowledge Distillation (KD), we can compress wide and deep teacher networks into lightweight student networks~\cite{romero2015fitnets}, which is promising for addressing system heterogeneity in cross-device FL~\cite{lim2020federated}.
+Therefore, it is natural to extend the KD technologies to FL filed~\cite{jiang2020federated, li2020practical, li2019fedmd, wu2022communication, chen2020fedbe, lin2020ensemble, gong2021ensemble, sun2020federated}.
+Actually, many recent FL works~\cite{li2019fedmd, gong2021ensemble, sun2020federated, huang2022learn, fang2022robust, gong2022preserving, luo2022fediris, sui2020feded, chang2021cronus, he2020group, zhang2021parameterized, itahara2021distillation} solely leverage KD without following the model averaging paradigm of FedAvg, we leave this discussion for later.
+
+Despite directly retraining a Generalist model through knowledge distillation (KD), an alternative approach is to construct an ensemble of knowledge.
+For example, Furlanello \textit{et al.}~\cite{furlanello2018born} consecutively generate student models with the guidance of knowledge distilled from earlier generations and find that the ensemble of multiple generations of internal models achieves state-of-the-art performance.
+Dvornik \textit{et al.}~\cite{dvornik2019diversity} leverage the distilled knowledge from each learner to encourage cooperation and prediction diversity within the population, which leads to better ensemble results.
+The main \textbf{advantage} of distillation in the FL context is the decoupling between knowledge distillation and knowledge learning. 
+This allows us to split the model architecture for the purpose of system heterogeneity and efficiency~\cite{vepakomma2019split, thapa2022splitfed}.
+The \textbf{drawback} of KD is that it is data-dependent and the shared knowledge may be extracted from local sensitive data, which exposes a new attack surface for potential model inversion attacks~\cite{kim2020multiple, fredrikson2015model}.
 
 Data-Free Knowledge Distillation(DFKD)~\cite{lopes2017data}
 
-
+% the model trained in one specific domain cannot well generalize to other domains
 % KD 是用于加速网络训练，属于分布式机器学习范畴
 
-% KD 的优点：不需要相同的模型结构，缺点：依赖数据, extracted soft labels
+% KD 的优点：不需要相同的模型结构，缺点：依赖数据, Data-dependent KD, extracted soft labels 参考：Related work of DYNAFED: Tackling Client Data Heterogeneity with Global Dynamics 
 
 \textbf{Generation}
+%也可以是基于数据的生成
 
 \begin{table}[]
   \centering
@@ -398,12 +412,13 @@ Data-Free Knowledge Distillation(DFKD)~\cite{lopes2017data}
   \caption{Summary of FL works categorized by our taxonomy for batch model reuse mechanisms.
   \textcolor{purple}{Purple} denotes operations completed on \textcolor{purple}{Server}, or knowledge distilled from \textcolor{purple}{Global or Consensus Model}; 
   \textcolor{blue}{Blue} denotes operations completed on \textcolor{blue}{Clients}, or knowledge distilled from \textcolor{blue}{Local, Personlized, or Generative Models}; 
-  \textbf{Knowledge} is distilled from \textbf{Open, Proxy, Unlabelled or Generated} data, and \textit{Knowledge} is distilled from \textit{Private, Sensitive} data;
-  [~]*1 denotes one-shot, [~]*N denotes multiple rounds of communication;
-  Goals of works are denoted as \textbf{E}fficiency \textbf{H}eterogeneity \textbf{P}rivacy, and only those with explicit designs, experiments or proof are counted.}
+  \textbf{Knowledge} is distilled from \textbf{Open, Proxy, Unlabeled or Generated} data, and \textit{Knowledge} is distilled from \textit{Private, Sensitive} data;
+  [~]*1 denotes one round of coomunication (aka, one-shot), [~]*N denotes multiple rounds of communication, processes ahead ...[~] are performed only once (i.e. preprocessing), processes inside [...] are main functional part and may be nested within multiple epochs of training or inference;
+  Goals are denoted as \textbf{E}fficiency \textbf{H}eterogeneity \textbf{P}rivacy, and only those with explicit designs, experiments or proof are counted.}
+  \vspace{-5mm}
   \label{tab:flreuse}
   %\setlength\arrayrulewidth{0.001pt}
-  \begin{longtable}{|p{1.68cm}|p{1.2cm}|p{1.15cm}|p{5.0cm}|p{2.6cm}|p{1.5cm}|p{0.35cm}|}
+  \begin{longtable}{|p{1.68cm}|p{1.2cm}|p{1.25cm}|p{5.0cm}|p{2.59cm}|p{1.1cm}|p{0.35cm}|}
     \hline
     \multicolumn{1}{|c|}{FL Studies} & \multicolumn{1}{c|}{\textbf{C}ombination} & \multicolumn{1}{c|}{\textbf{A}malgamation} & \multicolumn{1}{c|}{\textbf{D}istillation} & \multicolumn{1}{c|}{\textbf{G}eneration} & \multicolumn{1}{c|}{Process}& \multicolumn{1}{c|}{Goals} \\ \hline
     FedAvg~\cite{mcmahan2017communication} & &  \textcolor{purple}{Model Avg}  &  &  & [\textcolor{purple}{A}]*N & EH   \\ \hline
@@ -412,7 +427,7 @@ Data-Free Knowledge Distillation(DFKD)~\cite{lopes2017data}
 
     FedKD\textsubscript{1}~\cite{gong2022preserving}& & & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Weighted Logits}} & &[\textcolor{purple}{D}]*1 & EHP \\ \hline %CC
 
-    FRD~\cite{cha2019federated}& & & \textcolor{blue}{KD} \textcolor{purple}{\textit{Softmax Avg}} & &[\textcolor{blue}{D}]*1 & EHP \\ \hline 
+    FedED~\cite{sui2020feded}& & & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Logits Avg on Global Validation Data}} & &[\textcolor{purple}{D}]*N & EHP \\ \hline %CC 
 
     FedMD~\cite{li2019fedmd} &&&\textcolor{blue}{KD \textbf{Logits Avg}} &&[\textcolor{blue}{D}]*N & H \\ \hline %CC
 
@@ -420,7 +435,17 @@ Data-Free Knowledge Distillation(DFKD)~\cite{lopes2017data}
 
     FedMD-NFDP~\cite{sun2020federated}& & & \textcolor{blue}{KD \textbf{Logits/Softmax/Argmax Avg}} & &[\textcolor{blue}{D}]*N & HP \\ \hline %CC
 
-    RHFL~\cite{fang2022robust}& & & \textcolor{blue}{KD \textbf{Weighted Logits}} & &[\textcolor{blue}{D}]*N & EH \\ \hline %CC
+    DS-FL~\cite{itahara2021distillation}& & & \textcolor{blue}{KD \textbf{Entropy Reduced Logits Avg}} & &[\textcolor{blue}{D}]*N & EH \\ \hline %CC
+
+    RHFL~\cite{fang2022robust}& & & \textcolor{blue}{KD \textbf{Weighted Logits}} & &[\textcolor{blue}{D}]*N & EH \\ \hline
+
+    KT-pFL~\cite{zhang2021parameterized}& & & \textcolor{blue}{KD \textbf{Learned Weighted Softmax}} & &[\textcolor{blue}{D}]*N & EH \\ \hline
+
+    Cronus~\cite{chang2021cronus}& & & \textcolor{blue}{KD} \textcolor{blue}{\textbf{Robust Mean Estimation of Softmax}} & &[\textcolor{blue}{D}]*N & EHP \\ \hline
+
+    FedDISC~\cite{yang2023exploring}& & & & \textcolor{purple}{Synthetic Data} &[\textcolor{purple}{G}]*1 & EH \\ \hline
+
+    FRD~\cite{cha2019federated}& & & & \textcolor{purple}{Mixup of Data} &[\textcolor{purple}{G}]*1 & E \\ \hline
 
     One-Shot FL~\cite{guha2018one} & \textcolor{purple}{Output Avg} & & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax}} & & [\textcolor{purple}{CD}]*1 & EP \\ \hline %CC
 
@@ -428,15 +453,17 @@ Data-Free Knowledge Distillation(DFKD)~\cite{lopes2017data}
 
     PerAda~\cite{xie2023perada} &  & \textcolor{purple}{Adapter Avg} & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Logits Avg}} & & [\textcolor{purple}{AD}]*N & EHP \\ \hline
 
+    FedFiMa~\cite{che2022federated} &  & \textcolor{purple}{Rep. Layer Avg} & \textcolor{blue}{KD} \textcolor{blue}{\textbf{Hidden Avg}} & & [\textcolor{purple}{A}\textcolor{blue}{D}]*N & EH \\ \hline
+
     FedDistill~\cite{jiang2020federated}& & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD \textit{Softmax of Latest Local Model}}& &[\textcolor{blue}{D}\textcolor{purple}{A}]*N & H \\ \hline %CC
 
     pFedSD~\cite{jin2022personalized}& & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD \textit{Softmax of Pervious Local Model}}& &[\textcolor{blue}{D}\textcolor{purple}{A}]*N & H \\ \hline
-
+    
     FedFusion~\cite{yao2019towards} & & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD} \textcolor{purple}{\textbf{Hidden}} & & [\textcolor{blue}{D}\textcolor{purple}{A}]*N & E \\ \hline %CC
 
     FedMLB~\cite{kim2022multi} & & \textcolor{purple}{Model Avg} &\textcolor{blue}{KD} \textcolor{purple}{\textit{Softmax, Scaled Softmax}} & & [\textcolor{blue}{D}\textcolor{purple}{A}]*N & EH \\ \hline %CC
 
-    FedAlign~\cite{mendieta2022local}& &\textcolor{purple}{Model Avg}&\textcolor{blue}{KD}  \textcolor{purple}{\textit{Lipschitz Constants}}~\cite{shang2021lipschitz}& & [\textcolor{blue}{D}\textcolor{purple}{A}]*N & EH \\ \hline %CC
+    FedAlign\textsubscript{1}~\cite{mendieta2022local}& &\textcolor{purple}{Model Avg}&\textcolor{blue}{KD}  \textcolor{purple}{\textit{Lipschitz Constants}}~\cite{shang2021lipschitz}& & [\textcolor{blue}{D}\textcolor{purple}{A}]*N & EH \\ \hline %CC
 
     FedNTD~\cite{lee2022preservation} & & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD} \textcolor{purple}{\textit{Not-True Classes Softmax}} & & [\textcolor{blue}{D}\textcolor{purple}{A}]*N & H \\ \hline %CC
 
@@ -446,6 +473,8 @@ Data-Free Knowledge Distillation(DFKD)~\cite{lopes2017data}
 
     FedCAD~\cite{he2022class} & & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD} \textcolor{purple}{\textbf{Class-Wise Softmax}} &&[\textcolor{blue}{D}\textcolor{purple}{A}]*N & H \\ \hline %CC
 
+    FedGKT~\cite{he2020group} & & & \textcolor{blue}{KD} \textcolor{purple}{\textit{Logits}} \textcolor{purple}{KD} \textcolor{blue}{\textit{Logits, Hidden, Argmax}} & & [\textcolor{blue}{D}\textcolor{purple}{D}]*N & EH \\ \hline
+
     FCCL~\cite{huang2022learn} & & & \textcolor{purple}{Contrastive Learning} \textcolor{blue}{\textbf{Logits Avg}} \textcolor{blue}{Continual Learning} \textcolor{blue}{\textit{Logits}} & & [\textcolor{purple}{D}\textcolor{blue}{D}]*N & H \\ \hline %CC
     
     FD+FAug~\cite{jeong2018communication} & & & \textcolor{blue}{KD} \textcolor{blue}{\textit{Per-Class Logits Avg}} & \textcolor{blue}{Synthetic Data} & [\textcolor{blue}{D}]*N[\textcolor{blue}{G}]*N & EP \\ \hline
@@ -454,6 +483,10 @@ Data-Free Knowledge Distillation(DFKD)~\cite{lopes2017data}
 
     FOSTER~\cite{yu2023turning} & & \textcolor{purple}{Model Avg} & & \textcolor{blue}{Synthetic Outliers} & [\textcolor{blue}{G}\textcolor{purple}{A}]*N & EH \\ \hline
 
+    FedDG~\cite{liu2021feddg} & & \textcolor{purple}{Model Avg} & & \textcolor{blue}{Interpolated Data} & [\textcolor{blue}{G}\textcolor{purple}{A}]*N & H \\ \hline 
+
+    SemiFL~\cite{diao2022semifl} & & \textcolor{purple}{Model Avg} & & \textcolor{blue}{Augmented and Mixup Data} & [\textcolor{blue}{G}\textcolor{purple}{A}]*N & H \\ \hline 
+
     FedSage+~\cite{zhang2021subgraph} & & \textcolor{purple}{Gradient Avg}\newline\textcolor{purple}{Model Avg} & &\textcolor{blue}{Synthetic Node} & [\textcolor{blue}{G}\textcolor{purple}{A}]*N \newline [\textcolor{purple}{A}]*N & H \\ \hline
     
     Fed-ZDAC~\cite{hao2021towards} & & \textcolor{purple}{Model Avg} & & \textcolor{blue}{Synthetic Data of Global Model} & [\textcolor{blue}{G}\textcolor{purple}{A}]*N & HP \\
@@ -461,7 +494,14 @@ Data-Free Knowledge Distillation(DFKD)~\cite{lopes2017data}
 
     FedDyn~\cite{jin2023feddyn} & & & \textcolor{purple}{KD} \textcolor{blue}{\textit{Hidden, Logits Avg}} & \textcolor{blue}{Synthetic Data} & [\textcolor{blue}{G}\textcolor{purple}{D}]*N & E \\ \hline
 
+    FedCAVE-Ens~\cite{heinbaughdata2023data} & \textcolor{purple}{Collection}  & & & \textcolor{purple}{Synthetic Data} & \textcolor{purple}{C}[\textcolor{purple}{G}]*1 & H \\
+    FedCAVE-KD~\cite{heinbaughdata2023data} &  & & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax}} & & \textcolor{purple}{C}[\textcolor{purple}{GD}]*1 & H \\ \hline
+
+    Fed-ET~\cite{cho2022heterogeneous} & & \textcolor{purple}{Rep. Layer Avg} \newline \textcolor{purple}{Model Avg}  & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Argmax, Weighted Logits}} & & [\textcolor{purple}{ADA}]*N & EH \\ \hline
+
     FedBE~\cite{chen2020fedbe} & & \textcolor{purple}{Model Avg} & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax Avg}} & \textcolor{purple}{Synthetic Model}& [\textcolor{purple}{AGD}]*1 & H \\ \hline %CC
+
+    DynaFed~\cite{pi2022dynafed} & & \textcolor{purple}{Model Avg} & & \textcolor{purple}{Synthetic Data}& [\textcolor{purple}{A}]*N\textcolor{purple}{G}[\textcolor{purple}{A}]*N & EH \\ \hline
 
     FedAUX~\cite{sattler2021fedaux}& & \textcolor{purple}{Model Avg} & \textcolor{blue}{Contrastive Learning} \textcolor{purple}{\textbf{Hidden}} \textcolor{purple}{KD} \textcolor{blue}{\textbf{Weighted Logits}} & & \textcolor{blue}{D}[\textcolor{purple}{AD}]*N \newline \textcolor{blue}{D}[\textcolor{purple}{AD}]*1 & HP \\ \hline %CC
     
@@ -475,9 +515,18 @@ Data-Free Knowledge Distillation(DFKD)~\cite{lopes2017data}
 
     FedFTG~\cite{zhang2022fine} & & \textcolor{purple}{Model Avg} &\textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax}}, \textcolor{purple}{\textbf{Softmax}} \textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax}} & \textcolor{purple}{Synthetic Data} & [\textcolor{purple}{AGDD}]*N & EH \\ \hline
 
+    RSCFed~\cite{liang2022rscfed} & & \textcolor{blue}{Model EMA}\newline \textcolor{purple}{Model Avg} &\textcolor{blue}{KD} \textcolor{purple}{\textbf{Softmax}} & & [\textcolor{blue}{DA}\textcolor{purple}{AA}]*N & H \\ \hline
+
+    FedAlign\textsubscript{2}~\cite{zhang2023federated}& &\textcolor{purple}{Model Avg}&\textcolor{blue}{Contrastive Learning}  \textcolor{purple}{\textit{Argmax, Argmin}} & & [\textcolor{blue}{DD}\textcolor{purple}{AA}]*N & EH \\ \hline
+
     FedGen~\cite{zhu2021data} & & \textcolor{purple}{Model Avg} &\textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax}} \textcolor{purple}{KD} \textcolor{blue}{\textbf{Logits Avg}} & \textcolor{purple}{Augmented Data} & \textcolor{purple}{D}[\textcolor{blue}{G}\textcolor{purple}{AD}]*N & EHP \\ \hline %CC
 
-    &                       &                       &                       &                       &         &              \\ \hline
+    SDA-FL~\cite{liz2022federated} & & \textcolor{purple}{Model Avg} & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Argmax}} & \textcolor{blue}{Synthetic Data}\newline  \textcolor{blue}{Augmented Data} & \textcolor{blue}{G}[\textcolor{blue}{G}\textcolor{purple}{AD}]*N & HP \\ \hline
+
+    FedSSL~\cite{fan2022private} & & & \textcolor{blue}{KD} \textcolor{blue}{\textbf{Softmax}} \textcolor{blue}{KD} \textcolor{blue}{\textbf{Softmax}, \textit{Interpolated Softmax}} & \textcolor{blue}{Synthetic Data} & [\textcolor{blue}{GDGD}]*N & HP \\ \hline
+    
+    FedZKT~\cite{zhang2022fedzkt} & & &\textcolor{purple}{KD} \textcolor{purple}{\textbf{Softmax}}, \textcolor{blue}{\textbf{Softmax Avg}} \textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax Avg}} \textcolor{purple}{KD} \textcolor{purple}{\textbf{Softmax}} & \textcolor{purple}{Synthetic Data} & [\textcolor{purple}{DGDGD}]*N & H \\ \hline
+
   \end{longtable}
 \end{table}
 

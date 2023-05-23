@@ -9528,3 +9528,541 @@ trailer
 startxref
 544686
 %%EOF
+2 0 obj<</Author(Nikita Dvornik,  Cordelia Schmid,  Julien Mairal)/CreationDate(D:20230522153544+08'00')/ModDate(D:20230522153544+08'00')/Producer(PyPDF2)/Subject(IEEE International Conference on Computer Vision)/Title(Diversity With Cooperation: Ensemble Methods for Few-Shot Classification)>>endobj3 0 obj<</Annots[117 0 R 118 0 R]/Contents 13 0 R/MediaBox[0 0 612 792]/Parent 1 0 R/Resources<</ExtGState<</R17 19 0 R/R18 17 0 R/R19 18 0 R/R25 29 0 R/R7 28 0 R/a0<</CA 1/ca 1>>/a1<</CA 0.5/ca 0.5>>>>/Font<</F1 42 0 R/F2 30 0 R/R10 35 0 R/R12 39 0 R/R14 43 0 R/R21 20 0 R/R8 31 0 R>>/ProcSet[/ImageC/Text/PDF/ImageI/ImageB]/XObject<</R24 16 0 R/x6 14 0 R>>>>/Rotate 0/Type/Page>>endobj12 0 obj<</Metadata 116 0 R/Pages 1 0 R/Type/Catalog>>endobj116 0 obj<</Length 3670/Subtype/XML/Type/Metadata>>stream
+<?xpacket begin="Ôªø" id="W5M0MpCehiHzreSzNTczkc9d"?>
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 9.1-c001 79.2a0d8d9, 2023/03/14-11:19:46        ">
+   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description rdf:about=""
+            xmlns:dc="http://purl.org/dc/elements/1.1/"
+            xmlns:pdf="http://ns.adobe.com/pdf/1.3/"
+            xmlns:xmp="http://ns.adobe.com/xap/1.0/"
+            xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/">
+         <dc:format>application/pdf</dc:format>
+         <dc:creator>
+            <rdf:Seq>
+               <rdf:li>Nikita Dvornik,  Cordelia Schmid,  Julien Mairal</rdf:li>
+            </rdf:Seq>
+         </dc:creator>
+         <dc:description>
+            <rdf:Alt>
+               <rdf:li xml:lang="x-default">IEEE International Conference on Computer Vision</rdf:li>
+            </rdf:Alt>
+         </dc:description>
+         <dc:title>
+            <rdf:Alt>
+               <rdf:li xml:lang="x-default">Diversity With Cooperation: Ensemble Methods for Few-Shot Classification</rdf:li>
+            </rdf:Alt>
+         </dc:title>
+         <pdf:Producer>PyPDF2</pdf:Producer>
+         <xmp:ModifyDate>2023-05-22T15:35:44+08:00</xmp:ModifyDate>
+         <xmp:CreateDate>2023-05-22T15:35:44+08:00</xmp:CreateDate>
+         <xmp:MetadataDate>2023-05-22T15:35:44+08:00</xmp:MetadataDate>
+         <xmpMM:DocumentID>uuid:4fd327d2-018d-894e-94ab-1252991d1202</xmpMM:DocumentID>
+         <xmpMM:InstanceID>uuid:6a13a755-99e2-d847-9418-f2b59246fb89</xmpMM:InstanceID>
+      </rdf:Description>
+   </rdf:RDF>
+</x:xmpmeta>
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                           
+<?xpacket end="w"?>endstreamendobj117 0 obj<</AP<</N 119 0 R>>/C[1.0 0.819611 0.0]/CA 0.399994/CreationDate(D:20230522153537+08'00')/F 4/M(D:20230522153537+08'00')/NM(92d3e636-d7fb-694c-bf3d-c0cffb1f36c9)/P 3 0 R/Popup 118 0 R/QuadPoints[161.225 489.377 222.396 489.377 161.225 480.491 222.396 480.491]/Rect[158.853 480.213 224.768 489.655]/Subj(Highlight)/Subtype/Highlight/T(duanmoming)/Type/Annot>>endobj118 0 obj<</F 28/Open false/Parent 117 0 R/Rect[612.0 397.377 796.0 489.377]/Subtype/Popup/Type/Annot>>endobj119 0 obj<</BBox[0.0 0.0 65.9149 9.44205]/FormType 1/Length 27/Matrix[1.0 0.0 0.0 1.0 0.0 0.0]/Resources<</ExtGState<</R0<</AIS false/CA 0.399994/Type/ExtGState/ca 0.399994>>/R1<</AIS false/BM/Multiply/Type/ExtGState>>>>/ProcSet[/PDF]/XObject<</MWFOForm 120 0 R>>>>/Subtype/Form/Type/XObject>>stream
+/R0 gs
+/R1 gs
+/MWFOForm Do
+endstreamendobj120 0 obj<</BBox[0.0 0.0 65.9149 9.44205]/FormType 1/Group<</S/Transparency>>/Length 9/Matrix[1.0 0.0 0.0 1.0 0.0 0.0]/Resources<</ProcSet[/PDF]/XObject<</Form 121 0 R>>>>/Subtype/Form/Type/XObject>>stream
+/Form Do
+endstreamendobj121 0 obj<</BBox[158.853 480.213 224.768 489.655]/FormType 1/Length 179/Matrix[1.0 0.0 0.0 1.0 -158.853 -480.213]/Resources<</ProcSet[/PDF]>>/Subtype/Form/Type/XObject>>stream
+1 0.819611 0 rg
+0.5554 w
+161.2253 480.4907 m
+159.1306 482.5853 159.1306 487.2827 161.2253 489.3773 c
+222.3956 489.3773 l
+224.4902 487.2827 224.4902 482.5853 222.3956 480.4907 c
+f
+endstreamendobjxref
+0 1
+0000000000 65535 f
+2 2
+0000547089 00000 n
+0000547392 00000 n
+12 1
+0000547782 00000 n
+116 6
+0000547845 00000 n
+0000551593 00000 n
+0000551969 00000 n
+0000552081 00000 n
+0000552428 00000 n
+0000552663 00000 n
+trailer<</Size 122/Root 12 0 R/Info 2 0 R/ID[<0C6E1E4B4BEA48EEA1EAFD30823CA0B3><0C6E1E4B4BEA48EEA1EAFD30823CA0B3>]/Prev 544686>>startxref553038%%EOF2 0 obj<</Author(Nikita Dvornik,  Cordelia Schmid,  Julien Mairal)/CreationDate(D:20230522153544+08'00')/ModDate(D:20230522153622+08'00')/Producer(PyPDF2)/Subject(IEEE International Conference on Computer Vision)/Title(Diversity With Cooperation: Ensemble Methods for Few-Shot Classification)>>endobj3 0 obj<</Annots[117 0 R 118 0 R 122 0 R 123 0 R]/Contents 13 0 R/MediaBox[0 0 612 792]/Parent 1 0 R/Resources<</ExtGState<</R17 19 0 R/R18 17 0 R/R19 18 0 R/R25 29 0 R/R7 28 0 R/a0<</CA 1/ca 1>>/a1<</CA 0.5/ca 0.5>>>>/Font<</F1 42 0 R/F2 30 0 R/R10 35 0 R/R12 39 0 R/R14 43 0 R/R21 20 0 R/R8 31 0 R>>/ProcSet[/ImageC/Text/PDF/ImageI/ImageB]/XObject<</R24 16 0 R/x6 14 0 R>>>>/Rotate 0/Type/Page>>endobj116 0 obj<</Length 3670/Subtype/XML/Type/Metadata>>stream
+<?xpacket begin="Ôªø" id="W5M0MpCehiHzreSzNTczkc9d"?>
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 9.1-c001 79.2a0d8d9, 2023/03/14-11:19:46        ">
+   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description rdf:about=""
+            xmlns:dc="http://purl.org/dc/elements/1.1/"
+            xmlns:pdf="http://ns.adobe.com/pdf/1.3/"
+            xmlns:xmp="http://ns.adobe.com/xap/1.0/"
+            xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/">
+         <dc:format>application/pdf</dc:format>
+         <dc:creator>
+            <rdf:Seq>
+               <rdf:li>Nikita Dvornik,  Cordelia Schmid,  Julien Mairal</rdf:li>
+            </rdf:Seq>
+         </dc:creator>
+         <dc:description>
+            <rdf:Alt>
+               <rdf:li xml:lang="x-default">IEEE International Conference on Computer Vision</rdf:li>
+            </rdf:Alt>
+         </dc:description>
+         <dc:title>
+            <rdf:Alt>
+               <rdf:li xml:lang="x-default">Diversity With Cooperation: Ensemble Methods for Few-Shot Classification</rdf:li>
+            </rdf:Alt>
+         </dc:title>
+         <pdf:Producer>PyPDF2</pdf:Producer>
+         <xmp:ModifyDate>2023-05-22T15:36:22+08:00</xmp:ModifyDate>
+         <xmp:CreateDate>2023-05-22T15:35:44+08:00</xmp:CreateDate>
+         <xmp:MetadataDate>2023-05-22T15:36:22+08:00</xmp:MetadataDate>
+         <xmpMM:DocumentID>uuid:4fd327d2-018d-894e-94ab-1252991d1202</xmpMM:DocumentID>
+         <xmpMM:InstanceID>uuid:71fe7ac7-5340-034b-a753-414567e315ef</xmpMM:InstanceID>
+      </rdf:Description>
+   </rdf:RDF>
+</x:xmpmeta>
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                           
+<?xpacket end="w"?>endstreamendobj122 0 obj<</AP<</N 124 0 R>>/C[1.0 0.819611 0.0]/CA 0.399994/CreationDate(D:20230522153620+08'00')/F 4/M(D:20230522153620+08'00')/NM(be773678-8b83-5e48-9385-91c289abadf2)/P 3 0 R/Popup 123 0 R/QuadPoints[498.63 402.193 545.115 402.193 498.63 393.167 545.115 393.167 308.862 390.238 411.138 390.238 308.862 381.212 411.138 381.212]/Rect[306.453 380.93 547.525 402.475]/Subj(Highlight)/Subtype/Highlight/T(duanmoming)/Type/Annot>>endobj123 0 obj<</F 28/Open false/Parent 122 0 R/Rect[612.0 310.193 796.0 402.193]/Subtype/Popup/Type/Annot>>endobj124 0 obj<</BBox[0.0 0.0 241.072 21.5451]/FormType 1/Length 27/Matrix[1.0 0.0 0.0 1.0 0.0 0.0]/Resources<</ExtGState<</R0<</AIS false/CA 0.399994/Type/ExtGState/ca 0.399994>>/R1<</AIS false/BM/Multiply/Type/ExtGState>>>>/ProcSet[/PDF]/XObject<</MWFOForm 125 0 R>>>>/Subtype/Form/Type/XObject>>stream
+/R0 gs
+/R1 gs
+/MWFOForm Do
+endstreamendobj125 0 obj<</BBox[0.0 0.0 241.072 21.5451]/FormType 1/Group<</S/Transparency>>/Length 9/Matrix[1.0 0.0 0.0 1.0 0.0 0.0]/Resources<</ProcSet[/PDF]/XObject<</Form 126 0 R>>>>/Subtype/Form/Type/XObject>>stream
+/Form Do
+endstreamendobj126 0 obj<</BBox[306.453 380.93 547.525 402.475]/Filter[/FlateDecode]/FormType 1/Length 158/Matrix[1.0 0.0 0.0 1.0 -306.453 -380.93]/Resources<</ProcSet[/PDF]>>/Subtype/Form/Type/XObject>>stream
+HâLŒª√0E—^SpÇ˛%Õ iÏ&M÷8R⁄\Ú	1ÜÃ!¶˜´1"]Ë”|§ŒN6í›È,K´ñt˙†%ŒŒ∏‰Óú2MÈ—¬"!€é≤uç].Y◊W∑6<⁄≥å¨C†Røœ¢D7œ2ÉŸµzÀ®|…ùMÜV[∑\b}l; ö°;¸ì˚¯Ó~Æ]_ ˝‘@fendstreamendobjxref
+0 1
+0000000000 65535 f
+2 2
+0000553420 00000 n
+0000553723 00000 n
+116 1
+0000554129 00000 n
+122 5
+0000557877 00000 n
+0000558314 00000 n
+0000558426 00000 n
+0000558773 00000 n
+0000559008 00000 n
+trailer<</Size 127/Root 12 0 R/Info 2 0 R/ID[<0C6E1E4B4BEA48EEA1EAFD30823CA0B3><1DFE3F42F3584836965063ED2E8464F8>]/Prev 553038>>startxref559381%%EOF2 0 obj<</Author(Nikita Dvornik,  Cordelia Schmid,  Julien Mairal)/CreationDate(D:20230522153544+08'00')/ModDate(D:20230522153936+08'00')/Producer(PyPDF2)/Subject(IEEE International Conference on Computer Vision)/Title(Diversity With Cooperation: Ensemble Methods for Few-Shot Classification)>>endobj3 0 obj<</Annots[117 0 R 118 0 R 122 0 R 123 0 R 128 0 R 129 0 R 130 0 R 131 0 R]/Contents 13 0 R/MediaBox[0 0 612 792]/Parent 1 0 R/Resources<</ExtGState<</R17 19 0 R/R18 17 0 R/R19 18 0 R/R25 29 0 R/R7 28 0 R/a0<</CA 1/ca 1>>/a1<</CA 0.5/ca 0.5>>>>/Font<</F1 42 0 R/F2 30 0 R/R10 35 0 R/R12 39 0 R/R14 43 0 R/R21 20 0 R/R8 31 0 R>>/ProcSet[/ImageC/Text/PDF/ImageI/ImageB]/XObject<</R24 16 0 R/x6 14 0 R>>>>/Rotate 0/Type/Page>>endobj12 0 obj<</AcroForm 127 0 R/Metadata 116 0 R/Pages 1 0 R/Type/Catalog>>endobj116 0 obj<</Length 3670/Subtype/XML/Type/Metadata>>stream
+<?xpacket begin="Ôªø" id="W5M0MpCehiHzreSzNTczkc9d"?>
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 9.1-c001 79.2a0d8d9, 2023/03/14-11:19:46        ">
+   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description rdf:about=""
+            xmlns:dc="http://purl.org/dc/elements/1.1/"
+            xmlns:pdf="http://ns.adobe.com/pdf/1.3/"
+            xmlns:xmp="http://ns.adobe.com/xap/1.0/"
+            xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/">
+         <dc:format>application/pdf</dc:format>
+         <dc:creator>
+            <rdf:Seq>
+               <rdf:li>Nikita Dvornik,  Cordelia Schmid,  Julien Mairal</rdf:li>
+            </rdf:Seq>
+         </dc:creator>
+         <dc:description>
+            <rdf:Alt>
+               <rdf:li xml:lang="x-default">IEEE International Conference on Computer Vision</rdf:li>
+            </rdf:Alt>
+         </dc:description>
+         <dc:title>
+            <rdf:Alt>
+               <rdf:li xml:lang="x-default">Diversity With Cooperation: Ensemble Methods for Few-Shot Classification</rdf:li>
+            </rdf:Alt>
+         </dc:title>
+         <pdf:Producer>PyPDF2</pdf:Producer>
+         <xmp:ModifyDate>2023-05-22T15:39:36+08:00</xmp:ModifyDate>
+         <xmp:CreateDate>2023-05-22T15:35:44+08:00</xmp:CreateDate>
+         <xmp:MetadataDate>2023-05-22T15:39:36+08:00</xmp:MetadataDate>
+         <xmpMM:DocumentID>uuid:4fd327d2-018d-894e-94ab-1252991d1202</xmpMM:DocumentID>
+         <xmpMM:InstanceID>uuid:8dd39f4a-c90d-7f4b-a957-d1b353c4d89d</xmpMM:InstanceID>
+      </rdf:Description>
+   </rdf:RDF>
+</x:xmpmeta>
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                           
+<?xpacket end="w"?>endstreamendobj127 0 obj<</DA(/Helv 0 Tf 0 g )/DR<</Encoding<</PDFDocEncoding 140 0 R>>/Font<</Helv 138 0 R/ZaDb 139 0 R>>>>/Fields[]>>endobj128 0 obj<</AP<</N 135 0 R>>/C[1.0 0.819611 0.0]/CA 0.399994/CreationDate(D:20230522153813+08'00')/F 4/M(D:20230522153813+08'00')/NM(1243fd83-be00-0f44-81ee-e6a23b42eaa7)/P 3 0 R/Popup 129 0 R/QuadPoints[50.1123 405.691 159.093 405.691 50.1123 396.805 159.093 396.805]/Rect[47.74 396.527 161.466 405.969]/Subj(Highlight)/Subtype/Highlight/T(duanmoming)/Type/Annot>>endobj129 0 obj<</F 28/Open false/Parent 128 0 R/Rect[612.0 313.691 796.0 405.691]/Subtype/Popup/Type/Annot>>endobj130 0 obj<</AP<</N 132 0 R>>/C[1.0 0.819611 0.0]/CA 0.399994/CreationDate(D:20230522153934+08'00')/F 4/M(D:20230522153934+08'00')/NM(b1519114-a0f3-7d4e-89ca-c767731d70c6)/P 3 0 R/Popup 131 0 R/QuadPoints[230.017 393.736 286.365 393.736 230.017 384.85 286.365 384.85 50.1123 381.782 286.366 381.782 50.1123 372.895 286.366 372.895 50.1123 369.826 63.9504 369.826 50.1123 360.939 63.9504 360.939]/Rect[47.74 360.661 288.738 394.014]/Subj(Highlight)/Subtype/Highlight/T(duanmoming)/Type/Annot>>endobj131 0 obj<</F 28/Open false/Parent 130 0 R/Rect[612.0 301.736 796.0 393.736]/Subtype/Popup/Type/Annot>>endobj132 0 obj<</BBox[0.0 0.0 240.998 33.3527]/FormType 1/Length 27/Matrix[1.0 0.0 0.0 1.0 0.0 0.0]/Resources<</ExtGState<</R0<</AIS false/CA 0.399994/Type/ExtGState/ca 0.399994>>/R1<</AIS false/BM/Multiply/Type/ExtGState>>>>/ProcSet[/PDF]/XObject<</MWFOForm 133 0 R>>>>/Subtype/Form/Type/XObject>>stream
+/R0 gs
+/R1 gs
+/MWFOForm Do
+endstreamendobj133 0 obj<</BBox[0.0 0.0 240.998 33.3527]/FormType 1/Group<</S/Transparency>>/Length 9/Matrix[1.0 0.0 0.0 1.0 0.0 0.0]/Resources<</ProcSet[/PDF]/XObject<</Form 134 0 R>>>>/Subtype/Form/Type/XObject>>stream
+/Form Do
+endstreamendobj134 0 obj<</BBox[47.74 360.661 288.738 394.014]/Filter[/FlateDecode]/FormType 1/Length 193/Matrix[1.0 0.0 0.0 1.0 -47.74 -360.661]/Resources<</ProcSet[/PDF]>>/Subtype/Form/Type/XObject>>stream
+HâTê9n1 {ΩÇ/ xÔ17Nì&ﬂè¨≈M©ÅÜâÅ∞∏É~ûã–›~ó(!qhñu¡˜IlŸ,∞ÕÜ4cå◊ä©aX≤ØkÏ±áΩ6+¥ æôáúÈ«˚4<÷◊rBfQ–¨vﬁaV{gÊFÜ]ù0†1*éTåYúS’√Nïèx#◊ÏÒ>ˇ™Ç∞µÂ^ä§ZSπøÅe™¢±ƒﬂÔ€w€…ΩVí˘XÁ|çÂZ˝Ó˘` Â‰\Äendstreamendobj135 0 obj<</BBox[0.0 0.0 113.726 9.44205]/FormType 1/Length 27/Matrix[1.0 0.0 0.0 1.0 0.0 0.0]/Resources<</ExtGState<</R0<</AIS false/CA 0.399994/Type/ExtGState/ca 0.399994>>/R1<</AIS false/BM/Multiply/Type/ExtGState>>>>/ProcSet[/PDF]/XObject<</MWFOForm 136 0 R>>>>/Subtype/Form/Type/XObject>>stream
+/R0 gs
+/R1 gs
+/MWFOForm Do
+endstreamendobj136 0 obj<</BBox[0.0 0.0 113.726 9.44205]/FormType 1/Group<</S/Transparency>>/Length 9/Matrix[1.0 0.0 0.0 1.0 0.0 0.0]/Resources<</ProcSet[/PDF]/XObject<</Form 137 0 R>>>>/Subtype/Form/Type/XObject>>stream
+/Form Do
+endstreamendobj137 0 obj<</BBox[47.74 396.527 161.466 405.969]/FormType 1/Length 175/Matrix[1.0 0.0 0.0 1.0 -47.74 -396.527]/Resources<</ProcSet[/PDF]>>/Subtype/Form/Type/XObject>>stream
+1 0.819611 0 rg
+0.5554 w
+50.1123 396.8045 m
+48.0177 398.8991 48.0177 403.5965 50.1123 405.6911 c
+159.0935 405.6911 l
+161.1881 403.5965 161.1881 398.8991 159.0935 396.8045 c
+f
+endstreamendobj138 0 obj<</BaseFont/Helvetica/Encoding 140 0 R/Name/Helv/Subtype/Type1/Type/Font>>endobj139 0 obj<</BaseFont/ZapfDingbats/Name/ZaDb/Subtype/Type1/Type/Font>>endobj140 0 obj<</Differences[24/breve/caron/circumflex/dotaccent/hungarumlaut/ogonek/ring/tilde 39/quotesingle 96/grave 128/bullet/dagger/daggerdbl/ellipsis/emdash/endash/florin/fraction/guilsinglleft/guilsinglright/minus/perthousand/quotedblbase/quotedblleft/quotedblright/quoteleft/quoteright/quotesinglbase/trademark/fi/fl/Lslash/OE/Scaron/Ydieresis/Zcaron/dotlessi/lslash/oe/scaron/zcaron 160/Euro 164/currency 166/brokenbar 168/dieresis/copyright/ordfeminine 172/logicalnot/.notdef/registered/macron/degree/plusminus/twosuperior/threesuperior/acute/mu 183/periodcentered/cedilla/onesuperior/ordmasculine 188/onequarter/onehalf/threequarters 192/Agrave/Aacute/Acircumflex/Atilde/Adieresis/Aring/AE/Ccedilla/Egrave/Eacute/Ecircumflex/Edieresis/Igrave/Iacute/Icircumflex/Idieresis/Eth/Ntilde/Ograve/Oacute/Ocircumflex/Otilde/Odieresis/multiply/Oslash/Ugrave/Uacute/Ucircumflex/Udieresis/Yacute/Thorn/germandbls/agrave/aacute/acircumflex/atilde/adieresis/aring/ae/ccedilla/egrave/eacute/ecircumflex/edieresis/igrave/iacute/icircumflex/idieresis/eth/ntilde/ograve/oacute/ocircumflex/otilde/odieresis/divide/oslash/ugrave/uacute/ucircumflex/udieresis/yacute/thorn/ydieresis]/Type/Encoding>>endobjxref
+0 1
+0000000000 65535 f
+2 2
+0000559744 00000 n
+0000560047 00000 n
+12 1
+0000560485 00000 n
+116 1
+0000560565 00000 n
+127 14
+0000564313 00000 n
+0000564442 00000 n
+0000564816 00000 n
+0000564928 00000 n
+0000565428 00000 n
+0000565540 00000 n
+0000565887 00000 n
+0000566122 00000 n
+0000566528 00000 n
+0000566875 00000 n
+0000567110 00000 n
+0000567477 00000 n
+0000567569 00000 n
+0000567647 00000 n
+trailer<</Size 141/Root 12 0 R/Info 2 0 R/ID[<0C6E1E4B4BEA48EEA1EAFD30823CA0B3><DCD699505DA44092A1D7CE2C2FACB6BD>]/Prev 559381>>startxref568840%%EOF2 0 obj<</Author(Nikita Dvornik,  Cordelia Schmid,  Julien Mairal)/CreationDate(D:20230522153544+08'00')/ModDate(D:20230522154021+08'00')/Producer(PyPDF2)/Subject(IEEE International Conference on Computer Vision)/Title(Diversity With Cooperation: Ensemble Methods for Few-Shot Classification)>>endobj3 0 obj<</Annots[117 0 R 118 0 R 122 0 R 123 0 R 128 0 R 129 0 R 130 0 R 131 0 R 141 0 R 142 0 R]/Contents 13 0 R/MediaBox[0 0 612 792]/Parent 1 0 R/Resources<</ExtGState<</R17 19 0 R/R18 17 0 R/R19 18 0 R/R25 29 0 R/R7 28 0 R/a0<</CA 1/ca 1>>/a1<</CA 0.5/ca 0.5>>>>/Font<</F1 42 0 R/F2 30 0 R/R10 35 0 R/R12 39 0 R/R14 43 0 R/R21 20 0 R/R8 31 0 R>>/ProcSet[/ImageC/Text/PDF/ImageI/ImageB]/XObject<</R24 16 0 R/x6 14 0 R>>>>/Rotate 0/Type/Page>>endobj116 0 obj<</Length 3670/Subtype/XML/Type/Metadata>>stream
+<?xpacket begin="Ôªø" id="W5M0MpCehiHzreSzNTczkc9d"?>
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 9.1-c001 79.2a0d8d9, 2023/03/14-11:19:46        ">
+   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description rdf:about=""
+            xmlns:dc="http://purl.org/dc/elements/1.1/"
+            xmlns:pdf="http://ns.adobe.com/pdf/1.3/"
+            xmlns:xmp="http://ns.adobe.com/xap/1.0/"
+            xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/">
+         <dc:format>application/pdf</dc:format>
+         <dc:creator>
+            <rdf:Seq>
+               <rdf:li>Nikita Dvornik,  Cordelia Schmid,  Julien Mairal</rdf:li>
+            </rdf:Seq>
+         </dc:creator>
+         <dc:description>
+            <rdf:Alt>
+               <rdf:li xml:lang="x-default">IEEE International Conference on Computer Vision</rdf:li>
+            </rdf:Alt>
+         </dc:description>
+         <dc:title>
+            <rdf:Alt>
+               <rdf:li xml:lang="x-default">Diversity With Cooperation: Ensemble Methods for Few-Shot Classification</rdf:li>
+            </rdf:Alt>
+         </dc:title>
+         <pdf:Producer>PyPDF2</pdf:Producer>
+         <xmp:ModifyDate>2023-05-22T15:40:21+08:00</xmp:ModifyDate>
+         <xmp:CreateDate>2023-05-22T15:35:44+08:00</xmp:CreateDate>
+         <xmp:MetadataDate>2023-05-22T15:40:21+08:00</xmp:MetadataDate>
+         <xmpMM:DocumentID>uuid:4fd327d2-018d-894e-94ab-1252991d1202</xmpMM:DocumentID>
+         <xmpMM:InstanceID>uuid:f49015a0-a5e4-2e4b-8154-d43e831b8d4f</xmpMM:InstanceID>
+      </rdf:Description>
+   </rdf:RDF>
+</x:xmpmeta>
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                           
+<?xpacket end="w"?>endstreamendobj141 0 obj<</AP<</N 143 0 R>>/C[1.0 0.819611 0.0]/CA 0.399994/CreationDate(D:20230522154019+08'00')/F 4/M(D:20230522154019+08'00')/NM(a46a8d60-bf41-884f-b30b-ba52179f1320)/P 3 0 R/Popup 142 0 R/QuadPoints[343.99 378.283 481.943 378.283 343.99 369.257 481.943 369.257]/Rect[341.581 368.975 484.352 378.565]/Subj(Highlight)/Subtype/Highlight/T(duanmoming)/Type/Annot>>endobj142 0 obj<</F 28/Open false/Parent 141 0 R/Rect[612.0 286.283 796.0 378.283]/Subtype/Popup/Type/Annot>>endobj143 0 obj<</BBox[0.0 0.0 142.772 9.59]/FormType 1/Length 27/Matrix[1.0 0.0 0.0 1.0 0.0 0.0]/Resources<</ExtGState<</R0<</AIS false/CA 0.399994/Type/ExtGState/ca 0.399994>>/R1<</AIS false/BM/Multiply/Type/ExtGState>>>>/ProcSet[/PDF]/XObject<</MWFOForm 144 0 R>>>>/Subtype/Form/Type/XObject>>stream
+/R0 gs
+/R1 gs
+/MWFOForm Do
+endstreamendobj144 0 obj<</BBox[0.0 0.0 142.772 9.59]/FormType 1/Group<</S/Transparency>>/Length 9/Matrix[1.0 0.0 0.0 1.0 0.0 0.0]/Resources<</ProcSet[/PDF]/XObject<</Form 145 0 R>>>>/Subtype/Form/Type/XObject>>stream
+/Form Do
+endstreamendobj145 0 obj<</BBox[341.581 368.975 484.352 378.565]/FormType 1/Length 177/Matrix[1.0 0.0 0.0 1.0 -341.581 -368.975]/Resources<</ProcSet[/PDF]>>/Subtype/Form/Type/XObject>>stream
+1 0.819611 0 rg
+0.5641 w
+343.9901 369.2571 m
+341.8627 371.3846 341.8627 376.1556 343.9901 378.283 c
+481.9427 378.283 l
+484.0701 376.1556 484.0701 371.3846 481.9427 369.2571 c
+f
+endstreamendobjxref
+0 1
+0000000000 65535 f
+2 2
+0000569410 00000 n
+0000569713 00000 n
+116 1
+0000570167 00000 n
+141 5
+0000573915 00000 n
+0000574289 00000 n
+0000574401 00000 n
+0000574745 00000 n
+0000574977 00000 n
+trailer<</Size 146/Root 12 0 R/Info 2 0 R/ID[<0C6E1E4B4BEA48EEA1EAFD30823CA0B3><F4DCF7CE75B54A78A0474C858D602816>]/Prev 568840>>startxref575350%%EOF2 0 obj<</Author(Nikita Dvornik,  Cordelia Schmid,  Julien Mairal)/CreationDate(D:20230522153544+08'00')/ModDate(D:20230522154058+08'00')/Producer(PyPDF2)/Subject(IEEE International Conference on Computer Vision)/Title(Diversity With Cooperation: Ensemble Methods for Few-Shot Classification)>>endobj3 0 obj<</Annots[117 0 R 118 0 R 122 0 R 123 0 R 128 0 R 129 0 R 130 0 R 131 0 R 141 0 R 142 0 R 156 0 R]/Contents 13 0 R/MediaBox[0 0 612 792]/Parent 1 0 R/Resources<</ExtGState<</R17 19 0 R/R18 17 0 R/R19 18 0 R/R25 29 0 R/R7 28 0 R/a0<</CA 1/ca 1>>/a1<</CA 0.5/ca 0.5>>>>/Font<</F1 42 0 R/F2 30 0 R/R10 35 0 R/R12 39 0 R/R14 43 0 R/R21 20 0 R/R8 31 0 R>>/ProcSet[/ImageC/Text/PDF/ImageI/ImageB]/XObject<</R24 16 0 R/x6 14 0 R>>>>/Rotate 0/Type/Page>>endobj116 0 obj<</Length 3670/Subtype/XML/Type/Metadata>>stream
+<?xpacket begin="Ôªø" id="W5M0MpCehiHzreSzNTczkc9d"?>
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 9.1-c001 79.2a0d8d9, 2023/03/14-11:19:46        ">
+   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description rdf:about=""
+            xmlns:dc="http://purl.org/dc/elements/1.1/"
+            xmlns:pdf="http://ns.adobe.com/pdf/1.3/"
+            xmlns:xmp="http://ns.adobe.com/xap/1.0/"
+            xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/">
+         <dc:format>application/pdf</dc:format>
+         <dc:creator>
+            <rdf:Seq>
+               <rdf:li>Nikita Dvornik,  Cordelia Schmid,  Julien Mairal</rdf:li>
+            </rdf:Seq>
+         </dc:creator>
+         <dc:description>
+            <rdf:Alt>
+               <rdf:li xml:lang="x-default">IEEE International Conference on Computer Vision</rdf:li>
+            </rdf:Alt>
+         </dc:description>
+         <dc:title>
+            <rdf:Alt>
+               <rdf:li xml:lang="x-default">Diversity With Cooperation: Ensemble Methods for Few-Shot Classification</rdf:li>
+            </rdf:Alt>
+         </dc:title>
+         <pdf:Producer>PyPDF2</pdf:Producer>
+         <xmp:ModifyDate>2023-05-22T15:40:58+08:00</xmp:ModifyDate>
+         <xmp:CreateDate>2023-05-22T15:35:44+08:00</xmp:CreateDate>
+         <xmp:MetadataDate>2023-05-22T15:40:58+08:00</xmp:MetadataDate>
+         <xmpMM:DocumentID>uuid:4fd327d2-018d-894e-94ab-1252991d1202</xmpMM:DocumentID>
+         <xmpMM:InstanceID>uuid:0b2547d7-83e5-a345-81e1-93185bc90de2</xmpMM:InstanceID>
+      </rdf:Description>
+   </rdf:RDF>
+</x:xmpmeta>
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                           
+<?xpacket end="w"?>endstreamendobj127 0 obj<</DA(/Helv 0 Tf 0 g )/DR<</Encoding<</PDFDocEncoding 140 0 R>>/Font<</AdobeSongStd-Light 172 0 R/Helv 138 0 R/KozMinPr6N-Regular 173 0 R/TiRo 146 0 R/ZaDb 139 0 R>>>>/Fields[]>>endobj146 0 obj<</BaseFont/Times-Roman/Encoding 174 0 R/Name/TiRo/Subtype/Type1/Type/Font>>endobj147 0 obj<</BaseFont/KozMinPr6N-Regular/CIDSystemInfo 160 0 R/DW 1000/FontDescriptor 161 0 R/Subtype/CIDFontType0/Type/Font/W[0[1000 278 299 353]4 5 614 6[721 735 216]9 10 323 11[449 529 219 306 219 453]17 26 614 27 28 219 29 31 529 32[486 744 646 604 617 681 567 537 647 738 320 433 637 566 904 710 716 605 716 623 517 601 690 668 990 681 634 578 316 614 316 529 500 387 509 566 478 565 503 337 549 580 275 266 544 276 854 579 550 578 566 410 444 340 575 512 760 503 529 453 326 380 326 387 216 453 216 380 529 299]102 103 614 104[265 614]107[614 353 451]110 111 291 112[588 589 500]117[219]119[452 216]121 122 353 123[451]126[486]127 137 387 139[880 448 566 716 903 460 805 275 276 550 886 582 529 738 529 738]157 158 406 159[575 406]161 163 934 164 169 646 170[617]171 174 567 175 178 320 179[681 710]181 185 716 187 190 690 191[634 605]193 198 509 199[478]200 203 503 204 207 275 208[550 579]210 214 550 216 219 575 220[529 578 529 517 634 578 445 444 842 453]231[500]323[500]327 389 500 9354[614 684]9358[648 899 903 509 275 575 503 550 646 320 690 567 716]9371 9376 934 9377 9384 426 9385 9387 425 9388[439]9389 9393 426 9394[646 567]9397[567 320]9400[320 716]9403 9405 690 9406[509 503]9409[503 275]9412[275 550]9415 9417 575 9418 9420 513 9421[805]9423[478]9426[503]9429[735]9432 9434 426 9435[266 578 550 512]9441[640 594 284]15472[530]15473 15476 529 15478 15479 529 15489 15490 716 15505[529]15507[529 525]15509 15510 529 15515[684 500]15725 15726 529 15727[934 841 904 854 710 579]15733 15736 575 15737[646 387 566]15740 15741 517 15742[601]15743 15744 578 15745[509 387 313 444 387 444 340 453 387 453 623 646 566]15758 15759 617 15760[567 681]15762 15763 710 15764[716 623 690 601 410 509 276]15771 15772 478 15773[503 605 565]15776 15777 579 15778[550 410 575 340 387 617 647 738 433 517 690 478 549 580 266 444 575 846 524 396 341 565 408 291 560 574 410 444 453 383 262 266 579 261 519 563 854 555 580]15817 15818 370 15819[580 716 405 566 565 280 566 650 275 575 503 426 505 509 854 551 546 534 760 576]15839 15840 370 15841[494 506 389 578 0]15846 15847 234 15848[282 523 387]15851 15855 405 15858 15866 0 15867[373]15868 15879 0 15883[541 484 367 580 738 635 555 505 546 598 500 447 290 474 310 331 220]15906[882]15908[446 526]15911[431]20317 20318 387 20322[681 738 748 566 694 601 523 544 310 579 340 617 567]20335 20337 647 20338 20339 320 20340[637]20342[566 710 623]20345 20349 690 20350[990 634 478 503]20354 20356 549 20357[275 544]20360[276 579 410 575 760 529 905 670 730]20369 20371 588]>>endobj148 0 obj<</BaseFont/KozMinPr6N-Regular/DescendantFonts 159 0 R/Encoding/UniJIS-UTF16-H/Subtype/Type0/Type/Font>>endobj150 0 obj<</BaseFont/AdobeSongStd-Light/CIDSystemInfo 170 0 R/DW 1000/FontDescriptor 171 0 R/Subtype/CIDFontType0/Type/Font/W[0[1000 207 270 342 467 462 797 710 239]9 10 374 11[423 605 238 375 238 334]17 26 462 27 28 238 29 31 605 32[344 748 684 560 695 739 563 511 729 793 318 312 666 526 896 758 772 544 772 628 465 607 753 711 972 647 620 607 374 333 374 606 500 239 417 503 427 529 415 264 444 518 241 230 495 228 793 527]80 81 524 82[504 338 336 277 517 450 652 466 452 407 370 258 370 605]7713[684 723]22353 22354 462 22357[500]29064 30283 550]>>endobj151 0 obj<</BaseFont/AdobeSongStd-Light/DescendantFonts 169 0 R/Encoding/UniGB-UTF16-H/Subtype/Type0/Type/Font>>endobj152 0 obj<</BaseFont/Times-Roman/Encoding 158 0 R/Name/TiRo/Subtype/Type1/Type/Font>>endobj155 0 obj<</BaseFont/HNWNLT+AdobeMingStd-Light/DescendantFonts 162 0 R/Encoding/Identity-H/Subtype/Type0/ToUnicode 163 0 R/Type/Font>>endobj156 0 obj<</AP<</N 157 0 R>>/C[1.0 1.0 1.0]/Contents(˛ˇüR±ó^w[ûh{~N\nvÑòÑmKv¯O<ˇNÂkdc–SG d i v e r s i t y)/CreationDate(D:20230522154027+08'00')/DA(0 G 0.898 0.1333 0.2157 rg 0 Tc 0 Tw 100 Tz 0 TL 0 Ts 0 Tr /TiRo 6 Tf)/DS(font: Times,serif 6.0pt; text-align:left; color:#E52237 )/F 4/M(D:20230522154058+08'00')/NM(39010873-54da-d546-9610-4b6a1f669efe)/P 3 0 R/RC(<?xml version="1.0"?><body xmlns="http://www.w3.org/1999/xhtml" xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/" xfa:APIVersion="Acrobat:23.1.0" xfa:spec="2.0.2"  style="font-size:6.0pt;text-align:left;color:#FF0000;font-weight:normal;font-style:normal\;font-family:Times;font-stretch:normal"><p dir="ltr">&#40723;&#21169;&#38750;&#30495;&#23454;&#26631;&#31614;&#19978;&#30340;&#39044;&#27979;&#30456;&#20284;&#65292;&#20197;&#27492;&#25552;&#21319;diversity</p></body>)/Rect[342.654 542.291 451.963 562.909]/Subj(Text Box)/Subtype/FreeText/T(duanmoming)/Type/Annot>>endobj157 0 obj<</BBox[342.654 542.291 451.963 562.909]/Filter[/FlateDecode]/FormType 1/Length 272/Matrix[1.0 0.0 0.0 1.0 -342.654 -542.291]/Resources<</Font<</AdobeSongStd-Light 151 0 R/F0 155 0 R/KozMinPr6N-Regular 148 0 R/TiRo 152 0 R>>/ProcSet[/PDF/Text]>>/Subtype/Form/Type/XObject>>stream
+HâTèMO√0ÜÔ˘>¬°Y‹ÿN"!§ukv‡C¨´ƒh)E∞ä2ê‡◊”-	Y≤,Â};ù2⁄É—h≠589≤’JY≤ôòrÌ"†Ò⁄ö ¥†œalU°ﬁ‘ÑMï˙√ÎƒëñƒëŒ«âì?ÓVmïŸü +U‘jv1|_ı€õQÆ≥™Ì>^ÓF®èÓ±˚µ3kfÑ∫Qg!¢Âº¿‡∏t„9‘œjMBsö»}åòéOÛf∏o7√∂€ÏöÏ≤Ôûv)*«§x„\·J*Õ‹âß‡=…í
+'—S¥ãÕÇ í•ª4kfdn˙ÈA¡ñ\ZV˜’O“ÙüÌ¯ﬁÔæN˜Å≤Vkı#¿ ‹sYendstreamendobj158 0 obj<</Differences[24/breve/caron/circumflex/dotaccent/hungarumlaut/ogonek/ring/tilde 39/quotesingle 96/grave 128/bullet/dagger/daggerdbl/ellipsis/emdash/endash/florin/fraction/guilsinglleft/guilsinglright/minus/perthousand/quotedblbase/quotedblleft/quotedblright/quoteleft/quoteright/quotesinglbase/trademark/fi/fl/Lslash/OE/Scaron/Ydieresis/Zcaron/dotlessi/lslash/oe/scaron/zcaron 160/Euro 164/currency 166/brokenbar 168/dieresis/copyright/ordfeminine 172/logicalnot/.notdef/registered/macron/degree/plusminus/twosuperior/threesuperior/acute/mu 183/periodcentered/cedilla/onesuperior/ordmasculine 188/onequarter/onehalf/threequarters 192/Agrave/Aacute/Acircumflex/Atilde/Adieresis/Aring/AE/Ccedilla/Egrave/Eacute/Ecircumflex/Edieresis/Igrave/Iacute/Icircumflex/Idieresis/Eth/Ntilde/Ograve/Oacute/Ocircumflex/Otilde/Odieresis/multiply/Oslash/Ugrave/Uacute/Ucircumflex/Udieresis/Yacute/Thorn/germandbls/agrave/aacute/acircumflex/atilde/adieresis/aring/ae/ccedilla/egrave/eacute/ecircumflex/edieresis/igrave/iacute/icircumflex/idieresis/eth/ntilde/ograve/oacute/ocircumflex/otilde/odieresis/divide/oslash/ugrave/uacute/ucircumflex/udieresis/yacute/thorn/ydieresis]/Type/Encoding>>endobj159 0 obj[147 0 R]endobj160 0 obj<</Ordering(Japan1)/Registry(Adobe)/Supplement 5>>endobj161 0 obj<</Ascent 1000/CapHeight 742/Descent -800/Flags 34/FontBBox[0 -500 1000 1000]/FontFamily(Kozuka Mincho Pr6N R)/FontName/KozMinPr6N-Regular/FontStretch/Normal/FontWeight 400/ItalicAngle 0/StemV 80/Type/FontDescriptor/XHeight 501>>endobj162 0 obj[164 0 R]endobj163 0 obj<</Filter/FlateDecode/Length 233>>stream
+Hâ\êœj√0∆Ô~
+€Cq[⁄√¿∂nÖˆáe{ «V2√"≈9‰Ìßx°É	lêøÔ'>K_Í«öB˝∆—5ò°‰«8±Ch±§G¡Âµ+∑lRZ‡f35uQ˙]ƒ1Ûõ{[‹*˝ 9PõœK≥›L)}„ÄîaU;Ùl”ãt¡vµ=‰y'Ãü„cN«“~√∏ËqL÷![ÍQôΩTÊ*U)$ˇO_©∂s_ñï9ùOWqüÓûä{}_8˘‹BπâYÚîî KÑ@x[Sä	ÑZé˙` πäo‰endstreamendobj164 0 obj<</BaseFont/HNWNLT+AdobeMingStd-Light/CIDSystemInfo 165 0 R/DW 1000/FontDescriptor 166 0 R/Subtype/CIDFontType0/Type/Font>>endobj165 0 obj<</Ordering(Identity)/Registry(Adobe)/Supplement 0>>endobj166 0 obj<</Ascent 1000/CIDSet 167 0 R/CapHeight 731/Descent -800/Flags 6/FontBBox[0 -500 1000 1000]/FontFamily(Adobe Ming Std L)/FontFile3 168 0 R/FontName/HNWNLT+AdobeMingStd-Light/FontStretch/Normal/FontWeight 300/ItalicAngle 0/StemV 52/Type/FontDescriptor/XHeight 466>>endobj167 0 obj<</Filter/FlateDecode/Length 28>>stream
+Hâj`£`åÇQ0
+F¡(§Ä ¿ ]Á Çendstreamendobj168 0 obj<</Filter/FlateDecode/Length 732/Subtype/CIDFontType0C>>stream
+HâlOmHqø”yûvYæ\‰¶∑√4¢òMëH$DD≥2'ı°·∂ÀV∂…Ê€‘‘m∫szwª€õû"ÜF)dÃ"±A~IäËCDDÅ~	Ó∂øBõ‘ß˙Ù¸^~øÁÅ!E√∞≤¶Ój]m”©
+£EO]6ô[tÌFM≠©Âf{‹='´‰#‰\X>¢ê	ß¿¡hÙdqJg0uNUñ«Ñr!÷±ô&yI¡t…áDÙX>Ñ¿0íZw≠É›Ø¨”UZ⁄Ï÷x8YTZzFS¨’ñí˚&©≥€⁄©;6ÚÇŸ`±∂Y¨ÕÌî±ê¨hm%„˚6≤ë≤Q÷Œòx∫Z◊do£»≥§ë∫ÒÔŸöÛîô≤öˇqjöÕ=&Ç™Í!ÜbˇCıkÄÖ£G√N8“N‹YéˆÌ-#r˛Óul…ö§»a,Ì^¡•8Ÿ[Kﬁ”Í˜±¥µ„⁄»G Œ“ DÈ¡Ç\æê!LJa>úı%ÛõÙ]zÜã!ar‰Øu”Ù0Õy¯Qıº„≈ÌïJîf}CA’[IÖOÒ°7 ÛCßsÃ5J≥#ﬁQı˝ÅU√£rtòıªDÿı8Î≤NT.AÙ%A"ÿ,G›ö¶Ω^˝S¸<ª1ˇiÒÂìÁÎíÇ˙’$)ÚP7/x¸™)A_Å⁄†bE∫71úCÂ»§œ'
+ﬁÕ©/≠vŸ;Ïù=Ÿ‡1¬ç{C‹¯‘F`áë2Q¡Î0Ñüø2‡˙¢óÈ‚∫9îÈgzÏJPÏ.3“∂\éªåw]‘ìLÛnûeñ%fŒ-Œ.≈B|\P5.≤”>∑ﬂ≈´OùéAÁ@v¶>~E|^¡œ>ñèuà=lcÄ «¿ªd&»J~Ñ£›##nb∏∆`ÍÏF{C.ß≤788=ø∞¸~úHÉ`8%]Vc«ß#›2ü£ÄÀI™C¬©·ñÌÀ˙´Ã•Æ˛Q~0 ≥pVendstreamendobj169 0 obj[150 0 R]endobj170 0 obj<</Ordering(GB1)/Registry(Adobe)/Supplement 4>>endobj171 0 obj<</Ascent 1000/CapHeight 626/Descent -800/Flags 34/FontBBox[0 -500 1000 1000]/FontFamily(Adobe Song Std L)/FontName/AdobeSongStd-Light/FontStretch/Normal/FontWeight 300/ItalicAngle 0/StemV 48/Type/FontDescriptor/XHeight 416>>endobj172 0 obj<</BaseFont/AdobeSongStd-Light/DescendantFonts 179 0 R/Encoding/UniGB-UTF16-H/Subtype/Type0/Type/Font>>endobj173 0 obj<</BaseFont/KozMinPr6N-Regular/DescendantFonts 175 0 R/Encoding/UniJIS-UTF16-H/Subtype/Type0/Type/Font>>endobj174 0 obj<</Differences[24/breve/caron/circumflex/dotaccent/hungarumlaut/ogonek/ring/tilde 39/quotesingle 96/grave 128/bullet/dagger/daggerdbl/ellipsis/emdash/endash/florin/fraction/guilsinglleft/guilsinglright/minus/perthousand/quotedblbase/quotedblleft/quotedblright/quoteleft/quoteright/quotesinglbase/trademark/fi/fl/Lslash/OE/Scaron/Ydieresis/Zcaron/dotlessi/lslash/oe/scaron/zcaron 160/Euro 164/currency 166/brokenbar 168/dieresis/copyright/ordfeminine 172/logicalnot/.notdef/registered/macron/degree/plusminus/twosuperior/threesuperior/acute/mu 183/periodcentered/cedilla/onesuperior/ordmasculine 188/onequarter/onehalf/threequarters 192/Agrave/Aacute/Acircumflex/Atilde/Adieresis/Aring/AE/Ccedilla/Egrave/Eacute/Ecircumflex/Edieresis/Igrave/Iacute/Icircumflex/Idieresis/Eth/Ntilde/Ograve/Oacute/Ocircumflex/Otilde/Odieresis/multiply/Oslash/Ugrave/Uacute/Ucircumflex/Udieresis/Yacute/Thorn/germandbls/agrave/aacute/acircumflex/atilde/adieresis/aring/ae/ccedilla/egrave/eacute/ecircumflex/edieresis/igrave/iacute/icircumflex/idieresis/eth/ntilde/ograve/oacute/ocircumflex/otilde/odieresis/divide/oslash/ugrave/uacute/ucircumflex/udieresis/yacute/thorn/ydieresis]/Type/Encoding>>endobj175 0 obj[176 0 R]endobj176 0 obj<</BaseFont/KozMinPr6N-Regular/CIDSystemInfo 177 0 R/DW 1000/FontDescriptor 178 0 R/Subtype/CIDFontType0/Type/Font/W[0[1000 278 299 353]4 5 614 6[721 735 216]9 10 323 11[449 529 219 306 219 453]17 26 614 27 28 219 29 31 529 32[486 744 646 604 617 681 567 537 647 738 320 433 637 566 904 710 716 605 716 623 517 601 690 668 990 681 634 578 316 614 316 529 500 387 509 566 478 565 503 337 549 580 275 266 544 276 854 579 550 578 566 410 444 340 575 512 760 503 529 453 326 380 326 387 216 453 216 380 529 299]102 103 614 104[265 614]107[614 353 451]110 111 291 112[588 589 500]117[219]119[452 216]121 122 353 123[451]126[486]127 137 387 139[880 448 566 716 903 460 805 275 276 550 886 582 529 738 529 738]157 158 406 159[575 406]161 163 934 164 169 646 170[617]171 174 567 175 178 320 179[681 710]181 185 716 187 190 690 191[634 605]193 198 509 199[478]200 203 503 204 207 275 208[550 579]210 214 550 216 219 575 220[529 578 529 517 634 578 445 444 842 453]231[500]323[500]327 389 500 9354[614 684]9358[648 899 903 509 275 575 503 550 646 320 690 567 716]9371 9376 934 9377 9384 426 9385 9387 425 9388[439]9389 9393 426 9394[646 567]9397[567 320]9400[320 716]9403 9405 690 9406[509 503]9409[503 275]9412[275 550]9415 9417 575 9418 9420 513 9421[805]9423[478]9426[503]9429[735]9432 9434 426 9435[266 578 550 512]9441[640 594 284]15472[530]15473 15476 529 15478 15479 529 15489 15490 716 15505[529]15507[529 525]15509 15510 529 15515[684 500]15725 15726 529 15727[934 841 904 854 710 579]15733 15736 575 15737[646 387 566]15740 15741 517 15742[601]15743 15744 578 15745[509 387 313 444 387 444 340 453 387 453 623 646 566]15758 15759 617 15760[567 681]15762 15763 710 15764[716 623 690 601 410 509 276]15771 15772 478 15773[503 605 565]15776 15777 579 15778[550 410 575 340 387 617 647 738 433 517 690 478 549 580 266 444 575 846 524 396 341 565 408 291 560 574 410 444 453 383 262 266 579 261 519 563 854 555 580]15817 15818 370 15819[580 716 405 566 565 280 566 650 275 575 503 426 505 509 854 551 546 534 760 576]15839 15840 370 15841[494 506 389 578 0]15846 15847 234 15848[282 523 387]15851 15855 405 15858 15866 0 15867[373]15868 15879 0 15883[541 484 367 580 738 635 555 505 546 598 500 447 290 474 310 331 220]15906[882]15908[446 526]15911[431]20317 20318 387 20322[681 738 748 566 694 601 523 544 310 579 340 617 567]20335 20337 647 20338 20339 320 20340[637]20342[566 710 623]20345 20349 690 20350[990 634 478 503]20354 20356 549 20357[275 544]20360[276 579 410 575 760 529 905 670 730]20369 20371 588]>>endobj177 0 obj<</Ordering(Japan1)/Registry(Adobe)/Supplement 5>>endobj178 0 obj<</Ascent 1000/CapHeight 742/Descent -800/Flags 34/FontBBox[0 -500 1000 1000]/FontFamily(Kozuka Mincho Pr6N R)/FontName/KozMinPr6N-Regular/FontStretch/Normal/FontWeight 400/ItalicAngle 0/StemV 80/Type/FontDescriptor/XHeight 501>>endobj179 0 obj[180 0 R]endobj180 0 obj<</BaseFont/AdobeSongStd-Light/CIDSystemInfo 181 0 R/DW 1000/FontDescriptor 182 0 R/Subtype/CIDFontType0/Type/Font/W[0[1000 207 270 342 467 462 797 710 239]9 10 374 11[423 605 238 375 238 334]17 26 462 27 28 238 29 31 605 32[344 748 684 560 695 739 563 511 729 793 318 312 666 526 896 758 772 544 772 628 465 607 753 711 972 647 620 607 374 333 374 606 500 239 417 503 427 529 415 264 444 518 241 230 495 228 793 527]80 81 524 82[504 338 336 277 517 450 652 466 452 407 370 258 370 605]7713[684 723]22353 22354 462 22357[500]29064 30283 550]>>endobj181 0 obj<</Ordering(GB1)/Registry(Adobe)/Supplement 4>>endobj182 0 obj<</Ascent 1000/CapHeight 626/Descent -800/Flags 34/FontBBox[0 -500 1000 1000]/FontFamily(Adobe Song Std L)/FontName/AdobeSongStd-Light/FontStretch/Normal/FontWeight 300/ItalicAngle 0/StemV 48/Type/FontDescriptor/XHeight 416>>endobjxref
+0 1
+0000000000 65535 f
+2 2
+0000575713 00000 n
+0000576016 00000 n
+116 1
+0000576478 00000 n
+127 1
+0000580226 00000 n
+146 37
+0000580422 00000 n
+0000580516 00000 n
+0000583044 00000 n
+0000000000 00000 f
+0000583166 00000 n
+0000583727 00000 n
+0000583848 00000 n
+0000000000 00000 f
+0000000000 00000 f
+0000583942 00000 n
+0000584085 00000 n
+0000585034 00000 n
+0000585615 00000 n
+0000586808 00000 n
+0000586835 00000 n
+0000586903 00000 n
+0000587150 00000 n
+0000587177 00000 n
+0000587480 00000 n
+0000587621 00000 n
+0000587691 00000 n
+0000587973 00000 n
+0000588070 00000 n
+0000588894 00000 n
+0000588921 00000 n
+0000588986 00000 n
+0000589229 00000 n
+0000589350 00000 n
+0000589472 00000 n
+0000590665 00000 n
+0000590692 00000 n
+0000593220 00000 n
+0000593288 00000 n
+0000593535 00000 n
+0000593562 00000 n
+0000594123 00000 n
+0000594188 00000 n
+trailer<</Size 183/Root 12 0 R/Info 2 0 R/ID[<0C6E1E4B4BEA48EEA1EAFD30823CA0B3><075C1EC2721849FC8E40E695A727BCDB>]/Prev 575350>>startxref594431%%EOF2 0 obj<</Author(Nikita Dvornik,  Cordelia Schmid,  Julien Mairal)/CreationDate(D:20230522153544+08'00')/ModDate(D:20230522154101+08'00')/Producer(PyPDF2)/Subject(IEEE International Conference on Computer Vision)/Title(Diversity With Cooperation: Ensemble Methods for Few-Shot Classification)>>endobj116 0 obj<</Length 3670/Subtype/XML/Type/Metadata>>stream
+<?xpacket begin="Ôªø" id="W5M0MpCehiHzreSzNTczkc9d"?>
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 9.1-c001 79.2a0d8d9, 2023/03/14-11:19:46        ">
+   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description rdf:about=""
+            xmlns:dc="http://purl.org/dc/elements/1.1/"
+            xmlns:pdf="http://ns.adobe.com/pdf/1.3/"
+            xmlns:xmp="http://ns.adobe.com/xap/1.0/"
+            xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/">
+         <dc:format>application/pdf</dc:format>
+         <dc:creator>
+            <rdf:Seq>
+               <rdf:li>Nikita Dvornik,  Cordelia Schmid,  Julien Mairal</rdf:li>
+            </rdf:Seq>
+         </dc:creator>
+         <dc:description>
+            <rdf:Alt>
+               <rdf:li xml:lang="x-default">IEEE International Conference on Computer Vision</rdf:li>
+            </rdf:Alt>
+         </dc:description>
+         <dc:title>
+            <rdf:Alt>
+               <rdf:li xml:lang="x-default">Diversity With Cooperation: Ensemble Methods for Few-Shot Classification</rdf:li>
+            </rdf:Alt>
+         </dc:title>
+         <pdf:Producer>PyPDF2</pdf:Producer>
+         <xmp:ModifyDate>2023-05-22T15:41:01+08:00</xmp:ModifyDate>
+         <xmp:CreateDate>2023-05-22T15:35:44+08:00</xmp:CreateDate>
+         <xmp:MetadataDate>2023-05-22T15:41:01+08:00</xmp:MetadataDate>
+         <xmpMM:DocumentID>uuid:4fd327d2-018d-894e-94ab-1252991d1202</xmpMM:DocumentID>
+         <xmpMM:InstanceID>uuid:31014c67-d09f-9647-8ed9-c9cb7ace209a</xmpMM:InstanceID>
+      </rdf:Description>
+   </rdf:RDF>
+</x:xmpmeta>
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                           
+<?xpacket end="w"?>endstreamendobj156 0 obj<</AP<</N 185 0 R>>/C[1.0 1.0 1.0]/Contents(˛ˇüR±ó^w[ûh{~N\nvÑòÑmKv¯O<ˇNÂkdc–SG d i v e r s i t y)/CreationDate(D:20230522154027+08'00')/DA(0 G 0.898 0.1333 0.2157 rg 0 Tc 0 Tw 100 Tz 0 TL 0 Ts 0 Tr /TiRo 6 Tf)/DS(font: Times,serif 6.0pt; text-align:left; color:#E52237 )/F 4/M(D:20230522154101+08'00')/NM(39010873-54da-d546-9610-4b6a1f669efe)/P 3 0 R/RC(<?xml version="1.0"?><body xmlns="http://www.w3.org/1999/xhtml" xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/" xfa:APIVersion="Acrobat:23.1.0" xfa:spec="2.0.2"  style="font-size:6.0pt;text-align:left;color:#FF0000;font-weight:normal;font-style:normal\;font-family:Times;font-stretch:normal"><p dir="ltr">&#40723;&#21169;&#38750;&#30495;&#23454;&#26631;&#31614;&#19978;&#30340;&#39044;&#27979;&#30456;&#20284;&#65292;&#20197;&#27492;&#25552;&#21319;diversity</p></body>)/Rect[342.654 542.291 504.982 555.055]/Subj(Text Box)/Subtype/FreeText/T(duanmoming)/Type/Annot>>endobj184 0 obj<</BaseFont/EPSVVZ+AdobeMingStd-Light/DescendantFonts 186 0 R/Encoding/Identity-H/Subtype/Type0/ToUnicode 187 0 R/Type/Font>>endobj185 0 obj<</BBox[342.654 542.291 504.982 555.055]/Filter[/FlateDecode]/FormType 1/Length 264/Matrix[1.0 0.0 0.0 1.0 -342.654 -542.291]/Resources<</Font<</AdobeSongStd-Light 151 0 R/F0 184 0 R/KozMinPr6N-Regular 148 0 R/TiRo 152 0 R>>/ProcSet[/PDF/Text]>>/Subtype/Form/Type/XObject>>stream
+Hâ<éMO√0ÜÔ˛9¬aY‹8v"!§ukv‡C–U‚¥î"XEHÎ…»Ü,YØ‰˜ydT=ÌÉÑ‡î—h≠5òBÅéÉWı,YçéH9*¥DÖå⁄íjaÀjÍ†ÑwH\öºﬂHö3H∫¯ùœ†ˇÁÓ`fˇÉZCŸ¿¸b¸π∂7_œÍÆˇ|Ωü´ÊÈ‡û˙£5IEs’¥p"ZWîƒU"œUÛÛh2ZP"˜5rt8-⁄Ò°€å€~≥kgóCˇºÀU>4ŸëR*™ÃBÿSûxE•pÙÌ2F≥§™r\2±]gI≤πÍ1ªƒgŸI;|u”«∞˚>›7™n·WÄ CÓUûendstreamendobj186 0 obj[188 0 R]endobj187 0 obj<</Filter/FlateDecode/Length 233>>stream
+Hâ\êœj√0∆Ô~
+€Cq[⁄√¿∂nÖˆáe{ «V2√"≈9‰Ìßx°É	lêøÔ'>K_Í«öB˝∆—5ò°‰«8±Ch±§G¡Âµ+∑lRZ‡f35uQ˙]ƒ1Ûõ{[‹*˝ 9PõœK≥›L)}„ÄîaU;Ùl”ãt¡vµ=‰y'Ãü„cN«“~√∏ËqL÷![ÍQôΩTÊ*U)$ˇO_©∂s_ñï9ùOWqüÓûä{}_8˘‹BπâYÚîî KÑ@x[Sä	ÑZé˙` πäo‰endstreamendobj188 0 obj<</BaseFont/EPSVVZ+AdobeMingStd-Light/CIDSystemInfo 189 0 R/DW 1000/FontDescriptor 190 0 R/Subtype/CIDFontType0/Type/Font>>endobj189 0 obj<</Ordering(Identity)/Registry(Adobe)/Supplement 0>>endobj190 0 obj<</Ascent 1000/CIDSet 191 0 R/CapHeight 731/Descent -800/Flags 6/FontBBox[0 -500 1000 1000]/FontFamily(Adobe Ming Std L)/FontFile3 192 0 R/FontName/EPSVVZ+AdobeMingStd-Light/FontStretch/Normal/FontWeight 300/ItalicAngle 0/StemV 52/Type/FontDescriptor/XHeight 466>>endobj191 0 obj<</Filter/FlateDecode/Length 28>>stream
+Hâj`£`åÇQ0
+F¡(§Ä ¿ ]Á Çendstreamendobj192 0 obj<</Filter/FlateDecode/Length 732/Subtype/CIDFontType0C>>stream
+HâlOmHqøÛÂ<Ì≤|π»MoáiD1õ"ëHààfo*N¸PB∑ÀV∂…|ùö∫MÔúﬁ›ÓˆÍ)bhîBˆ¡,ë·ó4°à>DDDËó‡n˚+¥I}™OœÔÂ·˜{JàÉ`VU÷ÈØû*7Zö©+&sãæ√®ΩljπŸsœ)j%[ƒ%Vé$(ÜS‡`d r2ë∏%K3ò&ª≤Àe9gﬂLï›ádöÏ¡Ú√ÕXÑ¿0íRs≠ì€Ø®—VX⁄l÷X8YXRrF[§”ïê˚&©∑µwPw⁄…fÉ≈⁄f±6uP∆≤ºµï¨èÌ∑ìıT;eÌääß´Ù∂6ä<K©ˇû≠=Oô)´…ß∫…‹kÇ ®≤Ç`(.˙?TøX(r4ÔÑ¬u°¯Ä··ÂHˇﬁ2¢‰Ì^«¡ñ¢MF¿“n#.«»ﬁZ“ûÆyÀ[ªQÆÔ‡1b,µTí,(eÈr˛§ºBô_2æ…ﬂÂg∏'◊AﬁZÁ√å0ºK”Ã€_‹^©@Œ3ÏWøï’¯î0x2>t9∆ùc7Í”‹\5<*CG8ØSRÉmPãsv˜Á@ïb§π¯"àõe(Ìb∆Ì4?•œ≥Ûü_>yæ.'Pø‰Ñ\îDóW=%J“+p˘(_—ÓMÃ˙ÁPÂ2ÈÒH¢K†yÕ•’n[ß≠´7<F¯†;¿ß6|;¨úÅän∑è%º¨(zU>áÿœ}l7ﬂ√£Ï €kSÅ"∫‘\@»€JÓ4ﬁ5tPW#–«±GÃ<ú[ú]äÜxxø:(q”⁄Î4ÜßéA˚êc0+Cø"∑ËÂ'D;§^ÆﬁGÄc‡]Îg˝>ï0 3ÙË(MåTL]=hü}ÿÈPı˘á¶ÁñﬂâT(Üì”v|:‹ìÆê±9ñ¯ÒÏƒ™q$î:¿bië˛Ãø \ ÍÂ∑  ÏV-endstreamendobjxref
+0 1
+0000000000 65535 f
+2 1
+0000595462 00000 n
+116 1
+0000595765 00000 n
+156 1
+0000599513 00000 n
+183 10
+0000000000 00000 f
+0000600462 00000 n
+0000600605 00000 n
+0000601178 00000 n
+0000601205 00000 n
+0000601508 00000 n
+0000601649 00000 n
+0000601719 00000 n
+0000602001 00000 n
+0000602098 00000 n
+trailer<</Size 193/Root 12 0 R/Info 2 0 R/ID[<0C6E1E4B4BEA48EEA1EAFD30823CA0B3><AF397B9DA90B443E8939CF3B4842D064>]/Prev 594431>>startxref602922%%EOF

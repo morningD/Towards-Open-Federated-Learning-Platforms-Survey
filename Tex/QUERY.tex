@@ -67,6 +67,7 @@ So, in addition to searching for domain-specific datasets based on their data de
 The data description can consist of statistical analysis results or the visualization diagrams that used to profile the data distribution~\cite{li2020multi} and complementary provenance information.
 
 \subsubsection{Workflow and History}
+\label{sec:workflow&history}
 The process of building an ML model is iterative, involving repeated hyperparameter tuning and architecture exploration, resulting in abundant workflow and historical trajectory data.
 This information includes pipelines, model structures, hyperparameter values for pre-training and fine-tuning, test metrics, and results. 
 These data can be useful in filtering models that meet specific requirements, such as those with data standardization in preprocessing or evaluated using mean average precision (mAP).
@@ -293,6 +294,7 @@ In fact, except for some public domain dedication licenses like CC0-1.0, PDDL, U
 Whether the reused models are copyrightable is crucial for incentivizing model sharing and mining, so we will elaborate on this topic in the next section.
 
 \subsubsection{Copyright of Reused Models}
+\label{sec:generated content}
 Software and computer code are indisputably copyrightable, but what about computer-generated content such as distillation and ensembles of models?
 The copyrightable of a computer-generated work is controversial, which may depend on such as the level of creativity and originality and \textit{presence of at least minimal human creative effort at the time the work is produced}~\cite{national1979final}.
 According to this definition, programmers who engage in model design and training meet the threshold requirements of copyrightability and own the copyright of the model. 
@@ -331,7 +333,7 @@ As shown in Fig.~\ref{fig:flowchart}(b), there are four categories of batch mode
     \label{fig:flowchart}
 \end{figure}
 
-\textbf{Combination}~\cite{zhou2012ensemble} is a straightforward way to reuse batch of models (aka. base learners), in which multiple models jointly contribute to the output by combination strategies such as averaging, voting, learning~\cite{jacobs1991adaptive, wolpert1992stacked}.
+\textbf{Combination}~\cite{zhou2012ensemble} is a straightforward way to reuse batch of models (aka base learners), in which multiple models jointly contribute to the output by combination strategies such as averaging, voting, learning~\cite{jacobs1991adaptive, wolpert1992stacked}.
 For regression estimates, averaging can improve the generalization by taking the mean of the outputs of all weak learners in a population. Additionally, the outputs of each learner can be weighted by extra parameters~\cite{perrone1995networks}, which can be determined by stacking estimators~\cite{wolpert1992stacked}, Bayes approach~\cite{clarke2003comparing} or backpropagation of gating networks~\cite{jacobs1991adaptive}. 
 % Bayesian Model Averaging (BMA) -> Stacking with probabilities
 Voting is a workaround for classification tasks and also applicable for stacking and gating.
@@ -366,7 +368,7 @@ Similarly, Blanchard \textit{et al.}~\cite{blanchard2017machine} proposed using 
 Consider the ordering of parameters, Wang \textit{et al.}~\cite{wang2020federated} match and average the NNs parameters layer-wise across clients, based on their similarities.
 Yu \textit{et al.}~\cite{yu2021fed2} further attribute the misalignment in FL models to the non-IID training data, propose allocating an independent structure for each class and updating models through a feature paired averaging strategy.
 \textbf{Even though} amalgamation mechanisms can achieve a balance between model performance and resource efficiency by maintaining only one global model, they often rely on multiple rounds of communication to converge, which is not applicable in a query-based FL scenario.
-So, instead of trying to directly concatenate multiple sources of models while dealing with intricate parameter mismatch, transferring the latent knowledge derived from local models to a new model is a good alternative (i.e. Federated Distillation~\cite{jeong2018communication, jin2023feddyn}).
+So, instead of trying to directly concatenate multiple sources of models while dealing with intricate parameter mismatch, transferring the latent knowledge learned by local models to a new model is a good alternative (i.e. Federated Distillation~\cite{jeong2018communication, jin2023feddyn}).
 
 Another direction of model amalgamation is leveraging Bayesian nonparametrics to learn the shared global latent structures among local models~\cite{yurochkin2019bayesian, yurochkin2019statistical, lam2021model}. 
 These methods, known as Model Fusion, can identify distributions of neural components across local models and only fuse the components with the same distribution, which can be regarded as a model compression between FedAvg (coordinate-wise averaging) and combination (w/o averaging).
@@ -392,19 +394,76 @@ Actually, many recent FL works~\cite{li2019fedmd, gong2021ensemble, sun2020feder
 Despite directly retraining a Generalist model through knowledge distillation (KD), an alternative approach is to construct an ensemble of knowledge.
 For example, Furlanello \textit{et al.}~\cite{furlanello2018born} consecutively generate student models with the guidance of knowledge distilled from earlier generations and find that the ensemble of multiple generations of internal models achieves state-of-the-art performance.
 Dvornik \textit{et al.}~\cite{dvornik2019diversity} leverage the distilled knowledge from each learner to encourage cooperation and prediction diversity within the population, which leads to better ensemble results.
-The main \textbf{advantage} of distillation in the FL context is the decoupling between knowledge distillation and knowledge learning. 
+In the context of FL, the main \textbf{advantage} of distillation is the decoupling between knowledge distillation and knowledge learning. 
 This allows us to split the model architecture for the purpose of system heterogeneity and efficiency~\cite{vepakomma2019split, thapa2022splitfed}.
+Moreover, the well-learned knowledge from clients only needs to be communicated once~\cite{gong2021ensemble, gong2022preserving}, while the server can perform multiple epochs of local training to complete the transfer.
 The \textbf{drawback} of KD is that it is data-dependent and the shared knowledge may be extracted from local sensitive data, which exposes a new attack surface for potential model inversion attacks~\cite{kim2020multiple, fredrikson2015model}.
+To mitigate this issue, some efforts~\cite{wang2022fedkc, fan2022private} have been made to add differential privacy noise~\cite{dwork2006differential} to the shared content.
 
-Data-Free Knowledge Distillation(DFKD)~\cite{lopes2017data}
+In general, there are three mechanisms for avoiding the sharing of sensitive knowledge.
+First, push the KD procedure to the server-side, where the knowledge of local models is transferred to the global model through a validation set~\cite{sui2020feded} or unlabeled dataset~\cite{lin2020ensemble, guha2018one, chen2020fedbe, xie2023perada, cho2022heterogeneous} held by the server.
+Second, we can keep the KD procedure at the client-side, allowing the knowledge of the global model~\cite{yao2019towards, wu2022communication,li2021model, lee2022preservation, mendieta2022local, kim2022multi, he2022class, liang2022rscfed, zhang2023federated}, other clients' models~\cite{jeong2020federated} or self-model~\cite{jiang2020federated, wu2022communication, li2021model, huang2022learn, jin2022personalized} to be transferred based on the local training data.
+In the above two strategies, only model parameters are exchanged in the training network, which means they can provide the same level of privacy protection as traditional FL.
+
+The last mechanism is to assume that a public unlabeled dataset, which does not contain sensitive information, can be accessed by both the server and clients for KD~\cite{li2020practical, li2019fedmd, gong2021ensemble, sun2020federated, huang2022learn, sattler2021fedaux, fang2022robust, gong2022preserving, chang2021cronus, zhang2021parameterized, itahara2021distillation}.
+Sharing these extracted contents will not raise any privacy concerns, and only minimal communication is generated during KD for the purpose of aligning sample IDs.
+In cases where such public datasets are not available on the server, a recent approach called Data-Free Knowledge Distillation (DFKD) has been proposed by Lopes \textit{et al.}~\cite{lopes2017data}.
+This approach regenerates batches of data based on layer activation statistics or spectrum coefficients collected during training phase, and this synthetic data is then used for distillation.
+DENSE~\cite{zhang2022dense} is the first attempt to extend DFKD to FL. It leverages the ensemble of local models to guide the training of a data generator on the server, and the generated data is then used to distill the knowledge from local models to the global model.
+FedCAVE-KD~\cite{heinbaugh2023data} leverages locally trained conditional autoencoders (CVAEs)~\cite{kingma2014auto} to generate samples based on the data distribution of clients. 
+These CVAEs are sent to server used to construct a global generator via KD, which will later provide synthetic training data for the global discriminator.
+
+It is worth noting that in the query-based FL setting, direct access to the original data is not available, so the second mechanism cannot be applied directly. 
+A circumvention method is to train a generator following the inspiration of DFKD. 
+Fortunately, this is praticable if the workflow and history information of modeling are tracked and queryable, as we advocated in Section~\ref{sec:workflow&history}.
+Recalling that, as shown in Fig.~\ref{fig:flowchart}(b), Generation is the last category in our taxonomy.
+Actually, such a hybrid model reuse strategy is quite common in FL. 
+For example, the previously mentioned DENSE~\cite{zhang2022dense} incorporates three model reuse mechanisms: Combination (creating an ensemble), Generation (generating synthetic data), and Distillation.
+Therefore, our taxonomy can cover traditional FL works, such as FedAvg and MOON~\cite{li2021model}, as well as the broad sense FL, including Federated Distillation~\cite{jeong2018communication, jin2023feddyn} and Ensemble Learning~\cite{shi2023fed, wang2023data}.
+We provide a comparison of these hybrid works in Section~\ref{sec:hybrid}.
 
 % the model trained in one specific domain cannot well generalize to other domains
 % KD 是用于加速网络训练，属于分布式机器学习范畴
 
 % KD 的优点：不需要相同的模型结构，缺点：依赖数据, Data-dependent KD, extracted soft labels 参考：Related work of DYNAFED: Tackling Client Data Heterogeneity with Global Dynamics 
 
-\textbf{Generation}
+\textbf{Generation} is designed to generate synthetic samples that resemble the original data distribution by building a probabilistic model~\cite{geyer1992practical} or deep learning model~\cite{kingma2014auto, goodfellow2020generative, cao2022survey} that can capture the underlying distribution pattern and latent structure of original data.
+Generally speaking, generation techniques can be classified into three categories: data-level, probabilistic, and representation-based approaches.
+Data-level approaches involve sample granularity operations such as interpolation~\cite{chawla2002smote} and augmentation~\cite{wong2016understanding} to generate synthetic features based on the original feature space of data.
+Even though these methods are training-free and easy to implement, they cannot be directly applied to the FL setting due to privacy concerns.
+Probabilistic approachs aim to estimate the real data distribution using probabilistic method.
+For example, Markov Chain Monte Carlo (MCMC)~\cite{geyer1992practical} methods construct a Markov Chain that converges to the desired target distribution by iteratively proposing new states based on the current state of the chain and acceptance probabilities.
+Gaussian Mixture Models (GMM) assumes the data is generated from a mixture of Gaussian distributions and can generate new samples by sampling from the learned distributions.
+Representation-based approaches try to reconstruct the data from laten feature space.
+For instance, Variational Autoencoders (VAEs)~\cite{kingma2014auto} learn the distribution of the latent representation space given the observed data and then use a decoder network to reconstruct data based on sampled latent representations.
+Generative Adversarial Networks (GANs)~\cite{goodfellow2020generative} train a generator network to produce samples that resemble realistic data by optimizing an adversarial objective against a discriminator network.
+
+Compare to the other model reuse mechanisms, generation has three unique \textbf{advantages}.
+The first advantage is visualization and verification. Unlike the extracted knowledge in distillation, the quality of generated content can be visualized and validated by humans. 
+This capability aids in assessing the contributions made by participants in terms of generating valuable content.
+Second, the flexibility of generation methods allow us to generate data with any desired amount or class, which enables more effective handling of imbalanced~\cite{chawla2002smote} and non-IID~\cite{zhang2022fine} data.
+The third advantage is multi-format sharing. Participants have the freedom to choose the form of their contributions. For example, they can upload the learned generative models in source code (e.g., Stable Diffusion~\cite{rombach2022high}, GPT-2~\cite{radford2019language}) or binary form, upload synthetic data, or provide model inference APIs like ChatGPT.
+This sharing policy greatly empowers the model community in an open FL platform, fostering collaboration and knowledge sharing.
+
+Given the aforementioned advantages, generation methods have been extensively studied in the field of FL. 
+These works can be classified into three main categories: generation for training~\cite{zhang2021subgraph, cheng2023gfl, hao2021towards, cha2019federated, yu2023turning, heinbaugh2023data, yang2023exploring, liu2021feddg, pi2022dynafed, liz2022federated, diao2022semifl}, generation for KD~\cite{zhang2022dense, chen2020fedbe, zhu2021data, zhang2022fine, jeong2018communication, jin2023feddyn, heinbaugh2023data, zhang2022fedzkt, fan2022private}, and serving three purposes: enriching the training set~\cite{zhang2022dense, chen2020fedbe, zhang2021subgraph, cheng2023gfl, cha2019federated, jin2023feddyn, zhang2022fedzkt}, improving generalization ability~\cite{zhu2021data, zhang2022fine, hao2021towards, jeong2018communication, yu2023turning, heinbaugh2023data, heinbaugh2023data, liu2021feddg, pi2022dynafed, liz2022federated}, and enabling semi-supervised learning~\cite{yang2023exploring, diao2022semifl, fan2022private}.
+
+
+%The third advantage is free-sharing. As mentioned in Section~\ref{sec:generated content}, many deep generative models, such as Stable Diffusion~\cite{rombach2022high} and ChatGPT, do not claim ownership rights over the generated content. Furthermore, most open software licenses do not have defined terms for computer-generated content. Therefore, it is legally permissible to freely reuse synthetic data.
+
+% 三种方法：1，data level（如SMOTE, augmentation）2, 概率模型（MCMC, 自回归模型） 3，sample from latent representation（GAN，CVAE）
+% 优点：1，生成的内容质量容易被校验（相比KD）2，可以掌控生成物的数量 3，弱连接(甚至不需要保留模型)
+% 生成物的用法：1，重新训练 2，KD 3，提升模型鲁棒性和平衡性
+
+try to find a method or train a model to learn statistical information of datasets or training product during modeling to capturing the distribution pattern of data and then generating synthetic data.
+a reuse friendly 
 %也可以是基于数据的生成
+
+\subsubsection{Hybrid Model Reusing in FL}
+\label{sec:hybrid}
+
+\subsubsection{Model Reusing vs. Model Licenses}
+%对生成物缺乏必要的监管，使用这部分数据目前来说很安全
 
 \begin{table}[]
   \centering
@@ -413,7 +472,7 @@ Data-Free Knowledge Distillation(DFKD)~\cite{lopes2017data}
   \textcolor{purple}{Purple} denotes operations completed on \textcolor{purple}{Server}, or knowledge distilled from \textcolor{purple}{Global or Consensus Model}; 
   \textcolor{blue}{Blue} denotes operations completed on \textcolor{blue}{Clients}, or knowledge distilled from \textcolor{blue}{Local, Personlized, or Generative Models}; 
   \textbf{Knowledge} is distilled from \textbf{Open, Proxy, Unlabeled or Generated} data, and \textit{Knowledge} is distilled from \textit{Private, Sensitive} data;
-  [~]*1 denotes one round of coomunication (aka, one-shot), [~]*N denotes multiple rounds of communication, processes ahead ...[~] are performed only once (i.e. preprocessing), processes inside [...] are main functional part and may be nested within multiple epochs of training or inference;
+  [~]*1 denotes one round of coomunication (aka one-shot), [~]*N denotes multiple rounds of communication, processes ahead ...[~] are performed only once (i.e. preprocessing), processes inside [...] are main functional part and may be nested within multiple epochs of training or inference;
   Goals are denoted as \textbf{E}fficiency \textbf{H}eterogeneity \textbf{P}rivacy, and only those with explicit designs, experiments or proof are counted.}
   \vspace{-5mm}
   \label{tab:flreuse}
@@ -494,8 +553,8 @@ Data-Free Knowledge Distillation(DFKD)~\cite{lopes2017data}
 
     FedDyn~\cite{jin2023feddyn} & & & \textcolor{purple}{KD} \textcolor{blue}{\textit{Hidden, Logits Avg}} & \textcolor{blue}{Synthetic Data} & [\textcolor{blue}{G}\textcolor{purple}{D}]*N & E \\ \hline
 
-    FedCAVE-Ens~\cite{heinbaughdata2023data} & \textcolor{purple}{Collection}  & & & \textcolor{purple}{Synthetic Data} & \textcolor{purple}{C}[\textcolor{purple}{G}]*1 & H \\
-    FedCAVE-KD~\cite{heinbaughdata2023data} &  & & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax}} & & \textcolor{purple}{C}[\textcolor{purple}{GD}]*1 & H \\ \hline
+    FedCAVE-Ens~\cite{heinbaugh2023data} & \textcolor{purple}{Collection}  & & & \textcolor{purple}{Synthetic Data} & \textcolor{purple}{C}[\textcolor{purple}{G}]*1 & H \\
+    FedCAVE-KD~\cite{heinbaugh2023data} &  & & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax}} & & \textcolor{purple}{C}[\textcolor{purple}{GD}]*1 & H \\ \hline
 
     Fed-ET~\cite{cho2022heterogeneous} & & \textcolor{purple}{Rep. Layer Avg} \newline \textcolor{purple}{Model Avg}  & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Argmax, Weighted Logits}} & & [\textcolor{purple}{ADA}]*N & EH \\ \hline
 
@@ -538,6 +597,7 @@ Data-Free Knowledge Distillation(DFKD)~\cite{lopes2017data}
   \label{tab:reuse}
   \begin{tabular}{|p{2.2cm}|p{3.55cm}|p{2.8cm}|p{2.8cm}|p{2.7cm}|}
     \hline
+    \multirow{2}{*}{}& \textbf{Combination} & \textbf{Amalgamation} & \textbf{Distillation} & \textbf{Generation} \\ \cline{2-5}
     & Combinated Work \newline with Strong Separation & Combinated Work \newline with Weak Separation & Derivative Work \newline from Concepts & Derivative Work \newline from Distributions \\ \hline
     Apache-2.0 & Separable -> Independent Work & Modify -> Derivative & \ding{55} & \ding{55} \\ \hline
     MIT & \ding{55} & \ding{55} & \ding{55} & \ding{55} \\ \hline

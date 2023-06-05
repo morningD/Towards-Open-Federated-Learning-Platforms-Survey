@@ -9201,4 +9201,382 @@ Hâåë[K1ÖﬂÁWÃ£ÇMsü	¡m◊>EÀÇœ•]◊ï∫ãÎÙ◊õÓ¶b≠Bò9ÁÀôDaRp†J°å1R≈ÉVŒ∆Â¨—¬∞c¥
 0000953013 00000 n
 0000953248 00000 n
 0000953615 00000 n
-trailer<</Size 541/Root 1 0 R/Info 4 0 R/ID[<5362953F9C8967731A795C43F3FB3C95><E3AFE7FD597F46ECB0BF3D96E1AD00C5>]/Prev 942769>>startxref954181%%EOF
+trailer<</Size 541/Root 1 0 R/Info 4 0 R/ID[<5362953F9C8967731A795C43F3FB3C95><E3AFE7FD597F46ECB0BF3D96E1AD00C5>]/Prev 942769>>startxref954181%%EOF2 0 obj<</Length 5834/Subtype/XML/Type/Metadata>>stream
+<?xpacket begin="Ôªø" id="W5M0MpCehiHzreSzNTczkc9d"?>
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 9.1-c001 79.2a0d8d9, 2023/03/14-11:19:46        ">
+   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description rdf:about=""
+            xmlns:dc="http://purl.org/dc/elements/1.1/"
+            xmlns:prism="http://prismstandard.org/namespaces/basic/3.0/"
+            xmlns:jav="http://www.niso.org/schemas/jav/1.0/"
+            xmlns:xmp="http://ns.adobe.com/xap/1.0/"
+            xmlns:pdfx="http://ns.adobe.com/pdfx/1.3/"
+            xmlns:pdf="http://ns.adobe.com/pdf/1.3/"
+            xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/">
+         <dc:format>application/pdf</dc:format>
+         <dc:publisher>
+            <rdf:Seq>
+               <rdf:li>IEEE</rdf:li>
+            </rdf:Seq>
+         </dc:publisher>
+         <dc:description>
+            <rdf:Alt>
+               <rdf:li xml:lang="x-default">2022 IEEE International Conference on Data Mining (ICDM);2022; ; ;10.1109/ICDM54844.2022.00013</rdf:li>
+               <rdf:li xml:lang="x-repair">2022 IEEE International Conference on Data Mining (ICDM);2022; ; ;10.1109/ICDM54844.2022.00013</rdf:li>
+            </rdf:Alt>
+         </dc:description>
+         <dc:title>
+            <rdf:Alt>
+               <rdf:li xml:lang="x-default">Federated Fingerprint Learning with Heterogeneous Architectures</rdf:li>
+               <rdf:li xml:lang="x-repair">Federated Fingerprint Learning with Heterogeneous Architectures</rdf:li>
+            </rdf:Alt>
+         </dc:title>
+         <dc:subject>
+            <rdf:Bag>
+               <rdf:li>federated learning</rdf:li>
+               <rdf:li>system heterogeneity</rdf:li>
+               <rdf:li>fingerprint</rdf:li>
+               <rdf:li>mask</rdf:li>
+            </rdf:Bag>
+         </dc:subject>
+         <dc:creator>
+            <rdf:Seq>
+               <rdf:li>Tianshi Che</rdf:li>
+               <rdf:li>Zijie Zhang</rdf:li>
+               <rdf:li>Yang Zhou</rdf:li>
+               <rdf:li>Xin Zhao</rdf:li>
+               <rdf:li>Ji Liu</rdf:li>
+               <rdf:li>Zhe Jiang</rdf:li>
+               <rdf:li>Da Yan</rdf:li>
+               <rdf:li>Ruoming Jin</rdf:li>
+               <rdf:li>Dejing Dou</rdf:li>
+            </rdf:Seq>
+         </dc:creator>
+         <prism:publicationName>2022 IEEE International Conference on Data Mining (ICDM)</prism:publicationName>
+         <prism:startingPage>31</prism:startingPage>
+         <prism:coverDisplayDate>  Nov. 2022</prism:coverDisplayDate>
+         <prism:doi>10.1109/ICDM54844.2022.00013</prism:doi>
+         <prism:endingPage>40</prism:endingPage>
+         <jav:journal_article_version>VoR</jav:journal_article_version>
+         <xmp:CreateDate>2023-01-27T01:04:40-05:00</xmp:CreateDate>
+         <xmp:ModifyDate>2023-05-31T17:01:17+08:00</xmp:ModifyDate>
+         <xmp:MetadataDate>2023-05-31T17:01:17+08:00</xmp:MetadataDate>
+         <pdfx:IEEE‚ÜÇ0020Article‚ÜÇ0020ID>10027670</pdfx:IEEE‚ÜÇ0020Article‚ÜÇ0020ID>
+         <pdfx:IEEE‚ÜÇ0020Issue‚ÜÇ0020ID>10027596</pdfx:IEEE‚ÜÇ0020Issue‚ÜÇ0020ID>
+         <pdfx:IEEE‚ÜÇ0020Publication‚ÜÇ0020ID>10027565</pdfx:IEEE‚ÜÇ0020Publication‚ÜÇ0020ID>
+         <pdfx:Meeting‚ÜÇ0020Ending‚ÜÇ0020Date>1 Dec. 2022</pdfx:Meeting‚ÜÇ0020Ending‚ÜÇ0020Date>
+         <pdfx:Meeting‚ÜÇ0020Starting‚ÜÇ0020Date>28 Nov. 2022</pdfx:Meeting‚ÜÇ0020Starting‚ÜÇ0020Date>
+         <pdf:Producer>OpenPDF 1.0.0-SNAPSHOT; modified using iText¬Æ 7.1.1 ¬©2000-2018 iText Group NV (AGPL-version)</pdf:Producer>
+         <xmpMM:DocumentID>uuid:8cc2ae11-1e5f-fd4b-b3ad-c1ded102dcef</xmpMM:DocumentID>
+         <xmpMM:InstanceID>uuid:46a40939-8b28-0340-b995-cb4d1fee7abf</xmpMM:InstanceID>
+      </rdf:Description>
+   </rdf:RDF>
+</x:xmpmeta>
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                           
+<?xpacket end="w"?>endstreamendobj4 0 obj<</Author(Tianshi Che)/CreationDate(D:20230127010440-05'00')/IEEE#20Article#20ID(10027670)/IEEE#20Issue#20ID(10027596)/IEEE#20Publication#20ID(10027565)/Meeting#20Ending#20Date(1 Dec. 2022)/Meeting#20Starting#20Date(28 Nov. 2022)/ModDate(D:20230531170117+08'00')/Producer(OpenPDF 1.0.0-SNAPSHOT; modified using iTextÆ 7.1.1 ©2000-2018 iText Group NV \(AGPL-version\))/Subject(2022 IEEE International Conference on Data Mining \(ICDM\);2022; ; ;10.1109/ICDM54844.2022.00013)/Title(Federated Fingerprint Learning with Heterogeneous Architectures)>>endobj410 0 obj[411 0 R 412 0 R 413 0 R 414 0 R 415 0 R 416 0 R 417 0 R 418 0 R 419 0 R 476 0 R 479 0 R 481 0 R 482 0 R 483 0 R 488 0 R 489 0 R 490 0 R 491 0 R 492 0 R 518 0 R 519 0 R 523 0 R 525 0 R 526 0 R 541 0 R 542 0 R 543 0 R]endobj541 0 obj<</AP<</N 545 0 R>>/C[1.0 0.819611 0.0]/CA 0.399994/CreationDate(D:20230531170101+08'00')/F 4/M(D:20230531170101+08'00')/NM(e7ee2d2e-e2c7-9e49-bb66-5bb234a90032)/P 9 0 R/Popup 542 0 R/QuadPoints[416.711 449.363 423.014 449.363 416.711 439.898 423.014 439.898 383.149 446.997 386.822 446.997 383.149 437.532 386.822 437.532 386.831 446.997 414.07 446.997 386.831 436.822 414.07 436.822 425.645 446.997 437.503 446.997 425.645 436.822 437.503 436.822]/Rect[380.623 436.504 440.219 449.659]/Subj(Highlight)/Subtype/Highlight/T(duanmoming)/Type/Annot>>endobj542 0 obj<</F 28/Open false/Parent 541 0 R/Rect[612.0 357.363 796.0 449.363]/Subtype/Popup/Type/Annot>>endobj543 0 obj<</AP<</N 544 0 R>>/C[1.0 1.0 1.0]/Contents(client update with private data)/CreationDate(D:20230531170106+08'00')/DA(0 G 0.898 0.1333 0.2157 rg 0 Tc 0 Tw 100 Tz 0 TL 0 Ts 0 Tr /TiRo 8 Tf)/DS(font: Times,serif 8.0pt; text-align:left; color:#E52237 )/F 4/M(D:20230531170117+08'00')/NM(b235bd05-b51f-3c40-8b64-6be47bda2cc2)/P 9 0 R/RC(<?xml version="1.0"?><body xmlns="http://www.w3.org/1999/xhtml" xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/" xfa:APIVersion="Acrobat:23.1.0" xfa:spec="2.0.2"  style="font-size:8.0pt;text-align:left;color:#FF0000;font-weight:normal;font-style:normal\;font-family:Times;font-stretch:normal"><p dir="ltr">client update with private data</p></body>)/Rect[417.205 405.513 476.132 427.123]/Subj(Text Box)/Subtype/FreeText/T(duanmoming)/Type/Annot>>endobj544 0 obj<</BBox[417.205 405.513 476.132 427.123]/Filter[/FlateDecode]/FormType 1/Length 195/Matrix[1.0 0.0 0.0 1.0 -417.205 -405.513]/Resources<</Font<</TiRo 285 0 R>>/ProcSet[/PDF/Text]>>/Subtype/Form/Type/XObject>>stream
+Hâ<èÀ
+¬0E˜Û≥‘ÖcföG≥§k%‡Z¥j≈G-UﬂiS$ê˜Êú∆3*cà—°!.ä¬∞¬Œ«∑Xåıhç'√R¢%ä!œÿ’∞Ç(§+ÔáªRë$SÅ‹HŸL©.S;xÄû«
+V	ñ©Ÿ>±ƒtö\›y≤8Nñ”fá[S?zúc∫Ç∆!Ë’!∑«}_Á|ëãE$?vﬂ¶øLÑ'QQF⁄Æ˘¸±˙iûUÌ«tù`? ·v@Fendstreamendobj545 0 obj<</BBox[0.0 0.0 59.5968 13.1552]/FormType 1/Length 27/Matrix[1.0 0.0 0.0 1.0 0.0 0.0]/Resources<</ExtGState<</R0<</AIS false/CA 0.399994/Type/ExtGState/ca 0.399994>>/R1<</AIS false/BM/Multiply/Type/ExtGState>>>>/ProcSet[/PDF]/XObject<</MWFOForm 546 0 R>>>>/Subtype/Form/Type/XObject>>stream
+/R0 gs
+/R1 gs
+/MWFOForm Do
+endstreamendobj546 0 obj<</BBox[0.0 0.0 59.5968 13.1552]/FormType 1/Group<</S/Transparency>>/Length 9/Matrix[1.0 0.0 0.0 1.0 0.0 0.0]/Resources<</ProcSet[/PDF]/XObject<</Form 547 0 R>>>>/Subtype/Form/Type/XObject>>stream
+/Form Do
+endstreamendobj547 0 obj<</BBox[380.623 436.504 440.219 449.659]/Filter[/FlateDecode]/FormType 1/Length 243/Matrix[1.0 0.0 0.0 1.0 -380.623 -436.504]/Resources<</ProcSet[/PDF]>>/Subtype/Form/Type/XObject>>stream
+HâLë9rƒ0sΩ/@·"ºg´º…:q‚ÔdôG⁄¬åZ#¬‡tf ¯y?Ñ-Ÿ·˜1vÏLL#É·ªò°ıt0dI∏@GVa81KTØõ◊c¢Hl|ÿßXC±v7¯Øﬁ°ı˛◊Ûıh(≤•Ìÿî≥¨4ìCÁew	8ƒ¨HK89sÃÙ^mé!Ïá}ä%Rªìãúˆï[√å–uÏ6üÍ–ûWm
+÷J*}VÁ®X§^”2vÏ¯çq…Î˙ÚÛöü‡!´¸‰ñ¬˚∫5Ω≈∆∆bó◊ª}ß.ØÒŸtªñW5d˝Æ+π….ﬂπ€ÎOÄ }ù}âendstreamendobjxref
+0 1
+0000000000 65535 f
+2 1
+0000954696 00000 n
+4 1
+0000960606 00000 n
+410 1
+0000961168 00000 n
+541 7
+0000961403 00000 n
+0000961969 00000 n
+0000962081 00000 n
+0000962882 00000 n
+0000963321 00000 n
+0000963668 00000 n
+0000963903 00000 n
+trailer<</Size 548/Root 1 0 R/Info 4 0 R/ID[<5362953F9C8967731A795C43F3FB3C95><324E915B26BD4223B52DE79185ACD1E2>]/Prev 954181>>startxref964363%%EOF2 0 obj<</Length 5834/Subtype/XML/Type/Metadata>>stream
+<?xpacket begin="Ôªø" id="W5M0MpCehiHzreSzNTczkc9d"?>
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 9.1-c001 79.2a0d8d9, 2023/03/14-11:19:46        ">
+   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description rdf:about=""
+            xmlns:dc="http://purl.org/dc/elements/1.1/"
+            xmlns:prism="http://prismstandard.org/namespaces/basic/3.0/"
+            xmlns:jav="http://www.niso.org/schemas/jav/1.0/"
+            xmlns:xmp="http://ns.adobe.com/xap/1.0/"
+            xmlns:pdfx="http://ns.adobe.com/pdfx/1.3/"
+            xmlns:pdf="http://ns.adobe.com/pdf/1.3/"
+            xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/">
+         <dc:format>application/pdf</dc:format>
+         <dc:publisher>
+            <rdf:Seq>
+               <rdf:li>IEEE</rdf:li>
+            </rdf:Seq>
+         </dc:publisher>
+         <dc:description>
+            <rdf:Alt>
+               <rdf:li xml:lang="x-default">2022 IEEE International Conference on Data Mining (ICDM);2022; ; ;10.1109/ICDM54844.2022.00013</rdf:li>
+               <rdf:li xml:lang="x-repair">2022 IEEE International Conference on Data Mining (ICDM);2022; ; ;10.1109/ICDM54844.2022.00013</rdf:li>
+            </rdf:Alt>
+         </dc:description>
+         <dc:title>
+            <rdf:Alt>
+               <rdf:li xml:lang="x-default">Federated Fingerprint Learning with Heterogeneous Architectures</rdf:li>
+               <rdf:li xml:lang="x-repair">Federated Fingerprint Learning with Heterogeneous Architectures</rdf:li>
+            </rdf:Alt>
+         </dc:title>
+         <dc:subject>
+            <rdf:Bag>
+               <rdf:li>federated learning</rdf:li>
+               <rdf:li>system heterogeneity</rdf:li>
+               <rdf:li>fingerprint</rdf:li>
+               <rdf:li>mask</rdf:li>
+            </rdf:Bag>
+         </dc:subject>
+         <dc:creator>
+            <rdf:Seq>
+               <rdf:li>Tianshi Che</rdf:li>
+               <rdf:li>Zijie Zhang</rdf:li>
+               <rdf:li>Yang Zhou</rdf:li>
+               <rdf:li>Xin Zhao</rdf:li>
+               <rdf:li>Ji Liu</rdf:li>
+               <rdf:li>Zhe Jiang</rdf:li>
+               <rdf:li>Da Yan</rdf:li>
+               <rdf:li>Ruoming Jin</rdf:li>
+               <rdf:li>Dejing Dou</rdf:li>
+            </rdf:Seq>
+         </dc:creator>
+         <prism:publicationName>2022 IEEE International Conference on Data Mining (ICDM)</prism:publicationName>
+         <prism:startingPage>31</prism:startingPage>
+         <prism:coverDisplayDate>  Nov. 2022</prism:coverDisplayDate>
+         <prism:doi>10.1109/ICDM54844.2022.00013</prism:doi>
+         <prism:endingPage>40</prism:endingPage>
+         <jav:journal_article_version>VoR</jav:journal_article_version>
+         <xmp:CreateDate>2023-01-27T01:04:40-05:00</xmp:CreateDate>
+         <xmp:ModifyDate>2023-05-31T17:01:23+08:00</xmp:ModifyDate>
+         <xmp:MetadataDate>2023-05-31T17:01:23+08:00</xmp:MetadataDate>
+         <pdfx:IEEE‚ÜÇ0020Article‚ÜÇ0020ID>10027670</pdfx:IEEE‚ÜÇ0020Article‚ÜÇ0020ID>
+         <pdfx:IEEE‚ÜÇ0020Issue‚ÜÇ0020ID>10027596</pdfx:IEEE‚ÜÇ0020Issue‚ÜÇ0020ID>
+         <pdfx:IEEE‚ÜÇ0020Publication‚ÜÇ0020ID>10027565</pdfx:IEEE‚ÜÇ0020Publication‚ÜÇ0020ID>
+         <pdfx:Meeting‚ÜÇ0020Ending‚ÜÇ0020Date>1 Dec. 2022</pdfx:Meeting‚ÜÇ0020Ending‚ÜÇ0020Date>
+         <pdfx:Meeting‚ÜÇ0020Starting‚ÜÇ0020Date>28 Nov. 2022</pdfx:Meeting‚ÜÇ0020Starting‚ÜÇ0020Date>
+         <pdf:Producer>OpenPDF 1.0.0-SNAPSHOT; modified using iText¬Æ 7.1.1 ¬©2000-2018 iText Group NV (AGPL-version)</pdf:Producer>
+         <xmpMM:DocumentID>uuid:8cc2ae11-1e5f-fd4b-b3ad-c1ded102dcef</xmpMM:DocumentID>
+         <xmpMM:InstanceID>uuid:3adb1901-9139-a14a-9afb-601b6f0f2029</xmpMM:InstanceID>
+      </rdf:Description>
+   </rdf:RDF>
+</x:xmpmeta>
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                           
+<?xpacket end="w"?>endstreamendobj4 0 obj<</Author(Tianshi Che)/CreationDate(D:20230127010440-05'00')/IEEE#20Article#20ID(10027670)/IEEE#20Issue#20ID(10027596)/IEEE#20Publication#20ID(10027565)/Meeting#20Ending#20Date(1 Dec. 2022)/Meeting#20Starting#20Date(28 Nov. 2022)/ModDate(D:20230531170123+08'00')/Producer(OpenPDF 1.0.0-SNAPSHOT; modified using iTextÆ 7.1.1 ©2000-2018 iText Group NV \(AGPL-version\))/Subject(2022 IEEE International Conference on Data Mining \(ICDM\);2022; ; ;10.1109/ICDM54844.2022.00013)/Title(Federated Fingerprint Learning with Heterogeneous Architectures)>>endobj410 0 obj[411 0 R 412 0 R 413 0 R 414 0 R 415 0 R 416 0 R 417 0 R 418 0 R 419 0 R 476 0 R 479 0 R 481 0 R 482 0 R 483 0 R 488 0 R 489 0 R 490 0 R 491 0 R 492 0 R 518 0 R 519 0 R 523 0 R 525 0 R 526 0 R 541 0 R 542 0 R 543 0 R 548 0 R 549 0 R]endobj548 0 obj<</AP<</N 550 0 R>>/C[1.0 0.819611 0.0]/CA 0.399994/CreationDate(D:20230531170121+08'00')/F 4/M(D:20230531170121+08'00')/NM(0bd98566-9333-d84a-a976-4f40b6087fa7)/P 9 0 R/Popup 549 0 R/QuadPoints[466.684 619.004 515.57 619.004 466.684 607.599 515.57 607.599]/Rect[463.639 607.243 518.615 619.361]/Subj(Highlight)/Subtype/Highlight/T(duanmoming)/Type/Annot>>endobj549 0 obj<</F 28/Open false/Parent 548 0 R/Rect[612.0 527.004 796.0 619.004]/Subtype/Popup/Type/Annot>>endobj550 0 obj<</BBox[0.0 0.0 54.975 12.1179]/FormType 1/Length 27/Matrix[1.0 0.0 0.0 1.0 0.0 0.0]/Resources<</ExtGState<</R0<</AIS false/CA 0.399994/Type/ExtGState/ca 0.399994>>/R1<</AIS false/BM/Multiply/Type/ExtGState>>>>/ProcSet[/PDF]/XObject<</MWFOForm 551 0 R>>>>/Subtype/Form/Type/XObject>>stream
+/R0 gs
+/R1 gs
+/MWFOForm Do
+endstreamendobj551 0 obj<</BBox[0.0 0.0 54.975 12.1179]/FormType 1/Group<</S/Transparency>>/Length 9/Matrix[1.0 0.0 0.0 1.0 0.0 0.0]/Resources<</ProcSet[/PDF]/XObject<</Form 552 0 R>>>>/Subtype/Form/Type/XObject>>stream
+/Form Do
+endstreamendobj552 0 obj<</BBox[463.639 607.243 518.614 619.361]/FormType 1/Length 179/Matrix[1.0 0.0 0.0 1.0 -463.639 -607.243]/Resources<</ProcSet[/PDF]>>/Subtype/Form/Type/XObject>>stream
+1 0.819611 0 rg
+0.7128 w
+466.6841 607.5992 m
+463.9959 610.2874 463.9959 616.3161 466.6841 619.0043 c
+515.5699 619.0043 l
+518.2581 616.3161 518.2581 610.2874 515.5699 607.5992 c
+f
+endstreamendobjxref
+0 1
+0000000000 65535 f
+2 1
+0000964770 00000 n
+4 1
+0000970680 00000 n
+410 1
+0000971242 00000 n
+548 5
+0000971493 00000 n
+0000971867 00000 n
+0000971979 00000 n
+0000972325 00000 n
+0000972559 00000 n
+trailer<</Size 553/Root 1 0 R/Info 4 0 R/ID[<5362953F9C8967731A795C43F3FB3C95><6F27E03E247447F0A05EC4C269712103>]/Prev 964363>>startxref972934%%EOF2 0 obj<</Length 5834/Subtype/XML/Type/Metadata>>stream
+<?xpacket begin="Ôªø" id="W5M0MpCehiHzreSzNTczkc9d"?>
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 9.1-c001 79.2a0d8d9, 2023/03/14-11:19:46        ">
+   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description rdf:about=""
+            xmlns:dc="http://purl.org/dc/elements/1.1/"
+            xmlns:prism="http://prismstandard.org/namespaces/basic/3.0/"
+            xmlns:jav="http://www.niso.org/schemas/jav/1.0/"
+            xmlns:xmp="http://ns.adobe.com/xap/1.0/"
+            xmlns:pdfx="http://ns.adobe.com/pdfx/1.3/"
+            xmlns:pdf="http://ns.adobe.com/pdf/1.3/"
+            xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/">
+         <dc:format>application/pdf</dc:format>
+         <dc:publisher>
+            <rdf:Seq>
+               <rdf:li>IEEE</rdf:li>
+            </rdf:Seq>
+         </dc:publisher>
+         <dc:description>
+            <rdf:Alt>
+               <rdf:li xml:lang="x-default">2022 IEEE International Conference on Data Mining (ICDM);2022; ; ;10.1109/ICDM54844.2022.00013</rdf:li>
+               <rdf:li xml:lang="x-repair">2022 IEEE International Conference on Data Mining (ICDM);2022; ; ;10.1109/ICDM54844.2022.00013</rdf:li>
+            </rdf:Alt>
+         </dc:description>
+         <dc:title>
+            <rdf:Alt>
+               <rdf:li xml:lang="x-default">Federated Fingerprint Learning with Heterogeneous Architectures</rdf:li>
+               <rdf:li xml:lang="x-repair">Federated Fingerprint Learning with Heterogeneous Architectures</rdf:li>
+            </rdf:Alt>
+         </dc:title>
+         <dc:subject>
+            <rdf:Bag>
+               <rdf:li>federated learning</rdf:li>
+               <rdf:li>system heterogeneity</rdf:li>
+               <rdf:li>fingerprint</rdf:li>
+               <rdf:li>mask</rdf:li>
+            </rdf:Bag>
+         </dc:subject>
+         <dc:creator>
+            <rdf:Seq>
+               <rdf:li>Tianshi Che</rdf:li>
+               <rdf:li>Zijie Zhang</rdf:li>
+               <rdf:li>Yang Zhou</rdf:li>
+               <rdf:li>Xin Zhao</rdf:li>
+               <rdf:li>Ji Liu</rdf:li>
+               <rdf:li>Zhe Jiang</rdf:li>
+               <rdf:li>Da Yan</rdf:li>
+               <rdf:li>Ruoming Jin</rdf:li>
+               <rdf:li>Dejing Dou</rdf:li>
+            </rdf:Seq>
+         </dc:creator>
+         <prism:publicationName>2022 IEEE International Conference on Data Mining (ICDM)</prism:publicationName>
+         <prism:startingPage>31</prism:startingPage>
+         <prism:coverDisplayDate>  Nov. 2022</prism:coverDisplayDate>
+         <prism:doi>10.1109/ICDM54844.2022.00013</prism:doi>
+         <prism:endingPage>40</prism:endingPage>
+         <jav:journal_article_version>VoR</jav:journal_article_version>
+         <xmp:CreateDate>2023-01-27T01:04:40-05:00</xmp:CreateDate>
+         <xmp:ModifyDate>2023-05-31T21:43:00+08:00</xmp:ModifyDate>
+         <xmp:MetadataDate>2023-05-31T21:43:00+08:00</xmp:MetadataDate>
+         <pdfx:IEEE‚ÜÇ0020Article‚ÜÇ0020ID>10027670</pdfx:IEEE‚ÜÇ0020Article‚ÜÇ0020ID>
+         <pdfx:IEEE‚ÜÇ0020Issue‚ÜÇ0020ID>10027596</pdfx:IEEE‚ÜÇ0020Issue‚ÜÇ0020ID>
+         <pdfx:IEEE‚ÜÇ0020Publication‚ÜÇ0020ID>10027565</pdfx:IEEE‚ÜÇ0020Publication‚ÜÇ0020ID>
+         <pdfx:Meeting‚ÜÇ0020Ending‚ÜÇ0020Date>1 Dec. 2022</pdfx:Meeting‚ÜÇ0020Ending‚ÜÇ0020Date>
+         <pdfx:Meeting‚ÜÇ0020Starting‚ÜÇ0020Date>28 Nov. 2022</pdfx:Meeting‚ÜÇ0020Starting‚ÜÇ0020Date>
+         <pdf:Producer>OpenPDF 1.0.0-SNAPSHOT; modified using iText¬Æ 7.1.1 ¬©2000-2018 iText Group NV (AGPL-version)</pdf:Producer>
+         <xmpMM:DocumentID>uuid:8cc2ae11-1e5f-fd4b-b3ad-c1ded102dcef</xmpMM:DocumentID>
+         <xmpMM:InstanceID>uuid:33e2d3c8-287a-194f-b0e0-59bf920750c4</xmpMM:InstanceID>
+      </rdf:Description>
+   </rdf:RDF>
+</x:xmpmeta>
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                           
+<?xpacket end="w"?>endstreamendobj4 0 obj<</Author(Tianshi Che)/CreationDate(D:20230127010440-05'00')/IEEE#20Article#20ID(10027670)/IEEE#20Issue#20ID(10027596)/IEEE#20Publication#20ID(10027565)/Meeting#20Ending#20Date(1 Dec. 2022)/Meeting#20Starting#20Date(28 Nov. 2022)/ModDate(D:20230531214300+08'00')/Producer(OpenPDF 1.0.0-SNAPSHOT; modified using iTextÆ 7.1.1 ©2000-2018 iText Group NV \(AGPL-version\))/Subject(2022 IEEE International Conference on Data Mining \(ICDM\);2022; ; ;10.1109/ICDM54844.2022.00013)/Title(Federated Fingerprint Learning with Heterogeneous Architectures)>>endobj410 0 obj[411 0 R 412 0 R 413 0 R 414 0 R 415 0 R 416 0 R 417 0 R 418 0 R 419 0 R 476 0 R 479 0 R 481 0 R 482 0 R 483 0 R 488 0 R 489 0 R 490 0 R 491 0 R 492 0 R 518 0 R 519 0 R 523 0 R 525 0 R 526 0 R 541 0 R 542 0 R 543 0 R 548 0 R 549 0 R 553 0 R 554 0 R 555 0 R 556 0 R]endobj553 0 obj<</AP<</N 560 0 R>>/C[1.0 0.819611 0.0]/CA 0.399994/CreationDate(D:20230531214202+08'00')/F 4/M(D:20230531214202+08'00')/NM(70a43933-c3aa-0c45-8188-f8d0c4d891fc)/P 9 0 R/Popup 554 0 R/QuadPoints[152.73 425.773 157.04 425.773 152.73 417.255 157.04 417.255]/Rect[150.456 416.989 159.313 426.039]/Subj(Highlight)/Subtype/Highlight/T(duanmoming)/Type/Annot>>endobj554 0 obj<</F 28/Open false/Parent 553 0 R/Rect[612.0 333.773 796.0 425.773]/Subtype/Popup/Type/Annot>>endobj555 0 obj<</AP<</N 557 0 R>>/C[1.0 0.819611 0.0]/CA 0.399994/CreationDate(D:20230531214249+08'00')/F 4/M(D:20230531214249+08'00')/NM(146a5a4c-0048-7b4f-af0a-1c11b59a9ad8)/P 9 0 R/Popup 556 0 R/QuadPoints[490.099 706.143 500.312 706.143 490.099 697.625 500.312 697.625 425.555 705.496 472.062 705.496 425.555 695.232 472.062 695.232 475.043 704.014 488.634 704.014 475.043 695.26 488.634 695.26 503.233 704.014 520.161 704.014 503.233 695.496 520.161 695.26]/Rect[422.815 694.911 522.498 706.409]/Subj(Highlight)/Subtype/Highlight/T(duanmoming)/Type/Annot>>endobj556 0 obj<</F 28/Open false/Parent 555 0 R/Rect[612.0 614.143 796.0 706.143]/Subtype/Popup/Type/Annot>>endobj557 0 obj<</BBox[0.0 0.0 99.6825 11.498]/FormType 1/Length 27/Matrix[1.0 0.0 0.0 1.0 0.0 0.0]/Resources<</ExtGState<</R0<</AIS false/CA 0.399994/Type/ExtGState/ca 0.399994>>/R1<</AIS false/BM/Multiply/Type/ExtGState>>>>/ProcSet[/PDF]/XObject<</MWFOForm 558 0 R>>>>/Subtype/Form/Type/XObject>>stream
+/R0 gs
+/R1 gs
+/MWFOForm Do
+endstreamendobj558 0 obj<</BBox[0.0 0.0 99.6825 11.498]/FormType 1/Group<</S/Transparency>>/Length 9/Matrix[1.0 0.0 0.0 1.0 0.0 0.0]/Resources<</ProcSet[/PDF]/XObject<</Form 559 0 R>>>>/Subtype/Form/Type/XObject>>stream
+/Form Do
+endstreamendobj559 0 obj<</BBox[422.815 694.911 522.498 706.409]/Filter[/FlateDecode]/FormType 1/Length 262/Matrix[1.0 0.0 0.0 1.0 -422.815 -694.911]/Resources<</ProcSet[/PDF]>>/Subtype/Form/Type/XObject>>stream
+HâTëªmƒ@sU¡
+˛)÷sÄ/ë'nﬂ‘Á(9ù’<åvWÆ`Çü˜BË*øã!U1D%Ü∏√˜bÎ⁄å≠Ya®2I2dÌØ∆K
+dSÅ◊‚D®Ãu≥≠ô4+øÕ!≥>ﬁ4ºñØNcﬂ≈—›µèEÖ˜D—^ã+€YaHí"eåó‰hÂkœZ
+R»ç∂FÜ∂≤<ƒπ«/m
+Œ@∑‰=0…îœcØ„€®¨<6T§`Hc9å∑ﬂ±Å}”°ˆ`€ÒF=„ÛCÓıè7{¢˜/â™‘˙˘ªÃ{Dƒœ≤˛ aHˆ”≈˛"ó˜(s!‰†zñπHõ¶wŸê)Ô_Ÿü  ı<Äendstreamendobj560 0 obj<</BBox[0.0 0.0 8.85759 9.05008]/FormType 1/Length 27/Matrix[1.0 0.0 0.0 1.0 0.0 0.0]/Resources<</ExtGState<</R0<</AIS false/CA 0.399994/Type/ExtGState/ca 0.399994>>/R1<</AIS false/BM/Multiply/Type/ExtGState>>>>/ProcSet[/PDF]/XObject<</MWFOForm 561 0 R>>>>/Subtype/Form/Type/XObject>>stream
+/R0 gs
+/R1 gs
+/MWFOForm Do
+endstreamendobj561 0 obj<</BBox[0.0 0.0 8.85759 9.05008]/FormType 1/Group<</S/Transparency>>/Length 9/Matrix[1.0 0.0 0.0 1.0 0.0 0.0]/Resources<</ProcSet[/PDF]/XObject<</Form 562 0 R>>>>/Subtype/Form/Type/XObject>>stream
+/Form Do
+endstreamendobj562 0 obj<</BBox[150.456 416.989 159.313 426.039]/FormType 1/Length 179/Matrix[1.0 0.0 0.0 1.0 -150.456 -416.989]/Resources<</ProcSet[/PDF]>>/Subtype/Form/Type/XObject>>stream
+1 0.819611 0 rg
+0.5324 w
+152.7297 417.2551 m
+150.7221 419.2628 150.7221 423.7652 152.7297 425.7728 c
+157.0397 425.7728 l
+159.0473 423.7652 159.0473 419.2628 157.0397 417.2551 c
+f
+endstreamendobjxref
+0 1
+0000000000 65535 f
+2 1
+0000973301 00000 n
+4 1
+0000979211 00000 n
+410 1
+0000979773 00000 n
+553 10
+0000980056 00000 n
+0000980428 00000 n
+0000980540 00000 n
+0000981105 00000 n
+0000981217 00000 n
+0000981563 00000 n
+0000981797 00000 n
+0000982276 00000 n
+0000982623 00000 n
+0000982858 00000 n
+trailer<</Size 563/Root 1 0 R/Info 4 0 R/ID[<5362953F9C8967731A795C43F3FB3C95><327D2E69F7C540EAA6DF2C9A92520C83>]/Prev 972934>>startxref983233%%EOF

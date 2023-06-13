@@ -13,14 +13,6 @@ In summary, the properties of query-based FL are:
 (2) \textbf{Contactless}, as communication channels need not be maintained; 
 (3) \textbf{Community-powered}, whereby sharing models enrichs the entire community.
 
-Actually, we aim to advocate a novel SaaS~\cite{brereton1999future} ML platform with automatic model reuse integrated, which has potential to leverage the transportability of models to address previously unexplored ML problems.
-Due to the high computational demands of deep learning, current ML platforms primarily concentrate on computing, for example, MaaS, MLaaS, FLaaS provide ML models deployment and development services to handle user-specified tasks. (Section~\ref{sec:aas}).
-On the other hand, there are several ML platforms provide open model search and download services. 
-So, can we leverage leverage off-the-shelf open model platforms to build a query-based FL system?
-Unfortunately, these platforms are designed solely for sharing and are no suitable for more advanced functionalities such as model ensemble~\cite{jacobs1991adaptive} and knowledge distillation~\cite{hinton2015distilling}, we will explain the reasons in the following section.
-
-% Model Mining
-
 \begin{figure}[t]
   \centering
   \includegraphics[width=\linewidth]{fig/query_frame.pdf}
@@ -28,6 +20,14 @@ Unfortunately, these platforms are designed solely for sharing and are no suitab
   \Description{}
   \label{fig:query}
 \end{figure}
+
+Actually, we aim to advocate a novel SaaS~\cite{brereton1999future} ML platform with automatic model reuse integrated, which has potential to leverage the transportability of models to address previously unexplored ML problems.
+Due to the high computational demands of deep learning, current ML platforms primarily concentrate on computing, for example, MaaS, MLaaS, FLaaS provide ML models deployment and development services to handle user-specified tasks. (Section~\ref{sec:aas}).
+On the other hand, there are several ML platforms provide open model search and download services. 
+So, can we leverage leverage off-the-shelf open model platforms to build a query-based FL system?
+Unfortunately, these platforms are designed solely for sharing and are no suitable for more advanced functionalities such as model ensemble~\cite{jacobs1991adaptive} and knowledge distillation~\cite{hinton2015distilling}, we will explain the reasons in the following section.
+
+% Model Mining
 
 \subsection{How to Query for Models}
 To establish a query-based FL platform, the first thing that comes to mind is how to query for models.
@@ -827,7 +827,7 @@ Another example is Zest~\cite{jia2022zest}, which randomly samples several train
 However, this testing samples generation method is limited to images and may expose private training data.
 A compromise approach is to seek non-sensitive or desensitized testing set from users when they upload their models.
 Inspired by DeepJudge, we can develop an ensemble of multi-level testing strategies for query-based FL.
-In the first step, we can compare the hash codes of the raw target model or its binary execution to rapidly filter out cases of naive replication plagiarism.
+In the first step, we can compare the hash codes (e.g. MD5, SHA-256) of the raw model weights or its binary execution to rapidly filter out cases of naive replication plagiarism.
 Then, in the second step, we can filter out cases of quantization or invariant neural swapping plagiarism by comparing the distance in predictions obtained from an out-of-distribution dataset.
 Finally, we can further evaluate the similarities between models using testing-based approaches such as DeepJudge and Zest, which can detect cases of pruning and direct KD plagiarism.
 

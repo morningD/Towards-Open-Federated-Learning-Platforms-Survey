@@ -123,7 +123,7 @@ The resulting model can be interpreted as both derived works and combined works.
 Not only limited to protecting the IP and controlling the diffusion of ideas, but AI companies and researchers are also concerned about licensees using their models for unethical purposes~\cite{jobin2019global, awad2018moral, yuste2017four}, which is not restricted by traditional licenses based on the context of software and content.
 We can infer the concerns of the inventors of GPT-2~\cite{radford2019language} about the unethical use of the model from its modified MIT license, which states, \textit{We don't claim ownership of the content you create with GPT-2, so it is yours to do with as you please. We only ask that you use GPT-2 responsibly and clearly indicate your content was created using GPT-2.} 
 However, such a statement lacks legal enforcement, and users may avoid accountability by convincing themselves that despite their efforts to minimize harm, they could not predict the AI artifact they generated would be used for harmful purposes.
-Besides, the original licensing frameworks (e.g. MIT, CC BY) for software and content are not well suited to the data-driven ML. 
+Besides, the original licensing frameworks for software and content (e.g. MIT, CC BY) are not well suited to the data-driven ML. 
 Many ML operations, such as training, fine-tuning, inference, and distillation, are not explicitly defined in traditional software and content licenses, leaving a potential legal loophole for licensees.
 
 To address the unique challenges and considerations surrounding the use and distribution of ML models, several specific licenses for ML models have been proposed. 
@@ -308,7 +308,7 @@ For example, if we simply stack two models end-to-end, it may not meet the thres
 However, if we improve a basis model using distilled knowledge from other domains, that would be more likely to meet the requirements for copyrightability.
 Except for copyrightability, the authorship of a reused model is also open to controversy, as it depends on whose \textit{original intellectual conceptions} the work embodies, and joint authorship is also possible~\cite{hedrick2019ithink}.
 
-The determination of copyrightability and authorship of computer-generated content is an open issue that needs to be addressed through corresponding legislation~\cite{national1979final, hedrick2019ithink}.
+The determination of copyrightability and authorship of computer-generated content is an open issue that needs to be addressed through corresponding legislation~\cite{national1979final, hedrick2019ithink, margoni2018artificial}.
 The possible answers to the question of authorship of computer-generated models are model authors, model users, data owners, any combination of them, or no one~\cite{hedrick2019ithink}.
 Licensors can also make efforts to clarify this issue by including relevant claims in their licenses.
 For example, the license of Stable Diffusion~\cite{rombach2022high} explicitly states that \textit{Licensor claims no rights in the Output You generate using the Model}. 
@@ -497,7 +497,7 @@ The last application of generation is in semi-supervised learning, which is a co
 For example, FedDISC~\cite{yang2023exploring} leverages the average and cluster centroids of hidden representations across pseudo-labels as input to a pre-trained diffusion model, aiming to generate high-quality samples for training.
 
 In fact, the three purposes of generation correspond to three types of data heterogeneity in FL~\cite{liqb2022federated}: Quantity Skew, Label Distribution Skew (non-IID), and Missing Labels, which are challenging to address with traditional model amalgamation methods.
-Therefore, the hybrid model reusing strategies, which leverage each other's strengths, have become a common paradigm in recent FL studies.~\cite{cheng2023gfl, xie2023perada, yu2023turning, jin2023feddyn, heinbaugh2023data, yang2023exploring, zhang2023federated}.
+Therefore, the hybrid model reusing strategies, which leverage each other's strengths, have become a common paradigm in recent FL studies~\cite{cheng2023gfl, xie2023perada, yu2023turning, jin2023feddyn, heinbaugh2023data, yang2023exploring, zhang2023federated}.
 Therefore, in the next section, we will summarize the popular hybrid model reusing studies in FL and then filter the studies that are suitable for a sustainable open FL platform.
 
 %The third advantage is free-sharing. As mentioned in Section~\ref{sec:generated content}, many deep generative models, such as Stable Diffusion~\cite{rombach2022high} and ChatGPT, do not claim ownership rights over the generated content. Furthermore, most open software licenses do not have defined terms for computer-generated content. Therefore, it is legally permissible to freely reuse synthetic data.
@@ -511,7 +511,7 @@ Therefore, in the next section, we will summarize the popular hybrid model reusi
 \begin{table}[htp]
   \centering
   \tiny
-  \caption{Summary of FL works categorized by our taxonomy for batch model reuse mechanisms.
+  \caption{Comparative analysis of FL studies categorized by our taxonomy for batch model reuse mechanisms.
   Studies \textcolor{red}{applicable} and \textcolor{orange}{conditional applicable} to query-based FL are marked with different colors;
   \textcolor{purple}{Purple} denotes operations completed on \textcolor{purple}{Server}, or knowledge distilled from \textcolor{purple}{Global or Consensus Model}; 
   \textcolor{blue}{Blue} denotes operations completed on \textcolor{blue}{Clients}, or knowledge distilled from \textcolor{blue}{Local, Personlized, or Generative Models}; 
@@ -650,7 +650,7 @@ In this way, we can categorize these works and make intuitive comparisons betwee
 
 %\textbf{Comparisons:}
 
-\textit{Finding 1. Amalgamation and Distillation ([AD] or [DA]) are the most popular combo in FL studies, followed by Distillation as a standalone ([D]) strategy and Generation before Amalgamation ([GA])}
+\textit{Finding 1. Amalgamation and Distillation ([AD] or [DA]) are the most popular combo in FL studies, followed by Distillation as a standalone ([D]) strategy and Generation before Amalgamation ([GA])}.
 
 Due to the presence of parameter mismatch~\cite{yu2021fed2, wang2020federated, yurochkin2019statistical}, using solely amalgamation often lead to weight divergence~\cite{Li2020On, tan2022towards}, particularly in scenarios with high data skew. 
 As a result, distillation, which provides a global view of the data distribution, serves as a complementary solution for addressing data heterogeneity (indicated as "H" in Table~\ref{tab:flreuse}).
@@ -682,17 +682,17 @@ For example, the knowledge from multiple data sources is generalized by applying
 Another strategy is to leverage a public dataset to achieve agreement ([D] or [AD]). 
 In this approach, the knowledge distilled from multiple local models can be fused to a consensus agreement and then applied to the target model, eliminating the need for model amalgamation.
 
-\textit{Question: How to select the suitable method for query-based FL?}% one-shot 需要区分是否有local trianing
+\textit{Question: How to select the suitable model reusing method for query-based FL?}% one-shot 需要区分是否有local trianing
 
 From the previous discussion, we have demonstrated how to summarize recent FL studies from a model reusing perspective.
 Similarly, to select a suitable method for query-based FL, we can refer to Table~\ref{tab:flreuse} and consider the following factors:
 \begin{itemize}
-  \item Data Dependency. Recalling that query-based FL is contactless (Section~\ref{sec:query_overview}), which means we cannot access the training data again once the model has been uploaded by the entity.
+  \item \textbf{Data Dependency}. Recalling that query-based FL is contactless (Section~\ref{sec:query_overview}), which means we cannot access the training data again once the model has been uploaded by the entity.
   Therefore, any method that requires multiple communication rounds of local or sensitive data access is not applicable to query-based FL.
   Such as, local data dependency due to local training (FedMD~\cite{li2019fedmd}, DynaFed~\cite{pi2022dynafed}, etc.), distillation (FedFusion~\cite{yao2019towards}, MOON~\cite{li2021model}, etc.), generation (SemiFL~\cite{diao2022semifl}, NeighGen~\cite{zhang2021subgraph}, etc.).
   So, refer to Table~\ref{tab:flreuse}, the filtering criteria for unqualified methods can be expressed as [.../...]*N, [...D...]*N with \textit{knowledge in italic} and [...G...]*N with \textit{generated content in italic}.
-  \item User Privacy. Due to the openness of the system, directly sharing embeddings from a pre-trained encoder or mixup of local data poses a risk of leakage (FedDISC~\cite{yang2023exploring}, FRD~\cite{cha2019federated}). It is strongly discouraged to include such methods, even if they have one-shot feasibility.
-  \item Compatibility. Additional, since query-based FL is model agnostic, it is not always possible to guarantee the compatibility of coordinate-wise operations required by model amalgamation. Therefore, the applicability of methods that involve model amalgamation may be limited in this context. We call these methods are conditional applicable to query-based FL.
+  \item \textbf{User Privacy}. Due to the openness of the system, directly sharing embeddings from a pre-trained encoder or mixup of local data poses a risk of leakage (FedDISC~\cite{yang2023exploring}, FRD~\cite{cha2019federated}). It is strongly discouraged to include such methods, even if they have one-shot feasibility.
+  \item \textbf{Compatibility}. Additional, since query-based FL is model agnostic, it is not always possible to guarantee the compatibility of coordinate-wise operations required by model amalgamation. Therefore, the applicability of methods that involve model amalgamation may be limited in this context. We call these methods are conditional applicable to query-based FL.
 \end{itemize}
 
 %We list the forms of knowledge after the distillation method. Purple denotes knowledge distilled from the global model or consensus mode with synchronization. Blue denotes knowledge distilled from the local model, personalized model, or generative model. Bold font indicates knowledge distilled from open, proxy, unlabeled, or generated data, while italic font indicates knowledge distilled from private or sensitive data.
@@ -719,13 +719,14 @@ For simplicity, we have merged some similar licenses without loss of clarity.
 To avoid license conflicts when engaging in batch model reuse, it is preferable for the reused model to be considered an \textbf{independent} work or fall under an \textbf{undefined} category, not covered by the original license.
 Additionally, we can refer to Table~\ref{tab:reuse} and consider the following factors:
 \begin{itemize}
-  \item Differences in terminology. In the definitions of licenses, connecting multiple works into a separable union is typically referred to as \textit{aggregation, redistribution, and reproduce}, which is completely different from the concept of \textit{model aggregation} in the FL context. Therefore, it is necessary to refer to Table~\ref{tab:reuse} for the corresponding delineations of each model reuse mechanism instead of relying solely on the technical name.
+  \item \textbf{Differences in terminology}. In the definitions of licenses, connecting multiple works into a separable union is typically referred to as \textit{aggregation, redistribution, and reproduce}, which is completely different from the concept of \textit{model aggregation} in the FL context. Therefore, it is necessary to refer to Table~\ref{tab:reuse} for the corresponding delineations of each model reuse mechanism instead of relying solely on the technical name.
 
-  \item Restrictions of combination and amalgamation. As shown in Table~\ref{tab:reuse}, the majority of model licenses have specific terms and definitions regarding these two methods, except for blackbox combination. This implies that there may be potential restrictions that need to be taken into account and complied with.
+  \item \textbf{Restrictions of combination and amalgamation}. As shown in Table~\ref{tab:reuse}, the majority of model licenses have specific terms and definitions regarding these two methods, except for blackbox combination. This implies that there may be potential restrictions that need to be taken into account and complied with.
   These restrictions may also proliferate to the reused results if original licenses of models are copyleft, such as GPL-3.0, CC-BY-SA, CC-BY-NC-SA, etc.
   Therefore, we recommend avoiding the use of models and datasets under such copyleft licenses (ref. Fig.~\ref{fig:flowchart}(b) and Tabel~\ref{tab:licenses}) for batch model combination and amalgamation.
 
-  \item User behavioral restrictions of responsible AI licenses. OpenRAIL licenses~\cite{contractor2022behavioral} clearly define all four model reuse mechanisms, which means the effect of copyleft-style behavioral-use clauses will spread to the reused results, which can potentially result in the licensed artifacts becoming closed source~\cite{greenbaum2016the} (ref. Section~\ref{sec:choosing}).
+  \item \textbf{User behavioral restrictions of responsible AI licenses}. OpenRAIL licenses~\cite{contractor2022behavioral} clearly define all four model reuse mechanisms, which means the effect of copyleft-style behavioral-use clauses will spread to the reused results, which can potentially result in the licensed artifacts becoming closed source~\cite{greenbaum2016the} (ref. Section~\ref{sec:choosing}).
+  To prevent license proliferation~\cite{gomulkiewicz2009open}, it is not recommended to reuse models under these OpenRAIL licenses.
 \end{itemize}
 
 \begin{table}[t]
@@ -758,7 +759,112 @@ Considering that GPL-3.0 is a copyleft license, the reused results should be lic
 Otherwise, the reused results can be considered an independent work without any specific license restrictions.
 
 The example above demonstrates that analyzing hybrid methods under a copyleft license can be complicated. 
-Therefore, selecting models with more permissive licenses, as advocated in Section~\ref{sec:choosing}, can make things easier and facilitate the model reusability of open FL platforms.
+Therefore, selecting models, algorithms, datasets with more permissive licenses, as advocated in Section~\ref{sec:choosing}, can make things easier and facilitate the model reusability of open FL platforms.
 % 但是，我们也需要解决模型归属的问题
+% Pretrain Model: Can Foundation Models Help Us Achieve Perfect Secrecy
 
-\subsection{How to Protect Models}
+\subsection{How to Protection Models}
+
+In the previous sections, we have extensively discussed the construction of a query-based FL platform from both technical and legal perspectives. 
+Nonetheless, the matter of model management and protection continues to be a significant concern, raising questions such as \textit{How can I protect my models from plagiarism after they are released?}
+In general, there are three kinds of mechanisms that can be employed to protect DNN models: authorization~\cite{hanzlik2021mlcapsule}, watermarking~\cite{tekgul2021waffle}, and fingerprinting~\cite{li2023fedipr}.
+Authorization mechanisms, including hardware-based memory encryption techniques like TEE, can effectively prevent unauthorized access to the model copy.
+Additionally, researchers have explored embedding authorization mechanisms within the DNN architecture itself, such as with passport layers~\cite{fan2019rethinking, zhang2020passport}.
+However, the need for specific hardware and modifications to model architectures can significantly increase the barriers for participants and compromise the openness of query-based FL platforms.
+
+As passive protection methods, watermarking and fingerprinting can detect potential infringement while preserving the openness of the model. 
+A watermark can be embedded into DNNs through training or fine-tuning with a modified loss function~\cite{uchida2017embedding} or trigger data~\cite{darvish2019deepsigns} acting as a backdoor~\cite{bagdasaryan2020backdoor}.
+On the other hand, fingerprinting strategies aim to generate an identifier for each model based on snapshots of training history~\cite{jia2021proof} or inference results that approximate decision boundaries~\cite{chen2022copy}.
+Note that the technical details of IP protection methods are beyond the scope of this survey.
+We recommend referring to up-to-date surveys such as~\cite{peng2022intellectual, sun2023deep}.
+Additionally, it is important to recognize that the goal of query-based FL platforms is not to provide perfect protection against model plagiarism and unauthorized use.
+Interestingly, certain model reusing strategies like KD and ensemble methods are even regarded as model extraction attacks within the realm of DNN protection~\cite{charette2022cosine}.
+This highlights the inherent contradiction between promoting model reusing and preventing all forms of model plagiarism.
+As a result, it is necessary to determine the scope of protection and strike a balance between model protection and platform openness.
+
+First, it is helpful to consider the following requirements for model protection in the context of query-based FL:
+\begin{itemize}
+  \item \textbf{Non-invasive}. Any attempt to invasively embed backdoors into the weights and architectures of models is likely to result in changes to their functionalities and could lead to unexpected failures after deployment. 
+  Meanwhile, these backdoors can be exploited by attackers to manipulate the model's predictions~\cite{li2022untargeted}.
+  Accordingly, it is more recommend leaving the decision of adding invasive protection to the users instead of forcing it through platforms.
+  
+  \item \textbf{Compatible}. %模型未知
+  Due to the model agnostic nature of query-based FL, relying on protection mechanisms that are specific to certain model structures and formats will limit the applicability of the platform.
+  For instance, the passport layer~\cite{zhang2020passport} is built upon the normalization layer and requires joint training with the target model for ownership verification.
+  However, in practice, both the normalization layer and whitebox access to the model may be unavailable.
+  Therefore, considering the compatibility of model protection mechanisms is essential to ensure wide support for model sharing in query-based FL.
+
+  \item \textbf{Permissive}. % 不对任何行为都检测
+  As mentioned earlier, it is not essential to identify and address every instance of plagiarism in query-based FL. 
+  On the contrary, we encourage platform users to engage in model mining and reusing, as outlined in Section~\ref{sec:taxonomy}. 
+  Therefore, model protection methods should be permissive enough to allow for model reusing while still identifying the less creative effort operations that result in minimal or no change to the model's functionality, such as naive replication, quantization, pruning, and invariant neural swapping.
+  Note that the presence of sufficient human creative effort is an important criterion for determining the copyrightability of a computer-generated work~\cite{national1979final}.
+  The consideration of copyrightability can serve as a guiding principle in determining the scope of model protection in query-based FL.
+
+  \item \textbf{Large-scale cost-effective}.
+  Unlike traditional FL, where the size of training networks in each round is fixed, the size of a query-based FL platform is continuously expandable. 
+  Therefore, it is undesirable if the potential conflicts~\cite{li2023fedipr}, required bit-length, and deployment cost~\cite{uchida2017embedding, darvish2019deepsigns} of model protection solutions such as watermarking and fingerprinting increase with the platform size.
+  This suggests that solutions that require modifying optimization goals and training or fine-tuning with trigger data to embed identity information into the target model should be excluded.
+
+\end{itemize}
+
+Recently, several model protection algorithms have been proposed to address the challenge of model protection in FL. 
+Tekgul \textit{et al.}~\cite{tekgul2021waffle} propose WAFFLE that uses augmented Gaussian noisy images as a watermark set to determine the ownership of the global model. 
+However, this method is invasive and incurs high costs due to multiple rounds of training.
+To ensure reliable watermarking for FL participants, FedIPR~\cite{li2023fedipr} embeds different watermarks into models of different participants through training with additional trigger samples and a modified optimization goal.
+This method is designed for model verification on the client-side, so it is independent to the model management in FL platforms.
+FedTracker~\cite{shao2022fedtracker} embeds personalized local fingerprints into the Batch Normalization (BN) layer to enable traceability of model leakers.
+One limitation of FedTracker is that its fingerprinting strategies are not compatible with other DNNs that do not use BN and do not provide whitebox access.
+These examples highlight the incompatibility between the IP protection methods designed for traditional FL and the requirements of the query-based FL scenario, which have different protection goals and targets.
+
+Based on the above observation and the taxonomy of deep IP protection~\cite{peng2022intellectual, sun2023deep}, dynamic fingerprinting strategies with blackbox verification support are considered suitable model protection methods for query-based FL.
+These methods aim to approximate the similarities between the decision boundaries of different models by evaluating the value of a well-tailored testing metric on a self-constructed testing set.
+A typical example is DeepJudge~\cite{chen2022copy}, which employs an ensemble of multi-level (Property, Neuron, Layer) testing metrics to achieve confident and robust plagiarism identification. 
+The verification process of DeepJudge can be evaluated in a blackbox setting by calculating distances based on model predictions.
+However, the generation of testing set in DeepJudge requires whitebox access to the suspect models in order to calculate adversarial samples, which may be unreachable if the suspect models are in binary format.
+
+Another example is Zest~\cite{jia2022zest}, which randomly samples several training images and then applies super-pixel and segmentation techniques to construct the testing set.
+However, this testing samples generation method is limited to images and may expose private training data.
+A compromise approach is to seek non-sensitive or desensitized testing set from users when they upload their models.
+Inspired by DeepJudge, we can develop an ensemble of multi-level testing strategies for query-based FL.
+In the first step, we can compare the hash codes of the raw target model or its binary execution to rapidly filter out cases of naive replication plagiarism.
+Then, in the second step, we can filter out cases of quantization or invariant neural swapping plagiarism by comparing the distance in predictions obtained from an out-of-distribution dataset.
+Finally, we can further evaluate the similarities between models using testing-based approaches such as DeepJudge and Zest, which can detect cases of pruning and direct KD plagiarism.
+
+\begin{comment}
+we pre-compute the threshold k based on
+the training data and the owner model, which is the maximum
+value (upper bound) of the corresponding neuron output over
+all training samples.
+
+The reality is that it is not possible to completely prevent all attempts of model plagiarism through technical means, similar to other forms of plagiarism in the realm of intellectual property. However, the good news is that it is not essential to identify and address every instance of plagiarism.
+Finding a balance between model protection and platform openness is indeed a challenge.
+It is crucial to carefully consider the trade-offs and explore alternative approaches that can provide a reasonable level of model protection without excessively compromising the openness and usability of query-based FL platforms.
+
+passive
+
+~\cite{chen2022copy}
+barrier~\cite{peng2022intellectual}
+\end{comment}
+
+
+
+
+
+% 分为feature-based 和 Backdoor-based 两种
+% 重点讨论哪些方法适用于query-based FL，要求：由server添加和校验，尽量不依赖隐私数据和重新训练，尽量不影响模型性能，支持blackbox
+% 现在的IP protection方法不能提供百分白的判断，没有形成技术的标准.
+% Will releasing this make it easy for my main competitor to copy this new feature and hurt our differentiation in the market?
+%  they were most worried about competitors gaining an advantage from what we released.because modern machine learning has become essential for many applications
+% Fictitious or fake entries are deliberately incorrect entries in reference works such as dictionaries, encyclopedias, maps, and directories, added by the editors as a copyright trap to reveal subsequent plagiarism or copyright infringement. There are more specific terms for particular kinds of fictitious entry, such as Mountweazel, trap street, paper town, phantom settlement, and nihilartikel
+%query-based FL只需要判定小程度的相似，而不需要对KD和retrain这类进行判断。可以把对篡改行为的检测划分为几个等级：1）bit-wise的修改（任何篡改行为）；2）参数的修改，基本不改变判别边界；3）模型结构的修改，基本不改变判别边界；4）模型结构的修改，基本不改变判别边界（剪枝，量化）5）重新训练，基于相同数据集但是不同随机种子，通过workflow来判别-----》其实我们只需要识别是否判别边界明显改变了
+% 事实上，model reusing 也是一种攻击IP的方法，与传统FL不同，相反的，我们欢迎对模型的再次利用，并且复用和IP保护其实是存在冲突的。
+% While in DNN watermarking, besides the static content, such as the model parameters and architectures, the owner can also embed the watermark into the model’s functionality, referred to as the dynamic content.
+% non-invasive
+
+\begin{comment}
+  File Hashing: Generate a hash value for each binary code using a hashing algorithm such as MD5, SHA-1, or SHA-256. Compare the hash values of the two binary codes. If the hash values are identical, it indicates that the binary codes are the same.
+Binary Comparison Tools: Use specialized software tools designed for binary file comparison. These tools analyze the binary codes at the byte level and provide a detailed comparison report highlighting any differences between the files.
+Binary Diffing: Perform a binary diffing process, which involves comparing the two binary codes at the assembly or machine code level. This method is typically used for analyzing differences in code or reverse engineering purposes.
+Checksum Comparison: Compute a checksum for each binary code using a checksum algorithm such as CRC (Cyclic Redundancy Check). Compare the checksum values of the two binary codes. If the checksums match, it indicates that the binary codes are the same.
+\end{comment}

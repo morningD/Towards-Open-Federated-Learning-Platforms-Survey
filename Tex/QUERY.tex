@@ -74,6 +74,7 @@ The process of building an ML model is iterative, involving repeated hyperparame
 This information includes pipelines, model structures, hyperparameter values for pre-training and fine-tuning, test metrics, and results. 
 These data can be useful in filtering models that meet specific requirements, such as those with data standardization in preprocessing or evaluated using mean average precision (mAP).
 Instead of manually saving and uploading the logs and configuration files, a more efficient method is to leverage ML workflow management tools~\cite{vartak2016modeldb}, such as MLflow~\footnote{https://mlflow.org} and Neptune~\footnote{https://neptune.ai}, to automatically track and store the ML workflow during model building process. 
+This information can also assist in identifying potential model plagiarism within the model community.
 Additionally, to ensure that the computational consumption of models is within budget, the Deep Learning Profiler~\footnote{https://docs.nvidia.com/deeplearning/frameworks/dlprof-user-guide/index.html} can be leveraged to generate a report that shows the FLOPS and bandwidth requirements.
 
 \subsubsection{Software Dependency}
@@ -455,7 +456,7 @@ The summarize of above privacy-perserving KD works is given in Table.~\ref{tab:d
 
 % KD 的优点：不需要相同的模型结构，缺点：依赖数据, Data-dependent KD, extracted soft labels 参考：Related work of DYNAFED: Tackling Client Data Heterogeneity with Global Dynamics 
 
-\begin{table}[]
+\begin{table}[t]
   \centering
   \footnotesize
   \caption{Classification of \textbf{Generation} works in the field of FL. Some of the works are also listed in Table~\ref{tab:distillation} because they utilize hybrid model reuse mechanisms.}
@@ -833,6 +834,7 @@ Inspired by DeepJudge, we can develop an ensemble of multi-level testing strateg
 In the first step, we can compare the hash codes (e.g. MD5, SHA-256) of the raw model weights or its binary execution to rapidly filter out cases of naive replication plagiarism.
 Then, in the second step, we can filter out cases of quantization or invariant neural swapping plagiarism by comparing the distance in predictions obtained from an out-of-distribution dataset.
 Finally, we can further evaluate the similarities between models using testing-based approaches such as DeepJudge and Zest, which can detect cases of pruning and direct KD plagiarism.
+Furthermore, if the workflow information is supports it, we can swiftly eliminate batch model reusing from being suspected of plagiarism.
 
 \begin{comment}
 we pre-compute the threshold k based on

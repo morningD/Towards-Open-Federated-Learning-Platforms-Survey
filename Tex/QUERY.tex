@@ -7,7 +7,7 @@ An overview of this platform is presented in Fig.~\ref{fig:query}, the desin phi
 In the query-based FL systems, all traditional FL roles and components are maintained on an open model repository called Model Community. The Model Community privdes a one-stop ML models redistribution and reuse service, including model indexing, automatic batch model reuse, license management, privacy control and so on.
 In addition to large-scale pretrained models like BERT~\cite{devlin2018bert}, BLOOM~\cite{scao2022bloom} with great generalization abilities, we also encourage individuals to upload their task-specific models trained on limited domain data to boost the knowledge mining within models~\cite{you2021workshop}.
 The derivatives of knowledge mining can learn representations from multiple domains, resulting in more promising performance that can be evaluated by platform users.
-Furthermore, the contributors can open models under applicable licenses, granting them distribution control and legal protection of their intellectual property (IP).
+Furthermore, the contributors can release models under applicable licenses, granting them distribution control and legal protection of their intellectual property (IP).
 In summary, the properties of query-based FL are:
 (1) \textbf{Model Agnostic}, as there are no restrictions on the types and architectures of the models uploaded by users;
 (2) \textbf{Contactless}, as communication channels need not be maintained; 
@@ -30,6 +30,7 @@ Unfortunately, these platforms are designed solely for sharing and are no suitab
 % Model Mining
 
 \subsection{How to Query for Models}
+\label{sec:how2query}
 To establish a query-based FL platform, the first thing that comes to mind is how to query for models.
 Unlike traditional ML model sharing repositories that mainly query for a specific model by name, it requires an efficiency approach to export a batch of target models that ready for ensemble or distillation.
 We summaried the filter conditions of existing DNNs sharing repositories in Table.~\ref{table:repository}.
@@ -91,6 +92,7 @@ The above distinction is crucial for ensuring that model reuse results meet the 
 We will expand on this topic in the following section.
 
 \subsection{How to Reuse Batch of Models}
+\label{how2reuse}
 Once we have acquired a certain number of models that can contribute to the new target task, the next step is to reuse the knowledge of these pre-trained models, i.e., transfer their knowledge from source domain to the target domain~\cite{pan2009survey}.
 However, before deciding on how to reuse the model, it is important to ensure that the necessary legal rights and permissions have been obtained. 
 This may involve reviewing the terms and conditions of the licenses under which the models were originally released or obtaining permission from the original creators or copyright holders.
@@ -104,6 +106,7 @@ To restrict the use of ML techniques for unethical purposes (i.e. Deepfakes~\cit
 Here, we summary the licenses, granted rights, restrictions and enforcements for ML models posted on Hugging Face in Table.~\ref{tab:licenses}.
 
 \subsubsection{Model Licensing Forms}
+\label{sec:licensing}
 ML models are licensed in three main forms: as software (e.g. Apache, MIT, GPL), as a model (e.g. OpenRAIL), and as content/database (e.g. CC-BY, PDDL).
 The reason for the mixed use of licenses is the ambiguity in the dependency relationship between the code, model, and data.
 ML models can be released with reproducable code and be considered as a component of software.
@@ -707,7 +710,7 @@ By now, we have witnessed the success of using the new taxonomy, and in the next
 
 \subsubsection{Model Reusing vs. Model Licenses}
 %对生成物缺乏必要的监管，使用这部分数据目前来说很安全
-
+\label{sec:reusing&license}
 We have demonstrated that almost all FL studies can be regarded as a permutation of model reusing methods. 
 Therefore, we can further analyze the corresponding clauses in model licenses perspective for FL studies by decomposing them into model reuse methods.
 Recalling that there are four kinds of model reusing mechanisms: Combination, Amalgamation, Distillation, and Generation, which result in four forms of outputs: Combination with strong separation, Combination with weak separation, Derivative from learned concepts, and Derivative from learned distributions.
@@ -763,8 +766,8 @@ Therefore, selecting models, algorithms, datasets with more permissive licenses,
 % 但是，我们也需要解决模型归属的问题
 % Pretrain Model: Can Foundation Models Help Us Achieve Perfect Secrecy
 
-\subsection{How to Protection Models}
-
+\subsection{How to Protect Models}
+\label{sec:how2protect}
 In the previous sections, we have extensively discussed the construction of a query-based FL platform from both technical and legal perspectives. 
 Nonetheless, the matter of model management and protection continues to be a significant concern, raising questions such as \textit{How can I protect my models from plagiarism after they are released?}
 In general, there are three kinds of mechanisms that can be employed to protect DNN models: authorization~\cite{hanzlik2021mlcapsule}, watermarking~\cite{tekgul2021waffle}, and fingerprinting~\cite{li2023fedipr}.

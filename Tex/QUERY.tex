@@ -5,8 +5,8 @@
 Let us continue by establish a sustainable open FL platform based on a query-based cooperation framework.
 An overview of this platform is presented in Fig.~\ref{fig:query}, the desin philosophy behind this framework is to break the coupling between FL server and clients.
 In the query-based FL systems, all traditional FL roles and components are maintained on an open model repository called Model Community. The Model Community privdes a one-stop ML models redistribution and reuse service, including model indexing, automatic batch model reuse, license management, privacy control and so on.
-In addition to large-scale pretrained models like BERT~\cite{devlin2018bert}, BLOOM~\cite{scao2022bloom} with great generalization abilities, we also encourage individuals to upload their task-specific models trained on limited domain data to boost the knowledge mining within models~\cite{you2021workshop}.
-The derivatives of knowledge mining can learn representations from multiple domains, resulting in more promising performance that can be evaluated by platform users.
+In addition to large-scale pretrained models like BERT~\cite{devlin2018bert}, BLOOM~\cite{scao2022bloom} with great generalization abilities, we also encourage individuals to upload their task-specific models trained on limited domain data to boost the knowledge mining within models, aka model mining~\cite{you2021workshop}.
+The derivatives of model mining can learn representations from multiple domains, resulting in more promising performance that can be evaluated by platform users.
 Furthermore, the contributors can release models under applicable licenses, granting them distribution control and legal protection of their intellectual property (IP).
 In summary, the properties of query-based FL are:
 (1) \textbf{Model Agnostic}, as there are no restrictions on the types and architectures of the models uploaded by users;
@@ -21,8 +21,8 @@ In summary, the properties of query-based FL are:
   \label{fig:query}
 \end{figure}
 
-Actually, we aim to advocate a novel SaaS~\cite{brereton1999future} ML platform with automatic model reuse integrated, which has potential to leverage the transportability of models to address previously unexplored ML problems.
-Due to the high computational demands of deep learning, current ML platforms primarily concentrate on computing, for example, MaaS, MLaaS, FLaaS provide ML models deployment and development services to handle user-specified tasks. (Section~\ref{sec:aas}).
+Actually, we aim to advocate a novel SaaS~\cite{brereton1999future} ML platform with automatic batch model reuse integrated, which has potential to leverage the transportability of models to address previously unexplored ML problems.
+Due to the high computational demands of deep learning, current ML platforms primarily concentrate on computing, for example, MaaS, MLaaS, FLaaS provide ML models deployment and development services to handle user-specified tasks (ref. Section~\ref{sec:aas}).
 On the other hand, there are several ML platforms provide open model search and download services. 
 So, can we leverage leverage off-the-shelf open model platforms to build a query-based FL system?
 Unfortunately, these platforms are designed solely for sharing and are no suitable for more advanced functionalities such as model ensemble~\cite{jacobs1991adaptive} and knowledge distillation~\cite{hinton2015distilling}, we will explain the reasons in the following section.
@@ -34,19 +34,19 @@ Unfortunately, these platforms are designed solely for sharing and are no suitab
 To establish a query-based FL platform, the first thing that comes to mind is how to query for models.
 Unlike traditional ML model sharing repositories that mainly query for a specific model by name, it requires an efficiency approach to export a batch of target models that ready for ensemble or distillation.
 We summaried the filter conditions of existing DNNs sharing repositories in Table.~\ref{table:repository}.
-The prevailing method for querying models involves searching for the desired model by its name, datasets used, associated tasks.
+The prevailing method for querying models involves searching for the desired model by its name, datasets used, and the associated tasks.
 To illustrate, one might search for the model name GPT~\cite{radford2019language}, models trained on the MNIST dataset~\cite{lecun2010mnist}, or models capable of performing image segmentation tasks.
 However, this model retrieval method requires the users have a strong priori knowledge in data science, thus raising the barrier for knowledge mining within models.
 For example, there is no effective way to acquire a batch of image classfication models that contains the knowledge of \textit{lesser panda} for further distillation.
 A compromise solution is to manually search the schema of each dataset one-by-one and subsequently search for models trained on those datasets.
 
-Additionally, as shown in Table.~\ref{table:repository}, most DNNs repositories are simply list the description of input/output (e.g., NVIDIA NGC, OpenVINO) or even just present the source codes (e.g., Tensorflow Hub, Pytorch Hub),
-This lack of unified convention for model input/ouput poses a challenge for query-based FL.
-Besides, most of DNNs repositories do not enable querying models by licenses, resulting in the cumbersome task of individually handling model licenses and ensuring compatibility among different licenses.
-Hence, it is imperative to reconsider the design of DNN repositories to enable quick identification of readily reusable models for model knowledge mining. We further suggest following filter conditions for query-based FL.
+As shown in Table.~\ref{table:repository}, most DNNs repositories are simply list the description of input/output (e.g., NVIDIA NGC, OpenVINO) or even just present the source codes (e.g., Tensorflow Hub, Pytorch Hub).
+This lack of unified convention for model input/output poses a challenge for query-based FL.
+Additionally, most of DNNs repositories do not enable querying models by licenses, resulting in the cumbersome task of individually handling model licenses and ensuring compatibility among different licenses.
+Hence, it is imperative to reconsider the design of DNNs repositories to enable quick identification of readily reusable models for knowledge aggregation. We further suggest following filter conditions for query-based FL.
 
 \begin{table}[t]
-  \caption{Filter conditions and characteristics of DNNs repositories. \checkmark : Supported, \ding{55} : Unsupported, \textbf{!} : Information provided but unsearchable, listed in descending order by number of models.}
+  \caption{Filter conditions and characteristics of DNNs repositories. \checkmark : Supported, \ding{55} : Unsupported, \textbf{!} : Information provided but unsearchable, listed in descending order by number of released models.}
   \label{table:repository}
   \footnotesize
   \begin{tabular}{|l|c|c|c|c|c|c|c|c|}
@@ -75,7 +75,7 @@ This information includes pipelines, model structures, hyperparameter values for
 These data can be useful in filtering models that meet specific requirements, such as those with data standardization in preprocessing or evaluated using mean average precision (mAP).
 Instead of manually saving and uploading the logs and configuration files, a more efficient method is to leverage ML workflow management tools~\cite{vartak2016modeldb}, such as MLflow~\footnote{https://mlflow.org} and Neptune~\footnote{https://neptune.ai}, to automatically track and store the ML workflow during model building process. 
 This information can also assist in identifying potential model plagiarism within the model community.
-Additionally, to ensure that the computational consumption of models is within budget, the Deep Learning Profiler~\footnote{https://docs.nvidia.com/deeplearning/frameworks/dlprof-user-guide/index.html} can be leveraged to generate a report that shows the FLOPS and bandwidth requirements.
+In addition, to ensure that the computational consumption of models is within budget, Deep Learning Profiler~\footnote{https://docs.nvidia.com/deeplearning/frameworks/dlprof-user-guide/index.html} can be leveraged to generate a report that displays the FLOPS and bandwidth requirements.
 
 \subsubsection{Software Dependency}
 ML models are software that depend on underlying ML libraries, so it is important to declare the dependencies of the model to analyze software compatibility between batches of models. 
@@ -96,45 +96,17 @@ We will expand on this topic in the following section.
 \label{how2reuse}
 Once we have acquired a certain number of models that can contribute to the new target task, the next step is to reuse the knowledge of these pre-trained models, i.e., transfer their knowledge from source domain to the target domain~\cite{pan2009survey}.
 However, before deciding on how to reuse the model, it is important to ensure that the necessary legal rights and permissions have been obtained. 
-This may involve reviewing the terms and conditions of the licenses under which the models were originally released or obtaining permission from the original creators or copyright holders.
+This may involve reviewing the terms and conditions of the licenses under which the models were released or obtaining permission from the original creators or copyright holders.
 Therefore, in this section, we will not focus on the technical details of how to reuse models, which is already covered by many related surveys, such as Transfer Learning~\cite{pan2009survey}, Ensemble Leanring~\cite{zhou2012ensemble}, Domain Adaptation~\cite{wang2018deep}, Knowledge Distillation~\cite{wang2021knowledge}, Deep Generative Models~\cite{cao2022survey} and Model Fusion~\cite{ji2021emerging}.
-Furthermore, the specific model reuse technique or techniques used is at the user's discretion, and the query-based FL platform we advocate is not bound or restricted to any particular model reuse algorithm.
+Meanwhile, the specific model reuse technique or techniques used is at the user's discretion, and the query-based FL platform we advocate is not bound or restricted to any particular model reuse algorithm.
 Innovatively, we study how to reuse batch of models, from the perspective of \textbf{legal compliance}.
 %Therefore, the focus of this section is how to reuse batch of models, from the perspective of legal compliance.
 
 The machine learning community benefits from the openness of ideas and code, and many high-impact ML conferences and journals encourage authors to publish their source code and dataset to research platforms like Papers With Code~\footnote{https://paperswithcode.com} and Code Ocean~\footnote{https://codeocean.com} to increase exposure and facilitate reproducibility.
 To restrict the use of ML techniques for unethical purposes (i.e. Deepfakes~\cite{mirsky2021creation}) and protect the IP of creators, models are typically published under a license agreed upon by the licensor.
-Here, we summary the licenses, granted rights, restrictions and enforcements for ML models posted on Hugging Face in Table.~\ref{tab:licenses}.
+Here, we summary the granted rights, restrictions and enforcements of licenses for ML models posted on Hugging Face in Table~\ref{tab:licenses}.
+The following sections will provide a detailed survey of these licenses.
 
-\subsubsection{Model Licensing Forms}
-\label{sec:licensing}
-ML models are licensed in three main forms: as software (e.g. Apache, MIT, GPL), as a model (e.g. OpenRAIL), and as content/database (e.g. CC-BY, PDDL).
-The reason for the mixed use of licenses is the ambiguity in the dependency relationship between the code, model, and data.
-ML models can be released with reproducable code and be considered as a component of software.
-So many open software licenses are naturally deferred for licensing of models.
-The most popular license is Apache-2.0, which is a permissive open software license that allows the freedom to make derivative works.
-However, the model building process also relies on a massive amount of data~\cite{lecun2015deep} that may be licensed under different licenses, which can lead to license conflicts.
-A practical example is BERT~\cite{devlin2018bert}, which was published under the Apache-2.0 license but pre-trained on English Wikipedia documents that are licensed under CC BY-SA 3.0.
-This changing of license violates the requirement of the CC BY-SA 3.0, which states that any contribution must be distributed under the \textbf{same license} as the original work.
-
-%We don’t claim ownership of the content you create with GPT-2, so it is yours to do with as you please. We only ask that you use GPT-2 responsibly and clearly indicate your content was created using GPT-2.
-
-From the perspective of content and database licensing, some word embedding models, such as GloVe~\cite{pennington2014glove}, compute vector representations of words based on licensed open linguistic resources.
-These representations can be regarded as a translation of corpus and fall under the license of the original linguistic resources.
-A more complex scenario arises when the model is fine-tuned with other data that has a different license, for example, fine-tune RoBERTa~\cite{liu2019roberta} (MIT license) with SQuAD2~\cite{rajpurkar2016squad} (CC BY 4.0).
-The resulting model can be interpreted as both derived works and combined works.
-
-Not only limited to protecting the IP and controlling the diffusion of ideas, but AI companies and researchers are also concerned about licensees using their models for unethical purposes~\cite{jobin2019global, awad2018moral, yuste2017four}, which is not restricted by traditional licenses based on the context of software and content.
-We can infer the concerns of the inventors of GPT-2~\cite{radford2019language} about the unethical use of the model from its modified MIT license, which states, \textit{We don't claim ownership of the content you create with GPT-2, so it is yours to do with as you please. We only ask that you use GPT-2 responsibly and clearly indicate your content was created using GPT-2.} 
-However, such a statement lacks legal enforcement, and users may avoid accountability by convincing themselves that despite their efforts to minimize harm, they could not predict the AI artifact they generated would be used for harmful purposes.
-Besides, the original licensing frameworks for software and content (e.g. MIT, CC BY) are not well suited to the data-driven ML. 
-Many ML operations, such as training, fine-tuning, inference, and distillation, are not explicitly defined in traditional software and content licenses, leaving a potential legal loophole for licensees.
-
-To address the unique challenges and considerations surrounding the use and distribution of ML models, several specific licenses for ML models have been proposed. 
-The CreativeML OpenRAIL-M license, proposed by Responsible AI~\cite{contractor2022behavioral}, is the most popular model-specific license on Hugging Face and enables legally enforceable responsible use.
-By accepting this license, licensees must adhere to the use-based restrictions stated by the licensor, and these restrictions must also apply to derivative works.
-With a multitude of different model licenses available, it becomes a challenging and tedious task to reuse them in bulk. 
-It is therefore imperative to establish guidelines for selecting a license for models that are ready for query-based FL.
 
 \begin{table}[t]
   \centering
@@ -222,13 +194,44 @@ It is therefore imperative to establish guidelines for selecting a license for m
   \end{tabular}
 \end{table}
 
+\subsubsection{Model Licensing Forms}
+\label{sec:licensing}
+As shown in Table~\ref{tab:licenses}, ML models are licensed in three main forms: as software (e.g. Apache, MIT, GPL), as a model (e.g. OpenRAIL), and as content/database (e.g. CC BY, PDDL).
+The reason for the mixed use of licenses is the ambiguity in the dependency relationship between the ML code, model, and data.
+Thinking in terms of software, ML models can be released with reproducable code and be considered as a component of software.
+So many open software licenses are naturally deferred for licensing of models.
+The most popular license is Apache-2.0, which is a permissive open software license that allows the freedom to make derivative works.
+However, the model building process also relies on a massive amount of data~\cite{lecun2015deep} that may be licensed under different licenses, which can lead to license conflicts.
+A real-world example is BERT~\cite{devlin2018bert}, which was published under the Apache-2.0 license but pre-trained on English Wikipedia documents that are licensed under CC BY-SA 3.0.
+This changing of license violates the requirement of the CC BY-SA 3.0, which states that any contribution must be distributed under the \textbf{same license} as the original work.
+
+%We don’t claim ownership of the content you create with GPT-2, so it is yours to do with as you please. We only ask that you use GPT-2 responsibly and clearly indicate your content was created using GPT-2.
+
+Thinking in terms of content and database, some word embedding models, such as GloVe~\cite{pennington2014glove}, compute vector representations of words based on licensed open linguistic resources.
+These representations can be regarded as a translation of corpus and fall under the license of the original linguistic resources.
+A more complex scenario arises when the model is fine-tuned with other data that has a different license, for example, fine-tune RoBERTa~\cite{liu2019roberta} (licensed under MIT) with SQuAD2~\cite{rajpurkar2016squad} (licensed under CC BY 4.0).
+The resulting model can be interpreted as both derived works and combined works.
+
+Not only limited to protecting the IP and controlling the diffusion of ideas, but AI companies and researchers are also concerned about licensees using their models for unethical purposes~\cite{jobin2019global, awad2018moral, yuste2017four}, which is usually not restricted by traditional licenses designed for software and content.
+We can infer the concerns of unethical use of GPT-2~\cite{radford2019language} from its modified MIT license granted by its inventors, which states, \textit{We don't claim ownership of the content you create with GPT-2, so it is yours to do with as you please. We only ask that you use GPT-2 responsibly and clearly indicate your content was created using GPT-2.} 
+However, such a statement lacks legal enforcement, and users may avoid accountability by convincing themselves that despite their efforts to minimize harm, they could not predict the AI artifact they generated would be used for harmful purposes.
+On the other hand, the original licensing frameworks for software and content (e.g. MIT, CC BY) are not well suited to the data-driven ML. 
+Many ML operations, such as training, fine-tuning, inference, and distillation, are not explicitly defined in traditional software and content licenses, leaving a potential legal loophole for licensees.
+
+To address the unique challenges and considerations surrounding the use and distribution of ML models, several specific licenses for ML models have been proposed. 
+CreativeML OpenRAIL-M license, proposed by Responsible AI~\cite{contractor2022behavioral}, is the most popular model-specific license on Hugging Face and enables legally enforceable responsible use.
+By accepting this license, licensees must adhere to the use-based restrictions stated by the licensor, and these restrictions must also apply to derivative works.
+With a multitude of different model licenses available, it becomes a challenging and tedious work to reuse them in bulk. 
+It is therefore imperative to establish guidelines for selecting the licenses for models and other related components that are ready for query-based FL.
+
+
 %The effect of copyleft-style behavioral-use clauses spreads the requirement from the original licensor on his/her wish and trust on the responsible use of the licensed artifact. This is why OpenRAILs require downstream adoption of the use-based restrictions by subsequent re-distribution and derivatives of the AI artifact, as a means to dissuade users of derivatives of the AI artifact from misusing the latter.
 
 %OPT-175B/SEER LICENSE is not a copyleft license, as it does not require derivative works to be licensed under the same license or a compatible one. It is a proprietary license that allows users to use and reproduce the licensed models subject to certain restrictions.
 
 \subsubsection{License Choosing Preferences}
 \label{sec:choosing}
-In query-based FL, the model community automatically reuses models contributed by users, which raises unique concerns about licensing of models:
+In query-based FL, the model community aims to promote the reuse of models contributed by users, which raises unique concerns about model licensing:
 \begin{itemize}
   \item A model license ready for open FL paltforms should allow the \textbf{modification, combination and redistribution} of original works and any derived works; and
   \item \textbf{Sublicensing} right should be granted to lubricate the republication of derived works resulting from knowledge mining; note
@@ -237,15 +240,15 @@ In query-based FL, the model community automatically reuses models contributed b
   \item All granted rights are preferably \textbf{irrevocable} by the licensors~\cite{reddy2009jacobsen}.
 \end{itemize}
 
-Besides, it is important to consider the licensing of two other components when building and reusing models: data and algorithms, which may have entirely different license terms. 
-Here, we present several strategies for selecting licenses in query-based FL to minimize conflicts.
+Furthermore, it is important to consider the licensing of two other components when building and reusing models: data and algorithms, which may have entirely different license terms. 
+Here, based on the comparisons between different licenses provided in Table~\ref{tab:licenses}, we present several strategies for selecting licenses in query-based FL to minimize conflicts.
 
 \textbf{Preferences for Datasets or Databases}: CC0-1.0, ODC-By > CC BY > C-UDA > LGPL-LR.
 % 对于数据：训练：C-UDA 可以sublicense，但是不能商用。CC0 和 CC-BY 可用但是没明确sublicense，ODbL 自动license，但是copyleft，必须开源。对于finetune，除了上述数据外还可LGPL-LP
    
   Our recommended licenses for training datasets and databases for query-based FL are CC0-1.0, ODC-By, and CC BY. CC BY-4.0 is preferred due to the grant of \textit{Sui Generis Database Rights (Art.1c)}. 
   CC0-1.0 and ODC-By are more permissive than CC BY since they do not require licensees to disclose any modifications made to the dataset or database, and CC0-1.0 does not require the declaration of the original license. 
-  Although these licenses do not explicitly grant sublicensing rights, they provide an automatic licensing policy for downstream recipients.
+  Although these licenses do not explicitly grant sublicensing rights, they provide an \textbf{automatic licensing} policy for downstream recipients.
   
   C-UDA is an alternative license that grants sublicensing rights, but it includes additional usage restrictions that limit its application to computational use only, which indicates commercial use is not allowed.
   To avoid license proliferation, it is not recommended to use any data under copyleft licenses for building models, as the resulted models could be seen as remixing and making derivatives of the original datasets, leading to potential conflicts between licenses.
@@ -265,16 +268,16 @@ Here, we present several strategies for selecting licenses in query-based FL to 
 
   The next set of recommendations are MIT, BSD, BSL, and NCSA. 
   These licenses do not explicitly grant patent rights but instead, do not require the stating of modifications made to the original work, thus avoiding the tedious task of tracking model reusing or incremental training procedures. 
-  Ms-PL offers two advantages simultaneously, but it is a weak copyleft license that requires the modified source code to also be licensed under Ms-PL, and the derivative object code to be compliant with a license compatible with Ms-PL.
-  However, open software licenses do not provide a clear definition for software-generated outputs such as models. 
+  Ms-PL offers two advantages simultaneously, but it is a \textbf{weak copyleft} license that requires the modified source code to also be licensed under Ms-PL, and the derivative object code to be compliant with a license compatible with Ms-PL.
+  Note that open software licenses do not provide a clear definition for software-generated outputs such as models. 
   It is unclear whether models are considered a portion of the software, and whether they are in source code form or object code form. 
   This ambiguity makes it difficult to determine the applicable clauses for models.
   
   Our latest recommended licenses include WTFPL, Unlicense, ISC, Zlib, and PostgreSQL.
   These licenses are very permissive and allow almost anything without restrictions.
-  However, it's important to note that these licenses do not explicitly grant sublicensing rights and patent, which can lead to ambiguity in interpreting the license clauses.
-  For the avoidance of doubt, copyleft licenses such as GPL, AGPL, LGPL, OSL, MPL, EPL, and EUPL are not recommended, despite the loophole that they do not have a specific definition for models.
-  Furthermore, although some of those copyleft licenses can be made compliant with others, we recommend isolating the software license from the resulting models to preserve the freedom to use the models further (e.g., close-source or relicense).
+  However, on the other side, these licenses also do not explicitly grant sublicensing rights and patent, which can lead to ambiguity in interpreting the license clauses.
+  For the avoidance of doubt, copyleft licenses such as GPL, AGPL, LGPL, OSL, MPL, EPL, and EUPL are not recommended, despite the loophole that they do not have a specific definition for ML models.
+  Although some of those copyleft licenses can be made compliant with others, we recommend isolating the software licenses from the resulting models to preserve the freedom to use the models further (e.g. close-source, relicense).
   
   \textbf{Preferences for Models}: Apache-2.0, AFL-3.0, Artistic-2.0, ECL-2.0 > OpenRAIL and its derivatives
   % The crux of the issue is really about control over the outputs.
@@ -288,8 +291,9 @@ Here, we present several strategies for selecting licenses in query-based FL to 
   So, the model owners may adopt these licenses for the purpose of responsible model use.
 
   However, in practice, such discrimination of user behavior cannot completely guarantee that the models will not be misused, and may potentially compromise the openness of the models~\cite{perens1999open, greenbaum2016the}.
-  The user behavioral restrictions in licenses can be compared to manufacturers prohibiting the use of their laptops for hacking, and furthermore, the vendors can be held jointly and severally liable for any future violations, which is unreasonable and may lead to the licensed materials becoming closed source. 
-  Furthermore, to enable remote control for the responsible use of AI, CreativeML OpenRAIL-M includes the clause \textit{You shall undertake reasonable efforts to use the latest version of the Model}, which requires licensees to keep up with the updates of the original work and may render their prior development efforts useless.
+  The user behavioral restrictions stated in licenses can be compared to manufacturers prohibiting the use of their laptops for hacking, and furthermore, the vendors can be held jointly and severally liable for any future violations, which is unreasonable.
+  Therefore,  including such statements in licenses may ultimately lead to the licensed materials becoming closed source. 
+  Additionally, to enable remote control for the responsible use of AI, CreativeML OpenRAIL-M includes the clause \textit{You shall undertake reasonable efforts to use the latest version of the Model}, which requires licensees to keep up with the updates of the original work and may render their prior development efforts useless.
   Therefore, traditional permissive licenses, which follow worse-is-better design philosophy~\cite{gabriel1991rise}, are good choices for model licensing in query-based FL, as they promote openness and facilitate the sharing of publicly contributed models.
 
   The remaining model licenses, OPT-175B and SEER, are proprietary licenses that allow licensees to use and reproduce the licensed models subject to certain restrictions. 
@@ -321,7 +325,8 @@ Therefore, we are free to use their generated content for model reusing and can 
 On the contrary, the licenses of OPT~\cite{zhang2022opt} and SEER~\cite{goyal2022vision} do not grant any copyright for the data produced by the licensed software. 
 Given that, we should avoid using their derivatives and generated content in query-based FL to prevent copyright infringement.
 Once we obtain the right to relicense the modification models, the choice of a new license depends on the application scenario of models. 
-We provide a flowchart in Fig.~\ref{fig:flowchart}(a) to guide license selection.
+We further provide a flowchart in Fig.~\ref{fig:flowchart}(a) to guide the license selection in the context of model query and model reusing.
+
 For now, we have provided a comprehensive perspective and suggestions regarding the regulations and legal issues related to batch model reusing with only one piece missing: the definition of terms and corresponding clauses for different reusing mechanisms in different licenses.
 The terms definition for model reusing in different licenses is a novel and interesting issue that is rarely discussed. 
 For example, interpreting model reusing as creating derivatives or combinations would involve different clauses in the licenses.
@@ -335,7 +340,7 @@ As shown in Fig.~\ref{fig:flowchart}(b), there are four categories of batch mode
 \begin{figure}[t]
     \centering
     \includegraphics[width=\linewidth]{fig/flowchart.pdf}
-    \caption{flowchart}
+    \caption{(a) Flowchart for model licenses selection in the context of model query and model reusing. (b) Proposed taxonomy categorizing batch model reuse mechanisms based on the reused results.}
     \Description{}
     \label{fig:flowchart}
 \end{figure}
@@ -343,31 +348,33 @@ As shown in Fig.~\ref{fig:flowchart}(b), there are four categories of batch mode
 \textbf{Combination}~\cite{zhou2012ensemble} is a straightforward way to reuse batch of models (aka base learners), in which multiple models jointly contribute to the output by combination strategies such as averaging, voting, learning~\cite{jacobs1991adaptive, wolpert1992stacked}.
 For regression estimates, averaging can improve the generalization by taking the mean of the outputs of all weak learners in a population. Additionally, the outputs of each learner can be weighted by extra parameters~\cite{perrone1995networks}, which can be determined by stacking estimators~\cite{wolpert1992stacked}, Bayes approach~\cite{clarke2003comparing} or backpropagation of gating networks~\cite{jacobs1991adaptive}. 
 % Bayesian Model Averaging (BMA) -> Stacking with probabilities
-Voting is a workaround for classification tasks and also applicable for stacking and gating.
+Voting is a workaround strategy for classification tasks and also applicable for stacking and gating.
 Both stacking and gating rely on an additional holdout or validation dataset for calculating extra parameters, marked as * in Fig.~\ref{fig:flowchart}(b). 
 The difference is that gating can adapt the weights of each model's estimation based on the inputs, providing better generalizability performance of the combined model.
 
 There are many \textbf{advantages} of combination mechanisms from the perspective of FL.
 First, the input spaces of base models can be unaligned, which is ideal for the scenario of vertical FL~\cite{wu2022practical} where each client may have inconsistent features in their data.
-Secondly, especially for query-based FL, it can simultaneously support multiple types and heterogeneous models, which means that it does not rely on any prior assumptions of the models, such as whether they are DNNs or decision trees, released with weights (whitebox) or binary forms (blackbox).
+Secondly, especially for query-based FL, it can simultaneously support multiple types and heterogeneous models, which means that it does not rely on any prior assumptions of the models, such as whether they are DNNs or decision trees, released with raw weights (whitebox) or binary forms (blackbox).
 Thirdly, the tasks of models can be different if we pipeline the base models end-to-end, which is usually overlooked as a combination mechanism of models. 
 Pipelining can fully leverage the transferability of models to solve previously unexplored ML problems.
 % 举例说明 pipeline
 For instance, Gao \textit{et al.}~\cite{gao2022precise} proposed a zero-shot dense retrieval system named HyDE by pipelining a natural language generation (NLG) model~\cite{ouyang2022training} and a natural language understanding (NLU) model~\cite{izacard2021towards}.
 The generated content, which may lack factual grounding, from the NLG model is used as query embeddings to facilitate real document retrieval by the NLU model.
-Through query-based FL, we can query a vicarious NLG model for a novel scenario, such as ProGen~\cite{madani2023large} for protein sequences generation, and quickly adapt this system to proteomics.
+Similarly, through query-based FL, we can query a vicarious NLG model for a novel scenario, such as ProGen~\cite{madani2023large} for protein sequences generation, and quickly adapt this system to proteomics.
 Not limited to that, we can query a batch of NLG models by a well-chosen filter condition and then combine models through averaging or gating to significantly expand the exploration space for knowledge discovery.
 Lastly, the combinated models have strong separation from each other, meaning that we can add or remove a batch of models without significant changes to the remaining ones.
 Meanwhile, combination mechanisms do not rely on the transparency of models and support blackbox sharing. 
 Thus, the base model can establish loose connections with other models only through run scripts, providing revocability of such combination and circumvention of the restrictions of licenses.
 
 On the other hand, instead of being treated as a challenge for FL~\cite{ma2022state}, the statistical heterogeneity and model heterogeneity nature of these crowdsourced models can actually enrich population diversity, which is crucial for creating a good ensemble~\cite{maclin1995combining, opitz1995generating}. 
-\textbf{However}, the storage consumption of combined models increases linearly with the number of base learners, which can deplete the communication resources of a model distribution network. 
-Therefore, alternative approaches are to amalgamate or merge multiple models into a new consensus model. We summarize these methods in the following.
+\textbf{However}, the storage consumption of combined models increases linearly with the number of base learners, which can strain the communication resources of a collaborative model training network. 
+As a result, alternative approaches involve amalgamating or merging multiple models to create a new consensus model. 
+In the following, we provide a summary of these methods.
 
 \textbf{Amalgamation} involves combining models through model parameters granularity operations, such as median~\cite{blanchard2017machine, pillutla2022robust} and coordinate-wise averaging with consideration of heterogeneity~\cite{mcmahan2017communication, li2018federated}, security~\cite{sun2019can}, scalability~\cite{reisizadeh2020fedpaq}, matching~\cite{wang2020federated, yu2021fed2}, specificality~\cite{gudur2020resource}, generalizability~\cite{qu2022generalized}, resulting in a combination with weak separation.
 This reusing approach is widely used in FL works and is often referred to as "aggregation" procedures for local models.
-Here, we avoid using the term "aggregation" to distinguish it from "combination". The latter is often used interchangeably with "combination" in software licenses (e.g. Artistic, GPL).
+%Here, we avoid using the term "aggregation" to distinguish it from "combination" given the latter is often used interchangeably with "combination" in software licenses (e.g. Artistic, GPL).
+However, in order to avoid confusion with the term "combination," which is frequently used interchangeably with "aggregation" in software licenses (e.g., Artistic, GPL), we opt to use the term "amalgamation" instead.
 
 FedAvg~\cite{mcmahan2017communication} is the most popular model averaging method in FL with many follow-up works. 
 For instance, Sun \textit{et al.}~\cite{sun2019can} proposed applying norm thresholding of local model updates to defend against backdoor attacks.
@@ -375,7 +382,7 @@ Similarly, Blanchard \textit{et al.}~\cite{blanchard2017machine} proposed using 
 Consider the ordering of parameters, Wang \textit{et al.}~\cite{wang2020federated} match and average the NNs parameters layer-wise across clients, based on their similarities.
 Yu \textit{et al.}~\cite{yu2021fed2} further attribute the misalignment in FL models to the non-IID training data, propose allocating an independent structure for each class and updating models through a feature paired averaging strategy.
 \textbf{Even though} amalgamation mechanisms can achieve a balance between model performance and resource efficiency by maintaining only one global model, they often rely on multiple rounds of communication to converge, which is not applicable in a query-based FL scenario.
-So, instead of trying to directly concatenate multiple sources of models while dealing with intricate parameter mismatch, transferring the latent knowledge learned by local models to a new model is a good alternative (i.e. Federated Distillation~\cite{jeong2018communication, jin2023feddyn}).
+Therefore, instead of trying to directly concatenate multiple sources of models while dealing with intricate parameter mismatch, transferring the latent knowledge learned by local models to a new model is a good alternative (i.e. Federated Distillation~\cite{jeong2018communication, jin2023feddyn}).
 
 Another direction of model amalgamation is leveraging Bayesian nonparametrics to learn the shared global latent structures among local models~\cite{yurochkin2019bayesian, yurochkin2019statistical, lam2021model}. 
 These methods, known as Model Fusion, can identify distributions of neural components across local models and only fuse the components with the same distribution, which can be regarded as a model compression between FedAvg (coordinate-wise averaging) and combination (w/o averaging).
@@ -389,7 +396,7 @@ It is worth noting that our taxonomy is based on the form of the resulting model
 For example, Bayes Model Averaging (BMA)~\cite{clarke2003comparing} estimates posterior probabilities of each model given the observed data, which results in a separable weighted model. 
 Therefore, it should be classified as Combination instead of Amalgamation like FedAvg.
 This novel taxonomy method is useful for analyzing compatibility with licenses. 
-For instance, coordinate-wise operations and fusion of model parameters generate fine-grained combinations of models that are almost irreversible, which corresponds to clauses such as adapt, modify, dynamic link, etc., in software licenses.
+For example, the coordinate-wise operations or the fusion of model parameters generate fine-grained combinations of models that are almost irreversible, which corresponds to clauses such as adapt, modify, dynamic link, etc., in software licenses.
 
 \begin{table}[t]
   \centering
@@ -415,7 +422,7 @@ For instance, coordinate-wise operations and fusion of model parameters generate
 \textbf{Distillation} was initially proposed by Hinton \textit{et al.}~\cite{hinton2015distilling} to transfer knowledge from a batch of independently trained neural network models (Specialists) to create a new Generalist model.
 Their motivation was to explore the parallelization of training of specialists and improve the efficiency of distributed NNs modeling\cite{dean2012large}.
 Each specialist only learns fine-grained distinctions of a subset of classes, which is very similar to the non-IID setting in FL~\cite{liqb2022federated}.
-Besides, by using Knowledge Distillation (KD), we can compress wide and deep teacher networks into lightweight student networks~\cite{romero2015fitnets}, which is promising for addressing system heterogeneity in cross-device FL~\cite{lim2020federated}.
+By using Knowledge Distillation (KD), we can also compress wide and deep teacher networks into lightweight student networks~\cite{romero2015fitnets}, which is promising for addressing system heterogeneity in cross-device FL~\cite{lim2020federated}.
 Therefore, it is natural to extend the KD technologies to FL filed~\cite{jiang2020federated, li2020practical, li2019fedmd, wu2022communication, chen2020fedbe, lin2020ensemble, gong2021ensemble, sun2020federated}.
 Actually, many recent FL works~\cite{li2019fedmd, gong2021ensemble, sun2020federated, huang2022learn, fang2022robust, gong2022preserving, luo2022fediris, sui2020feded, chang2021cronus, he2020group, zhang2021parameterized, itahara2021distillation} solely leverage KD without following the model averaging paradigm of FedAvg, we leave this discussion for later. %TODO
 
@@ -441,7 +448,7 @@ DENSE~\cite{zhang2022dense} is the first attempt to extend DFKD to FL. It levera
 FedCAVE-KD~\cite{heinbaugh2023data} leverages locally trained conditional autoencoders (CVAEs)~\cite{kingma2014auto} to generate samples based on the data distribution of clients. 
 These CVAEs are sent to server used to construct a global generator via KD, which will later provide synthetic training data for the global discriminator.
 
-It is worth noting that in the query-based FL setting, direct access to the original data is not available, so the second mechanism cannot be applied directly. 
+It is worth noting that in the query-based FL setting, direct access to the original data is not available, thus the second mechanism mentioned earlier cannot be directly applied.
 A circumvention method is to train a generator following the inspiration of DFKD. 
 Fortunately, this is praticable if the workflow and history information of modeling are tracked and queryable, as we advocated in Section~\ref{sec:workflow&history}.
 Recalling that, as shown in Fig.~\ref{fig:flowchart}(b), Generation is the last category in our taxonomy.
@@ -472,7 +479,7 @@ The summarize of above privacy-perserving KD works is given in Table.~\ref{tab:d
 
 \textbf{Generation} is designed to generate synthetic samples that resemble the original data distribution by building a probabilistic model~\cite{geyer1992practical} or deep learning model~\cite{kingma2014auto, goodfellow2020generative, cao2022survey} that can capture the underlying distribution pattern and latent structure of original data.
 Generally speaking, generation techniques can be classified into three categories: data-level, probabilistic, and representation-based approaches.
-Data-level approaches involve sample granularity operations such as interpolation~\cite{chawla2002smote, zhangmixup} and augmentation~\cite{wong2016understanding} to generate synthetic features based on the original feature space of data.
+Data-level approaches involve sample granularity operations such as interpolation~\cite{chawla2002smote, zhangmixup} and augmentation~\cite{wong2016understanding} to generate synthetic features based on the original feature space of data and share.
 Even though these methods are training-free and easy to implement, they cannot be directly applied to the FL setting due to privacy concerns.
 Recent proposed FedMix~\cite{yoon2021fedmix} aims to alleviate the negative effect of non-IID data by using \textit{mixup}~\cite{zhangmixup}, where the average of local data is linearly interpolated with the training data to generate augmented samples.
 However, the potential risk of data leakage when sharing the mixup data is not comprehensively evaluated in the original work.
@@ -480,7 +487,7 @@ However, the potential risk of data leakage when sharing the mixup data is not c
 Probabilistic approachs aim to estimate the real data distribution using probabilistic method.
 For example, Markov Chain Monte Carlo (MCMC)~\cite{geyer1992practical} methods construct a Markov Chain that converges to the desired target distribution by iteratively proposing new states based on the current state of the chain and acceptance probabilities.
 Gaussian Mixture Models (GMM) assumes the data is generated from a mixture of Gaussian distributions and can generate new samples by sampling from the learned distributions.
-Representation-based approaches try to reconstruct the data from laten feature space.
+To generate the high-dimensional structured data, representation-based approaches try to reconstruct the data from laten feature space.
 For instance, Variational Autoencoders (VAEs)~\cite{kingma2014auto} learn the distribution of the latent representation space given the observed data and then use a decoder network to reconstruct data based on sampled latent representations.
 Generative Adversarial Networks (GANs)~\cite{goodfellow2020generative} train a generator network to produce samples that resemble realistic data by optimizing an adversarial objective against a discriminator network.
 
@@ -489,7 +496,7 @@ The first advantage is visualization and verification. Unlike the extracted know
 This capability aids in assessing the contributions made by participants in terms of generating valuable content.
 Second, the flexibility of generation methods allow us to generate data with any desired amount or class, which enables more effective handling of imbalanced~\cite{chawla2002smote} and non-IID~\cite{zhang2022fine} data.
 The third advantage is multi-format sharing. Participants have the freedom to choose the form of their contributions. For example, they can upload the learned generative models in source code (e.g., Stable Diffusion~\cite{rombach2022high}, GPT-2~\cite{radford2019language}) or binary form, upload synthetic data, or provide model inference APIs like ChatGPT.
-This sharing policy greatly empowers the model community in an open FL platform, fostering collaboration and knowledge sharing.
+This sharing policy can greatly empower the model community in open FL platforms, fostering collaboration and knowledge sharing.
 
 Given the aforementioned advantages, generation methods have been extensively studied in the field of FL. 
 As summaried in Table.~\ref{tab:generation}, these works can be classified into two main categories: generation for training~\cite{zhang2021subgraph, cheng2023gfl, hao2021towards, cha2019federated, yu2023turning, heinbaugh2023data, yang2023exploring, liu2021feddg, pi2022dynafed, liz2022federated, diao2022semifl}, generation for KD~\cite{zhang2022dense, chen2020fedbe, zhu2021data, zhang2022fine, jeong2018communication, jin2023feddyn, heinbaugh2023data, zhang2022fedzkt, fan2022private}, and serving three purposes: enriching the training set~\cite{zhang2022dense, chen2020fedbe, zhang2021subgraph, cheng2023gfl, cha2019federated, jin2023feddyn, zhang2022fedzkt}, improving generalization ability~\cite{zhu2021data, zhang2022fine, hao2021towards, jeong2018communication, yu2023turning, heinbaugh2023data, liu2021feddg, pi2022dynafed, liz2022federated}, and enabling semi-supervised learning~\cite{yang2023exploring, diao2022semifl, fan2022private}.
@@ -501,8 +508,8 @@ The last application of generation is in semi-supervised learning, which is a co
 For example, FedDISC~\cite{yang2023exploring} leverages the average and cluster centroids of hidden representations across pseudo-labels as input to a pre-trained diffusion model, aiming to generate high-quality samples for training.
 
 In fact, the three purposes of generation correspond to three types of data heterogeneity in FL~\cite{liqb2022federated}: Quantity Skew, Label Distribution Skew (non-IID), and Missing Labels, which are challenging to address with traditional model amalgamation methods.
-Therefore, the hybrid model reusing strategies, which leverage each other's strengths, have become a common paradigm in recent FL studies~\cite{cheng2023gfl, xie2023perada, yu2023turning, jin2023feddyn, heinbaugh2023data, yang2023exploring, zhang2023federated}.
-Therefore, in the next section, we will summarize the popular hybrid model reusing studies in FL and then filter the studies that are suitable for a sustainable open FL platform.
+The hybrid model reusing strategies, which leverage each other's strengths, have become a common paradigm in recent FL studies~\cite{cheng2023gfl, xie2023perada, yu2023turning, jin2023feddyn, heinbaugh2023data, yang2023exploring, zhang2023federated}.
+Therefore, in the next section, we will summarize the popular hybrid model reusing studies in FL and then filter the studies that are suitable for query-based FL platforms.
 
 %The third advantage is free-sharing. As mentioned in Section~\ref{sec:generated content}, many deep generative models, such as Stable Diffusion~\cite{rombach2022high} and ChatGPT, do not claim ownership rights over the generated content. Furthermore, most open software licenses do not have defined terms for computer-generated content. Therefore, it is legally permissible to freely reuse synthetic data.
 
@@ -649,9 +656,9 @@ As an example, the process of RSCFed~\cite{liang2022rscfed} involves the followi
 \ding{172} KD, the knowledge is extracted as the softmax values from the self model based on local private data (ref. Table.~\ref{tab:distillation}) and performed at the client-side;
 \ding{173} Model exponential moving averaging performed at the client-side;
 \ding{174} Simple Model Averaging performed two times at the server-side.
-This entire process is repeated across multiple communication rounds until completion.
+These processes are repeated across multiple communication rounds until completion.
 In this way, we can categorize these works and make intuitive comparisons between them.
-
+We demonstrate the usage of our taxonomy by presenting three novel findings based on it.
 %\textbf{Comparisons:}
 
 \textit{Finding 1. Amalgamation and Distillation ([AD] or [DA]) are the most popular combo in FL studies, followed by Distillation as a standalone ([D]) strategy and Generation before Amalgamation ([GA])}.
@@ -661,13 +668,13 @@ As a result, distillation, which provides a global view of the data distribution
 However, to achieve acceptable performance, amalgamation requires multiple accesses to local data for training and multiple communications for model averaging ([AD]*N or [DA]*N), which makes it challenging to apply in one-shot FL settings.
 
 On the other hand, we can fuse the distilled knowledge for training without any model amalgamation ([D]*N or [D]*1).
-However, additional precautions should be taken to prevent sensitive data leakage.
+However, additional precautions should be taken to prevent sensitive knowledge leakage.
 One common approach is to introduce an auxiliary public unlabeled dataset for knowledge extraction (except for FedED~\cite{sui2020feded}, which uses labeled validation set, ref. Table~\ref{tab:distillation}).
-Getting rid of the limitation of amalgamation, these distillation studies (i.e., FedAD~\cite{gong2021ensemble}, FedKD\textsubscript{1}~\cite{gong2022preserving}) enable the feasibility of one-shot learning, making them good candidates for constructing a query-based FL platform.
+Getting rid of the limitation of amalgamation, these distillation studies (e.g., FedAD~\cite{gong2021ensemble}, FedKD\textsubscript{1}~\cite{gong2022preserving}) enable the feasibility of one-shot learning, making them good candidates for constructing a query-based FL platform.
 Meanwhile, the generation approachs also offer the same one-shot capacity (i.e., FedDISC~\cite{yang2023exploring} and FRD~\cite{cha2019federated}) as distillation by directly generating synthetic data for fusion.
 This one-shot capacity can also be extended to the hybrid case, such as FedCAV~\cite{heinbaugh2023data}, FedBE~\cite{chen2020fedbe}, FedAUX~\cite{sattler2021fedaux}, DENSE~\cite{zhang2022dense}.
 That is why the final step in all one-shot solutions is typically distillation or generation on the server-side (excluding local training), rather than amalgamation.
-But it is worth noting that one-shot feasibility is not sufficient and necessary in the context of query-based FL.
+But it is worth noting that the one-shot feasibility is not sufficient and necessary in the context of query-based FL.
 For example, in FRD~\cite{cha2019federated}, participants generate mixup data for server training rather than contributing their models.
 Currently, it is evident that the once strong connection between model averaging and FL has become blurred, and distillation has emerged as a popular method in the field of FL.
 
@@ -675,7 +682,8 @@ Currently, it is evident that the once strong connection between model averaging
 
 One drawback of using combination in the FL context is the high communication consumption required for broadcasting the combined model to multiple participants, which can be expensive in terms of bandwidth and latency.
 Hence, a practical approach is to compress the contributed models through methods like amalgamation or distillation, which may already implicitly include combination. 
-However, to avoid redundancy, we did not include these temporary combinations in our table.
+For example, in FedAvg, the FL server collects local models from clients and averages them immediately. 
+However, to avoid redundancy, we did not include these temporary combinations in Table~\ref{tab:flreuse}.
 %Due to above reasons, combination is seem not common is FL studies.
 
 \textit{Finding 3. Amalgamation after Distillation ([DA]) primarily distills knowledge from private data, while Distillation after Amalgamation ([AD]) and solely Distillation ([D]) primarily distill knowledge from non-sensitive data.}
@@ -714,16 +722,16 @@ By now, we have witnessed the success of using the new taxonomy, and in the next
 \label{sec:reusing&license}
 We have demonstrated that almost all FL studies can be regarded as a permutation of model reusing methods. 
 Therefore, we can further analyze the corresponding clauses in model licenses perspective for FL studies by decomposing them into model reuse methods.
-Recalling that there are four kinds of model reusing mechanisms: Combination, Amalgamation, Distillation, and Generation, which result in four forms of outputs: Combination with strong separation, Combination with weak separation, Derivative from learned concepts, and Derivative from learned distributions.
+Recalling that there are four kinds of model reusing mechanisms: Combination, Amalgamation, Distillation, and Generation, which result in four forms of outputs: Combination with strong separation, Combination with weak separation, Derivative from learned concepts, and Derivative from learned distributions, respectively.
 By interpreting "work" as "model" rather than as "software", we can easily identify the applicable clauses for different model reusing mechanisms.
 
 We present the analysis of model licenses for model reuse in Table~\ref{tab:reuse}. 
-The analysis covers the most popular model licenses (adopted by over 100 released models) on Hugging Face, which include free software licenses, free content licenses, and AI model licenses.
+The analysis covers the most popular model licenses (used by over 100 released models) on Hugging Face, which include free software licenses, free content licenses, and AI model licenses.
 For simplicity, we have merged some similar licenses without loss of clarity.
 To avoid license conflicts when engaging in batch model reuse, it is preferable for the reused model to be considered an \textbf{independent} work or fall under an \textbf{undefined} category, not covered by the original license.
 Additionally, we can refer to Table~\ref{tab:reuse} and consider the following factors:
 \begin{itemize}
-  \item \textbf{Differences in terminology}. In the definitions of licenses, connecting multiple works into a separable union is typically referred to as \textit{aggregation, redistribution, and reproduce}, which is completely different from the concept of \textit{model aggregation} in the FL context. Therefore, it is necessary to refer to Table~\ref{tab:reuse} for the corresponding delineations of each model reuse mechanism instead of relying solely on the technical name.
+  \item \textbf{Differences in terminology}. In the definitions of licenses, connecting multiple works into a separable union is typically referred to as \textit{aggregation, redistribution, and reproduce}, which is completely different from the concept of \textit{model aggregation} in the ML field. Therefore, it is necessary to refer to Table~\ref{tab:reuse} for the corresponding delineations of each model reuse mechanism instead of relying solely on the technical name.
 
   \item \textbf{Restrictions of combination and amalgamation}. As shown in Table~\ref{tab:reuse}, the majority of model licenses have specific terms and definitions regarding these two methods, except for blackbox combination. This implies that there may be potential restrictions that need to be taken into account and complied with.
   These restrictions may also proliferate to the reused results if original licenses of models are copyleft, such as GPL-3.0, CC-BY-SA, CC-BY-NC-SA, etc.
@@ -759,7 +767,7 @@ Lastly, we can further analyze the potential license conflicts in hybrid model r
 In this case, the collection of local models should be treated as a whitebox in order to distill the logits value from it. 
 As a result, this collection should be considered a \textit{modified version} of the original works according to the terms of GPL-3.0.
 However, the generation and distillation processes of DENSE are based on non-sensitive data and result in the creation of an independent work.
-Considering that GPL-3.0 is a copyleft license, the reused results should be licensed under GPL-3.0 if the release includes the collection in its whitebox form. 
+Considering that GPL-3.0 is a copyleft license, the reused results should be licensed under GPL-3.0 if the new release includes the collection in its whitebox form. 
 Otherwise, the reused results can be considered an independent work without any specific license restrictions.
 
 The example above demonstrates that analyzing hybrid methods under a copyleft license can be complicated. 
@@ -782,13 +790,13 @@ On the other hand, fingerprinting strategies aim to generate an identifier for e
 Note that the technical details of IP protection methods are beyond the scope of this survey.
 We recommend referring to up-to-date surveys such as~\cite{peng2022intellectual, sun2023deep}.
 Additionally, it is important to recognize that the goal of query-based FL platforms is not to provide perfect protection against model plagiarism and unauthorized use.
-Interestingly, certain model reusing strategies like KD and ensemble methods are even regarded as model extraction attacks within the realm of DNN protection~\cite{charette2022cosine}.
+Interestingly, certain model reusing strategies like KD and ensemble methods are even regarded as model extraction attacks within the realm of DNNs IP protection~\cite{charette2022cosine}.
 This highlights the inherent contradiction between promoting model reusing and preventing all forms of model plagiarism.
 As a result, it is necessary to determine the scope of protection and strike a balance between model protection and platform openness.
 
 First, it is helpful to consider the following requirements for model protection in the context of query-based FL:
 \begin{itemize}
-  \item \textbf{Non-invasive}. Any attempt to invasively embed backdoors into the weights and architectures of models is likely to result in changes to their functionalities and could lead to unexpected failures after deployment. 
+  \item \textbf{Non-invasive}. Any attempt to invasively embed backdoors into the weights and architectures of models is likely to result in changes to their functionalities and could lead to unexpected failures after deployment~\cite{chen2022copy}. 
   Meanwhile, these backdoors can be exploited by attackers to manipulate the model's predictions~\cite{li2022untargeted}.
   Accordingly, it is more recommend leaving the decision of adding invasive protection to the users instead of forcing it through platforms.
   
@@ -816,12 +824,12 @@ Recently, several model protection algorithms have been proposed to address the 
 Tekgul \textit{et al.}~\cite{tekgul2021waffle} propose WAFFLE that uses augmented Gaussian noisy images as a watermark set to determine the ownership of the global model. 
 However, this method is invasive and incurs high costs due to multiple rounds of training.
 To ensure reliable watermarking for FL participants, FedIPR~\cite{li2023fedipr} embeds different watermarks into models of different participants through training with additional trigger samples and a modified optimization goal.
-This method is designed for model verification on the client-side, so it is independent to the model management in FL platforms.
+But this method is designed for model verification on the client-side, so it is independent to the model management in FL platforms.
 FedTracker~\cite{shao2022fedtracker} embeds personalized local fingerprints into the Batch Normalization (BN) layer to enable traceability of model leakers.
-One limitation of FedTracker is that its fingerprinting strategies are not compatible with other DNNs that do not use BN and do not provide whitebox access.
+One limitation of FedTracker is that its fingerprinting strategies are not compatible with other DNNs that do not use BN or do not provide whitebox access.
 These examples highlight the incompatibility between the IP protection methods designed for traditional FL and the requirements of the query-based FL scenario, which have different protection goals and targets.
 
-Based on the above observation and the taxonomy of deep IP protection~\cite{peng2022intellectual, sun2023deep}, dynamic fingerprinting strategies with blackbox verification support are considered suitable model protection methods for query-based FL.
+Based on the above observation and the taxonomy of deep IP protection~\cite{peng2022intellectual, sun2023deep}, \textbf{dynamic fingerprinting strategies with blackbox verification support} are considered suitable model protection methods for query-based FL.
 These methods aim to approximate the similarities between the decision boundaries of different models by evaluating the value of a well-tailored testing metric on a self-constructed testing set.
 A typical example is DeepJudge~\cite{chen2022copy}, which employs an ensemble of multi-level (Property, Neuron, Layer) testing metrics to achieve confident and robust plagiarism identification. 
 The verification process of DeepJudge can be evaluated in a blackbox setting by calculating distances based on model predictions.
@@ -833,8 +841,11 @@ A compromise approach is to seek non-sensitive or desensitized testing set from 
 Inspired by DeepJudge, we can develop an ensemble of multi-level testing strategies for query-based FL.
 In the first step, we can compare the hash codes (e.g. MD5, SHA-256) of the raw model weights or its binary execution to rapidly filter out cases of naive replication plagiarism.
 Then, in the second step, we can filter out cases of quantization or invariant neural swapping plagiarism by comparing the distance in predictions obtained from an out-of-distribution dataset.
-Finally, we can further evaluate the similarities between models using testing-based approaches such as DeepJudge and Zest, which can detect cases of pruning and direct KD plagiarism.
+In addition, we can further evaluate the similarities between models using testing-based approaches such as DeepJudge and Zest, which can detect cases of pruning and direct KD plagiarism.
 Furthermore, if the workflow information is supports it, we can swiftly eliminate batch model reusing from being suspected of plagiarism.
+
+In summary, finding a balance between model protection and platform openness is indeed a challenge.
+It is crucial to carefully consider the trade-offs and explore alternative approaches that can provide a reasonable level of model protection without excessively compromising the openness and usability of query-based FL platforms.
 
 \begin{comment}
 we pre-compute the threshold k based on

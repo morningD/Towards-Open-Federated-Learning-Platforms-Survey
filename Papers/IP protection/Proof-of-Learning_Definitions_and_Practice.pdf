@@ -12627,4 +12627,225 @@ HâLë;nƒ0{üÇ' ƒ?uûí∆i“‰˙°º+”ÆÏﬁ„ò"ò4ù¸~√ç·ÔêÈËj(MÇ·ßò‘qëâ ˚3sÍÑédb‰
 0001342863 00000 n
 0001343210 00000 n
 0001343445 00000 n
-trailer<</Size 406/Root 1 0 R/Info 7 0 R/ID[<3B4D6BBCF06CD2B68557C5F2C8B32E18><1AD74656E30E47E79F6436F6268BF52B>]/Prev 1329505>>startxref1343928%%EOF
+trailer<</Size 406/Root 1 0 R/Info 7 0 R/ID[<3B4D6BBCF06CD2B68557C5F2C8B32E18><1AD74656E30E47E79F6436F6268BF52B>]/Prev 1329505>>startxref1343928%%EOF3 0 obj<</Length 11170/Subtype/XML/Type/Metadata>>stream
+<?xpacket begin="Ôªø" id="W5M0MpCehiHzreSzNTczkc9d"?>
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 9.1-c001 79.2a0d8d9, 2023/03/14-11:19:46        ">
+   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description rdf:about=""
+            xmlns:dc="http://purl.org/dc/elements/1.1/"
+            xmlns:prism="http://prismstandard.org/namespaces/basic/3.0/"
+            xmlns:jav="http://www.niso.org/schemas/jav/1.0/"
+            xmlns:xmp="http://ns.adobe.com/xap/1.0/"
+            xmlns:pdf="http://ns.adobe.com/pdf/1.3/"
+            xmlns:gwg_preflight="http://www.gwg.org/ns/gwg_preflight_v1/"
+            xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/"
+            xmlns:CP2="http://www.enfocus.com/ns/CertifiedPDF/2.0/">
+         <dc:format>application/pdf</dc:format>
+         <dc:publisher>
+            <rdf:Seq>
+               <rdf:li>IEEE</rdf:li>
+            </rdf:Seq>
+         </dc:publisher>
+         <dc:description>
+            <rdf:Alt>
+               <rdf:li xml:lang="x-default">2021 IEEE Symposium on Security and Privacy (SP);2021; ; ;10.1109/SP40001.2021.00106</rdf:li>
+            </rdf:Alt>
+         </dc:description>
+         <dc:subject>
+            <rdf:Bag>
+               <rdf:li>machine-learning</rdf:li>
+               <rdf:li>security</rdf:li>
+               <rdf:li>proof-of-work</rdf:li>
+            </rdf:Bag>
+         </dc:subject>
+         <dc:title>
+            <rdf:Alt>
+               <rdf:li xml:lang="x-default">Proof-of-Learning: Definitions and Practice</rdf:li>
+            </rdf:Alt>
+         </dc:title>
+         <dc:creator>
+            <rdf:Seq>
+               <rdf:li>Hengrui Jia</rdf:li>
+               <rdf:li>Mohammad Yaghini</rdf:li>
+               <rdf:li>Christopher A. Choquette-Choo</rdf:li>
+               <rdf:li>Natalie Dullerud</rdf:li>
+               <rdf:li>Anvith Thudi</rdf:li>
+               <rdf:li>Varun Chandrasekaran</rdf:li>
+               <rdf:li>Nicolas Papernot</rdf:li>
+            </rdf:Seq>
+         </dc:creator>
+         <prism:publicationName>2021 IEEE Symposium on Security and Privacy (SP)</prism:publicationName>
+         <prism:startingPage>1039</prism:startingPage>
+         <prism:coverDisplayDate>  May 2021</prism:coverDisplayDate>
+         <prism:doi>10.1109/SP40001.2021.00106</prism:doi>
+         <prism:endingPage>1056</prism:endingPage>
+         <jav:journal_article_version>VoR</jav:journal_article_version>
+         <xmp:ModifyDate>2023-06-20T11:36:33+08:00</xmp:ModifyDate>
+         <xmp:MetadataDate>2023-06-20T11:36:33+08:00</xmp:MetadataDate>
+         <xmp:CreateDate>2021-08-18T21:36:44-04:00</xmp:CreateDate>
+         <pdf:Keywords>machine-learning,security,proof-of-work</pdf:Keywords>
+         <pdf:Producer>OpenPDF 1.0.0-SNAPSHOT; modified using iText¬Æ 7.1.1 ¬©2000-2018 iText Group NV (AGPL-version)</pdf:Producer>
+         <gwg_preflight:profile_name>PDF Spec 4.12-Standards-All PDF Versions-22 March 2016</gwg_preflight:profile_name>
+         <gwg_preflight:profile_creator>Enfocus PitStop Server 20</gwg_preflight:profile_creator>
+         <gwg_preflight:profile_creator_version>20</gwg_preflight:profile_creator_version>
+         <gwg_preflight:profile_format_version>1.0</gwg_preflight:profile_format_version>
+         <gwg_preflight:preflight_results>Success</gwg_preflight:preflight_results>
+         <gwg_preflight:preflight_results_description>No errors or warnings, 1 fix</gwg_preflight:preflight_results_description>
+         <gwg_preflight:preflight_executed_date>2022-08-01T18:46:52</gwg_preflight:preflight_executed_date>
+         <gwg_preflight:profile_fingerprint>7df722bfc7644fb7318a99780b843ad6</gwg_preflight:profile_fingerprint>
+         <xmpMM:DocumentID>uuid:dcdb9e43-4d00-4841-a03f-a66877a2cdd4</xmpMM:DocumentID>
+         <xmpMM:InstanceID>uuid:52b32f9c-3621-874d-9f89-753c5fe591ff</xmpMM:InstanceID>
+         <CP2:sessions>
+            <rdf:Seq>
+               <rdf:li rdf:parseType="Resource">
+                  <CP2:session_id>1</CP2:session_id>
+                  <CP2:start_time>2022-08-01T18:46:52</CP2:start_time>
+                  <CP2:end_time>2022-08-01T18:46:52</CP2:end_time>
+                  <CP2:start_byte>0</CP2:start_byte>
+                  <CP2:tool_id>com.enfocus.cp2xmp-toolkit</CP2:tool_id>
+                  <CP2:tool_version>1</CP2:tool_version>
+                  <CP2:appl_id>com.enfocus.PitStopLibrary</CP2:appl_id>
+                  <CP2:appl_version>20</CP2:appl_version>
+                  <CP2:zones>
+                     <rdf:Bag>
+                        <rdf:li>/All/PDF/Metadata/CertifiedPDF</rdf:li>
+                        <rdf:li>/All/PDF/PageProperties/PageContent/RenderingContent</rdf:li>
+                     </rdf:Bag>
+                  </CP2:zones>
+                  <CP2:tool_desc>
+                     <rdf:Alt>
+                        <rdf:li xml:lang="x-default">Enfocus CertifiedPDF2XMP Toolkit v1</rdf:li>
+                        <rdf:li xml:lang="en-US">Enfocus CertifiedPDF2XMP Toolkit v1</rdf:li>
+                     </rdf:Alt>
+                  </CP2:tool_desc>
+                  <CP2:appl_desc>
+                     <rdf:Alt>
+                        <rdf:li xml:lang="x-default">Enfocus PitStop Server 20</rdf:li>
+                     </rdf:Alt>
+                  </CP2:appl_desc>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <CP2:session_id>2</CP2:session_id>
+                  <CP2:start_time>2022-08-24T17:57:19</CP2:start_time>
+                  <CP2:end_time>2022-08-24T17:57:19</CP2:end_time>
+                  <CP2:start_byte>0</CP2:start_byte>
+                  <CP2:tool_id>com.enfocus.cp2xmp-toolkit</CP2:tool_id>
+                  <CP2:tool_version>1</CP2:tool_version>
+                  <CP2:appl_id>com.enfocus.PitStopLibrary</CP2:appl_id>
+                  <CP2:appl_version>20</CP2:appl_version>
+                  <CP2:tool_desc>
+                     <rdf:Alt>
+                        <rdf:li xml:lang="x-default">Enfocus CertifiedPDF2XMP Toolkit v1</rdf:li>
+                        <rdf:li xml:lang="en-US">Enfocus CertifiedPDF2XMP Toolkit v1</rdf:li>
+                     </rdf:Alt>
+                  </CP2:tool_desc>
+                  <CP2:appl_desc>
+                     <rdf:Alt>
+                        <rdf:li xml:lang="x-default">Enfocus PitStop Server 20</rdf:li>
+                     </rdf:Alt>
+                  </CP2:appl_desc>
+               </rdf:li>
+            </rdf:Seq>
+         </CP2:sessions>
+         <CP2:certificates>
+            <rdf:Seq>
+               <rdf:li rdf:parseType="Resource">
+                  <CP2:class_id>Preflight</CP2:class_id>
+                  <CP2:type_id>com.enfocus.preflight</CP2:type_id>
+                  <CP2:type_version>1.0</CP2:type_version>
+                  <CP2:impl_id>com.enfocus.PitStopLibrary</CP2:impl_id>
+                  <CP2:impl_version>20</CP2:impl_version>
+                  <CP2:session_id_ref>1</CP2:session_id_ref>
+                  <CP2:state>Success</CP2:state>
+                  <CP2:fingerprint>7df722bfc7644fb7318a99780b843ad6</CP2:fingerprint>
+                  <CP2:time>2022-08-01T18:46:52</CP2:time>
+                  <CP2:type_desc>
+                     <rdf:Alt>
+                        <rdf:li xml:lang="x-default">Enfocus Preflight Certificate v1.0</rdf:li>
+                     </rdf:Alt>
+                  </CP2:type_desc>
+                  <CP2:impl_desc>
+                     <rdf:Alt>
+                        <rdf:li xml:lang="x-default">Enfocus PitStop Server 20</rdf:li>
+                     </rdf:Alt>
+                  </CP2:impl_desc>
+                  <CP2:statement_desc>
+                     <rdf:Alt>
+                        <rdf:li xml:lang="x-default">Conforms to Preflight Profile PDF Spec 4.12-Standards-All PDF Versions-22 March 2016</rdf:li>
+                     </rdf:Alt>
+                  </CP2:statement_desc>
+                  <CP2:state_desc>
+                     <rdf:Alt>
+                        <rdf:li xml:lang="x-default">No errors or warnings, 1 fix</rdf:li>
+                     </rdf:Alt>
+                  </CP2:state_desc>
+                  <CP2:zones>
+                     <rdf:Bag>
+                        <rdf:li>/All/PDF/Metadata</rdf:li>
+                        <rdf:li>/All/PDF/PageProperties/PageContent/RenderingContent</rdf:li>
+                     </rdf:Bag>
+                  </CP2:zones>
+                  <CP2:data>
+                     <rdf:Bag>
+                        <rdf:li rdf:parseType="Resource">
+                           <CP2:tag>Legacy</CP2:tag>
+                           <CP2:text>true</CP2:text>
+                        </rdf:li>
+                     </rdf:Bag>
+                  </CP2:data>
+                  <CP2:data_desc>
+                     <rdf:Alt>
+                        <rdf:li xml:lang="x-default">PDF Spec 4.12-Standards-All PDF Versions-22 March 2016</rdf:li>
+                     </rdf:Alt>
+                  </CP2:data_desc>
+               </rdf:li>
+            </rdf:Seq>
+         </CP2:certificates>
+      </rdf:Description>
+   </rdf:RDF>
+</x:xmpmeta>
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                           
+<?xpacket end="w"?>endstreamendobj7 0 obj<</Author(Hengrui Jia)/CreationDate(D:20210818213644-04'00')/IEEE#20Article#20ID(9519402)/IEEE#20Issue#20ID(9519382)/IEEE#20Publication#20ID(9519381)/Keywords(machine-learning,security,proof-of-work)/Meeting#20Ending#20Date(27 May 2021)/Meeting#20Starting#20Date(24 May 2021)/ModDate(D:20230620113633+08'00')/Producer(OpenPDF 1.0.0-SNAPSHOT; modified using iTextÆ 7.1.1 ©2000-2018 iText Group NV \(AGPL-version\))/Subject(2021 IEEE Symposium on Security and Privacy \(SP\);2021; ; ;10.1109/SP40001.2021.00106)/Title(Proof-of-Learning: Definitions and Practice)>>endobj25 0 obj<</Annots 406 0 R/ArtBox[0 0 504 648]/BleedBox[0 0 612 792]/Contents[84 0 R 54 0 R 85 0 R 86 0 R 87 0 R]/CropBox[0 0 612 792]/MediaBox[0 0 612 792]/Parent 10 0 R/Resources<</Font<</F1 72 0 R/F10 71 0 R/F100 88 0 R/F102 77 0 R/F107 42 0 R/F11 66 0 R/F111 41 0 R/F114 44 0 R/F120 83 0 R/F13 58 0 R/F14 67 0 R/F16 48 0 R/F7 69 0 R/F8 64 0 R/F9 68 0 R/Xi5 43 0 R>>/ProcSet[/PDF/Text/ImageB/ImageC/ImageI]>>/Rotate 0/TrimBox[0 0 612 792]/Type/Page>>endobj406 0 obj[407 0 R 408 0 R]endobj407 0 obj<</AP<</N 409 0 R>>/C[1.0 0.819611 0.0]/CA 0.399994/CreationDate(D:20230609112642+08'00')/F 4/M(D:20230609112642+08'00')/NM(154526f9-2861-bd47-9cc6-daded52975f4)/P 25 0 R/Popup 408 0 R/QuadPoints[267.569 693.515 300.501 693.515 267.569 682.522 300.501 682.522 86.3525 682.568 154.633 682.568 86.3525 671.576 154.633 671.576 158.305 682.531 166.921 682.531 158.305 670.308 166.921 670.308 166.92 682.568 172.239 682.568 166.92 671.576 172.239 671.576 70.6178 680.981 82.2236 680.981 70.6178 671.175 82.2236 671.175]/Rect[68.0 669.926 303.436 693.858]/Subj(Highlight)/Subtype/Highlight/T(duanmoming)/Type/Annot>>endobj408 0 obj<</F 28/Open false/Parent 407 0 R/Rect[612.0 601.515 796.0 693.515]/Subtype/Popup/Type/Annot>>endobj409 0 obj<</BBox[0.0 0.0 235.436 23.9327]/FormType 1/Length 27/Matrix[1.0 0.0 0.0 1.0 0.0 0.0]/Resources<</ExtGState<</R0<</AIS false/CA 0.399994/Type/ExtGState/ca 0.399994>>/R1<</AIS false/BM/Multiply/Type/ExtGState>>>>/ProcSet[/PDF]/XObject<</MWFOForm 410 0 R>>>>/Subtype/Form/Type/XObject>>stream
+/R0 gs
+/R1 gs
+/MWFOForm Do
+endstreamendobj410 0 obj<</BBox[0.0 0.0 235.436 23.9327]/FormType 1/Group<</S/Transparency>>/Length 9/Matrix[1.0 0.0 0.0 1.0 0.0 0.0]/Resources<</ProcSet[/PDF]/XObject<</Form 411 0 R>>>>/Subtype/Form/Type/XObject>>stream
+/Form Do
+endstreamendobj411 0 obj<</BBox[68.0 669.926 303.436 693.858]/Filter[/FlateDecode]/FormType 1/Length 305/Matrix[1.0 0.0 0.0 1.0 -68.0 -669.926]/Resources<</ProcSet[/PDF]>>/Subtype/Form/Type/XObject>>stream
+HâTí9rƒ0sΩÇ/@· Æ˜lïù¨'˛æ¡]ìê#QÕ∞9Ñ†4¢Å„˚ÛB∞Òs±9®•e÷ÒUlBz,¶@$s4IÑd…—πPö1ó Ç"q≥g1L¶N6Ÿ”;∑◊«¢µ6'PW/±p#+4ÅÃl4»Ús'¥&Ÿí"ù`"|–≥êÛ‰é›»ﬂ‰éÌ„ó÷q≥Z#\nXO∑r#Uò,QLÄ"b‹HÇ) 8±•"¥ÓYáU-DÕ œYn¡&{¯…mÖ∑ﬂ˚´æwÒ_yTﬂP8oÌ›»Ó·‰∫?g®K¯Ωøú~À5Ÿ≥OÏFú%ËkÂÒ⁄≠Ú≥’çÈÎä3JÍºòÂ'ı'Æâ•ƒ,÷Ëy≈¨gv¨¡{Ó…Ï£óÿØ  ‚Õú¡endstreamendobjxref
+0 1
+0000000000 65535 f
+3 1
+0001344316 00000 n
+7 1
+0001355563 00000 n
+25 1
+0001356141 00000 n
+406 6
+0001356602 00000 n
+0001356637 00000 n
+0001357265 00000 n
+0001357377 00000 n
+0001357724 00000 n
+0001357959 00000 n
+trailer<</Size 412/Root 1 0 R/Info 7 0 R/ID[<3B4D6BBCF06CD2B68557C5F2C8B32E18><403FAF326E484F2D842E20995B447C59>]/Prev 1343928>>startxref1358475%%EOF

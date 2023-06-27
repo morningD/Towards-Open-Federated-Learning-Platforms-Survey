@@ -533,114 +533,143 @@ Therefore, in the next section, we will summarize the popular hybrid model reusi
   %\setlength\arrayrulewidth{0.001pt}
   \begin{longtable}{|p{1.68cm}|p{1.2cm}|p{1.25cm}|p{5.0cm}|p{2.59cm}|p{1.2cm}|p{0.35cm}|}
     \hline
+    \rowcolor[gray]{.8}
     \multicolumn{1}{|c|}{FL Studies} & \multicolumn{1}{c|}{\textbf{C}ombination} & \multicolumn{1}{c|}{\textbf{A}malgamation} & \multicolumn{1}{c|}{\textbf{D}istillation} & \multicolumn{1}{c|}{\textbf{G}eneration} & \multicolumn{1}{c|}{Process}& \multicolumn{1}{c|}{Goals} \\ \hline
-    FedAvg~\cite{mcmahan2017communication} & &  \textcolor{purple}{Model Avg}  &  &  & [\textcolor{blue}{/}\textcolor{purple}{A}]*N & EH   \\ \hline
+    FedAvg~\cite{mcmahan2017communication} & n/a &  \textcolor{purple}{Model Avg}  & n/a & n/a & [\textcolor{blue}{/}\textcolor{purple}{A}]*N & EH   \\ \hline
 
-    \textcolor{red}{FedAD}~\cite{gong2021ensemble} & & & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Attention, Logits}}  & & \textcolor{blue}{/}[\textcolor{purple}{D}]*1 & HP \\ \hline %CC
+    \rowcolor[gray]{.9}
+    \textcolor{red}{FedAD}~\cite{gong2021ensemble} & n/a & n/a & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Attention, Logits}}  & n/a & \textcolor{blue}{/}[\textcolor{purple}{D}]*1 & HP \\ \hline %CC
+  
+    \textcolor{red}{FedKD\textsubscript{1}}~\cite{gong2022preserving} & n/a & n/a & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Weighted Logits}} & n/a &\textcolor{blue}{/}[\textcolor{purple}{D}]*1 & EHP \\ \hline %CC
 
-    \textcolor{red}{FedKD\textsubscript{1}}~\cite{gong2022preserving} & & & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Weighted Logits}} & &\textcolor{blue}{/}[\textcolor{purple}{D}]*1 & EHP \\ \hline %CC
+    \rowcolor[gray]{.9}
+    \textcolor{red}{FedED}~\cite{sui2020feded} & n/a & n/a & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Logits Avg on Global Validation Data}} & n/a &[\textcolor{blue}{,}\textcolor{purple}{D}]*N & EHP \\ \hline %CC 
 
-    \textcolor{red}{FedED}~\cite{sui2020feded}& & & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Logits Avg on Global Validation Data}} & &[\textcolor{blue}{,}\textcolor{purple}{D}]*N & EHP \\ \hline %CC 
+    FedIris~\cite{luo2022fediris} & n/a & n/a & \textcolor{blue}{KD \textit{Hidden}} & n/a &[\textcolor{blue}{D}]*N & H \\ \hline %CC
 
-    FedIris~\cite{luo2022fediris} &&&\textcolor{blue}{KD \textit{Hidden}} &&[\textcolor{blue}{D}]*N & H \\ \hline %CC
+    \rowcolor[gray]{.9}
+    FedMD~\cite{li2019fedmd} & n/a & n/a & \textcolor{blue}{KD \textbf{Logits Avg}} & n/a &[\textcolor{blue}{D/}]*N & H \\ \hline %CC
 
-    FedMD~\cite{li2019fedmd} &&&\textcolor{blue}{KD \textbf{Logits Avg}} &&[\textcolor{blue}{D/}]*N & H \\ \hline %CC
+    FedMD-NFDP~\cite{sun2020federated}& n/a & n/a & \textcolor{blue}{KD \textbf{Logits/Softmax/Argmax Avg}} & n/a & \textcolor{blue}{/}[\textcolor{blue}{D/}]*N & HP \\ \hline %CC
 
-    FedMD-NFDP~\cite{sun2020federated}& & & \textcolor{blue}{KD \textbf{Logits/Softmax/Argmax Avg}} & & \textcolor{blue}{/}[\textcolor{blue}{D/}]*N & HP \\ \hline %CC
+    \rowcolor[gray]{.9}
+    DS-FL~\cite{itahara2021distillation}& n/a & n/a & \textcolor{blue}{KD \textbf{Entropy Reduced Logits Avg}} & n/a &[\textcolor{blue}{/D}]*N & EH \\ \hline %CC
 
-    DS-FL~\cite{itahara2021distillation}& & & \textcolor{blue}{KD \textbf{Entropy Reduced Logits Avg}} & &[\textcolor{blue}{/D}]*N & EH \\ \hline %CC
+    \textcolor{red}{RHFL}~\cite{fang2022robust} & n/a & n/a & \textcolor{blue}{KD \textbf{Weighted Logits}} & n/a & \textcolor{blue}{/}[\textcolor{blue}{D}]*N & EH \\ \hline
 
-    \textcolor{red}{RHFL}~\cite{fang2022robust}& & & \textcolor{blue}{KD \textbf{Weighted Logits}} & & \textcolor{blue}{/}[\textcolor{blue}{D}]*N & EH \\ \hline
+    \rowcolor[gray]{.9}
+    KT-pFL~\cite{zhang2021parameterized} & n/a & n/a & \textcolor{blue}{KD \textbf{Learned Weighted Softmax}} & n/a &[\textcolor{blue}{/D}]*N & EH \\ \hline
 
-    KT-pFL~\cite{zhang2021parameterized}& & & \textcolor{blue}{KD \textbf{Learned Weighted Softmax}} & &[\textcolor{blue}{/D}]*N & EH \\ \hline
-
-    Cronus~\cite{chang2021cronus}& & & \textcolor{blue}{KD} \textcolor{blue}{\textbf{Robust Mean Estimation of Softmax}} & & \textcolor{blue}{/}[\textcolor{blue}{/D}]*N & EHP \\ \hline
-
-    FedDISC~\cite{yang2023exploring}& & & & \textcolor{purple}{\textit{Synthetic Data}} &[\textcolor{purple}{G}]*1\textcolor{purple}{,} & EH \\ \hline
-
-    FRD~\cite{cha2019federated}& & & & \textcolor{purple}{\textit{Mixup Data}} &[\textcolor{purple}{G}]*1\textcolor{purple}{,} & E \\ \hline
-
-    \textcolor{red}{One-Shot FL}~\cite{guha2018one} & \textcolor{purple}{Output Avg} & & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax}} & & \textcolor{blue}{/}[\textcolor{purple}{CD}]*1 & EP \\ \hline %CC
-
-    FedDF~\cite{lin2020ensemble} &  & \textcolor{purple}{Model Avg} & \textcolor{purple}{KD}  \textcolor{blue}{\textbf{Logits Avg}} & & [\textcolor{blue}{/}\textcolor{purple}{AD}]*N & HP \\ \hline %CC
-
-    PerAda~\cite{xie2023perada} &  & \textcolor{purple}{Adapter Avg} & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Logits Avg}} & & [\textcolor{blue}{//}\textcolor{purple}{AD}]*N & EHP \\ \hline
-
-    FedFiMa~\cite{che2022federated} &  & \textcolor{purple}{Rep. Layer Avg} & \textcolor{blue}{KD} \textcolor{blue}{\textbf{Hidden Avg}} & & [\textcolor{blue}{/}\textcolor{purple}{A}\textcolor{blue}{D}]*N & EH \\ \hline
-
-    FedFusion~\cite{yao2019towards} & & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD} \textcolor{blue}{\textit{Hidden}}, \textcolor{purple}{\textit{Hidden}} & & [\textcolor{blue}{D}\textcolor{purple}{A}]*N & E \\ \hline %CC
-
-    FedNTD~\cite{lee2022preservation} & & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD} \textcolor{purple}{\textit{Not-True Classes Softmax}} & & [\textcolor{blue}{D}\textcolor{purple}{A}]*N & H \\ \hline %CC
-
-    FedKC~\cite{wang2022fedkc} & & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD} \textcolor{blue}{\textit{Clustered Hidden Avg}} & & [\textcolor{blue}{D}\textcolor{purple}{A}]*N & HP \\ \hline %CC
-
-    FedDistill~\cite{jiang2020federated}& & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD \textit{Softmax of Latest Local Model}}& &[\textcolor{blue}{/D}\textcolor{purple}{A}]*N & H \\ \hline %CC
-
-    pFedSD~\cite{jin2022personalized}& & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD \textit{Softmax of Pervious Local Model}}& &[\textcolor{blue}{/D}\textcolor{purple}{A}]*N & H \\ \hline
-
-    FedMLB~\cite{kim2022multi} & & \textcolor{purple}{Model Avg} &\textcolor{blue}{KD} \textcolor{purple}{\textit{Softmax, Scaled Softmax}} & & [\textcolor{blue}{/D}\textcolor{purple}{A}]*N & EH \\ \hline %CC
-
-    FedAlign\textsubscript{1}~\cite{mendieta2022local}& &\textcolor{purple}{Model Avg}&\textcolor{blue}{KD}  \textcolor{purple}{\textit{Lipschitz Constants}}~\cite{shang2021lipschitz}& & [\textcolor{blue}{/D}\textcolor{purple}{A}]*N & EH \\ \hline %CC
+    Cronus~\cite{chang2021cronus} & n/a & n/a & \textcolor{blue}{KD} \textcolor{blue}{\textbf{Robust Mean Estimation of Softmax}} & n/a & \textcolor{blue}{/}[\textcolor{blue}{/D}]*N & EHP \\ \hline
     
-    MOON~\cite{li2021model} & & \textcolor{purple}{Model Avg} & \textcolor{blue}{Contrastive Learning} \textcolor{purple}{\textit{Hidden}}, \textcolor{blue}{\textit{Hidden}} &&[\textcolor{blue}{/D}\textcolor{purple}{A}]*N & EH \\ \hline %CC
+    \rowcolor[gray]{.9}
+    FedDISC~\cite{yang2023exploring} & n/a & n/a & n/a & \textcolor{purple}{\textit{Synthetic Data}} &[\textcolor{purple}{G}]*1\textcolor{purple}{,} & EH \\ \hline
 
-    FedCAD~\cite{he2022class} & & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD} \textcolor{purple}{\textit{Class-Wise Softmax}} &&[\textcolor{blue}{/D}\textcolor{purple}{A}]*N & H \\ \hline %CC
+    FRD~\cite{cha2019federated} & n/a & n/a & n/a & \textcolor{purple}{\textit{Mixup Data}} &[\textcolor{purple}{G}]*1\textcolor{purple}{,} & E \\ \hline
 
-    FedGKT~\cite{he2020group} & & & \textcolor{blue}{KD} \textcolor{purple}{\textit{Logits}} \textcolor{purple}{KD} \textcolor{blue}{\textit{Logits, Hidden, Argmax}} & & [\textcolor{blue}{/D}\textcolor{purple}{/D}]*N & EH \\ \hline
+    \rowcolor[gray]{.9}
+    \textcolor{red}{One-Shot FL}~\cite{guha2018one} & \textcolor{purple}{Output Avg} & n/a & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax}} & n/a & \textcolor{blue}{/}[\textcolor{purple}{CD}]*1 & EP \\ \hline %CC
 
-    FCCL~\cite{huang2022learn} & & & \textcolor{purple}{Contrastive Learning} \textcolor{blue}{\textbf{Logits Avg}} \textcolor{blue}{Continual Learning} \textcolor{blue}{\textit{Logits}} & & [\textcolor{purple}{D}\textcolor{blue}{/D}]*N & H \\ \hline %CC
+    FedDF~\cite{lin2020ensemble} & n/a & \textcolor{purple}{Model Avg} & \textcolor{purple}{KD}  \textcolor{blue}{\textbf{Logits Avg}} & n/a & [\textcolor{blue}{/}\textcolor{purple}{AD}]*N & HP \\ \hline %CC
 
-    \textcolor{orange}{GFL}~\cite{cheng2023gfl} & & \textcolor{purple}{Model Avg} & & \textcolor{blue}{\textbf{Synthetic Data}} & \textcolor{blue}{/G}[\textcolor{blue}{,}\textcolor{purple}{A,}]*N & HP \\ \hline
+    \rowcolor[gray]{.9}
+    PerAda~\cite{xie2023perada} & n/a & \textcolor{purple}{Adapter Avg} & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Logits Avg}} & n/a & [\textcolor{blue}{//}\textcolor{purple}{AD}]*N & EHP \\ \hline
 
-    FOSTER~\cite{yu2023turning} & & \textcolor{purple}{Model Avg} & & \textcolor{blue}{\textbf{Synthetic Outliers}} & \textcolor{purple}{,}[\textcolor{blue}{G/}\textcolor{purple}{A}]*N & EH \\ \hline
+    FedFiMa~\cite{che2022federated} & n/a & \textcolor{purple}{Rep. Layer Avg} & \textcolor{blue}{KD} \textcolor{blue}{\textbf{Hidden Avg}} & n/a & [\textcolor{blue}{/}\textcolor{purple}{A}\textcolor{blue}{D}]*N & EH \\ \hline
 
-    FedDG~\cite{liu2021feddg} & & \textcolor{purple}{Model Avg} & & \textcolor{blue}{\textbf{Interpolated Data}} & [\textcolor{blue}{G/}\textcolor{purple}{A}]*N & H \\ \hline  % 基于振幅的插值，可以认为不涉及隐私数据
+    \rowcolor[gray]{.9}
+    FedFusion~\cite{yao2019towards} & n/a & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD} \textcolor{blue}{\textit{Hidden}}, \textcolor{purple}{\textit{Hidden}} & n/a & [\textcolor{blue}{D}\textcolor{purple}{A}]*N & E \\ \hline %CC
 
-    SemiFL~\cite{diao2022semifl} & & \textcolor{purple}{Model Avg} & & \textcolor{blue}{\textit{Augmented and Mixup Data}} & [\textcolor{purple}{,}\textcolor{blue}{G/}\textcolor{purple}{A}]*N & H \\ \hline 
+    FedNTD~\cite{lee2022preservation} & n/a & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD} \textcolor{purple}{\textit{Not-True Classes Softmax}} & n/a & [\textcolor{blue}{D}\textcolor{purple}{A}]*N & H \\ \hline %CC
 
-    NeighGen~\cite{zhang2021subgraph} \newline FedSage~\cite{zhang2021subgraph} & & \textcolor{purple}{Gradient Avg}\newline\textcolor{purple}{Model Avg} & &\textcolor{blue}{\textit{Synthetic Node}} & [\textcolor{blue}{G/}\textcolor{purple}{A}]*N \newline [\textcolor{blue}{/}\textcolor{purple}{A}]*N & H \\ \hline
+    \rowcolor[gray]{.9}
+    FedKC~\cite{wang2022fedkc} & n/a & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD} \textcolor{blue}{\textit{Clustered Hidden Avg}} & n/a & [\textcolor{blue}{D}\textcolor{purple}{A}]*N & HP \\ \hline %CC
+
+    FedDistill~\cite{jiang2020federated} & n/a & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD \textit{Softmax of Latest Local Model}} & n/a &[\textcolor{blue}{/D}\textcolor{purple}{A}]*N & H \\ \hline %CC
+
+    \rowcolor[gray]{.9}
+    pFedSD~\cite{jin2022personalized} & n/a & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD \textit{Softmax of Pervious Local Model}} & n/a &[\textcolor{blue}{/D}\textcolor{purple}{A}]*N & H \\ \hline
+
+    FedMLB~\cite{kim2022multi} & n/a & \textcolor{purple}{Model Avg} &\textcolor{blue}{KD} \textcolor{purple}{\textit{Softmax, Scaled Softmax}} & n/a & [\textcolor{blue}{/D}\textcolor{purple}{A}]*N & EH \\ \hline %CC
+
+    \rowcolor[gray]{.9}
+    FedAlign\textsubscript{1}~\cite{mendieta2022local} & n/a &\textcolor{purple}{Model Avg}&\textcolor{blue}{KD}  \textcolor{purple}{\textit{Lipschitz Constants}}~\cite{shang2021lipschitz} & n/a & [\textcolor{blue}{/D}\textcolor{purple}{A}]*N & EH \\ \hline %CC
     
-    Fed-ZDAC~\cite{hao2021towards} & & \textcolor{purple}{Model Avg} & & \textcolor{blue}{\textbf{Zero-shot Synthetic Data}} & [\textcolor{blue}{G/}\textcolor{purple}{A}]*N & HP \\
-    Fed-ZDAS~\cite{hao2021towards} & &  & & \textcolor{purple}{\textbf{Zero-shot Synthetic Data}} & [\textcolor{blue}{/}\textcolor{purple}{G,A}]*N & \\ \hline
+    MOON~\cite{li2021model} & n/a & \textcolor{purple}{Model Avg} & \textcolor{blue}{Contrastive Learning} \textcolor{purple}{\textit{Hidden}}, \textcolor{blue}{\textit{Hidden}} & n/a &[\textcolor{blue}{/D}\textcolor{purple}{A}]*N & EH \\ \hline %CC
 
-    FedMix~\cite{yoon2021fedmix} & & \textcolor{purple}{Model Avg} & & \textcolor{purple}{\textit{Mixup Data}} \textcolor{blue}{\textit{Mixup Data}}& [\textcolor{purple}{GA\textcolor{blue}{,}}]*N\textcolor{blue}{G}\textcolor{blue}{,} & HP \\ \hline
+    \rowcolor[gray]{.9}
+    FedCAD~\cite{he2022class} & n/a & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD} \textcolor{purple}{\textit{Class-Wise Softmax}} & n/a & [\textcolor{blue}{/D}\textcolor{purple}{A}]*N & H \\ \hline %CC
 
-    FedDyn~\cite{jin2023feddyn} & & & \textcolor{purple}{KD} \textcolor{blue}{\textit{Hidden, Logits Avg}} & \textcolor{blue}{\textbf{Synthetic Data}} & [\textcolor{blue}{/G}\textcolor{purple}{D}]*N & E \\ \hline
+    FedGKT~\cite{he2020group} & n/a & n/a & \textcolor{blue}{KD} \textcolor{purple}{\textit{Logits}} \textcolor{purple}{KD} \textcolor{blue}{\textit{Logits, Hidden, Argmax}} & n/a & [\textcolor{blue}{/D}\textcolor{purple}{/D}]*N & EH \\ \hline
 
-    FD+FAug~\cite{jeong2018communication} & & & \textcolor{blue}{KD} \textcolor{blue}{\textit{Per-Class Logits Avg}} & \textcolor{blue}{\textbf{Synthetic Data}} & [\textcolor{purple}{/}\textcolor{blue}{G}\textcolor{blue}{/D}]*N & EP \\ \hline
+    \rowcolor[gray]{.9}
+    FCCL~\cite{huang2022learn} & n/a & n/a & \textcolor{purple}{Contrastive Learning} \textcolor{blue}{\textbf{Logits Avg}} \textcolor{blue}{Continual Learning} \textcolor{blue}{\textit{Logits}} & n/a & [\textcolor{purple}{D}\textcolor{blue}{/D}]*N & H \\ \hline %CC
 
-    \textcolor{red}{FedCAVE-Ens}~\cite{heinbaugh2023data} & \textcolor{purple}{Collection}  & & & \textcolor{purple}{\textbf{Synthetic Data}} & \textcolor{blue}{/}\textcolor{purple}{C}[\textcolor{purple}{G,}]*1 & H \\
-    \textcolor{red}{FedCAVE-KD}~\cite{heinbaugh2023data} &  & & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax}} & & \textcolor{blue}{/}\textcolor{purple}{C}[\textcolor{purple}{GDG,}]*1 & H \\ \hline
+    \textcolor{orange}{GFL}~\cite{cheng2023gfl} & n/a & \textcolor{purple}{Model Avg} & n/a & \textcolor{blue}{\textbf{Synthetic Data}} & \textcolor{blue}{/G}[\textcolor{blue}{,}\textcolor{purple}{A,}]*N & HP \\ \hline
 
-    Fed-ET~\cite{cho2022heterogeneous} & & \textcolor{purple}{Rep. Layer Avg} \newline \textcolor{purple}{Model Avg}  & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Argmax, Weighted Logits}} & & [\textcolor{blue}{/}\textcolor{purple}{ADA}]*N & EH \\ \hline
+    \rowcolor[gray]{.9}
+    FOSTER~\cite{yu2023turning} & n/a & \textcolor{purple}{Model Avg} & n/a & \textcolor{blue}{\textbf{Synthetic Outliers}} & \textcolor{purple}{,}[\textcolor{blue}{G/}\textcolor{purple}{A}]*N & EH \\ \hline
 
-    \textcolor{orange}{FedBE}~\cite{chen2020fedbe} & & \textcolor{purple}{Model Avg} & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax Avg}} & \textcolor{purple}{\textbf{Synthetic Model}} & [\textcolor{blue}{/}\textcolor{purple}{AGD}]*1 & H \\ \hline %CC
+    FedDG~\cite{liu2021feddg} & n/a & \textcolor{purple}{Model Avg} & n/a & \textcolor{blue}{\textbf{Interpolated Data}} & [\textcolor{blue}{G/}\textcolor{purple}{A}]*N & H \\ \hline  % 基于振幅的插值，可以认为不涉及隐私数据
 
-    DynaFed~\cite{pi2022dynafed} & & \textcolor{purple}{Model Avg} & & \textcolor{purple}{\textbf{Synthetic Data}} & [\textcolor{blue}{/}\textcolor{purple}{A}]*N\textcolor{purple}{G}[\textcolor{purple}{A,}]*N & EH \\ \hline
+    \rowcolor[gray]{.9}
+    SemiFL~\cite{diao2022semifl} & n/a & \textcolor{purple}{Model Avg} & n/a & \textcolor{blue}{\textit{Augmented and Mixup Data}} & [\textcolor{purple}{,}\textcolor{blue}{G/}\textcolor{purple}{A}]*N & H \\ \hline 
 
-    \textcolor{orange}{FedAUX}~\cite{sattler2021fedaux}& & \textcolor{purple}{Model Avg} & \textcolor{blue}{Contrastive Learning} \textcolor{purple}{\textbf{Hidden}, \textit{Hidden}} \newline \textcolor{purple}{KD} \textcolor{blue}{\textbf{Weighted Logits}} & & \textcolor{purple}{,}\textcolor{blue}{D}[\textcolor{purple}{A\textcolor{blue}{/}D}]*N \newline \textcolor{purple}{,}\textcolor{blue}{D}[\textcolor{purple}{A\textcolor{blue}{/}D}]*1 & HP \\ \hline %CC
+    NeighGen~\cite{zhang2021subgraph} \newline FedSage~\cite{zhang2021subgraph} & & \textcolor{purple}{Gradient Avg}\newline\textcolor{purple}{Model Avg} & n/a &\textcolor{blue}{\textit{Synthetic Node}} & [\textcolor{blue}{G/}\textcolor{purple}{A}]*N \newline [\textcolor{blue}{/}\textcolor{purple}{A}]*N & H \\ \hline
+
+    \rowcolor[gray]{.9}
+    Fed-ZDAC~\cite{hao2021towards} & n/a & \textcolor{purple}{Model Avg} & n/a & \textcolor{blue}{\textbf{Zero-shot Synthetic Data}} & [\textcolor{blue}{G/}\textcolor{purple}{A}]*N & HP \\
+    \rowcolor[gray]{.9}
+    Fed-ZDAS~\cite{hao2021towards} & n/a & n/a & n/a & \textcolor{purple}{\textbf{Zero-shot Synthetic Data}} & [\textcolor{blue}{/}\textcolor{purple}{G,A}]*N & \\ \hline
+
+    FedMix~\cite{yoon2021fedmix} & n/a & \textcolor{purple}{Model Avg} & n/a & \textcolor{purple}{\textit{Mixup Data}} \textcolor{blue}{\textit{Mixup Data}} & [\textcolor{purple}{GA\textcolor{blue}{,}}]*N\textcolor{blue}{G}\textcolor{blue}{,} & HP \\ \hline
+
+    \rowcolor[gray]{.9}
+    FedDyn~\cite{jin2023feddyn} & n/a & n/a & \textcolor{purple}{KD} \textcolor{blue}{\textit{Hidden, Logits Avg}} & \textcolor{blue}{\textbf{Synthetic Data}} & [\textcolor{blue}{/G}\textcolor{purple}{D}]*N & E \\ \hline
+
+    FD+FAug~\cite{jeong2018communication} & n/a & n/a & \textcolor{blue}{KD} \textcolor{blue}{\textit{Per-Class Logits Avg}} & \textcolor{blue}{\textbf{Synthetic Data}} & [\textcolor{purple}{/}\textcolor{blue}{G}\textcolor{blue}{/D}]*N & EP \\ \hline
+
+    \rowcolor[gray]{.9}
+    \textcolor{red}{FedCAVE-Ens}~\cite{heinbaugh2023data} & \textcolor{purple}{Collection}  & n/a & n/a & \textcolor{purple}{\textbf{Synthetic Data}} & \textcolor{blue}{/}\textcolor{purple}{C}[\textcolor{purple}{G,}]*1 & H \\
+    \rowcolor[gray]{.9}
+    \textcolor{red}{FedCAVE-KD}~\cite{heinbaugh2023data} & n/a & n/a & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax}} & & \textcolor{blue}{/}\textcolor{purple}{C}[\textcolor{purple}{GDG,}]*1 & H \\ \hline
+
+    Fed-ET~\cite{cho2022heterogeneous} & n/a & \textcolor{purple}{Rep. Layer Avg} \newline \textcolor{purple}{Model Avg} & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Argmax, Weighted Logits}} & n/a & [\textcolor{blue}{/}\textcolor{purple}{ADA}]*N & EH \\ \hline
+
+    \rowcolor[gray]{.9}
+    \textcolor{orange}{FedBE}~\cite{chen2020fedbe} & n/a & \textcolor{purple}{Model Avg} & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax Avg}} & \textcolor{purple}{\textbf{Synthetic Model}} & [\textcolor{blue}{/}\textcolor{purple}{AGD}]*1 & H \\ \hline %CC
+
+    DynaFed~\cite{pi2022dynafed} & n/a & \textcolor{purple}{Model Avg} & n/a & \textcolor{purple}{\textbf{Synthetic Data}} & [\textcolor{blue}{/}\textcolor{purple}{A}]*N\textcolor{purple}{G}[\textcolor{purple}{A,}]*N & EH \\ \hline
+
+    \rowcolor[gray]{.9}
+    \textcolor{orange}{FedAUX}~\cite{sattler2021fedaux} & n/a & \textcolor{purple}{Model Avg} & \textcolor{blue}{Contrastive Learning} \textcolor{purple}{\textbf{Hidden}, \textit{Hidden}} \newline \textcolor{purple}{KD} \textcolor{blue}{\textbf{Weighted Logits}} & n/a & \textcolor{purple}{,}\textcolor{blue}{D}[\textcolor{purple}{A\textcolor{blue}{/}D}]*N \newline \textcolor{purple}{,}\textcolor{blue}{D}[\textcolor{purple}{A\textcolor{blue}{/}D}]*1 & HP \\ \hline %CC
     
-    FedKD\textsubscript{2}~\cite{wu2022communication} & & \textcolor{purple}{Gradient Avg} & \textcolor{blue}{KD} \textcolor{purple}{\textit{Hidden, Attention, Logits}} \textcolor{blue}{KD} \textcolor{blue}{\textit{Hidden, Attention, Logits}} & & [\textcolor{blue}{/D}\textcolor{purple}{A}\textcolor{blue}{D}]*N & EH \\ \hline %CC
+    FedKD\textsubscript{2}~\cite{wu2022communication} & n/a & \textcolor{purple}{Gradient Avg} & \textcolor{blue}{KD} \textcolor{purple}{\textit{Hidden, Attention, Logits}} \textcolor{blue}{KD} \textcolor{blue}{\textit{Hidden, Attention, Logits}} & n/a & [\textcolor{blue}{/D}\textcolor{purple}{A}\textcolor{blue}{D}]*N & EH \\ \hline %CC
 
-    FedGen~\cite{zhu2021data} & & \textcolor{purple}{Model Avg} &\textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax}} \textcolor{purple}{KD} \textcolor{blue}{\textbf{Logits Avg}} & \textcolor{blue}{\textbf{Augmented Data}} & \textcolor{purple}{D}[\textcolor{blue}{/G,}\textcolor{purple}{AD}]*N & EHP \\ \hline %CC
+    \rowcolor[gray]{.9}
+    FedGen~\cite{zhu2021data} & n/a & \textcolor{purple}{Model Avg} & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax}} \textcolor{purple}{KD} \textcolor{blue}{\textbf{Logits Avg}} & \textcolor{blue}{\textbf{Augmented Data}} & \textcolor{purple}{D}[\textcolor{blue}{/G,}\textcolor{purple}{AD}]*N & EHP \\ \hline %CC
 
-    SDA-FL~\cite{liz2022federated} & & \textcolor{purple}{Model Avg} & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Argmax}} & \textcolor{blue}{\textbf{Synthetic Data}}\newline  \textcolor{blue}{\textit{Augmented Data}} & \textcolor{blue}{/G}[\textcolor{blue}{G/}\textcolor{purple}{AD}]*N & HP \\ \hline
+    SDA-FL~\cite{liz2022federated} & n/a & \textcolor{purple}{Model Avg} & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Argmax}} & \textcolor{blue}{\textbf{Synthetic Data}}\newline \textcolor{blue}{\textit{Augmented Data}} & \textcolor{blue}{/G}[\textcolor{blue}{G/}\textcolor{purple}{AD}]*N & HP \\ \hline
 
-    FedKT~\cite{li2020practical} & \textcolor{blue}{Voting} \textcolor{purple}{Voting} & & \textcolor{blue}{KD} \textcolor{blue}{\textbf{Argmax}} \textcolor{purple}{KD} \textcolor{blue}{\textbf{Argmax}} & & [\textcolor{blue}{/CD}\textcolor{purple}{CD}]*1 & HP \\ \hline %CC %是否属于KD还是train取决于数据是否由其他模型生成的
+    \rowcolor[gray]{.9}
+    FedKT~\cite{li2020practical} & \textcolor{blue}{Voting} \textcolor{purple}{Voting} & n/a & \textcolor{blue}{KD} \textcolor{blue}{\textbf{Argmax}} \textcolor{purple}{KD} \textcolor{blue}{\textbf{Argmax}} & n/a & [\textcolor{blue}{/CD}\textcolor{purple}{CD}]*1 & HP \\ \hline %CC %是否属于KD还是train取决于数据是否由其他模型生成的
 
-    FedMatch~\cite{jeong2020federated} & \textcolor{blue}{Voting} & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD} \textcolor{blue}{\textit{Argmax}} & & [\textcolor{blue}{C/D}\textcolor{purple}{AA}]*N \newline [\textcolor{purple}{,}\textcolor{blue}{CD}\textcolor{purple}{A}]*N & EH \\ \hline %CC
+    FedMatch~\cite{jeong2020federated} & \textcolor{blue}{Voting} & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD} \textcolor{blue}{\textit{Argmax}} & n/a & [\textcolor{blue}{C/D}\textcolor{purple}{AA}]*N \newline [\textcolor{purple}{,}\textcolor{blue}{CD}\textcolor{purple}{A}]*N & EH \\ \hline %CC
 
-    FedFTG~\cite{zhang2022fine} & & \textcolor{purple}{Model Avg} &\textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax}}, \textcolor{purple}{\textbf{Softmax}} \textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax}} & \textcolor{purple}{\textbf{Synthetic Data}} & [\textcolor{blue}{/}\textcolor{purple}{AGDD}]*N & EH \\ \hline
+    \rowcolor[gray]{.9}
+    FedFTG~\cite{zhang2022fine} & n/a & \textcolor{purple}{Model Avg} &\textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax}}, \textcolor{purple}{\textbf{Softmax}} \textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax}} & \textcolor{purple}{\textbf{Synthetic Data}} & [\textcolor{blue}{/}\textcolor{purple}{AGDD}]*N & EH \\ \hline
 
-    RSCFed~\cite{liang2022rscfed} \newline (Unlabeled Case) & & \textcolor{blue}{Model EMA}\newline \textcolor{purple}{Model Avg} &\textcolor{blue}{KD} \textcolor{blue}{\textit{Softmax}} & & [\textcolor{blue}{DA}\textcolor{purple}{AA}]*N & H \\ \hline
+    RSCFed~\cite{liang2022rscfed} \newline (Unlabeled Case) & n/a & \textcolor{blue}{Model EMA}\newline \textcolor{purple}{Model Avg} &\textcolor{blue}{KD} \textcolor{blue}{\textit{Softmax}} & n/a & [\textcolor{blue}{DA}\textcolor{purple}{AA}]*N & H \\ \hline
 
-    FedAlign\textsubscript{2}~\cite{zhang2023federated}& &\textcolor{purple}{Model Avg}&\textcolor{blue}{Contrastive Learning}  \textcolor{purple}{\textit{Argmax, Argmin}} & & [\textcolor{blue}{DD}\textcolor{purple}{AA}]*N & EH \\ \hline
+    \rowcolor[gray]{.9}
+    FedAlign\textsubscript{2}~\cite{zhang2023federated} & n/a &\textcolor{purple}{Model Avg}&\textcolor{blue}{Contrastive Learning}  \textcolor{purple}{\textit{Argmax, Argmin}} & n/a & [\textcolor{blue}{DD}\textcolor{purple}{AA}]*N & EH \\ \hline
 
-    FedSSL~\cite{fan2022private} & & & \textcolor{blue}{KD} \textcolor{blue}{\textbf{Softmax}} \textcolor{blue}{KD} \textcolor{blue}{\textbf{Softmax}, \textit{Interpolated Softmax}} & \textcolor{blue}{\textbf{Synthetic Data}} & [\textcolor{blue}{/GD/GD}]*N & HP \\ \hline
+    FedSSL~\cite{fan2022private} & n/a & n/a & \textcolor{blue}{KD} \textcolor{blue}{\textbf{Softmax}} \textcolor{blue}{KD} \textcolor{blue}{\textbf{Softmax}, \textit{Interpolated Softmax}} & \textcolor{blue}{\textbf{Synthetic Data}} & [\textcolor{blue}{/GD/GD}]*N & HP \\ \hline
     
-    \textcolor{red}{DENSE}~\cite{zhang2022dense} & \textcolor{purple}{Collection} & & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Logits Avg}, \textit{Batch-Wise Statistics}}, \textcolor{purple}{\textbf{Softmax}} \newline \textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax}}, \textcolor{purple}{\textbf{Softmax}} & \textcolor{purple}{\textbf{Synthetic Data}} & \textcolor{blue}{/}\textcolor{purple}{C}[\textcolor{purple}{G,DGD}]*1 & HP \\ \hline %CC
+    \rowcolor[gray]{.9}
+    \textcolor{red}{DENSE}~\cite{zhang2022dense} & \textcolor{purple}{Collection} & n/a & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Logits Avg}, \textit{Batch-Wise Statistics}}, \textcolor{purple}{\textbf{Softmax}} \newline \textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax}}, \textcolor{purple}{\textbf{Softmax}} & \textcolor{purple}{\textbf{Synthetic Data}} & \textcolor{blue}{/}\textcolor{purple}{C}[\textcolor{purple}{G,DGD}]*1 & HP \\ \hline %CC
 
-    FedZKT~\cite{zhang2022fedzkt} & & &\textcolor{purple}{KD} \textcolor{purple}{\textbf{Softmax}}, \textcolor{blue}{\textbf{Softmax Avg}} \textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax Avg}} \textcolor{purple}{KD} \textcolor{purple}{\textbf{Softmax}} & \textcolor{purple}{\textbf{Synthetic Data}} & [\textcolor{blue}{/}\textcolor{purple}{GDGDGD}]*N & H \\ \hline
+    FedZKT~\cite{zhang2022fedzkt} & n/a & n/a &\textcolor{purple}{KD} \textcolor{purple}{\textbf{Softmax}}, \textcolor{blue}{\textbf{Softmax Avg}} \textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax Avg}} \textcolor{purple}{KD} \textcolor{purple}{\textbf{Softmax}} & \textcolor{purple}{\textbf{Synthetic Data}} & [\textcolor{blue}{/}\textcolor{purple}{GDGDGD}]*N & H \\ \hline
 
   \end{longtable}
 \end{table}
@@ -781,7 +810,7 @@ Therefore, selecting models, algorithms, datasets with more permissive licenses,
 \begin{figure}[t]
   \centering
   \includegraphics[width=\linewidth]{fig/ip_protection.pdf}
-  \caption{IP Protection}
+  \caption{Overview of DNNs IP protection methods.}
   \Description{}
   \label{fig:ip}
 \end{figure}
@@ -852,6 +881,7 @@ In the first step, we can compare the hash codes (e.g. MD5, SHA-256) of the raw 
 Then, in the second step, we can filter out cases of quantization or invariant neural swapping plagiarism by comparing the distance in predictions obtained from an out-of-distribution dataset.
 In addition, we can further evaluate the similarities between models using testing-based approaches such as DeepJudge and Zest, which can detect cases of pruning and direct KD plagiarism.
 Furthermore, if the workflow information is supports it, we can swiftly eliminate batch model reusing from being suspected of plagiarism.
+To enhance understanding, we present an overview of the typical methods used for protecting IP of DNNs in Fig.~\ref{fig:ip}.
 
 In summary, finding a balance between model protection and platform openness is indeed a challenge.
 It is crucial to carefully consider the trade-offs and explore alternative approaches that can provide a reasonable level of model protection without excessively compromising the openness and usability of query-based FL platforms.

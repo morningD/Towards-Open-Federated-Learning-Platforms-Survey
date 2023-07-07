@@ -3,6 +3,6 @@ Reference papers and source files of [Towards Open Federated Learning Platforms:
 
 Download the latest complied PDF [here](https://github.com/morningD/Towards-Open-Federated-Learning-Platforms-Survey/blob/main/Tex/main.pdf).
 
-This is ongoing work, any comments are welcome🤗~ Please send [📧 to me](mailto:moming@nus.edu.sg) or create an issues. 
+📌 This is an ongoing work, any comments are welcome 🤗~ Please send [📧 to me](mailto:moming@nus.edu.sg) or create an issues. 
 
-Thank you for helping me improve this work🙌🏻🙌🏾🙌
+Thank you for helping me improve this work 🙌🏻🙌🏾🙌

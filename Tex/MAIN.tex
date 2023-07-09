@@ -45,7 +45,8 @@
 %% for your publication.
 %%
 %%
-\documentclass[acmlarge]{acmart}
+%\documentclass[acmlarge]{acmart}
+\documentclass[acmlarge,screen,nonacm]{acmart}
 
 %%
 %% \BibTeX command to typeset BibTeX logo in the docs
@@ -58,19 +59,19 @@
 %% values in them; it is your responsibility as an author to replace
 %% the commands and values with those provided to you when you
 %% complete the rights form.
-\setcopyright{acmcopyright}
-\copyrightyear{2018}
-\acmYear{2018}
-\acmDOI{XXXXXXX.XXXXXXX}
+%\setcopyright{acmcopyright}
+%\copyrightyear{2018}
+%\acmYear{2018}
+%\acmDOI{XXXXXXX.XXXXXXX}
 
 
 %%
 %% These commands are for a JOURNAL article.
-\acmJournal{POMACS}
-\acmVolume{37}
-\acmNumber{4}
-\acmArticle{111}
-\acmMonth{8}
+%\acmJournal{POMACS}
+%\acmVolume{37}
+%\acmNumber{4}
+%\acmArticle{111}
+%\acmMonth{8}
 
 %%
 %% Submission ID.
@@ -121,7 +122,7 @@
 \usepackage{longtable}
 \usepackage{circledsteps}
 
-
+\settopmatter{printacmref=false}
 %%
 %% end of the preamble, start of the body of the document source.
 \begin{document}
@@ -129,7 +130,7 @@
 %%
 %% The "title" command has an optional parameter,
 %% allowing the author to define a "short title" to be used in page headers.
-\title{Towards Open Federated Learning Platforms: Survey and Vision from Technical and Legal Perspectives (TBD)}
+\title{Towards Open Federated Learning Platforms: Survey and Vision from Technical and Legal Perspectives}
 
 %%
 %% The "author" command and its associated commands are used to define
@@ -145,12 +146,14 @@
   \country{Singapore}}
 \email{moming@nus.edu.sg}
 
+\begin{comment}
 \author{Bingsheng He}
 \affiliation{%
   \institution{National University of Singapore}
   \city{Singapore}
   \country{Singapore}}
 \email{hebs@comp.nus.edu.sg}
+\end{comment}
 
 %%
 %% By default, the full list of authors will be used in the page
@@ -245,7 +248,7 @@ We aim to provide guidance for establishing such platforms in the future, while 
 %% identification of the section in the article metadata, and the
 %% consistent spelling of the heading.
 \begin{acks}
-ACK.
+
 \end{acks}
 
 %%

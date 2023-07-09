@@ -2,7 +2,7 @@
 \label{sec:query}
 \subsection{Overview}
 \label{sec:query_overview}
-Let us continue by establish a sustainable open FL platform based on a query-based cooperation framework.
+Let us continue by establishing a sustainable open FL platform based on a query-based cooperation framework.
 An overview of this platform is presented in Fig.~\ref{fig:query}, the desin philosophy behind this framework is to break the coupling between FL server and clients.
 In the query-based FL systems, all traditional FL roles and components are maintained on an open model repository called Model Community. The Model Community privdes a one-stop ML models redistribution and reuse service, including model indexing, automatic batch model reuse, license management, privacy control and so on.
 In addition to large-scale pretrained models like BERT~\cite{devlin2018bert}, BLOOM~\cite{scao2022bloom} with great generalization abilities, we also encourage individuals to upload their task-specific models trained on limited domain data to boost the knowledge mining within models, aka model mining~\cite{you2021workshop}.
@@ -303,7 +303,7 @@ In query-based FL, the model community aims to promote the reuse of models contr
   \item A model license ready for open FL paltforms should allow the \textbf{modification, combination and redistribution} of original works and any derived works; and
   \item \textbf{Sublicensing} right should be granted to lubricate the republication of derived works resulting from knowledge mining; note
   \item Some licenses enforce the source of the derived works to be \textbf{disclosed} and prohibit their \textbf{commercial use}, which hinders model selling~\cite{chen2019towards}; and
-  \item Some licenses are \textbf{copyleft} (marked with * in Table.~\ref{tab:licenses}), which means the derivatives must be licensed under the same license or a compatible one, leading to potential license conflicts and proliferation~\cite{gomulkiewicz2009open}; last
+  \item Some licenses are \textbf{copyleft} (marked with * in Table.~\ref{tab:licenses}), which means the derivatives must be licensed under the same license or a compatible license, leading to potential license conflicts and proliferation~\cite{gomulkiewicz2009open}; last
   \item All granted rights are preferably \textbf{irrevocable} by the licensors~\cite{reddy2009jacobsen}.
 \end{itemize}
 
@@ -849,7 +849,7 @@ Additionally, we can refer to Table~\ref{tab:reuse} and consider the following f
     Apache-2.0 & Separable -> Independent Work & Modify -> Derivative & \ding{55} & \ding{55} \\ \hline
     MIT & \ding{55} & \ding{55} & \ding{55} & \ding{55} \\ \hline
     AFL-3.0 & \ding{55} & Modify -> Derivative & \ding{55} & \ding{55} \\ \hline
-    GPL-3.0 & Blackbox: Aggregate -> \newline Independent Work \newline Other: Link -> Modified Version  & Modify -> Covered Work & Output no consititutes a covered work -> \newline Independent Work & Output no consititutes a covered work -> \newline Independent Work  \\ \hline
+    GPL-3.0 & Blackbox: Aggregate -> \newline Independent Work \newline Other: Link -> Modified Version  & Modify -> Covered Work & Output no constitutes a covered work -> \newline Independent Work & Output no constitutes a covered work -> \newline Independent Work  \\ \hline
     Artistic-2.0 & Blackbox: MereAggregation ->\newline Independent Work \newline Other: Link -> Modified Version & Aggregate -> \newline Modified Version & \ding{55} & \ding{55} \\ \hline
     BSD-3-Clause & Blackbox: Rredsitribution in \newline binary forms -> \ding{55} \newline Other: Redistribution of source code -> \ding{55} & \ding{55} & \ding{55} & \ding{55} \\ \hline
     WTFPL-2.0 & \ding{55} & \ding{55} & \ding{55} & \ding{55} \\ \hline

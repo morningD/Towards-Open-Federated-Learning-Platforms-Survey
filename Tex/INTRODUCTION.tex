@@ -30,7 +30,7 @@ To aid understanding, Fig.~\ref{fig:coop} provides a first glimpse of two novel 
     \item \textbf{Query-based FL.} It follows a loosely-coupled cooperation framework between entities (we use "entities" instead of "participants" to emphasizes equality), where any entity can freely upload their local models or retrieve models from an open repository named Model Community.
     There are many valuable challenges that can be explored, such as how to query for models, how to reuse the retrieved models or how to transfer knowledge from these models, how to ensure the legal compliance between different model licenses, how to protect the intelligent properties of released models (ref. Section~\ref{sec:query}). %TODO: 
     \item \textbf{Contract-based FL.} It follows a mutual choice cooperation framework, where each entity can deploy model training contracts with specialized requirements such as task modality, execution environment, model architecture and license. Meanwhile, entities holding data can choose whether to accept the contract.
-    Research topics in this setting include model pricing, model ownership verification and .... (ref. Section~\ref{}) % TODO:
+    Research topics in this setting include model pricing, model contribution evaluation and so on.% and .... (ref. Section~\ref{}) % TODO:
 \end{itemize}
 It's worth noting that the definitions of the four roles illustrated in Fig.~\ref{fig:coop} (i.e. model user, coordinator, data owner, auditor, ref. Section~\ref{sec:basicdefinition}) are adopted for compatibility with the IEEE standard~\cite{IEEEstd3652}, and our proposals are also within the standard definitions of FML.
 The diagram in Fig.~\ref{fig:coop}(c) illustrates the workflow of traditional FL, where all FL clients are required to accept the training schedule from the FL server and perform multiple rounds of local training and model averaging until the global model converges.
@@ -55,7 +55,7 @@ We compare this survey to other related surveys and show our distinction in Sect
 In Section~\ref{sec:basic}, we presente the overview and point the limitations of traditional FL.
 We comprehensively explore the feasibility and challenges of query-based FL in Section~\ref{sec:query}, which includes model query (Section~\ref{sec:how2query}), model license comparison (Section~\ref{sec:licensing}) and selection (Section~\ref{sec:choosing}), copyright issues (Section~\ref{sec:generated content}), and analysis of license conflicts in model reusing (Section~\ref{sec:reusing&license}).
 In Section~\ref{sec:taxonomy}, we present our taxonomy from a model reusing perspective, and in Section~\ref{sec:hybrid}, we summarize FL studies based on this new taxonomy.
-The discussion on model protection is presented in Section~\ref{sec:how2protect}.
+The discussion on model intellectual property protection is presented in Section~\ref{sec:how2protect}.
 
 
 %By investigating reciprocal cooperation frameworks, we aim to broaden the understanding of FL and uncover new opportunities for collaboration and data sharing among participants. Through our comprehensive analysis, we provide valuable insights and recommendations for researchers and practitioners interested in exploring and implementing reciprocal cooperation in FL settings.

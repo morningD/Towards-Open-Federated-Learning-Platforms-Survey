@@ -111,7 +111,7 @@ The following sections will provide a detailed survey of these licenses.
 \begin{table}[t]
   \centering
   \scriptsize
-  \caption{Licenses for ML models available on Hugging Face with a focus on their rights, restrictions and enforcements, grouped by free software licenses, AI model licenses, free content or database licenses in descending order of number of models (GPL, BSD, LGPL, CC licenses with unspecified versions are excluded, the similar revisions are merged). \checkmark : Permited or Required, \ding{55} : Not Permited or Not Required, \textbf{!} : Not Explicitly Permited, * : Copyleft License}
+  \caption{Licenses for ML models available on Hugging Face with a focus on their rights, restrictions and enforcements, grouped by free software licenses, AI model licenses, free content or database licenses in descending order of number of models (GPL, BSD, LGPL, CC licenses with unspecified versions are excluded, the similar revisions are merged). \checkmark : Permited or Required, \ding{55} : Not Permited or Not Required, \textbf{!} : Not Explicitly Permited, * : Copyleft License. Only the source code of the original work under AFL-3.0 or Artistic-2.0 is required to be disclosed.}
   \label{tab:licenses}
   \begin{tabular}{r||ccc|ccc|cccc|c|p{3.5cm}}
     \toprule
@@ -136,12 +136,12 @@ The following sections will provide a detailed survey of these licenses.
     MIT &  \checkmark & \checkmark & \checkmark & \checkmark & \textbf{!} & \textbf{!} & \ding{55} & \ding{55} & \ding{55} & \checkmark & 9,605 & GPT-2~\cite{radford2019language} \\
 
     \rowcolor{green!15}
-    AFL-3.0 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & 1,561 & Italian-Legal-BERT~\cite{licari2022italian} \\
+    AFL-3.0 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \ding{55} & \checkmark & (\checkmark) & \ding{55} & \checkmark & 1,561 & Italian-Legal-BERT~\cite{licari2022italian} \\
 
     *GPL-3.0 & \checkmark & \checkmark & \ding{55} & \checkmark & \checkmark & \ding{55} & \checkmark & \checkmark & \ding{55} & \checkmark & 404 & CKIP BERT Chinese \\
 
     \rowcolor{green!15}
-    Artistic-2.0 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & 331 & Include original source \\
+    Artistic-2.0 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \ding{55} & \checkmark & (\checkmark) & \ding{55} & \checkmark & 331 & Include original source \\
 
     BSD-3-Clause\&-Clear & \checkmark & \checkmark & \checkmark & \checkmark & \textbf{!} & \textbf{!} & \ding{55} & \ding{55} & \ding{55} & \checkmark & 209 & CodeGen~\cite{nijkamp2022conversational}/ A MIT-style license \\
 
@@ -851,7 +851,7 @@ Additionally, we can refer to Table~\ref{tab:reuse} and consider the following f
     MIT & \ding{55} & \ding{55} & \ding{55} & \ding{55} \\ \hline
     AFL-3.0 & \ding{55} & Modify -> Derivative & \ding{55} & \ding{55} \\ \hline
     GPL-3.0 & Blackbox: Aggregate -> \newline Independent Work \newline Other: Link -> Modified Version  & Modify -> Covered Work & Output no constitutes a covered work -> \newline Independent Work & Output no constitutes a covered work -> \newline Independent Work  \\ \hline
-    Artistic-2.0 & Blackbox: MereAggregation ->\newline Independent Work \newline Other: Link -> Modified Version & Aggregate -> \newline Modified Version & \ding{55} & \ding{55} \\ \hline
+    Artistic-2.0 & Blackbox: Merely Extend ->\newline Own Work \newline Other: Link -> Own Work & Aggregate -> \newline Modified Version & \ding{55} & \ding{55} \\ \hline
     BSD-3-Clause & Blackbox: Rredsitribution in \newline binary forms -> \ding{55} \newline Other: Redistribution of source code -> \ding{55} & \ding{55} & \ding{55} & \ding{55} \\ \hline
     WTFPL-2.0 & \ding{55} & \ding{55} & \ding{55} & \ding{55} \\ \hline
     OpenRAIL Licenses & Transfer of patterns of \newline output -> Derivative & Transfer of patterns of weights -> Derivative & Transfer of patterns of activations -> Derivative & Transfer of patterns of output -> Derivative \\ \hline

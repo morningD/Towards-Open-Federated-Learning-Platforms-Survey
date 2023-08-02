@@ -88,7 +88,7 @@ The aforementioned filter conditions provide comprehensive coverage of the ML mo
 However, there are additional requirements depending on the reuse mechanisms of the model retrieval side. 
 For example, FedAvg~\cite{mcmahan2017communication} aggregates the local models weights element-wise, which requires full access to the models. 
 In contrast, MoE with a gating network~\cite{jacobs1991adaptive} only ensembles a batch of model outputs, so the individual models can remain blackboxes in this scenario.
-So, in the context of software licenses or model licenses, the batch models reused by FedAvg should be released as source code, while those reused by MoE can be released as binary object code (static linking).
+So, in the context of software licenses or model licenses, the batch models reused by FedAvg should be released as source code, while those reused by MoE can be released as binary executable modules (e.g. dynamic linking).
 The above distinction is crucial for ensuring that model reuse results meet the legal framework, and this has been overlooked in traditional FL.
 We will expand on this topic in the following section.
 
@@ -111,8 +111,9 @@ The following sections will provide a detailed survey of these licenses.
 \begin{table}[t]
   \centering
   \scriptsize
-  \caption{Licenses for ML models available on Hugging Face with a focus on their rights, restrictions and enforcements, grouped by free software licenses, AI model licenses, free content or database licenses in descending order of number of models (GPL, BSD, LGPL, CC licenses with unspecified versions are excluded, the similar revisions are merged). \checkmark : Permited or Required, \ding{55} : Not Permited or Not Required, \textbf{!} : Not Explicitly Permited, * : Copyleft License. Only the source code of the original work under AFL-3.0 or Artistic-2.0 is required to be disclosed.}
+  \caption{Licenses for ML models available on Hugging Face with a focus on their rights, restrictions and enforcements, grouped by free software licenses, AI model licenses, free content or database licenses in descending order of number of models (GPL, BSD, LGPL, CC licenses with unspecified versions are excluded, the similar revisions are merged). \checkmark : Permited or Required, \ding{55} : Not Permited or Not Required, \textbf{!} : Not Explicitly Permited, * : Copyleft License, $^{\dagger}$ : Public Domain License. Only the source code of the original work under AFL-3.0 or Artistic-2.0 is required to be disclosed. You may not distribute the modified materials licensed under CC-BY-NC-ND or CC-BY-ND.}
   \label{tab:licenses}
+  \vspace{-3mm}
   \begin{tabular}{r||ccc|ccc|cccc|c|p{3.5cm}}
     \toprule
     Licenses
@@ -125,7 +126,7 @@ The following sections will provide a detailed survey of these licenses.
       \multicolumn{1}{P{90}{2.0cm}}{State Changes} &
       \multicolumn{1}{P{90}{2.0cm}}{Disclose Source} &
       \multicolumn{1}{P{90}{2.0cm}}{Responsible-use Restrictions} &
-      \multicolumn{1}{P{90}{2.0cm}}{License/Disclaim Preservation} &
+      \multicolumn{1}{P{90}{2.3cm}}{License/Attribution Preservation} &
       \multicolumn{1}{P{90}{2.0cm}}{\# of Models} &
       \multicolumn{1}{c}{Licensed Materials / Remarks}    \\
     \midrule
@@ -143,15 +144,15 @@ The following sections will provide a detailed survey of these licenses.
     \rowcolor{green!15}
     Artistic-2.0 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \ding{55} & \checkmark & (\checkmark) & \ding{55} & \checkmark & 331 & Include original source \\
 
-    BSD-3-Clause\&-Clear & \checkmark & \checkmark & \checkmark & \checkmark & \textbf{!} & \textbf{!} & \ding{55} & \ding{55} & \ding{55} & \checkmark & 209 & CodeGen~\cite{nijkamp2022conversational}/ A MIT-style license \\
+    BSD-3-Clause\&-Clear & \checkmark & \checkmark & \checkmark & \checkmark & \textbf{!} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \checkmark & 209 & CodeGen~\cite{nijkamp2022conversational}/ A MIT-style license \\
 
     \rowcolor{green!15}
-    WTFPL-2.0 & \checkmark & \checkmark & \textbf{!} & \checkmark & \textbf{!} & \textbf{!} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & 131 & A MIT-style permissive license  \\
+    $^{\dagger}$WTFPL-2.0 & \checkmark & \checkmark & \textbf{!} & \checkmark & \textbf{!} & \textbf{!} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & 131 & A MIT-style permissive license  \\
 
-    *AGPL-3.0 & \checkmark & \checkmark & \ding{55} & \checkmark & \checkmark & \ding{55} & \checkmark & \checkmark & \ding{55} & \checkmark & 96 & Distributed under AGPL only  \\
+    *AGPL-3.0 & \checkmark & \checkmark & \ding{55} & \checkmark & \checkmark & \ding{55} & \checkmark & \checkmark & \ding{55} & \checkmark & 96 & Extended GPL covers SaaS  \\
 
     \rowcolor{green!15}
-    Unlicense & \checkmark & \checkmark & \textbf{!} & \checkmark & \textbf{!} & \textbf{!} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & 90 & A MIT-style permissive license  \\
+    $^{\dagger}$Unlicense & \checkmark & \checkmark & \textbf{!} & \checkmark & \textbf{!} & \textbf{!} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & 90 & A MIT-style permissive license  \\
     %GPL & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 63 &  \\
 
     BSL-1.0 & \checkmark & \checkmark & \checkmark & \checkmark & \textbf{!} & \textbf{!} & \ding{55} & \ding{55} & \ding{55} & \checkmark & 60 & A MIT-style permissive license \\
@@ -163,7 +164,7 @@ The following sections will provide a detailed survey of these licenses.
     BSD-2-Clause & \checkmark & \checkmark & \checkmark & \checkmark & \textbf{!} & \textbf{!} & \ding{55} & \ding{55} & \ding{55} & \checkmark & 34 & A MIT-style permissive license  \\
 
     \rowcolor{green!15}
-    *LGPL-2.1\&3.0 & \checkmark & \checkmark & \ding{55} & \checkmark & \textbf{!} & \textbf{!} & \checkmark & \checkmark & \ding{55} & \checkmark & 25 & For software libraries  \\
+    *LGPL-2.1\&3.0 & \checkmark & \checkmark & \ding{55} & \checkmark & \checkmark & \textbf{!} & \checkmark & \checkmark & \ding{55} & \checkmark & 25 & For software libraries  \\
 
     *OSL-3.0 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \ding{55} & \checkmark & \checkmark & \ding{55} & \checkmark & 22 & Linking is not derivative work \\
 
@@ -225,7 +226,7 @@ The following sections will provide a detailed survey of these licenses.
     \hline
 
     \rowcolor{blue!15}
-    CC-BY-4.0\&3.0\&2.5\&2.0 & \checkmark & \checkmark & \textbf{!} & \checkmark & \ding{55} & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & 1,740 & RoBERTa-SQuAD2.0~\cite{rajpurkar2016squad} \\
+    CC-BY-4.0\&3.0\&2.5\&2.0 & \checkmark & \checkmark & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & 1,740 & RoBERTa-SQuAD2.0~\cite{rajpurkar2016squad} \\
 
     *CC-BY-SA-4.0\&3.0 &  \checkmark & \checkmark & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & \checkmark & \ding{55} & \checkmark & 590 & LEGAL-BERT~\cite{chalkidis2020legal} \\
 
@@ -235,12 +236,12 @@ The following sections will provide a detailed survey of these licenses.
     CC-BY-NC-4.0\&3.0\&2.0 & \checkmark & \checkmark & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & 499 & GALACTICA~\cite{taylor2022galactica} \\
 
     \rowcolor{blue!15}
-    CC0-1.0 & \checkmark & \checkmark & \textbf{!} & \checkmark & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & 165 & BlueBERT~\cite{peng2019transfer} \\
+    $^{\dagger}$CC0-1.0 & \checkmark & \checkmark & \textbf{!} & \checkmark & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & 165 & BlueBERT~\cite{peng2019transfer} \\
 
-    CC-BY-NC-ND-4.0\&3.0 & \checkmark & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \checkmark & 21 & NonCommercial, NoDerivatives \\
+    CC-BY-NC-ND-4.0\&3.0 & (\checkmark) & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \checkmark & 21 & NonCommercial, NoDerivatives \\
 
     \rowcolor{blue!15}
-    PDDL & \checkmark & \checkmark & \ding{55} & \checkmark & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & 16 & Database-specific license \\
+    $^{\dagger}$PDDL & \checkmark & \checkmark & \ding{55} & \checkmark & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & 16 & Database-specific license \\
 
     C-UDA & \checkmark & \checkmark & \checkmark & \ding{55} & \textbf{!} & \textbf{!} & \ding{55} & \ding{55} & \checkmark & \checkmark & 13 & Data for computational use only \\
 
@@ -250,7 +251,7 @@ The following sections will provide a detailed survey of these licenses.
     *GFDL &  \multicolumn{10}{l|}{>Same as GPL, a free document license} & 12 & txtai-wikipedia \\
 
     \rowcolor{blue!15}
-    CC-BY-ND-4.0 & \checkmark & \ding{55} & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & 11 & Disallow making derivatives \\
+    CC-BY-ND-4.0 & (\checkmark) & \ding{55} & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & 11 & Disallow making derivatives \\
     
     ODC-By & \checkmark & \checkmark & \ding{55} & \checkmark & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \checkmark & 7 & Automatic relicensing \\
     %但是只对derivative dataset有定义，对于model来可能不适用
@@ -310,14 +311,15 @@ In query-based FL, the model community aims to promote the reuse of models contr
 Furthermore, it is important to consider the licensing of two other components when building and reusing models: data and algorithms, which may have entirely different license terms. 
 Here, based on the comparisons between different licenses provided in Table~\ref{tab:licenses}, we present several strategies for selecting licenses in query-based FL to minimize conflicts.
 
-\textbf{Preferences for Datasets or Databases}: CC0-1.0, ODC-By > CC BY > C-UDA > LGPL-LR.
+\textbf{Preferences for Datasets or Databases}: CC0-1.0, ODC-By > CC BY, C-UDA > LGPL-LR.
 % 对于数据：训练：C-UDA 可以sublicense，但是不能商用。CC0 和 CC-BY 可用但是没明确sublicense，ODbL 自动license，但是copyleft，必须开源。对于finetune，除了上述数据外还可LGPL-LP
    
   Our recommended licenses for training datasets and databases for query-based FL are CC0-1.0, ODC-By, and CC BY. CC BY-4.0 is preferred due to the grant of \textit{Sui Generis Database Rights (Art.1c)}. 
   CC0-1.0 and ODC-By are more permissive than CC BY since they do not require licensees to disclose any modifications made to the dataset or database, and CC0-1.0 does not require the declaration of the original license. 
   Although these licenses do not explicitly grant sublicensing rights, they provide an \textbf{automatic licensing} policy for downstream recipients.
   
-  C-UDA is an alternative license that grants sublicensing rights, but it includes additional usage restrictions that limit its application to computational use only, which indicates commercial use is not allowed.
+  C-UDA is an alternative license that grants sublicensing rights, but it includes additional usage restrictions that limit its application to computational use only, which indicates commercial use of data is not allowed.
+  Nonetheless, C-UDA explicitly exempts reused results from any restrictions, which is highly favorable for our scenario of model mining.
   To avoid license proliferation, it is not recommended to use any data under copyleft licenses for building models, as the resulted models could be seen as remixing and making derivatives of the original datasets, leading to potential conflicts between licenses.
   Among them, LGPL-LR is an exception because it contains an exemption clause for \textit{work that uses the Linguistic Resource (Art.3)}, which is suitable for end-to-end training, fine-tuning, and embedding. 
   But it is worth noting that the embedded representations may be considered \textit{translated straightforwardly into another language (Art.0)}, which falls within the scope of LGPL-LR license.
@@ -865,7 +867,7 @@ In this case, the collection of local models should be treated as a whitebox in 
 As a result, this collection should be considered a \textit{modified version} of the original works according to the terms of GPL-3.0.
 However, the generation and distillation processes of DENSE are based on non-sensitive data and result in the creation of an independent work.
 Considering that GPL-3.0 is a copyleft license, the reused results should be licensed under GPL-3.0 if the new release includes the collection in its whitebox form. 
-Otherwise, the reused results can be considered an independent work without any specific license restrictions.
+Otherwise, if the GPLed local models executed as a separable and replaceable subprogram, the reused results can be considered an independent work without any specific license restrictions.
 
 The example above demonstrates that analyzing hybrid methods under a copyleft license can be complicated. 
 Therefore, selecting models, algorithms, datasets with more permissive licenses, as advocated in Section~\ref{sec:choosing}, can make things easier and facilitate the model reusability of open FL platforms.

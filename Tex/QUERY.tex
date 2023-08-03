@@ -241,7 +241,7 @@ The following sections will provide a detailed survey of these licenses.
     CC-BY-NC-ND-4.0\&3.0 & (\checkmark) & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \checkmark & 21 & NonCommercial, NoDerivatives \\
 
     \rowcolor{blue!15}
-    $^{\dagger}$PDDL & \checkmark & \checkmark & \ding{55} & \checkmark & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & 16 & Database-specific license \\
+    $^{\dagger}$PDDL & \checkmark & \checkmark & \checkmark & \checkmark & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & 16 & Database-specific license \\
 
     C-UDA & \checkmark & \checkmark & \checkmark & \ding{55} & \textbf{!} & \textbf{!} & \ding{55} & \ding{55} & \checkmark & \checkmark & 13 & Data for computational use only \\
 
@@ -311,12 +311,12 @@ In query-based FL, the model community aims to promote the reuse of models contr
 Furthermore, it is important to consider the licensing of two other components when building and reusing models: data and algorithms, which may have entirely different license terms. 
 Here, based on the comparisons between different licenses provided in Table~\ref{tab:licenses}, we present several strategies for selecting licenses in query-based FL to minimize conflicts.
 
-\textbf{Preferences for Datasets or Databases}: CC0-1.0, ODC-By > CC BY, C-UDA > LGPL-LR.
+\textbf{Preferences for Datasets or Databases}: CC0-1.0, PDDL, ODC-By > CC BY, C-UDA > LGPL-LR.
 % 对于数据：训练：C-UDA 可以sublicense，但是不能商用。CC0 和 CC-BY 可用但是没明确sublicense，ODbL 自动license，但是copyleft，必须开源。对于finetune，除了上述数据外还可LGPL-LP
    
-  Our recommended licenses for training datasets and databases for query-based FL are CC0-1.0, ODC-By, and CC BY. CC BY-4.0 is preferred due to the grant of \textit{Sui Generis Database Rights (Art.1c)}. 
-  CC0-1.0 and ODC-By are more permissive than CC BY since they do not require licensees to disclose any modifications made to the dataset or database, and CC0-1.0 does not require the declaration of the original license. 
-  Although these licenses do not explicitly grant sublicensing rights, they provide an \textbf{automatic licensing} policy for downstream recipients.
+  Our recommended licenses for training datasets and databases for query-based FL are CC0-1.0, PDDL, ODC-By and CC BY (the preferred version of CC BY is 4.0 due to the grant of \textit{Sui Generis Database Rights in Art.1c}).
+  CC0-1.0, PDDL and ODC-By are more permissive than CC BY since they do not require licensees to disclose any modifications made to the dataset or database. Additionally, CC0-1.0 and PDDL are public domain licenses and do not require the declaration of the original license.
+  Although some of these licenses do not explicitly grant sublicensing rights, they provide an \textbf{automatic licensing} policy for downstream recipients.
   
   C-UDA is an alternative license that grants sublicensing rights, but it includes additional usage restrictions that limit its application to computational use only, which indicates commercial use of data is not allowed.
   Nonetheless, C-UDA explicitly exempts reused results from any restrictions, which is highly favorable for our scenario of model mining.

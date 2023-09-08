@@ -267,8 +267,8 @@ The following sections will provide a detailed survey of these licenses.
 As shown in Table~\ref{tab:licenses}, ML models are licensed in three main forms: as software (e.g. Apache, MIT, GPL), as a model (e.g. OpenRAIL), and as content/database (e.g. CC BY, PDDL).
 The reason for the mixed use of licenses is the ambiguity in the dependency relationship between the ML code, model, and data.
 Thinking in terms of software, ML models can be released with reproducable code and be considered as a component of software.
-So many open software licenses are naturally deferred for licensing of models.
-The most popular license is Apache-2.0, which is a permissive open software license that allows the freedom to make derivative works.
+So many Free and Open Source Software (FOSS) licenses~\cite{rosen2005open} are naturally deferred for licensing of models.
+The most popular license is Apache-2.0, which is a permissive FOSS license that allows the freedom to make derivative works.
 However, the model building process also relies on a massive amount of data~\cite{lecun2015deep} that may be licensed under different licenses, which can lead to license conflicts.
 A real-world example is BERT~\cite{devlin2018bert}, which was published under the Apache-2.0 license but pre-trained on English Wikipedia documents that are licensed under CC BY-SA 3.0.
 This changing of license violates the requirement of the CC BY-SA 3.0, which states that any contribution must be distributed under the \textbf{same license} as the original work.
@@ -338,7 +338,7 @@ Here, based on the comparisons between different licenses provided in Table~\ref
   The next set of recommendations are MIT, BSD, BSL, and NCSA. 
   These licenses do not explicitly grant patent rights but instead, do not require the stating of modifications made to the original work, thus avoiding the tedious task of tracking model reusing or incremental training procedures. 
   Ms-PL offers two advantages simultaneously, but it is a \textbf{weak copyleft} license that requires the modified source code to also be licensed under Ms-PL, and the derivative object code to be compliant with a license compatible with Ms-PL.
-  Note that open software licenses do not provide a clear definition for software-generated outputs such as models. 
+  Note that FOSS licenses do not provide a clear definition for software-generated outputs such as models. 
   It is unclear whether models are considered a portion of the software, and whether they are in source code form or object code form. 
   This ambiguity makes it difficult to determine the applicable clauses for models.
   
@@ -352,7 +352,7 @@ Here, based on the comparisons between different licenses provided in Table~\ref
   % The crux of the issue is really about control over the outputs.
   
   There are two recommended choices for model licenses for query-based FL. 
-  The first is permissive open software licenses like Apache, AFL, Artistic, and ECL. 
+  The first is permissive FOSS licenses like Apache, AFL, Artistic, and ECL. 
   The second is open model-specific licenses like OpenRAIL and its derivatives.
   As shown in Table~\ref{tab:licenses}, the main difference between the two choices is that OpenRAIL offers additional user behavioral restriction clauses and enforces these restrictions via a copyleft-style agreement.
   For example, CreativeML OpenRAIL-M license claims \textit{Therefore You cannot use the Model and the Derivatives of the Model for the specified restricted uses ... You shall require all of Your users who use the Model or a Derivative of the Model to comply with the terms of this paragraph}.
@@ -539,7 +539,7 @@ The summarize of above privacy-perserving KD works is given in Table.~\ref{tab:d
   \caption{Classification of \textbf{Generation} works in the field of FL. Some of the works are also listed in Table~\ref{tab:distillation} because they utilize hybrid model reuse mechanisms.}
   \label{tab:generation}
 
-  \begin{tabular}{|l|p{3.1cm}|p{5cm}|p{4cm}|}
+  \begin{tabular}{|l|p{3.2cm}|p{5cm}|p{4cm}|}
     \hline
     & Enriching Training Set & Improving Generalization  & Enabling Semi-supervised Learning  \\ \hline
     \multicolumn{1}{|l|}{For Training} & FedSage+~\cite{zhang2021subgraph}, GFL~\cite{cheng2023gfl}, \newline FRD~\cite{cha2019federated} & Fed-ZDA~\cite{hao2021towards}, FOSTER~\cite{yu2023turning}, FedDG~\cite{liu2021feddg}, DynaFed~\cite{pi2022dynafed}, SDA-FL~\cite{liz2022federated}, FedMix~\cite{yoon2021fedmix}, \newline FedCAVE-Ens~\cite{heinbaugh2023data} & FedDISC~\cite{yang2023exploring}, SemiFL~\cite{diao2022semifl}  \\ \hline
@@ -581,7 +581,7 @@ In fact, the three purposes of generation correspond to three types of data hete
 The hybrid model reusing strategies, which leverage each other's strengths, have become a common paradigm in recent FL studies~\cite{cheng2023gfl, xie2023perada, yu2023turning, jin2023feddyn, heinbaugh2023data, yang2023exploring, zhang2023federated}.
 Therefore, in the next section, we will summarize the popular hybrid model reusing studies in FL and then filter the studies that are suitable for query-based FL platforms.
 
-%The third advantage is free-sharing. As mentioned in Section~\ref{sec:generated content}, many deep generative models, such as Stable Diffusion~\cite{rombach2022high} and ChatGPT, do not claim ownership rights over the generated content. Furthermore, most open software licenses do not have defined terms for computer-generated content. Therefore, it is legally permissible to freely reuse synthetic data.
+%The third advantage is free-sharing. As mentioned in Section~\ref{sec:generated content}, many deep generative models, such as Stable Diffusion~\cite{rombach2022high} and ChatGPT, do not claim ownership rights over the generated content. Furthermore, most OSS licenses do not have defined terms for computer-generated content. Therefore, it is legally permissible to freely reuse synthetic data.
 
 % 三种方法：1，data level（如SMOTE, augmentation）2, 概率模型（MCMC, 自回归模型） 3，sample from latent representation（GAN，CVAE）
 % 优点：1，生成的内容质量容易被校验（相比KD）2，可以掌控生成物的数量 3，弱连接(甚至不需要保留模型)

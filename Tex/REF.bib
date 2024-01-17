@@ -230,7 +230,8 @@
 	publisher = {IEEE},
 	title = {A survey on transfer learning},
 	volume = {22},
-	year = {2009}}
+	year = {2009}
+}
 
 @article{kingma2014adam,
 	author = {Kingma, Diederik P and Ba, Jimmy},
@@ -849,24 +850,23 @@
 @incollection{golub1971singular,
 	author = {Golub, Gene H and Reinsch, Christian},
 	booktitle = {Linear Algebra},
-	date-added = {2022-12-19 23:11:33 +0800},
-	date-modified = {2022-12-19 23:11:33 +0800},
 	pages = {134--151},
 	publisher = {Springer},
 	title = {Singular value decomposition and least squares solutions},
-	year = {1971}}
+	year = {1971}
+}
 
 @article{chawla2002smote,
 	author = {Chawla, Nitesh V and Bowyer, Kevin W and Hall, Lawrence O and Kegelmeyer, W Philip},
-	date-added = {2022-12-19 23:11:33 +0800},
-	date-modified = {2022-12-19 23:11:33 +0800},
 	journal = {Journal of artificial intelligence research (JAIR)},
 	number = {1},
 	pages = {321--357},
 	publisher = {AI Access Foundation},
 	title = {{SMOTE}: synthetic minority over-sampling technique},
 	volume = {16},
-	year = {2002}}
+  doi={10.1613/jair.953},
+	year = {2002}
+}
 
 @article{ratsch2001soft,
 	author = {R{\"a}tsch, Gunnar and Onoda, Takashi and M{\"u}ller, K-R},
@@ -878,7 +878,8 @@
 	publisher = {Springer},
 	title = {Soft margins for {AdaBoost}},
 	volume = {42},
-	year = {2001}}
+	year = {2001}
+}
 
 @inproceedings{abadi2016tensorflow,
 	author = {Abadi, Mart{\'\i}n and Barham, Paul and Chen, Jianmin and Chen, Zhifeng and Davis, Andy and Dean, Jeffrey and Devin, Matthieu and Ghemawat, Sanjay and Irving, Geoffrey and Isard, Michael and others},
@@ -2034,11 +2035,13 @@ booktitle	= {NIPS Deep Learning and Representation Learning Workshop}
   publisher={MIT Press}
 }
 
-@article{devlin2018bert,
+@inproceedings{devlin2018bert,
   title={{BERT}: Pre-training of deep bidirectional transformers for language understanding},
   author={Devlin, Jacob and Chang, Ming-Wei and Lee, Kenton and Toutanova, Kristina},
-  journal={arXiv preprint arXiv:1810.04805},
-  year={2018}
+  booktitle={Proceedings of the 17th Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT)},
+  pages={4171--4186},
+  doi={10.18653/v1/n19-1423},
+  year={2019}
 }
 
 @article{scao2022bloom,
@@ -2062,6 +2065,7 @@ booktitle	= {NIPS Deep Learning and Representation Learning Workshop}
   author={Rombach, Robin and Blattmann, Andreas and Lorenz, Dominik and Esser, Patrick and Ommer, Bj{\"o}rn},
   booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
   pages={10684--10695},
+  doi={10.1109/CVPR52688.2022.01042},
   year={2022}
 }
 
@@ -2083,8 +2087,15 @@ booktitle	= {NIPS Deep Learning and Representation Learning Workshop}
   year={2022}
 }
 
+@inproceedings{nijkamp2023codegen,
+  title={{CodeGen}: An open large language model for code with multi-turn program synthesis},
+  author={Nijkamp, Erik and Pang, Bo and Hayashi, Hiroaki and Tu, Lifu and Wang, Huan and Zhou, Yingbo and Savarese, Silvio and Xiong, Caiming},
+  booktitle={Proceedings of the 11th International Conference on Learning Representations (ICLR)},
+  year={2023}
+}
+
 @article{zhang2022opt,
-  title={Opt: Open pre-trained transformer language models},
+  title={{OPT}: Open pre-trained transformer language models},
   author={Zhang, Susan and Roller, Stephen and Goyal, Naman and Artetxe, Mikel and Chen, Moya and Chen, Shuohui and Dewan, Christopher and Diab, Mona and Li, Xian and Lin, Xi Victoria and others},
   journal={arXiv preprint arXiv:2205.01068},
   year={2022}
@@ -2097,10 +2108,11 @@ booktitle	= {NIPS Deep Learning and Representation Learning Workshop}
   year={2022}
 }
 
-@article{zhang2023adding,
+@inproceedings{zhang2023adding,
   title={Adding conditional control to text-to-image diffusion models},
-  author={Zhang, Lvmin and Agrawala, Maneesh},
-  journal={arXiv preprint arXiv:2302.05543},
+  author={Zhang, Lvmin and Rao, Anyi and Agrawala, Maneesh},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+  pages={3836--3847},
   year={2023}
 }
 
@@ -2241,7 +2253,7 @@ booktitle	= {NIPS Deep Learning and Representation Learning Workshop}
 }
 
 @inproceedings{rajpurkar2016squad,
-  title={SQuAD: 100,000+ Questions for Machine Comprehension of Text},
+  title={{SQuAD}: 100,000+ Questions for Machine Comprehension of Text},
   author={Rajpurkar, Pranav and Zhang, Jian and Lopyrev, Konstantin and Liang, Percy},
   booktitle={Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
   pages={2383--2392},
@@ -2250,7 +2262,7 @@ booktitle	= {NIPS Deep Learning and Representation Learning Workshop}
 }
 
 @inproceedings{chalkidis2020legal,
-  title={LEGAL-BERT: The Muppets straight out of Law School},
+  title={{LEGAL-BERT}: The Muppets straight out of Law School},
   author={Chalkidis, Ilias and Fergadiotis, Manos and Malakasiotis, Prodromos and Aletras, Nikolaos and Androutsopoulos, Ion},
   booktitle={Findings of the Association for Computational Linguistics: EMNLP 2020},
   pages={2898--2904},
@@ -2259,7 +2271,7 @@ booktitle	= {NIPS Deep Learning and Representation Learning Workshop}
 }
 
 @inproceedings{huang2022layoutlmv3,
-  title={Layoutlmv3: Pre-training for document ai with unified text and image masking},
+  title={{LayoutLMv3}: Pre-training for document ai with unified text and image masking},
   author={Huang, Yupan and Lv, Tengchao and Cui, Lei and Lu, Yutong and Wei, Furu},
   booktitle={Proceedings of the 30th ACM International Conference on Multimedia (MM)},
   pages={4083--4091},
@@ -3107,7 +3119,7 @@ year={2009}
 @inproceedings{romero2015fitnets,
   title={{FitNets}: Hints for thin deep nets},
   author={Romero, Adriana and Ballas, Nicolas and Kahou, Samira Ebrahimi and Chassang, Antoine and Gatta, Carlo and Bengio, Yoshua},
-  journal={Proceedings of the 3rd International Conference on Learning Representations (ICLR)},
+  booktitle={Proceedings of the 3rd International Conference on Learning Representations (ICLR)},
   year={2015}
 }
 
@@ -3158,15 +3170,8 @@ year={2009}
 @inproceedings{kingma2014auto,
   title={Auto-Encoding Variational Bayes},
   author={Kingma, Diederik P and Welling, Max},
-  jbooktitle={Proceedings of the 2nd International Conference on Learning Representations (ICLR)},
+  booktitle={Proceedings of the 2nd International Conference on Learning Representations (ICLR)},
   year={2014}
-}
-
-@article{wang2023data,
-  title={Data-Free Diversity-Based Ensemble Selection For One-Shot Federated Learning in Machine Learning Model Market},
-  author={Wang, Naibo and Feng, Wenjie and Liu, Fusheng and Duan, Moming and Ng, See-Kiong},
-  journal={arXiv preprint arXiv:2302.11751},
-  year={2023}
 }
 
 @article{geyer1992practical,
@@ -3405,4 +3410,242 @@ year={2009}
   publisher={Prentice Hall Professional Technical Reference},
   address={New Jersey},
   year={2005}
+}
+
+@article{touvron2023llama,
+  title={Llama 2: Open foundation and fine-tuned chat models},
+  author={Touvron, Hugo and Martin, Louis and Stone, Kevin and Albert, Peter and Almahairi, Amjad and Babaei, Yasmine and Bashlykov, Nikolay and Batra, Soumya and Bhargava, Prajjwal and Bhosale, Shruti and others},
+  journal={arXiv preprint arXiv:2307.09288},
+  year={2023}
+}
+
+@article{li2023starcoder,
+  title={StarCoder: may the source be with you!},
+  author={Li, Raymond and Allal, Loubna Ben and Zi, Yangtian and Muennighoff, Niklas and Kocetkov, Denis and Mou, Chenghao and Marone, Marc and Akiki, Christopher and Li, Jia and Chim, Jenny and others},
+  journal={arXiv preprint arXiv:2305.06161},
+  year={2023}
+}
+
+@inproceedings{ryabinin2020towards,
+  title={Towards crowdsourced training of large neural networks using decentralized mixture-of-experts},
+  author={Ryabinin, Max and Gusev, Anton},
+  booktitle={Advances in Neural Information Processing Systems (NeurIPS)},
+  volume={33},
+  pages={3659--3672},
+  year={2020}
+}
+
+@inproceedings{borzunov2022training,
+  title={Training transformers together},
+  author={Borzunov, Alexander and Ryabinin, Max and Dettmers, Tim and Lhoest, Quentin and Saulnier, Lucile and Diskin, Michael and Jernite, Yacine and Wolf, Thomas},
+  booktitle={Proceedings of the NeurIPS 2021 Competitions and Demonstrations Track},
+  pages={335--342},
+  year={2022},
+  organization={PMLR}
+}
+
+@inproceedings{atre2021distributed,
+  title={Distributed deep learning using volunteer computing-like paradigm},
+  author={Atre, Medha and Jha, Birendra and Rao, Ashwini},
+  booktitle={2021 IEEE International Parallel and Distributed Processing Symposium Workshops (IPDPSW)},
+  pages={933--942},
+  year={2021},
+  doi={10.1109/IPDPSW52791.2021.00144},
+  organization={IEEE}
+}
+
+@inproceedings{ryabinin2021moshpit,
+  title={Moshpit {SGD}: Communication-efficient decentralized training on heterogeneous unreliable devices},
+  author={Ryabinin, Max and Gorbunov, Eduard and Plokhotnyuk, Vsevolod and Pekhimenko, Gennady},
+  booktitle={Advances in Neural Information Processing Systems (NeurIPS)},
+  volume={34},
+  pages={18195--18211},
+  year={2021}
+}
+
+@inproceedings{yuan2022decentralized,
+  title={Decentralized training of foundation models in heterogeneous environments},
+  author={Yuan, Binhang and He, Yongjun and Davis, Jared and Zhang, Tianyi and Dao, Tri and Chen, Beidi and Liang, Percy S and Re, Christopher and Zhang, Ce},
+  booktitle={Advances in Neural Information Processing Systems (NeurIPS)},
+  volume={35},
+  pages={25464--25477},
+  year={2022}
+}
+
+@inproceedings{berdoz2022scalable,
+  title={Scalable Collaborative Learning via Representation Sharing},
+  author={Berdoz, Fr{\'e}d{\'e}ric and Singh, Abhishek and Jaggi, Martin and Raskar, Ramesh},
+  booktitle={NeurIPS 2022 Workshop on Decentralization and Trustworthy Machine Learning in Web3: Methodologies, Platforms, and Applications},
+  year={2022}
+}
+
+@inproceedings{blythman2022decentralized,
+  title={Opportunities for Decentralized Technologies within AI Hubs},
+  author={Blythman, Richard and Arshath, Mohamed and Vivona, Salvatore and Sm{\'e}kal, Jakub and Shaji, Hithesh},
+  booktitle={NeurIPS 2022 Workshop on Decentralization and Trustworthy Machine Learning in Web3: Methodologies, Platforms, and Applications},
+  year={2022}
+}
+
+@article{vaughan2018making,
+  title={Making better use of the crowd: How crowdsourcing can advance machine learning research},
+  author={Vaughan, Jennifer Wortman},
+  journal={The Journal of Machine Learning Research (JMLR)},
+  volume={18},
+  number={1},
+  pages={7026--7071},
+  year={2018}
+}
+
+@inproceedings{dias2022blocklearning,
+  title={BlockLearning: A Modular Framework for Blockchain-Based Vertical Federated Learning},
+  author={Dias, Henrique and Meratnia, Nirvana},
+  booktitle={Inernational Conference on Ubiquitous Security (UbiSec)},
+  pages={319--333},
+  year={2022},
+  doi={10.1007/978-981-99-0272-9_22},
+  organization={Springer}
+}
+
+@inproceedings{wickstrom2022decentralizing,
+  title={Decentralizing Machine Learning Operations using Web3 for IoT Platforms},
+  author={Wickstr{\"o}m, John and Westerlund, Magnus and Raj, Emmanuel},
+  booktitle={Proceedings of the 13th IEEE International Conference on Cloud Computing Technology and Science (CloudCom)},
+  pages={238--245},
+  year={2022},
+  doi={10.1109/CloudCom55334.2022.00041},
+  organization={IEEE}
+}
+
+@inproceedings{steeves2022incentivizing,
+  title={Incentivizing Intelligence: The Bittensor Approach},
+  author={Steeves, Jacob and Shaabana, Ala and Hu, Yuqian and Luus, Francois and Liu, Sin Tai and Tasker-Steeves, Jacqueline Dawn},
+  booktitle={NeurIPS 2022 Workshop on Decentralization and Trustworthy Machine Learning in Web3: Methodologies, Platforms, and Applications},
+  year={2022}
+}
+
+@inproceedings{deng2021flex,
+  title={{FLeX}: Trading edge computing resources for federated learning via blockchain},
+  author={Deng, Yang and Han, Tao and Zhang, Ning},
+  booktitle={IEEE Conference on Computer Communications Workshops},
+  pages={1--2},
+  year={2021},
+  doi={10.1109/INFOCOMWKSHPS51825.2021.9484628},
+  organization={IEEE}
+}
+
+@article{guo2023blockchain,
+  title={Blockchain-Assisted Privacy-Preserving Data Computing Architecture for Web3},
+  author={Guo, Shaoyong and Zhang, Fan and Guo, Song and Xu, Siya and Qi, Feng},
+  journal={IEEE Communications Magazine},
+  volume={61},
+  number={8},
+  pages={28--34},
+  year={2023},
+  doi={10.1109/MCOM.001.2200408},
+  publisher={IEEE}
+}
+
+@inproceedings{batool2022fl,
+  title={{FL-MAB}: client selection and monetization for blockchain-based federated learning},
+  author={Batool, Zahra and Zhang, Kaiwen and Toews, Matthew},
+  booktitle={Proceedings of the 37th ACM/SIGAPP Symposium on Applied Computing (SAC)},
+  pages={299--307},
+  doi={10.1145/3477314.3507050},
+  year={2022}
+}
+
+@incollection{mcconaghy2022ocean,
+  title={Ocean Protocol: Tools for the Web3 Data Economy},
+  author={McConaghy, Trent},
+  booktitle={Handbook on Blockchain},
+  pages={505--539},
+  year={2022},
+  publisher={Springer}
+}
+
+@article{wang2023data,
+  title={Data-Free Diversity-Based Ensemble Selection for One-Shot Federated Learning},
+  author={Wang, Naibo and Feng, Wenjie and Duan, Moming and Liu, Fusheng and Ng, See-Kiong and others},
+  journal={Transactions on Machine Learning Research},
+  year={2023}
+}
+
+@article{woisetschlager2023federated,
+  title={Federated Fine-Tuning of LLMs on the Very Edge: The Good, the Bad, the Ugly},
+  author={Woisetschl{\"a}ger, Herbert and Isenko, Alexander and Wang, Shiqiang and Mayer, Ruben and Jacobsen, Hans-Arno},
+  journal={arXiv preprint arXiv:2310.03150},
+  year={2023}
+}
+
+@article{kuang2023federatedscope,
+  title={{FederatedScope-LLM}: A comprehensive package for fine-tuning large language models in federated learning},
+  author={Kuang, Weirui and Qian, Bingchen and Li, Zitao and Chen, Daoyuan and Gao, Dawei and Pan, Xuchen and Xie, Yuexiang and Li, Yaliang and Ding, Bolin and Zhou, Jingren},
+  journal={arXiv preprint arXiv:2309.00363},
+  year={2023}
+}
+
+@article{fan2023fate,
+  title={{FATE-LLM}: A industrial grade federated learning framework for large language models},
+  author={Fan, Tao and Kang, Yan and Ma, Guoqiang and Chen, Weijing and Wei, Wenbin and Fan, Lixin and Yang, Qiang},
+  journal={arXiv preprint arXiv:2310.10049},
+  year={2023}
+}
+
+@article{qin2023federated,
+  title={Federated Full-Parameter Tuning of Billion-Sized Language Models with Communication Cost under 18 Kilobytes},
+  author={Qin, Zhen and Chen, Daoyuan and Qian, Bingchen and Ding, Bolin and Li, Yaliang and Deng, Shuiguang},
+  journal={arXiv preprint arXiv:2312.06353},
+  year={2023}
+}
+
+@inproceedings{aketi2024cross,
+  title={Cross-feature Contrastive Loss for Decentralized Deep Learning on Heterogeneous Data},
+  author={Aketi, Sai Aparna and Roy, Kaushik},
+  booktitle={Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
+  pages={12--21},
+  year={2024}
+}
+
+@inproceedings{tan2022fedproto,
+  title={{FedProto}: Federated prototype learning across heterogeneous clients},
+  author={Tan, Yue and Long, Guodong and Liu, Lu and Zhou, Tianyi and Lu, Qinghua and Jiang, Jing and Zhang, Chengqi},
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume={36},
+  number={8},
+  doi={10.1609/aaai.v36i8.20819},
+  pages={8432--8440},
+  year={2022}
+}
+
+@article{michieli2021prototype,
+  title={Prototype guided federated learning of visual feature representations},
+  author={Michieli, Umberto and Ozay, Mete},
+  journal={arXiv preprint arXiv:2105.08982},
+  year={2021}
+}
+
+@article{benet2014ipfs,
+  title={{IPFS} - content addressed, versioned, p2p file system},
+  author={Benet, Juan},
+  journal={arXiv preprint arXiv:1407.3561},
+  year={2014}
+}
+
+@article{zhan2021survey,
+  title={A survey of incentive mechanism design for federated learning},
+  author={Zhan, Yufeng and Zhang, Jie and Hong, Zicong and Wu, Leijie and Li, Peng and Guo, Song},
+  journal={IEEE Transactions on Emerging Topics in Computing (TETC)},
+  volume={10},
+  number={2},
+  pages={1035--1044},
+  year={2021},
+  doi={10.1109/TETC.2021.3063517},
+  publisher={IEEE}
+}
+
+@article{tang2021persona,
+  title={Persona authentication through generative dialogue},
+  author={Tang, Fengyi and Zeng, Lifan and Wang, Fei and Zhou, Jiayu},
+  journal={arXiv preprint arXiv:2110.12949},
+  year={2021}
 }

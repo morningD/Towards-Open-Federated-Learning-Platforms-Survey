@@ -1,4 +1,5 @@
 \section{Contract-based Federated Learning}
+\label{sec:contract}
 Let us consider another open FL platform based on a contract-based cooperation framework, where cooperation can be built by publishing ML tasks and accepting ML collaboration requests.
 An overview of this platform is presented in Fig.~\ref{fig:contract}, the major difference between traditional FL (ref Fig.~\ref{fig:fl}) and contract-based FL is that we involve a trustworthy third-party platform called the Contract Platform to host and coordinate ML tasks for platform users.
 Rather than directly pushing ML tasks from servers to clients, employers need to publish the tasks to the contract platform and wait for acceptance from workers, which involves a mutual choice procedure. 
@@ -7,7 +8,7 @@ In addition, privacy-enhanced technologies~\cite{hesamifard2018privacy} and fing
 The properties of contract-based FL are: 1) \textbf{Opt-in}, as workers reserve the right to join or quit from training networks; 2) \textbf{Contractual}, enabling employers to define payment, organization mode, model quality criteria, rehire rules, etc. through contracts; 3) \textbf{Market-based}, where contracts are open and task pricing is influenced and determined by the market.
 
 In short, contract-based FL retains all functionalities related to model training at the platform and only provides task publishing services to employers, who play the role of model training in traditional FL.
-Furthermore, similar to model-reusing mechanisms (refer to Section~\ref{sec:taxonomy}) that can be applied to query-based FL, our contract-based FL is not limited to an amalgamation-based collaborative training paradigm like FedAvg.
+Furthermore, similar to model-reusing mechanisms (ref. Section~\ref{sec:taxonomy}) that can be applied to query-based FL, our contract-based FL is not limited to an amalgamation-based collaborative training paradigm like FedAvg.
 In fact, the contract platform is designed as a crowdsourcing platform among data miners for ML cooperation tasks, including distributed training, fine-tuning, and ensembling based on scratch or Foundation Models (FMs)~\cite{yuan2022decentralized}.
 However, most current crowdsourcing platforms like Amazon Mechanical Turk\footnote{https://www.mturk.com/} and Appen\footnote{https://appen.com/crowd-2/} primarily deal with human intelligence tasks such as data collection and annotation (aka. microtasks) rather than ML modeling tasks. 
 It remains unexplored how to design and publish an ML task to seek crowd labor.

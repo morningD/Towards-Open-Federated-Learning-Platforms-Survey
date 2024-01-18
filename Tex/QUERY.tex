@@ -785,7 +785,9 @@ In this way, we can categorize these works and make intuitive comparisons betwee
 We demonstrate the usage of our taxonomy by presenting three novel findings based on it.
 %\textbf{Comparisons:}
 
+\begin{tcolorbox}
 \textit{Finding 1. Amalgamation and Distillation ([AD] or [DA]) are the most popular combo in FL studies, followed by Distillation as a standalone ([D]) strategy and Generation before Amalgamation ([GA])}.
+\end{tcolorbox}
 
 Due to the presence of parameter mismatch~\cite{yu2021fed2, wang2020federated, yurochkin2019statistical}, using solely amalgamation often lead to weight divergence~\cite{Li2020On, tan2022towards}, particularly in scenarios with high data skew. 
 As a result, distillation, which provides a global view of the data distribution, serves as a complementary solution for addressing data heterogeneity (indicated as "H" in Table~\ref{tab:flreuse}).
@@ -802,7 +804,9 @@ But it is worth noting that the one-shot feasibility is not sufficient and neces
 For example, in FRD~\cite{cha2019federated}, participants generate mixup data for server training rather than contributing their models.
 Currently, it is evident that the once strong connection between model averaging and FL has become blurred, and distillation has emerged as a popular method in the field of FL.
 
+\begin{tcolorbox}
 \textit{Finding 2. Combination is the least common model reusing method in FL studies.}
+\end{tcolorbox}
 
 One drawback of using combination in the FL context is the high communication consumption required for broadcasting the combined model to multiple participants, which can be expensive in terms of bandwidth and latency.
 Hence, a practical approach is to compress the contributed models through methods like amalgamation or distillation, which may already implicitly include combination. 
@@ -810,7 +814,9 @@ For example, in FedAvg, the FL server collects local models from clients and ave
 However, to avoid redundancy, we did not include these temporary combinations in Table~\ref{tab:flreuse}.
 %Due to above reasons, combination is seem not common is FL studies.
 
+\begin{tcolorbox}
 \textit{Finding 3. Amalgamation after Distillation ([DA]) primarily distills knowledge from private data, while Distillation after Amalgamation ([AD]) and solely Distillation ([D]) primarily distill knowledge from non-sensitive data.}
+\end{tcolorbox}
 
 This difference arises from two different FL agreement mechanisms. 
 One strategy is to leverage model amalgamation to achieve agreement ([DA]). 
@@ -818,7 +824,9 @@ For example, the knowledge from multiple data sources is generalized by applying
 Another strategy is to leverage a public dataset to achieve agreement ([D] or [AD]). 
 In this approach, the knowledge distilled from multiple local models can be fused to a consensus agreement and then applied to the target model, eliminating the need for model amalgamation.
 
+\begin{tcolorbox}
 \textit{Question: How to select the suitable model reusing method for query-based FL?}% one-shot 需要区分是否有local trianing
+\end{tcolorbox}
 
 From the previous discussion, we have demonstrated how to summarize recent FL studies from a model reusing perspective.
 Similarly, to select a suitable method for query-based FL, we can refer to Table~\ref{tab:flreuse} and consider the following factors:
@@ -839,6 +847,28 @@ Therefore, we include it in the applicable methods.
 Please note that some single combination or amalgamation approaches, such as Fed-ensemble~\cite{shi2023fed} (only combination) and Models Fusion~\cite{yurochkin2019bayesian, yurochkin2019statistical, lam2021model} (only amalgamation), can be directly applied in a query-based FL setting. 
 However, to avoid redundancy, these studies have been omitted from Table~\ref{tab:flreuse}.
 By now, we have witnessed the success of using the new taxonomy, and in the next section, we will discuss how to combine our taxonomy with the context of model licenses.
+
+\begin{table}[t]
+  \centering
+  \footnotesize
+  \caption{Analysis of the model licensing clauses corresponding to different batch model reuse mechanisms, denoted by "keywords in licenses" -> "delineation of reused results", \ding{55}: undefined. Note: GPL-3.0, CC-BY-SA, CC-BY-NC-SA are copyleft.}
+  \label{tab:reuse}
+  \begin{tabular}{|p{2.2cm}|p{3.55cm}|p{2.8cm}|p{2.8cm}|p{2.7cm}|}
+    \hline
+    \multirow{2}{*}{}& \textbf{Combination} & \textbf{Amalgamation} & \textbf{Distillation} & \textbf{Generation} \\ \cline{2-5}
+    & Combinated Work \newline with Strong Separation & Combinated Work \newline with Weak Separation & Derivative Work \newline from Concepts & Derivative Work \newline from Distributions \\ \hline
+    Apache-2.0 & Separable -> Independent Work & Modify -> Derivative & \ding{55} & \ding{55} \\ \hline
+    MIT & \ding{55} & \ding{55} & \ding{55} & \ding{55} \\ \hline
+    AFL-3.0 & \ding{55} & Modify -> Derivative & \ding{55} & \ding{55} \\ \hline
+    GPL-3.0 & Blackbox: Aggregate -> \newline Independent Work \newline Other: Link -> Modified Version  & Modify -> Covered Work & Output no constitutes a covered work -> \newline Independent Work & Output no constitutes a covered work -> \newline Independent Work  \\ \hline
+    Artistic-2.0 & Blackbox: Merely Extend ->\newline Own Work \newline Other: Link -> Own Work & Aggregate -> \newline Modified Version & \ding{55} & \ding{55} \\ \hline
+    BSD-3-Clause & Blackbox: Rredsitribution in \newline binary forms -> \ding{55} \newline Other: Redistribution of source code -> \ding{55} & \ding{55} & \ding{55} & \ding{55} \\ \hline
+    WTFPL-2.0 & \ding{55} & \ding{55} & \ding{55} & \ding{55} \\ \hline
+    OpenRAIL Licenses & Transfer of patterns of \newline output -> Derivative & Transfer of patterns of weights -> Derivative & Transfer of patterns of activations -> Derivative & Transfer of patterns of output -> Derivative \\ \hline
+    Creative Commons \newline Licenses & Reproduce -> Adapted Material & Adapt -> \newline Adapated Material & \ding{55} & \ding{55} \\ \hline
+    CC0-1.0 & Reproduce -> \newline Independent Work & Adapt -> \newline Independent Work & \ding{55} & \ding{55} \\ \hline
+  \end{tabular}
+\end{table}
 
 
 \subsubsection{Model Reusing vs. Model Licenses}
@@ -865,28 +895,6 @@ Additionally, we can refer to Table~\ref{tab:reuse} and consider the following f
   To prevent license proliferation~\cite{gomulkiewicz2009open}, it is not recommended to reuse models under these OpenRAIL licenses.
 \end{itemize}
 
-\begin{table}[t]
-  \centering
-  \footnotesize
-  \caption{Analysis of the model licensing clauses corresponding to different batch model reuse mechanisms, denoted by "keywords in licenses" -> "delineation of reused results", \ding{55}: undefined. Note: GPL-3.0, CC-BY-SA, CC-BY-NC-SA are copyleft.}
-  \label{tab:reuse}
-  \begin{tabular}{|p{2.2cm}|p{3.55cm}|p{2.8cm}|p{2.8cm}|p{2.7cm}|}
-    \hline
-    \multirow{2}{*}{}& \textbf{Combination} & \textbf{Amalgamation} & \textbf{Distillation} & \textbf{Generation} \\ \cline{2-5}
-    & Combinated Work \newline with Strong Separation & Combinated Work \newline with Weak Separation & Derivative Work \newline from Concepts & Derivative Work \newline from Distributions \\ \hline
-    Apache-2.0 & Separable -> Independent Work & Modify -> Derivative & \ding{55} & \ding{55} \\ \hline
-    MIT & \ding{55} & \ding{55} & \ding{55} & \ding{55} \\ \hline
-    AFL-3.0 & \ding{55} & Modify -> Derivative & \ding{55} & \ding{55} \\ \hline
-    GPL-3.0 & Blackbox: Aggregate -> \newline Independent Work \newline Other: Link -> Modified Version  & Modify -> Covered Work & Output no constitutes a covered work -> \newline Independent Work & Output no constitutes a covered work -> \newline Independent Work  \\ \hline
-    Artistic-2.0 & Blackbox: Merely Extend ->\newline Own Work \newline Other: Link -> Own Work & Aggregate -> \newline Modified Version & \ding{55} & \ding{55} \\ \hline
-    BSD-3-Clause & Blackbox: Rredsitribution in \newline binary forms -> \ding{55} \newline Other: Redistribution of source code -> \ding{55} & \ding{55} & \ding{55} & \ding{55} \\ \hline
-    WTFPL-2.0 & \ding{55} & \ding{55} & \ding{55} & \ding{55} \\ \hline
-    OpenRAIL Licenses & Transfer of patterns of \newline output -> Derivative & Transfer of patterns of weights -> Derivative & Transfer of patterns of activations -> Derivative & Transfer of patterns of output -> Derivative \\ \hline
-    Creative Commons \newline Licenses & Reproduce -> Adapted Material & Adapt -> \newline Adapated Material & \ding{55} & \ding{55} \\ \hline
-    CC0-1.0 & Reproduce -> \newline Independent Work & Adapt -> \newline Independent Work & \ding{55} & \ding{55} \\ \hline
-  \end{tabular}
-\end{table}
-
 Lastly, we can further analyze the potential license conflicts in hybrid model reuse methods. Let's consider the example of DENSE~\cite{zhang2022dense}, where the process is /C[G,DGD]*1 and assume that the local models are licensed under GPL-3.0.
 In this case, the collection of local models should be treated as a whitebox in order to distill the logits value from it. 
 As a result, this collection should be considered a \textit{modified version} of the original works according to the terms of GPL-3.0.
@@ -901,14 +909,6 @@ Therefore, selecting models, algorithms, datasets with more permissive licenses,
 
 \subsection{How to Protect Models}
 \label{sec:how2protect}
-
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=\linewidth]{fig/ip_protection.pdf}
-  \caption{Overview of DNNs IP protection methods.}
-  \Description{}
-  \label{fig:ip}
-\end{figure}
 
 In the previous sections, we have extensively discussed the construction of a query-based FL platform from both technical and legal perspectives. 
 Nonetheless, the matter of model management and protection continues to be a significant concern, raising questions such as \textit{How can I protect my models from plagiarism after they are released?}
@@ -926,6 +926,14 @@ Additionally, it is important to recognize that the goal of query-based FL platf
 Interestingly, certain model reusing strategies like KD and ensemble methods are even regarded as model extraction attacks within the realm of DNNs IP protection~\cite{charette2022cosine}.
 This highlights the inherent contradiction between promoting model reusing and preventing all forms of model plagiarism.
 As a result, it is necessary to determine the scope of protection and strike a balance between model protection and platform openness.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\linewidth]{fig/ip_protection.pdf}
+  \caption{Overview of DNNs IP protection methods.}
+  \Description{}
+  \label{fig:ip}
+\end{figure}
 
 First, it is helpful to consider the following requirements for model protection in the context of query-based FL:
 \begin{itemize}

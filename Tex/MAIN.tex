@@ -129,6 +129,9 @@
 \definecolor{Platform}{HTML}{5F9099}
 \definecolor{Worker}{HTML}{CC1865}
 
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+
 \settopmatter{printacmref=false}
 %%
 %% end of the preamble, start of the body of the document source.
@@ -153,14 +156,26 @@
   \country{Singapore}}
 \email{moming@nus.edu.sg}
 
-\begin{comment}
+\author{Qinbin Li}
+\affiliation{%
+  \institution{University of California}
+  \city{Berkeley}
+  \country{USA}}
+\email{qinbin@berkeley.edu}
+
+\author{Linshan Jiang}
+\affiliation{%
+  \institution{National University of Singapore}
+  \city{Singapore}
+  \country{Singapore}}
+\email{linshan@nus.edu.sg}
+
 \author{Bingsheng He}
 \affiliation{%
   \institution{National University of Singapore}
   \city{Singapore}
   \country{Singapore}}
 \email{hebs@comp.nus.edu.sg}
-\end{comment}
 
 %%
 %% By default, the full list of authors will be used in the page
@@ -175,11 +190,12 @@
 %% article.
 \begin{abstract}
 Traditional Federated Learning (FL) follows a server-domincated cooperation paradigm which narrows the application scenarios of FL and decreases the enthusiasm of data holders to participate.
-To fully unleash the potential of FL, we advocate rethinking the design of current FL frameworks and extending it to a more generalized concept: Open Federated Learning Platforms. 
+To fully unleash the potential of FL, we advocate rethinking the design of current FL frameworks and extending it to a more generalized concept: Open Federated Learning Platforms, positioned as a crowdsourcing collaborative machine learning infrastructure for all Internet users. 
 We propose two reciprocal cooperation frameworks for FL to achieve this: query-based FL and contract-based FL. 
 In this survey, we conduct a comprehensive review of the feasibility of constructing an open FL platform from both technical and legal perspectives.
 We begin by reviewing the definition of FL and summarizing its inherent limitations, including server-client coupling, low model reusability, and non-public.
 In the query-based FL platform, which is an open model sharing and reusing platform empowered by the community for model mining, we explore a wide range of valuable topics, including the availability of up-to-date model repositories for model querying, legal compliance analysis between different model licenses, and copyright issues and intellectual property protection in model reusing.
+In the contract-based FL platform, which is an opt-in model training network that allows multi-round communication and monetization, we explain how to select training frameworks according to microtasks and discuss the pros and cons of Decentralized Autonomous Organizations-based methods.
 In particular, we introduce a novel taxonomy to streamline the analysis of model license compatibility in FL studies that involve batch model reusing methods, including combination, amalgamation, distillation, and generation. 
 This taxonomy provides a systematic framework for identifying the corresponding clauses of licenses and facilitates the identification of potential legal implications and restrictions when reusing models.
 Through this survey, we uncover the the current dilemmas faced by FL and advocate for the development of sustainable open FL platforms. 

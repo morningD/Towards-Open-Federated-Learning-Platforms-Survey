@@ -1,0 +1,156 @@
+\documentclass[journal]{IEEEtran}
+\usepackage{comment}
+\usepackage{multirow}
+\usepackage{amsmath, amsfonts, amssymb, pifont}
+\usepackage{booktabs}
+\usepackage{rotating}
+\usepackage{array}
+\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\usepackage{textcomp}
+\usepackage{stfloats}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{romannum}
+%\usepackage[para]{footmisc}
+\newcolumntype{P}[2]{%
+  >{\begin{turn}{#1}\begin{minipage}{#2}\footnotesize\raggedright\hspace{1pt}}c%
+  <{\end{minipage}\end{turn}}%
+}
+%\usepackage{tablefootnote}
+\usepackage{xcolor}
+\usepackage{colortbl}
+%\usepackage{longtable}
+\usepackage{circledsteps}
+\usepackage{diagbox}
+\usepackage[ruled,linesnumbered]{algorithm2e}
+\usepackage{tcolorbox}
+\usepackage[T1]{fontenc}
+\usepackage[hidelinks]{hyperref}
+\usepackage{nameref}
+\usepackage{tikz}
+\usetikzlibrary{shapes, arrows, positioning, backgrounds}
+\hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
+
+\definecolor{Employer}{HTML}{18AFCC}
+\definecolor{Platform}{HTML}{5F9099}
+\definecolor{Worker}{HTML}{CC1865}
+
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+\newcommand*{\fullref}[1]{\hyperref[{#1}]{\S\textbf{\ref*{#1}}. \nameref*{#1}}}
+
+\begin{document}
+
+\title{Towards Open Federated Learning Platforms: Survey and Vision from Technical and Legal Perspectives}
+
+\author{Moming~Duan,
+        Qinbin~Li,
+        Linshan~Jiang,
+        Bingsheng~He% <-this % stops a space
+\thanks{Moming Duan, Linshan Jiang, and Bingsheng He are with the National University of Singapore, Singapore, 119077. Email:  \{\href{mailto:moming@nus.edu.sg}{moming@nus.edu.sg}, \href{mailto:linshan@nus.edu.sg}{linshan@nus.edu.sg}, \href{mailto:hebs@comp.nus.edu.sg}{hebs@comp.nus.edu.sg}\}.}%
+\thanks{Qinbin Li is with the University of California, Berkeley, USA, 94720. Email: \{\href{mailto:qinbin@berkeley.edu}{qinbin@berkeley.edu}\}}
+%\thanks{This paper was produced by the IEEE Publication Technology Group. They are in Piscataway, NJ.}% <-this % stops a space
+%\thanks{Manuscript received April 19, 2021; revised August 16, 2021.}
+}
+
+% The paper headers
+\markboth{Journal of \LaTeX\ Class Files,~Vol.~14, No.~8, August~2021}%
+{Shell \MakeLowercase{\textit{et al.}}: A Sample Article Using IEEEtran.cls for IEEE Journals}
+
+%\IEEEpubid{0000--0000/00\$00.00~\copyright~2021 IEEE}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark.
+
+\maketitle
+
+\begin{abstract}
+Traditional Federated Learning (FL) follows a server-domincated cooperation paradigm which narrows the application scenarios of FL and decreases the enthusiasm of data holders to participate.
+To fully unleash the potential of FL, we advocate rethinking the design of current FL frameworks and extending it to a more generalized concept: Open Federated Learning Platforms, positioned as a crowdsourcing collaborative machine learning infrastructure for all Internet users. 
+We propose two reciprocal cooperation frameworks to achieve this: query-based FL and contract-based FL. 
+In this survey, we conduct a comprehensive review of the feasibility of constructing open FL platforms from both technical and legal perspectives.
+We begin by reviewing the definition of FL and summarizing its inherent limitations, including server-client coupling, low model reusability, and non-public.
+%In the query-based FL platform, which is an open model sharing and reusing platform empowered by the community for model mining, we explore a wide range of valuable topics, including the availability of up-to-date model repositories for model querying, legal compliance analysis between different model licenses, and copyright issues and intellectual property (IP) protection in model reusing.
+%In the contract-based FL platform, which is an opt-in model training network that allows multi-round communication and monetization, we explain how to select training frameworks according to microtasks and discuss the pros and cons of Web3-based methods.
+In particular, we introduce a novel taxonomy to streamline the analysis of model license compatibility in FL studies that involve batch model reusing methods, including combination, amalgamation, distillation, and generation. 
+This taxonomy provides a feasible solution for identifying the corresponding licenses clauses and facilitates the analysis of potential legal implications and restrictions when reusing models.
+Through this survey, we uncover the the current dilemmas faced by FL and advocate for the development of sustainable open FL platforms. 
+We aim to provide guidance for establishing such platforms in the future, while identifying potential limitations that need to be addressed.
+
+
+%Then, for query-based FL, we survey the availability of online model repositories for neural networks in the context of model query.
+%Furthermore, based on mainstream model licenses, we study the legal compliance between different licenses and provide guidelines for avoiding license conflicts.
+
+\end{abstract}
+
+\begin{IEEEkeywords}
+Federated Learning, Collaborative Machine Learning, Distributed Artificial Intelligence
+\end{IEEEkeywords}
+
+
+\input{INTRODUCTION}
+
+\input{RELATED}
+
+\input{OVERVIEW}
+
+\input{QUERY}
+
+\input{CONTRACT}
+
+
+%\section*{Acknowledgments}
+
+\begin{comment}
+{\appendix[Proof of the Zonklar Equations]
+Use $\backslash${\tt{appendix}} if you have a single appendix:
+Do not use $\backslash${\tt{section}} anymore after $\backslash${\tt{appendix}}, only $\backslash${\tt{section*}}.
+If you have multiple appendixes use $\backslash${\tt{appendices}} then use $\backslash${\tt{section}} to start each appendix.
+You must declare a $\backslash${\tt{section}} before using any $\backslash${\tt{subsection}} or using $\backslash${\tt{label}} ($\backslash${\tt{appendices}} by itself
+starts a section numbered zero.)}
+
+
+%{\appendices
+%\section*{Proof of the First Zonklar Equation}
+%Appendix one text goes here.
+% You can choose not to have a title for an appendix if you want by leaving the argument blank
+%\section*{Proof of the Second Zonklar Equation}
+%Appendix two text goes here.}
+\end{comment}
+
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEabrv,REF}
+
+\begin{comment}
+\section{Biography Section}
+If you have an EPS/PDF photo (graphicx package needed), extra braces are
+ needed around the contents of the optional argument to biography to prevent
+ the LaTeX parser from getting confused when it sees the complicated
+ $\backslash${\tt{includegraphics}} command within an optional argument. (You can create
+ your own custom macro containing the $\backslash${\tt{includegraphics}} command to make things
+ simpler here.)
+ 
+\vspace{11pt}
+
+\bf{If you include a photo:}\vspace{-33pt}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{fig1}}]{Michael Shell}
+Use $\backslash${\tt{begin\{IEEEbiography\}}} and then for the 1st argument use $\backslash${\tt{includegraphics}} to declare and link the author photo.
+Use the author name as the 3rd argument followed by the biography text.
+\end{IEEEbiography}
+
+\vspace{11pt}
+
+\bf{If you will not include a photo:}\vspace{-33pt}
+\begin{IEEEbiographynophoto}{John Doe}
+Use $\backslash${\tt{begin\{IEEEbiographynophoto\}}} and the author name as the argument followed by the biography text.
+\end{IEEEbiographynophoto}
+\end{comment}
+
+\vfill
+
+\end{document}
+
+\endinput
+%%
+%% End of file `sample-acmlarge.tex'.

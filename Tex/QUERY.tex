@@ -25,48 +25,49 @@ Actually, we aim to advocate a novel SaaS~\cite{brereton1999future} ML platform 
 Due to the high computational demands of deep learning, current ML platforms primarily concentrate on computing, for example, MaaS, MLaaS, FLaaS provide ML models deployment and development services to handle user-specified tasks (ref. Section~\ref{sec:aas}).
 On the other hand, there are several ML platforms provide open model search and download services. 
 So, can we leverage leverage off-the-shelf open model platforms to build a query-based FL system?
-Unfortunately, these platforms are designed solely for sharing and are no suitable for more advanced functionalities such as model ensemble~\cite{jacobs1991adaptive} and knowledge distillation~\cite{hinton2015distilling}, we will explain the reasons in the following section.
+Unfortunately, these platforms are designed solely for sharing and are not suitable for more advanced functionalities such as model ensemble~\cite{jacobs1991adaptive} and knowledge distillation~\cite{hinton2015distilling}, and we will explain the reasons in the following section.
 
 % Model Mining
 
 \subsection{How to Query for Models}
 \label{sec:how2query}
 To establish a query-based FL platform, the first thing that comes to mind is how to query for models.
-Unlike traditional ML model sharing repositories that mainly query for a specific model by name, it requires an efficiency approach to export a batch of target models that ready for ensemble or distillation.
-We summaried the filter conditions of existing DNNs sharing repositories in Table.~\ref{table:repository}.
-The prevailing method for querying models involves searching for the desired model by its name, datasets used, and the associated tasks.
-To illustrate, one might search for the model name GPT~\cite{radford2019language}, models trained on the MNIST dataset~\cite{lecun2010mnist}, or models capable of performing image segmentation tasks.
+Unlike traditional ML model sharing repositories that mainly query for a specific model by name, it requires an efficiency approach to export a batch of target models that are ready for ensemble or distillation.
+We summarized the filter conditions of existing DNNs sharing repositories in Table.~\ref{table:repository}.
+The prevailing method for querying models involves searching for the desired model by its name, used datasets, and the associated tasks.
+For instance, one might search for the model name GPT~\cite{radford2019language}, models trained on the MNIST dataset~\cite{lecun2010mnist}, or models capable of performing image segmentation tasks.
 However, this model retrieval method requires the users have a strong priori knowledge in data science, thus raising the barrier for knowledge mining within models.
-For example, there is no effective way to acquire a batch of image classfication models that contains the knowledge of \textit{lesser panda} for further distillation.
+As an example, there is no effective way to acquire a batch of image classfication models that contains the knowledge of \textit{lesser panda} for further distillation.
 A compromise solution is to manually search the schema of each dataset one-by-one and subsequently search for models trained on those datasets.
 
-As shown in Table.~\ref{table:repository}, most DNNs repositories are simply list the description of input/output (e.g., NVIDIA NGC, OpenVINO) or even just present the source codes (e.g., Tensorflow Hub, Pytorch Hub).
+As shown in Table.~\ref{table:repository}, most DNNs repositories are simply listing the description of input/output (e.g., NVIDIA NGC, OpenVINO) or even just present the source codes (e.g., Tensorflow Hub, Pytorch Hub).
 This lack of unified convention for model input/output poses a challenge for query-based FL.
 Additionally, most of DNNs repositories do not enable querying models by licenses, resulting in the cumbersome task of individually handling model licenses and ensuring compatibility among different licenses.
-Hence, it is imperative to reconsider the design of DNNs repositories to enable quick identification of readily reusable models for knowledge aggregation. We further suggest following filter conditions for query-based FL.
+Hence, it is imperative to reconsider the design of DNNs repositories to enable quick identification of readily reusable models for knowledge aggregation. 
+We further suggest following filter conditions for query-based FL.
 
 \begin{table}[t]
-  \caption{Filter conditions and characteristics of DNNs repositories. \checkmark : Supported, \ding{55} : Unsupported, \textbf{!} : Information provided but unsearchable, listed in descending order by number of released models. (Accessed on January 17, 2024)}
+  \caption{Filter conditions and characteristics of DNNs repositories. \cmark : Supported, \xmark : Unsupported, \textbf{!} : Information provided but unsearchable, listed in descending order by number of released models. (Accessed on January 17, 2024)}
   \label{table:repository}
   \footnotesize
   \begin{tabular}{|l|c|c|c|c|c|c|c|c|}
   \hline
   & \multicolumn{1}{l|}{DS Name} & \multicolumn{1}{l|}{Model Architecture} & \multicolumn{1}{l|}{Modality/Task} & \multicolumn{1}{l|}{Tag} & \multicolumn{1}{l|}{License} & \multicolumn{1}{l|}{Input-Output} & \multicolumn{1}{l|}{Batch Export} & \multicolumn{1}{l|}{\# of Models}\\ \hline
   Hugging Face\tablefootnote{https://huggingface.co}
-  & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \textbf{!} & \ding{55} & 470,263 \\ \hline
-  Model Zoo\tablefootnote{https://modelzoo.co/} & \checkmark & \checkmark & \checkmark & \checkmark & \ding{55} & \ding{55} & \ding{55} & 3,245 \\ \hline
-  Tensorflow Hub\tablefootnote{https://tfhub.dev/}& \checkmark & \checkmark & \checkmark & \checkmark & \textbf{!} & \textbf{!} & \ding{55} & 2,186 \\ \hline
-  NVIDIA NGC\tablefootnote{https://catalog.ngc.nvidia.com/models} & \textbf{!} & \checkmark & \checkmark & \checkmark & \textbf{!} & \textbf{!} & \ding{55} & 680 \\ \hline
-  OpenVINO\tablefootnote{https://docs.openvino.ai/latest/model\_zoo.html} & \textbf{!} & \checkmark & \checkmark & \ding{55} & \textbf{!} & \textbf{!} & \checkmark & 277 \\ \hline
-  Pytorch Hub\tablefootnote{https://pytorch.org/hub/} & \textbf{!} & \checkmark & \ding{55} & \ding{55} & \ding{55} & \textbf{!} & \ding{55} & 52 \\ \hline
+  & \cmark & \cmark & \cmark & \cmark & \cmark & \textbf{!} & \xmark & 470,263 \\ \hline
+  Model Zoo\tablefootnote{https://modelzoo.co/} & \cmark & \cmark & \cmark & \cmark & \xmark & \xmark & \xmark & 3,245 \\ \hline
+  Tensorflow Hub\tablefootnote{https://tfhub.dev/}& \cmark & \cmark & \cmark & \cmark & \textbf{!} & \textbf{!} & \xmark & 2,186 \\ \hline
+  NVIDIA NGC\tablefootnote{https://catalog.ngc.nvidia.com/models} & \textbf{!} & \cmark & \cmark & \cmark & \textbf{!} & \textbf{!} & \xmark & 680 \\ \hline
+  OpenVINO\tablefootnote{https://docs.openvino.ai/latest/model\_zoo.html} & \textbf{!} & \cmark & \cmark & \xmark & \textbf{!} & \textbf{!} & \cmark & 277 \\ \hline
+  Pytorch Hub\tablefootnote{https://pytorch.org/hub/} & \textbf{!} & \cmark & \xmark & \xmark & \xmark & \textbf{!} & \xmark & 52 \\ \hline
   \end{tabular}
 \end{table}
 
 \subsubsection{Data Description} % 数据的domain和统计特征，数据的正确性，如何打标签，
-Similar with the data heterogeous challenges in FL~\cite{liqb2022federated}. The local datasets of contributors have varing quality and contain intractable biases, imbalances and noisies that can be attributed to the natural characteristics of demographic or improper data collection mechanisms~\cite{dayan2021federated}.
-Besides, label errors pervasive even in open datasets~\cite{northcutt2021pervasive}. 
+Similar with the data heterogeous challenges in FL~\cite{liqb2022federated}, the local datasets of contributors have varing quality and contain intractable biases, imbalances and noisies that can be attributed to the natural characteristics of demographic or improper data collection mechanisms~\cite{dayan2021federated}.
+Besides, label errors are pervasive even in open datasets~\cite{northcutt2021pervasive}. 
 So, in addition to searching for domain-specific datasets based on their data descriptions, we are also seeking such descriptions for the purpose of future traceability and debugging.
-The data description can consist of statistical analysis results or the visualization diagrams that used to profile the data distribution~\cite{li2020multi} and complementary provenance information.
+The data description can consist of statistical analysis results or the visualization diagrams used to profile the data distribution~\cite{li2020multi} and complementary provenance information.
 
 \subsubsection{Workflow and History}
 \label{sec:workflow&history}
@@ -84,34 +85,39 @@ In some cases, contributed models may rely on other models as dependencies.
 For example, Fast R-CNN~\cite{girshick2015fast} uses VGG16~\cite{simonyan2014very} as its backbone. 
 It is crucial to release this information for further model license compatibility analysis.
 
+\subsubsection{Fairness and Robustness}
+To enhance trust in AI services, IBM has introduced FactSheets~\cite{arnold2019factsheets}, which promote the use of supplier-provided documents detailing potential bias, proof of robustness, optimal conditions, etc., associated with AI services. 
+This information is useful for understanding the strengths and weaknesses of models, enabling further improvement through collaborative learning. 
+We highly recommend readers visit the FactSheets website and explore their examples for additional reading\footnote{https://aifs360.res.ibm.com/}.
+
 The aforementioned filter conditions provide comprehensive coverage of the ML modeling process. 
-However, there are additional requirements depending on the reuse mechanisms of the model retrieval side. 
+However, there are additional requirements depending on the reuse mechanisms in the model retrieval side. 
 For example, FedAvg~\cite{mcmahan2017communication} aggregates the local models weights element-wise, which requires full access to the models. 
 In contrast, MoE with a gating network~\cite{jacobs1991adaptive} only ensembles a batch of model outputs, so the individual models can remain blackboxes in this scenario.
-So, in the context of software licenses or model licenses, the batch models reused by FedAvg should be released as source code, while those reused by MoE can be released as binary executable modules (e.g. dynamic linking).
+So, in the context of software licenses or model licenses, the batch models reused by FedAvg should be released as source code, while those reused by MoE can be released as binary executable modules (e.g., dynamic linking).
 The above distinction is crucial for ensuring that model reuse results meet the legal framework, and this has been overlooked in traditional FL.
 We will expand on this topic in the following section.
 
-\subsection{How to Reuse Batch of Models}
+\subsection{Legal Considerations in Batch Model Reuse}
 \label{how2reuse}
 Once we have acquired a certain number of models that can contribute to the new target task, the next step is to reuse the knowledge of these pre-trained models, i.e., transfer their knowledge from source domain to the target domain~\cite{pan2009survey}.
 However, before deciding on how to reuse the model, it is important to ensure that the necessary legal rights and permissions have been obtained. 
 This may involve reviewing the terms and conditions of the licenses under which the models were released or obtaining permission from the original creators or copyright holders.
 Therefore, in this section, we will not focus on the technical details of how to reuse models, which is already covered by many related surveys, such as Transfer Learning~\cite{pan2009survey}, Ensemble Leanring~\cite{zhou2012ensemble}, Domain Adaptation~\cite{wang2018deep}, Knowledge Distillation~\cite{wang2021knowledge}, Deep Generative Models~\cite{cao2022survey} and Model Fusion~\cite{ji2021emerging}.
-Meanwhile, the specific model reuse technique or techniques used is at the user's discretion, and the query-based FL platform we advocate is not bound or restricted to any particular model reuse algorithm.
+Meanwhile, the specific model reuse technique or techniques used is at the user's discretion, and the query-based FL platform we advocate is not bounded or restricted to any particular model reuse algorithm.
 Innovatively, we study how to reuse batch of models, from the perspective of \textbf{legal compliance}.
 %Therefore, the focus of this section is how to reuse batch of models, from the perspective of legal compliance.
 
 The machine learning community benefits from the openness of ideas and code, and many high-impact ML conferences and journals encourage authors to publish their source code and dataset to research platforms like Papers With Code~\footnote{https://paperswithcode.com} and Code Ocean~\footnote{https://codeocean.com} to increase exposure and facilitate reproducibility.
-To restrict the use of ML techniques for unethical purposes (i.e. Deepfakes~\cite{mirsky2021creation}) and protect the IP of creators, models are typically published under a license agreed upon by the licensor.
-Here, we summary the granted rights, restrictions and enforcements of licenses for ML models posted on Hugging Face in Table~\ref{tab:licenses}.
+To restrict the use of ML techniques for unethical purposes (i.e., Deepfakes~\cite{mirsky2021creation}) and protect the IP of creators, models are typically published under a license agreed upon by the licensor.
+Here, we summarized the granted rights, restrictions and enforcements of licenses for ML models posted on Hugging Face in Table~\ref{tab:licenses}.
 The following sections will provide a detailed survey of these licenses.
 
 
 \begin{table}[t]
   \centering
   \scriptsize
-  \caption{Licenses for ML models available on Hugging Face with a focus on their rights, restrictions and enforcements, grouped by FOSS licenses, AI model licenses, free content or database licenses in descending order of number of models (GPL, BSD, LGPL, CC licenses with unspecified versions are excluded, the similar revisions are merged). \checkmark : Permited or Required, \ding{55} : Not Permited or Not Required, \textbf{!} : Not Explicitly Permited, * : Copyleft License, $^{\dagger}$ : Public Domain License. Only the source code of the original work under AFL-3.0 or Artistic-2.0 is required to be disclosed. You may not distribute the modified materials licensed under CC-BY-NC-ND or CC-BY-ND. (Accessed on January 17, 2024)}
+  \caption{Licenses for ML models available on Hugging Face with a focus on their rights, restrictions and enforcements, grouped by FOSS licenses, AI model licenses, free content or database licenses in descending order of number of models (GPL, BSD, LGPL, CC licenses with unspecified versions are excluded, the similar revisions are merged). \cmark : Permited or Required, \xmark : Not Permited or Not Required, \textbf{!} : Not Explicitly Permited, * : Copyleft License, $^{\dagger}$ : Public Domain License. Only the source code of the original work under AFL-3.0 or Artistic-2.0 is required to be disclosed. You may not distribute the modified materials licensed under CC-BY-NC-ND or CC-BY-ND. (Accessed on January 17, 2024)}
   \label{tab:licenses}
   \vspace{-3mm}
   \begin{tabular}{r||ccc|ccc|cccc|c|p{3.5cm}}
@@ -132,80 +138,80 @@ The following sections will provide a detailed survey of these licenses.
     \midrule
 
     \rowcolor{green!15}
-    Apache-2.0 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & 65,985 & BERT~\cite{devlin2018bert} \\
+    Apache-2.0 & \cmark & \cmark & \cmark & \cmark & \cmark & \xmark & \cmark & \xmark & \xmark & \cmark & 65,985 & BERT~\cite{devlin2018bert} \\
 
-    MIT &  \checkmark & \checkmark & \checkmark & \checkmark & \textbf{!} & \textbf{!} & \ding{55} & \ding{55} & \ding{55} & \checkmark & 30,344 & GPT-2~\cite{radford2019language} \\
-
-    \rowcolor{green!15}
-    AFL-3.0 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \ding{55} & \checkmark & (\checkmark) & \ding{55} & \checkmark & 2,208 & Italian-Legal-BERT~\cite{licari2022italian} \\
-
-    % LLama2 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \ding{55} & \checkmark & (\checkmark) & \ding{55} & \checkmark & 1,342 & LLama2 \\
-
-    *GPL-3.0 & \checkmark & \checkmark & \ding{55} & \checkmark & \checkmark & \ding{55} & \checkmark & \checkmark & \ding{55} & \checkmark & 1,242 & PersonaGPT~\cite{tang2021persona} \\
+    MIT &  \cmark & \cmark & \cmark & \cmark & \textbf{!} & \textbf{!} & \xmark & \xmark & \xmark & \cmark & 30,344 & GPT-2~\cite{radford2019language} \\
 
     \rowcolor{green!15}
-    Artistic-2.0 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \ding{55} & \checkmark & (\checkmark) & \ding{55} & \checkmark & 675 & Include original source \\
+    AFL-3.0 & \cmark & \cmark & \cmark & \cmark & \cmark & \xmark & \cmark & (\cmark) & \xmark & \cmark & 2,208 & Italian-Legal-BERT~\cite{licari2022italian} \\
+
+    % LLama2 & \cmark & \cmark & \cmark & \cmark & \cmark & \xmark & \cmark & (\cmark) & \xmark & \cmark & 1,342 & LLama2 \\
+
+    *GPL-3.0 & \cmark & \cmark & \xmark & \cmark & \cmark & \xmark & \cmark & \cmark & \xmark & \cmark & 1,242 & PersonaGPT~\cite{tang2021persona} \\
+
+    \rowcolor{green!15}
+    Artistic-2.0 & \cmark & \cmark & \cmark & \cmark & \cmark & \xmark & \cmark & (\cmark) & \xmark & \cmark & 675 & Include original source \\
 
     %606+30
-    BSD-3-Clause\&-Clear & \checkmark & \checkmark & \checkmark & \checkmark & \textbf{!} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \checkmark & 636 & CodeGen~\cite{nijkamp2023codegen}/ A MIT-style license \\
+    BSD-3-Clause\&-Clear & \cmark & \cmark & \cmark & \cmark & \textbf{!} & \xmark & \xmark & \xmark & \xmark & \cmark & 636 & CodeGen~\cite{nijkamp2023codegen}/ A MIT-style license \\
 
     \rowcolor{green!15}
-    $^{\dagger}$WTFPL-2.0 & \checkmark & \checkmark & \textbf{!} & \checkmark & \textbf{!} & \textbf{!} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & 409 & A MIT-style permissive license  \\
+    $^{\dagger}$WTFPL-2.0 & \cmark & \cmark & \textbf{!} & \cmark & \textbf{!} & \textbf{!} & \xmark & \xmark & \xmark & \xmark & 409 & A MIT-style permissive license  \\
 
-    *AGPL-3.0 & \checkmark & \checkmark & \ding{55} & \checkmark & \checkmark & \ding{55} & \checkmark & \checkmark & \ding{55} & \checkmark & 265 & Extended GPL covers SaaS  \\
+    *AGPL-3.0 & \cmark & \cmark & \xmark & \cmark & \cmark & \xmark & \cmark & \cmark & \xmark & \cmark & 265 & Extended GPL covers SaaS  \\
 
     \rowcolor{green!15}
-    $^{\dagger}$Unlicense & \checkmark & \checkmark & \textbf{!} & \checkmark & \textbf{!} & \textbf{!} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & 254 & A MIT-style permissive license  \\
+    $^{\dagger}$Unlicense & \cmark & \cmark & \textbf{!} & \cmark & \textbf{!} & \textbf{!} & \xmark & \xmark & \xmark & \xmark & 254 & A MIT-style permissive license  \\
     %GPL & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 63 &  \\
 
-    *GPL-2.0 & \checkmark & \checkmark & \ding{55} & \checkmark & \textbf{!} & \textbf{!} & \checkmark & \checkmark & \ding{55} & \checkmark & 91 & Not compatible with GPL-3.0  \\
+    *GPL-2.0 & \cmark & \cmark & \xmark & \cmark & \textbf{!} & \textbf{!} & \cmark & \cmark & \xmark & \cmark & 91 & Not compatible with GPL-3.0  \\
 
     %77+7
     \rowcolor{green!15}
-    *LGPL-3.0\&2.1 & \checkmark & \checkmark & \ding{55} & \checkmark & \checkmark & \textbf{!} & \checkmark & \checkmark & \ding{55} & \checkmark & 84 & For software libraries  \\
+    *LGPL-3.0\&2.1 & \cmark & \cmark & \xmark & \cmark & \cmark & \textbf{!} & \cmark & \cmark & \xmark & \cmark & 84 & For software libraries  \\
 
-    BSD-2-Clause & \checkmark & \checkmark & \checkmark & \checkmark & \textbf{!} & \textbf{!} & \ding{55} & \ding{55} & \ding{55} & \checkmark & 82 & A MIT-style permissive license  \\
+    BSD-2-Clause & \cmark & \cmark & \cmark & \cmark & \textbf{!} & \textbf{!} & \xmark & \xmark & \xmark & \cmark & 82 & A MIT-style permissive license  \\
 
     \rowcolor{green!15}
-    BSL-1.0 & \checkmark & \checkmark & \checkmark & \checkmark & \textbf{!} & \textbf{!} & \ding{55} & \ding{55} & \ding{55} & \checkmark & 77 & A MIT-style permissive license \\
+    BSL-1.0 & \cmark & \cmark & \cmark & \cmark & \textbf{!} & \textbf{!} & \xmark & \xmark & \xmark & \cmark & 77 & A MIT-style permissive license \\
     %BSD & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 43 &  \\
 
-    *OSL-3.0 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \ding{55} & \checkmark & \checkmark & \ding{55} & \checkmark & 55 & Linking is not derivative work \\
+    *OSL-3.0 & \cmark & \cmark & \cmark & \cmark & \cmark & \xmark & \cmark & \cmark & \xmark & \cmark & 55 & Linking is not derivative work \\
 
     \rowcolor{green!15}
-    *Ms-PL & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \checkmark & 43 & Weak copyleft license \\ % Weak copyleft
+    *Ms-PL & \cmark & \cmark & \cmark & \cmark & \cmark & \xmark & \xmark & \xmark & \xmark & \cmark & 43 & Weak copyleft license \\ % Weak copyleft
 
     %BSD-3-Clause-Clear & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 14 &  \\
     %LGPL & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 12 &  \\
-    ECL-2.0 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & 38 & For education communities \\
+    ECL-2.0 & \cmark & \cmark & \cmark & \cmark & \cmark & \xmark & \cmark & \xmark & \xmark & \cmark & 38 & For education communities \\
 
     \rowcolor{green!15}
-    Zlib & \checkmark & \checkmark & \textbf{!} & \checkmark & \textbf{!} & \textbf{!} & \ding{55} & \ding{55} & \ding{55} & \checkmark & 30 & Rename if modified \\
+    Zlib & \cmark & \cmark & \textbf{!} & \cmark & \textbf{!} & \textbf{!} & \xmark & \xmark & \xmark & \cmark & 30 & Rename if modified \\
 
-    *MPL-2.0 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \ding{55} & \checkmark & \checkmark & \ding{55} & \checkmark & 23 & State changes under MPL only  \\
+    *MPL-2.0 & \cmark & \cmark & \cmark & \cmark & \cmark & \xmark & \cmark & \cmark & \xmark & \cmark & 23 & State changes under MPL only  \\
 
     %14+5
     \rowcolor{green!15}
-    *EPL-2.0\&1.0 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \textbf{!} & \ding{55} & \checkmark & \ding{55} & \checkmark & 19 & Can link proprietary license code \\
+    *EPL-2.0\&1.0 & \cmark & \cmark & \cmark & \cmark & \cmark & \textbf{!} & \xmark & \cmark & \xmark & \cmark & 19 & Can link proprietary license code \\
 
-    ISC & \checkmark & \checkmark & \textbf{!} & \checkmark & \textbf{!} & \textbf{!} & \ding{55} & \ding{55} & \ding{55} & \checkmark & 15 & MIT-style license w/o sublicense \\ % Permission to distribute this software for any purpose
-
-    \rowcolor{green!15}
-    *EUPL-1.1 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \ding{55} & \checkmark & \checkmark & \ding{55} & \checkmark & 15 & License of EU covers SaaS \\
-
-    NCSA & \checkmark & \checkmark & \checkmark & \checkmark & \textbf{!} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \checkmark & 10 & Include full text of license \\
+    ISC & \cmark & \cmark & \textbf{!} & \cmark & \textbf{!} & \textbf{!} & \xmark & \xmark & \xmark & \cmark & 15 & MIT-style license w/o sublicense \\ % Permission to distribute this software for any purpose
 
     \rowcolor{green!15}
-    PostgreSQL & \checkmark & \checkmark & \textbf{!} & \checkmark & \textbf{!} & \textbf{!} & \ding{55} & \ding{55} & \ding{55} & \checkmark & 7 & A MIT-style license \\
+    *EUPL-1.1 & \cmark & \cmark & \cmark & \cmark & \cmark & \xmark & \cmark & \cmark & \xmark & \cmark & 15 & License of EU covers SaaS \\
+
+    NCSA & \cmark & \cmark & \cmark & \cmark & \textbf{!} & \xmark & \xmark & \xmark & \xmark & \cmark & 10 & Include full text of license \\
+
+    \rowcolor{green!15}
+    PostgreSQL & \cmark & \cmark & \textbf{!} & \cmark & \textbf{!} & \textbf{!} & \xmark & \xmark & \xmark & \cmark & 7 & A MIT-style license \\
 
     %\rowcolor{green!15}
-    %OFL-1.1 & \checkmark & \checkmark & \ding{55} & \checkmark & \textbf{!} & \textbf{!} & \ding{55} & \ding{55} & \ding{55} & \checkmark & 3 & For font software \\
+    %OFL-1.1 & \cmark & \cmark & \xmark & \cmark & \textbf{!} & \textbf{!} & \xmark & \xmark & \xmark & \cmark & 3 & For font software \\
 
     %EPL-1.0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 2 &  \\
     %LGPL-2.1 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 1 &  \\
 
     %\rowcolor{green!15}
-    %LPPL-1.3c & \checkmark & \checkmark & \checkmark & \checkmark & \textbf{!} & \ding{55} & \checkmark & \checkmark & \ding{55} & \checkmark & 4 & Covering  stewardship transfer \\
+    %LPPL-1.3c & \cmark & \cmark & \cmark & \cmark & \textbf{!} & \xmark & \cmark & \cmark & \xmark & \cmark & 4 & Covering  stewardship transfer \\
     
     \hline
     %\textbf{Model Licenses $\downarrow$} & \multicolumn{12}{l}{} \\
@@ -214,9 +220,9 @@ The following sections will provide a detailed survey of these licenses.
     OpenRAIL &  \multicolumn{10}{l|}{>Responsible AI License template, w/o full text} & 22,947 & ControlNet~\cite{zhang2023adding}  \\
 
     \rowcolor{yellow!15}
-    CreativeML-OpenRAIL-M & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \ding{55} & \checkmark & \ding{55} & \checkmark & \checkmark & 15,591 & Stable Diffusions v1~\cite{rombach2022high} \\
+    CreativeML-OpenRAIL-M & \cmark & \cmark & \cmark & \cmark & \cmark & \xmark & \cmark & \xmark & \cmark & \cmark & 15,591 & Stable Diffusions v1~\cite{rombach2022high} \\
 
-    Llama2 & \checkmark & \checkmark & \ding{55} & (\checkmark) & \checkmark & \ding{55} & \ding{55} & \ding{55} & \checkmark & \checkmark & 3,538 & Llama 2~\cite{touvron2023llama} \\
+    Llama2 & \cmark & \cmark & \xmark & (\cmark) & \cmark & \xmark & \xmark & \xmark & \cmark & \cmark & 3,538 & Llama 2~\cite{touvron2023llama} \\
 
     \rowcolor{yellow!15}
     OpenRAIL++ & \multicolumn{10}{l|}{>Same as CreativeML-OpenRAIL-M} & 1,433 & Stable Diffusion v2~\cite{rombach2022high} \\
@@ -224,12 +230,12 @@ The following sections will provide a detailed survey of these licenses.
     BigScience-OpenRAIL-M & \multicolumn{10}{l|}{>Same as BigScience-BLOOM-RAIL-1.0} & 659 & A general version of 1.0 \\
 
     \rowcolor{yellow!15}
-    BigScience-BLOOM-RAIL-1.0 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \ding{55} & \checkmark & \ding{55} & \checkmark & \checkmark & 527 & BLOOM~\cite{scao2022bloom} \\
+    BigScience-BLOOM-RAIL-1.0 & \cmark & \cmark & \cmark & \cmark & \cmark & \xmark & \cmark & \xmark & \cmark & \cmark & 527 & BLOOM~\cite{scao2022bloom} \\
 
     BigCode-OpenRAIL-M & \multicolumn{10}{l|}{>Same as BigScience-BLOOM-RAIL-1.0} & 320 & StarCoder~\cite{li2023starcoder} \\
 
     \rowcolor{yellow!15}
-    OPT-175B & \checkmark & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \checkmark & \checkmark & $\approx94$ & OPT LLM~\cite{zhang2022opt} \\
+    OPT-175B & \cmark & \xmark & \xmark & \xmark & \xmark & \xmark & \xmark & \xmark & \cmark & \cmark & $\approx94$ & OPT LLM~\cite{zhang2022opt} \\
 
     SEER &  \multicolumn{10}{l|}{>Same as OPT-175B, ban on reverse-engineer} & $\approx23$ & SEER Vision Model~\cite{goyal2022vision} \\
     
@@ -238,50 +244,50 @@ The following sections will provide a detailed survey of these licenses.
 
     %4,602+57+88
     \rowcolor{blue!15} 
-    CC-BY-NC-4.0\&3.0\&2.0 & \checkmark & \checkmark & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & 4,747 & GALACTICA~\cite{taylor2022galactica} \\
+    CC-BY-NC-4.0\&3.0\&2.0 & \cmark & \cmark & \xmark & \xmark & \xmark & \xmark & \cmark & \xmark & \xmark & \cmark & 4,747 & GALACTICA~\cite{taylor2022galactica} \\
 
     % 3,201+114+97+17
-    CC-BY-4.0\&3.0\&2.5\&2.0 & \checkmark & \checkmark & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & 3,429 & RoBERTa-SQuAD2.0~\cite{rajpurkar2016squad} \\
+    CC-BY-4.0\&3.0\&2.5\&2.0 & \cmark & \cmark & \xmark & \cmark & \xmark & \xmark & \cmark & \xmark & \xmark & \cmark & 3,429 & RoBERTa-SQuAD2.0~\cite{rajpurkar2016squad} \\
 
     %1,739+26+18
     \rowcolor{blue!15}
-    *CC-BY-NC-SA-4.0\&3.0\&2.0 & \checkmark & \checkmark & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \checkmark & \checkmark & \ding{55} & \checkmark & 1,783 & LayoutLMv3~\cite{huang2022layoutlmv3} \\
+    *CC-BY-NC-SA-4.0\&3.0\&2.0 & \cmark & \cmark & \xmark & \xmark & \xmark & \xmark & \cmark & \cmark & \xmark & \cmark & 1,783 & LayoutLMv3~\cite{huang2022layoutlmv3} \\
 
     % 1,209+301
-    *CC-BY-SA-4.0\&3.0 &  \checkmark & \checkmark & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & \checkmark & \ding{55} & \checkmark & 1,510 & LEGAL-BERT~\cite{chalkidis2020legal} \\
+    *CC-BY-SA-4.0\&3.0 &  \cmark & \cmark & \xmark & \cmark & \xmark & \xmark & \cmark & \cmark & \xmark & \cmark & 1,510 & LEGAL-BERT~\cite{chalkidis2020legal} \\
 
     % 390+16
     \rowcolor{blue!15} 
-    CC-BY-NC-ND-4.0\&3.0 & (\checkmark) & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \checkmark & 406 & NonCommercial, NoDerivatives \\
+    CC-BY-NC-ND-4.0\&3.0 & (\cmark) & \xmark & \xmark & \xmark & \xmark & \xmark & \xmark & \xmark & \xmark & \cmark & 406 & NonCommercial, NoDerivatives \\
 
-    $^{\dagger}$CC0-1.0 & \checkmark & \checkmark & \textbf{!} & \checkmark & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & 330 & BlueBERT~\cite{peng2019transfer} \\
+    $^{\dagger}$CC0-1.0 & \cmark & \cmark & \textbf{!} & \cmark & \xmark & \xmark & \xmark & \xmark & \xmark & \xmark & 330 & BlueBERT~\cite{peng2019transfer} \\
 
     \rowcolor{blue!15} 
-    C-UDA & \checkmark & \checkmark & \checkmark & \ding{55} & \textbf{!} & \textbf{!} & \ding{55} & \ding{55} & \checkmark & \checkmark & 72 & Data for computational use only \\
+    C-UDA & \cmark & \cmark & \cmark & \xmark & \textbf{!} & \textbf{!} & \xmark & \xmark & \cmark & \cmark & 72 & Data for computational use only \\
 
-    $^{\dagger}$PDDL & \checkmark & \checkmark & \checkmark & \checkmark & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & 50 & Database-specific license \\
+    $^{\dagger}$PDDL & \cmark & \cmark & \cmark & \cmark & \xmark & \xmark & \xmark & \xmark & \xmark & \xmark & 50 & Database-specific license \\
 
     \rowcolor{blue!15}
-    CC-BY-ND-4.0 & (\checkmark) & \ding{55} & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & 47 & Disallow making derivatives \\
+    CC-BY-ND-4.0 & (\cmark) & \xmark & \xmark & \cmark & \xmark & \xmark & \cmark & \xmark & \xmark & \cmark & 47 & Disallow making derivatives \\
 
     *GFDL &  \multicolumn{10}{l|}{>Same as GPL, a free document license} & 30 & txtai-wikipedia \\
 
     \rowcolor{blue!15}
-    *ODbL & \checkmark & \checkmark & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & \checkmark & \ding{55} & \checkmark & 20 & Automatic relicensing \\
+    *ODbL & \cmark & \cmark & \xmark & \cmark & \xmark & \xmark & \cmark & \cmark & \xmark & \cmark & 20 & Automatic relicensing \\
 
-    *LGPL-LR & \checkmark & \checkmark & \ding{55} & \ding{55} & \textbf{!} & \textbf{!} & \checkmark & \checkmark & \ding{55} & \checkmark & 19 & LGPL for linguistic resources \\ %如果仅仅发布embedding模型，那么属于“使用语言资源的作品”，如果包含了语言资源或者加密后的资源，那么属于“使用语言资源的衍生物”，包含在此license范围
+    *LGPL-LR & \cmark & \cmark & \xmark & \xmark & \textbf{!} & \textbf{!} & \cmark & \cmark & \xmark & \cmark & 19 & LGPL for linguistic resources \\ %如果仅仅发布embedding模型，那么属于“使用语言资源的作品”，如果包含了语言资源或者加密后的资源，那么属于“使用语言资源的衍生物”，包含在此license范围
     
     \rowcolor{blue!15} 
-    ODC-By & \checkmark & \checkmark & \ding{55} & \checkmark & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \checkmark & 15 & Automatic relicensing \\
+    ODC-By & \cmark & \cmark & \xmark & \cmark & \xmark & \xmark & \xmark & \xmark & \xmark & \cmark & 15 & Automatic relicensing \\
     %但是只对derivative dataset有定义，对于model来可能不适用
 
-    %cdla-permissive-1.0 & \checkmark & \checkmark & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & \checkmark & \ding{55} & \checkmark & 3 & Automatic relicensing \\
+    %cdla-permissive-1.0 & \cmark & \cmark & \xmark & \cmark & \xmark & \xmark & \cmark & \cmark & \xmark & \cmark & 3 & Automatic relicensing \\
 
-    %cdla-permissive-2.0\&1.0 & \checkmark & \checkmark & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & \checkmark & \ding{55} & \checkmark & 5 & Automatic relicensing \\
+    %cdla-permissive-2.0\&1.0 & \cmark & \cmark & \xmark & \cmark & \xmark & \xmark & \cmark & \cmark & \xmark & \cmark & 5 & Automatic relicensing \\
 
-    %tii-falcon-llm & \checkmark & \checkmark & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & \checkmark & \ding{55} & \checkmark & 2 & Automatic relicensing \\
+    %tii-falcon-llm & \cmark & \cmark & \xmark & \cmark & \xmark & \xmark & \cmark & \cmark & \xmark & \cmark & 2 & Automatic relicensing \\
 
-    %deepfloyd-if-license & \checkmark & \checkmark & \ding{55} & \checkmark & \ding{55} & \ding{55} & \checkmark & \checkmark & \ding{55} & \checkmark & 18 & Automatic relicensing \\
+    %deepfloyd-if-license & \cmark & \cmark & \xmark & \cmark & \xmark & \xmark & \cmark & \cmark & \xmark & \cmark & 18 & Automatic relicensing \\
 
     \bottomrule
   \end{tabular}
@@ -289,9 +295,9 @@ The following sections will provide a detailed survey of these licenses.
 
 \subsubsection{Model Licensing Forms}
 \label{sec:licensing}
-As shown in Table~\ref{tab:licenses}, ML models are licensed in three main forms: as software (e.g. Apache, MIT, GPL), as a model (e.g. OpenRAIL), and as content/database (e.g. CC BY, PDDL).
+As shown in Table~\ref{tab:licenses}, ML models are licensed in three main forms: as software (e.g., Apache, MIT, GPL), as a model (e.g., OpenRAIL), and as content/database (e.g., CC BY, PDDL).
 The reason for the mixed use of licenses is the ambiguity in the dependency relationship between the ML code, model, and data.
-Thinking in terms of software, ML models can be released with reproducable code and be considered as a component of software.
+Thinking in terms of software, ML models can be released with reproducable code and considered as a component of software.
 So many Free and Open Source Software (FOSS) licenses~\cite{rosen2005open} are naturally deferred for licensing of models.
 The most popular license is Apache-2.0, which is a permissive FOSS license that allows the freedom to make derivative works.
 However, the model building process also relies on a massive amount of data~\cite{lecun2015deep} that may be licensed under different licenses, which can lead to license conflicts.
@@ -308,14 +314,14 @@ The resulting model can be interpreted as both derived works and combined works.
 Not only limited to protecting the IP and controlling the diffusion of ideas, but AI companies and researchers are also concerned about licensees using their models for unethical purposes~\cite{jobin2019global, awad2018moral, yuste2017four}, which is usually not restricted by traditional licenses designed for software and content.
 We can infer the concerns of unethical use of GPT-2~\cite{radford2019language} from its modified MIT license granted by its inventors, which states, \textit{We don't claim ownership of the content you create with GPT-2, so it is yours to do with as you please. We only ask that you use GPT-2 responsibly and clearly indicate your content was created using GPT-2.} 
 However, such a statement lacks legal enforcement, and users may avoid accountability by convincing themselves that despite their efforts to minimize harm, they could not predict the AI artifact they generated would be used for harmful purposes.
-On the other hand, the original licensing frameworks for software and content (e.g. MIT, CC BY) are not well suited to the data-driven ML. 
+On the other hand, the original licensing frameworks for software and content (e.g., MIT, CC BY) are not well suited to the data-driven ML. 
 Many ML operations, such as training, fine-tuning, inference, and distillation, are not explicitly defined in traditional software and content licenses, leaving a potential legal loophole for licensees.
 
 To address the unique challenges and considerations surrounding the use and distribution of ML models, several specific licenses for ML models have been proposed. 
 CreativeML OpenRAIL-M license, proposed by Responsible AI~\cite{contractor2022behavioral}, is the most popular model-specific license on Hugging Face and enables legally enforceable responsible use.
 By accepting this license, licensees must adhere to the use-based restrictions stated by the licensor, and these restrictions must also apply to derivative works.
 With a multitude of different model licenses available, it becomes a challenging and tedious work to reuse them in bulk. 
-It is therefore imperative to establish guidelines for selecting the licenses for models and other related components that are ready for query-based FL.
+It is, therefore, imperative to establish guidelines for selecting the licenses for models and other related components that are ready for query-based FL.
 
 
 %The effect of copyleft-style behavioral-use clauses spreads the requirement from the original licensor on his/her wish and trust on the responsible use of the licensed artifact. This is why OpenRAILs require downstream adoption of the use-based restrictions by subsequent re-distribution and derivatives of the AI artifact, as a means to dissuade users of derivatives of the AI artifact from misusing the latter.
@@ -326,10 +332,10 @@ It is therefore imperative to establish guidelines for selecting the licenses fo
 \label{sec:choosing}
 In query-based FL, the model community aims to promote the reuse of models contributed by users, which raises unique concerns about model licensing:
 \begin{itemize}
-  \item A model license ready for open FL paltforms should allow the \textbf{modification, combination and redistribution} of original works and any derived works; and
-  \item \textbf{Sublicensing} right should be granted to lubricate the republication of derived works resulting from knowledge mining; note
-  \item Some licenses enforce the source of the derived works to be \textbf{disclosed} and prohibit their \textbf{commercial use}, which hinders model selling~\cite{chen2019towards}; and
-  \item Some licenses are \textbf{copyleft} (marked with * in Table.~\ref{tab:licenses}), which means the derivatives must be licensed under the same license or a compatible license, leading to potential license conflicts and proliferation~\cite{gomulkiewicz2009open}; last
+  \item A model license ready for open FL paltforms should allow the \textbf{modification, combination and redistribution} of original works and any derived works.
+  \item \textbf{Sublicensing} right should be granted to lubricate the republication of derived works resulting from knowledge mining.
+  \item Some licenses enforce the source of the derived works to be \textbf{disclosed} and prohibit their \textbf{commercial use}, which hinders model selling~\cite{chen2019towards}.
+  \item Some licenses are \textbf{copyleft} (marked with * in Table.~\ref{tab:licenses}), which means the derivatives must be licensed under the same license or a compatible license, leading to potential license conflicts and proliferation~\cite{gomulkiewicz2009open}.
   \item All granted rights are preferably \textbf{irrevocable} by the licensors~\cite{reddy2009jacobsen}.
 \end{itemize}
 
@@ -403,7 +409,7 @@ Software and computer code are indisputably copyrightable, but what about comput
 The copyrightable of a computer-generated work is controversial, which may depend on such as the level of creativity and originality and \textit{presence of at least minimal human creative effort at the time the work is produced}~\cite{national1979final}.
 According to this definition, programmers who engage in model design and training meet the threshold requirements of copyrightability and own the copyright of the model. 
 That is why all the licenses listed in Table~\ref{tab:licenses} contain claims of copyright.
-But the debating point is whether the reused models also copyrightable?
+But the debating point is whether the reused models also copyrightable.
 Unfortunately, there is no universal answer to this question as it can depend on the specific case and fact pattern.
 The crux is whether the efforts involved in reusing the model meet the minimum creative requirements for copyrightability.
 For example, if we simply stack two models end-to-end, it may not meet the threshold for copyrightability. 
@@ -427,9 +433,10 @@ The terms definition for model reusing in different licenses is a novel and inte
 For example, interpreting model reusing as creating derivatives or combinations would involve different clauses in the licenses.
 To provide a better understanding of these implications, let's first provide an overview of typical model reuse mechanisms.
 
-\subsubsection{Batch Model Reuse Mechanisms}
+\section{Batch Model Reuse Mechanisms}
 \label{sec:taxonomy}
-Instead of summarizing the batch model reuse mechanisms from a technological and algorithmic aspect, we propose grouping these mechanisms based on the classification of their resulting outputs for ease of justifying license clauses.
+In this section, we delve into the typical batch model reuse mechanisms from a technical perspective and introduce a new taxonomy designed to address the mismatch between license terms and technical terms.
+Therefore, instead of summarizing the batch model reuse mechanisms from a technological and algorithmic aspect, we propose grouping these mechanisms based on the classification of their resulting outputs for ease of justifying license clauses.
 As shown in Fig.~\ref{fig:flowchart}(b), there are four categories of batch model reuse mechanisms: \textbf{Combination, Amalgamation, Distillation, and Generation}, each resulting in different forms of outputs and may correspond to different regulations in licenses.
 
 \begin{figure}[t]
@@ -440,8 +447,9 @@ As shown in Fig.~\ref{fig:flowchart}(b), there are four categories of batch mode
     \label{fig:flowchart}
 \end{figure}
 
-\textbf{Combination}~\cite{zhou2012ensemble} is a straightforward way to reuse batch of models (aka base learners), in which multiple models jointly contribute to the output by combination strategies such as averaging, voting, learning~\cite{jacobs1991adaptive, wolpert1992stacked}.
-For regression estimates, averaging can improve the generalization by taking the mean of the outputs of all weak learners in a population. Additionally, the outputs of each learner can be weighted by extra parameters~\cite{perrone1995networks}, which can be determined by stacking estimators~\cite{wolpert1992stacked}, Bayes approach~\cite{clarke2003comparing} or backpropagation of gating networks~\cite{jacobs1991adaptive}. 
+\subsection{Combination}
+Combination~\cite{zhou2012ensemble} is a straightforward way to reuse batch of models (aka base learners), in which multiple models jointly contribute to the output by combination strategies such as averaging, voting, learning~\cite{jacobs1991adaptive, wolpert1992stacked}.
+For regression estimates, averaging can improve the generalization by taking the mean of the outputs of all weak learners in a population. Additionally, the outputs of each learner can be weighted by extra parameters~\cite{perrone1995networks}, which can be determined by stacking estimators~\cite{wolpert1992stacked}, Bayesian approach~\cite{clarke2003comparing} or backpropagation of gating networks~\cite{jacobs1991adaptive}. 
 % Bayesian Model Averaging (BMA) -> Stacking with probabilities
 Voting is a workaround strategy for classification tasks and also applicable for stacking and gating.
 Both stacking and gating rely on an additional holdout or validation dataset for calculating extra parameters, marked as * in Fig.~\ref{fig:flowchart}(b). 
@@ -453,7 +461,7 @@ Secondly, especially for query-based FL, it can simultaneously support multiple 
 Thirdly, the tasks of models can be different if we pipeline the base models end-to-end, which is usually overlooked as a combination mechanism of models. 
 Pipelining can fully leverage the transferability of models to solve previously unexplored ML problems.
 % 举例说明 pipeline
-For instance, Gao \textit{et al.}~\cite{gao2022precise} proposed a zero-shot dense retrieval system named HyDE by pipelining a natural language generation (NLG) model~\cite{ouyang2022training} and a natural language understanding (NLU) model~\cite{izacard2021towards}.
+For instance, Gao \textit{et al.}~\cite{gao2022precise} proposed a zero-shot dense retrieval system named HyDE by pipelining a natural language generation (NLG) model~\cite{ouyang2022training} and a natural language understanding (NLU) model~\cite{izacard2022unsupervised}.
 The generated content, which may lack factual grounding, from the NLG model is used as query embeddings to facilitate real document retrieval by the NLU model.
 Similarly, through query-based FL, we can query a vicarious NLG model for a novel scenario, such as ProGen~\cite{madani2023large} for protein sequences generation, and quickly adapt this system to proteomics.
 Not limited to that, we can query a batch of NLG models by a well-chosen filter condition and then combine models through averaging or gating to significantly expand the exploration space for knowledge discovery.
@@ -466,7 +474,8 @@ On the other hand, instead of being treated as a challenge for FL~\cite{ma2022st
 As a result, alternative approaches involve amalgamating or merging multiple models to create a new consensus model. 
 In the following, we provide a summary of these methods.
 
-\textbf{Amalgamation} involves combining models through model parameters granularity operations, such as median~\cite{blanchard2017machine, pillutla2022robust} and coordinate-wise averaging with consideration of heterogeneity~\cite{mcmahan2017communication, li2018federated}, security~\cite{sun2019can}, scalability~\cite{reisizadeh2020fedpaq}, matching~\cite{wang2020federated, yu2021fed2}, specificality~\cite{gudur2020resource}, generalizability~\cite{qu2022generalized}, resulting in a combination with weak separation.
+\subsection{Amalgamation}
+Amalgamation involves combining models through model parameters granularity operations, such as median~\cite{blanchard2017machine, pillutla2022robust} and coordinate-wise averaging with consideration of heterogeneity~\cite{mcmahan2017communication, li2018federated}, security~\cite{sun2019can}, scalability~\cite{reisizadeh2020fedpaq}, matching~\cite{wang2020federated, yu2021fed2}, specificality~\cite{gudur2020resource}, generalizability~\cite{qu2022generalized}, resulting in a combination with weak separation.
 This reusing approach is widely used in FL works and is often referred to as "aggregation" procedures for local models.
 %Here, we avoid using the term "aggregation" to distinguish it from "combination" given the latter is often used interchangeably with "combination" in software licenses (e.g. Artistic, GPL).
 However, in order to avoid confusion with the term "combination," which is frequently used interchangeably with "aggregation" in software licenses (e.g., Artistic, GPL), we opt to use the term "amalgamation" instead.
@@ -475,7 +484,7 @@ FedAvg~\cite{mcmahan2017communication} is the most popular model averaging metho
 For instance, Sun \textit{et al.}~\cite{sun2019can} proposed applying norm thresholding of local model updates to defend against backdoor attacks.
 Similarly, Blanchard \textit{et al.}~\cite{blanchard2017machine} proposed using more robust median-based amalgamation for resilience against Byzantine behavior.
 Consider the ordering of parameters, Wang \textit{et al.}~\cite{wang2020federated} match and average the NNs parameters layer-wise across clients, based on their similarities.
-Yu \textit{et al.}~\cite{yu2021fed2} further attribute the misalignment in FL models to the non-IID training data, propose allocating an independent structure for each class and updating models through a feature paired averaging strategy.
+Yu \textit{et al.}~\cite{yu2021fed2} further attribute the misalignment in FL models to the non-IID training data, and propose allocating an independent structure for each class and updating models through a feature paired averaging strategy.
 \textbf{Even though} amalgamation mechanisms can achieve a balance between model performance and resource efficiency by maintaining only one global model, they often rely on multiple rounds of communication to converge, which is not applicable in a query-based FL scenario.
 Therefore, instead of trying to directly concatenate multiple sources of models while dealing with intricate parameter mismatch, transferring the latent knowledge learned by local models to a new model is a good alternative (i.e. Federated Distillation~\cite{jeong2018communication, jin2023feddyn}).
 
@@ -491,7 +500,7 @@ It is worth noting that our taxonomy is based on the form of the resulting model
 For example, Bayes Model Averaging (BMA)~\cite{clarke2003comparing} estimates posterior probabilities of each model given the observed data, which results in a separable weighted model. 
 Therefore, it should be classified as Combination instead of Amalgamation like FedAvg.
 This novel taxonomy method is useful for analyzing compatibility with licenses. 
-For example, the coordinate-wise operations or the fusion of model parameters generate fine-grained combinations of models that are almost irreversible, which corresponds to clauses such as adapt, modify, dynamic link, etc., in software licenses.
+For example, the coordinate-wise operations or the fusion of model parameters generate fine-grained combinations of models that are almost irreversible, which corresponds to clauses such as adapt, modify, dynamic link, and etc., in software licenses.
 
 \begin{table}[t]
   \centering
@@ -503,22 +512,22 @@ For example, the coordinate-wise operations or the fusion of model parameters ge
     \multicolumn{2}{|l|}{Strategies} & FL Studies \\ \hline
     \multicolumn{1}{|l|}{\multirow{2}{*}{KD@Server}} & w/ Validation Set & FedED~\cite{sui2020feded} \\ \cline{2-3} 
     \multicolumn{1}{|l|}{} & w/ Unlabeled Data & FedDF~\cite{lin2020ensemble}, One-shot FL~\cite{guha2018one}, FedBE~\cite{chen2020fedbe}, PerAda~\cite{xie2023perada}, FedET~\cite{cho2022heterogeneous} \\ \hline
-    \multicolumn{1}{|p{1.6cm}|}{\multirow{5}{*}{\shortstack{KD@Client \\ w/ Local Data}}} & from Global Model & FedFusion~\cite{yao2019towards}, FedKD\textsubscript{2}~\cite{wu2022communication}, MOON~\cite{li2021model}, FedNTD~\cite{lee2022preservation},  FedMLB~\cite{kim2022multi}, FedCAD~\cite{he2022class}, FedAlign\textsubscript{1}~\cite{mendieta2022local}, FedAlign\textsubscript{2}~\cite{zhang2023federated}  \\ \cline{2-3} 
+    \multicolumn{1}{|p{1.6cm}|}{\multirow{5}{*}{\shortstack{KD@Client \\ w/ Local Data}}} & from Global Model & FedFusion~\cite{yao2019towards}, FedKD\textsubscript{2}~\cite{wu2022communication}, MOON~\cite{li2021model}, FedNTD~\cite{lee2022preservation},  FedMLB~\cite{kim2022multi}, FedCAD~\cite{he2022class}, FedAlign\textsubscript{1}~\cite{mendieta2022local}, FedAlign\textsubscript{2}~\cite{zhang2023navigating}  \\ \cline{2-3} 
     \multicolumn{1}{|l|}{} & from Other Clients' Model  & FedMatch~\cite{jeong2020federated}, CCL~\cite{aketi2024cross}, FedProto\textsubscript{1}~\cite{michieli2021prototype}, FedProto\textsubscript{2}~\cite{tan2022fedproto} \\ \cline{2-3} 
     \multicolumn{1}{|l|}{} & from Self Model & FedFusion~\cite{yao2019towards}, FedDistill~\cite{jiang2020federated}, FedKD\textsubscript{2}~\cite{wu2022communication}, MOON~\cite{li2021model}, FCCL~\cite{huang2022learn}, pFedSD~\cite{jin2022personalized}, RSCFed~\cite{liang2022rscfed}, CCL~\cite{aketi2024cross} \\ \hline
-    \multicolumn{2}{|l|}{KD w/ Public Unlabeled Datasets} & FedKT~\cite{li2020practical}, FedMD~\cite{li2019fedmd}, FedAD~\cite{gong2021ensemble}, FedMD-NFDP~\cite{sun2020federated}, FCCL~\cite{huang2022learn}, FedAUX~\cite{sattler2021fedaux}, RHFL~\cite{fang2022robust}, FedKD\textsubscript{1}~\cite{gong2022preserving}, Cronus~\cite{chang2021cronus}, KT-pFL~\cite{zhang2021parameterized}, DS-FL~\cite{itahara2021distillation} \\ \hline
+    \multicolumn{2}{|l|}{KD w/ Public Unlabeled Datasets} & FedKT~\cite{li2021practical}, FedMD~\cite{li2019fedmd}, FedAD~\cite{gong2021ensemble}, FedMD-NFDP~\cite{sun2020federated}, FCCL~\cite{huang2022learn}, FedAUX~\cite{sattler2021fedaux}, RHFL~\cite{fang2022robust}, FedKD\textsubscript{1}~\cite{gong2022preserving}, Cronus~\cite{chang2021cronus}, KT-pFL~\cite{zhang2021parameterized}, DS-FL~\cite{itahara2021distillation} \\ \hline
     \multicolumn{2}{|l|}{KD w/ Generated Data (DFKD)} & DENSE~\cite{zhang2022dense}, FedCAVE-KD~\cite{heinbaugh2023data}, FedGen~\cite{zhu2021data},
     FedFTG~\cite{zhang2022fine} \\ \hline 
     \multicolumn{2}{|l|}{KD w/ Differential Privacy} & FedKC~\cite{wang2022fedkc}, FedSSL~\cite{fan2022private}  \\ \hline
     \end{tabular}
 \end{table}
 
-
-\textbf{Distillation} was initially proposed by Hinton \textit{et al.}~\cite{hinton2015distilling} to transfer knowledge from a batch of independently trained neural network models (Specialists) to create a new Generalist model.
+\subsection{Distillation}
+Distillation was initially proposed by Hinton \textit{et al.}~\cite{hinton2015distilling} to transfer knowledge from a batch of independently trained neural network models (Specialists) to create a new Generalist model.
 Their motivation was to explore the parallelization of training of specialists and improve the efficiency of distributed NNs modeling\cite{dean2012large}.
 Each specialist only learns fine-grained distinctions of a subset of classes, which is very similar to the non-IID setting in FL~\cite{liqb2022federated}.
 By using Knowledge Distillation (KD), we can also compress wide and deep teacher networks into lightweight student networks~\cite{romero2015fitnets}, which is promising for addressing system heterogeneity in cross-device FL~\cite{lim2020federated}.
-Therefore, it is natural to extend the KD technologies to FL filed~\cite{jiang2020federated, li2020practical, li2019fedmd, wu2022communication, chen2020fedbe, lin2020ensemble, gong2021ensemble, sun2020federated}.
+Therefore, it is natural to extend the KD technologies to FL filed~\cite{jiang2020federated, li2021practical, li2019fedmd, wu2022communication, chen2020fedbe, lin2020ensemble, gong2021ensemble, sun2020federated}.
 Actually, many recent FL works~\cite{li2019fedmd, gong2021ensemble, sun2020federated, huang2022learn, fang2022robust, gong2022preserving, luo2022fediris, sui2020feded, chang2021cronus, he2020group, zhang2021parameterized, itahara2021distillation, aketi2024cross, michieli2021prototype, tan2022fedproto} solely leverage KD without following the model averaging paradigm of FedAvg, we leave this discussion for later. %TODO
 
 Despite directly retraining a Generalist model through knowledge distillation (KD), an alternative approach is to construct an ensemble of knowledge.
@@ -532,10 +541,10 @@ To mitigate this issue, some efforts~\cite{wang2022fedkc, fan2022private} have b
 
 In general, there are three mechanisms for avoiding the sharing of sensitive knowledge.
 First, push the KD procedure to the server-side, where the knowledge of local models is transferred to the global model through a validation set~\cite{sui2020feded} or unlabeled dataset~\cite{lin2020ensemble, guha2018one, chen2020fedbe, xie2023perada, cho2022heterogeneous} held by the server.
-Second, we can keep the KD procedure at the client-side, allowing the knowledge of the global model~\cite{yao2019towards, wu2022communication,li2021model, lee2022preservation, mendieta2022local, kim2022multi, he2022class, zhang2023federated}, other clients' models~\cite{jeong2020federated, aketi2024cross, michieli2021prototype, tan2022fedproto} or self-model~\cite{yao2019towards, jiang2020federated, wu2022communication, li2021model, huang2022learn, jin2022personalized, liang2022rscfed} to be transferred based on the local training data.
+Second, we can keep the KD procedure at the client-side, allowing the knowledge of the global model~\cite{yao2019towards, wu2022communication,li2021model, lee2022preservation, mendieta2022local, kim2022multi, he2022class, zhang2023navigating}, other clients' models~\cite{jeong2020federated, aketi2024cross, michieli2021prototype, tan2022fedproto} or self-model~\cite{yao2019towards, jiang2020federated, wu2022communication, li2021model, huang2022learn, jin2022personalized, liang2022rscfed} to be transferred based on the local training data.
 In the above two strategies, only model parameters are exchanged in the training network, which means they can provide the same level of privacy protection as traditional FL.
 
-The last mechanism is to assume that a public unlabeled dataset, which does not contain sensitive information, can be accessed by both the server and clients for KD~\cite{li2020practical, li2019fedmd, gong2021ensemble, sun2020federated, huang2022learn, sattler2021fedaux, fang2022robust, gong2022preserving, chang2021cronus, zhang2021parameterized, itahara2021distillation}.
+The last mechanism is to assume that a public unlabeled dataset, which does not contain sensitive information, can be accessed by both the server and clients for KD~\cite{li2021practical, li2019fedmd, gong2021ensemble, sun2020federated, huang2022learn, sattler2021fedaux, fang2022robust, gong2022preserving, chang2021cronus, zhang2021parameterized, itahara2021distillation}.
 Sharing these extracted contents will not raise any privacy concerns, and only minimal communication is generated during KD for the purpose of aligning sample IDs.
 In cases where such public datasets are not available on the server, a recent approach called Data-Free Knowledge Distillation (DFKD) has been proposed by Lopes \textit{et al.}~\cite{lopes2017data}.
 This approach regenerates batches of data based on layer activation statistics or spectrum coefficients collected during training phase, and this synthetic data is then used for distillation.
@@ -567,12 +576,13 @@ The summarize of above privacy-perserving KD works is given in Table.~\ref{tab:d
   \begin{tabular}{|l|p{3.2cm}|p{5cm}|p{4cm}|}
     \hline
     & Enriching Training Set & Improving Generalization  & Enabling Semi-supervised Learning  \\ \hline
-    \multicolumn{1}{|l|}{For Training} & FedSage+~\cite{zhang2021subgraph}, GFL~\cite{cheng2023gfl}, \newline FRD~\cite{cha2019federated} & Fed-ZDA~\cite{hao2021towards}, FOSTER~\cite{yu2023turning}, FedDG~\cite{liu2021feddg}, DynaFed~\cite{pi2022dynafed}, SDA-FL~\cite{liz2022federated}, FedMix~\cite{yoon2021fedmix}, \newline FedCAVE-Ens~\cite{heinbaugh2023data} & FedDISC~\cite{yang2023exploring}, SemiFL~\cite{diao2022semifl}  \\ \hline
+    \multicolumn{1}{|l|}{For Training} & FedSage+~\cite{zhang2021subgraph}, GFL~\cite{cheng2023gfl}, \newline FRD~\cite{cha2019federated} & Fed-ZDA~\cite{hao2021towards}, FOSTER~\cite{yu2023turning}, FedDG~\cite{liu2021feddg}, DynaFed~\cite{pi2023dynafed}, SDA-FL~\cite{liz2022federated}, FedMix~\cite{yoon2021fedmix}, \newline FedCAVE-Ens~\cite{heinbaugh2023data} & FedDISC~\cite{yang2023exploring}, SemiFL~\cite{diao2022semifl}  \\ \hline
     \multicolumn{1}{|l|}{For KD} & DENSE~\cite{zhang2022dense}, FedBE~\cite{chen2020fedbe}, \newline FedDyn~\cite{jin2023feddyn}, FedZKT~\cite{zhang2022fedzkt} & FedGen~\cite{zhu2021data}, FedFTG~\cite{zhang2022fine}, FD+FAug~\cite{jeong2018communication}, \newline FedCAVE-KD~\cite{heinbaugh2023data} & FedSSL~\cite{fan2022private} \\ \hline
   \end{tabular}
 \end{table}
 
-\textbf{Generation} is designed to generate synthetic samples that resemble the original data distribution by building a probabilistic model~\cite{geyer1992practical} or deep learning model~\cite{kingma2014auto, goodfellow2020generative, cao2022survey} that can capture the underlying distribution pattern and latent structure of original data.
+\subsection{Generation}
+Generation is designed to generate synthetic samples that resemble the original data distribution by building a probabilistic model~\cite{geyer1992practical} or deep learning model~\cite{kingma2014auto, goodfellow2020generative, cao2022survey} that can capture the underlying distribution pattern and latent structure of original data.
 Generally speaking, generation techniques can be classified into three categories: data-level, probabilistic, and representation-based approaches.
 Data-level approaches involve sample granularity operations such as interpolation~\cite{chawla2002smote, zhangmixup} and augmentation~\cite{wong2016understanding} to generate synthetic features based on the original feature space of data and share.
 Even though these methods are training-free and easy to implement, they cannot be directly applied to the FL setting due to privacy concerns.
@@ -594,7 +604,7 @@ The third advantage is multi-format sharing. Participants have the freedom to ch
 This sharing policy can greatly empower the model community in open FL platforms, fostering collaboration and knowledge sharing.
 
 Given the aforementioned advantages, generation methods have been extensively studied in the field of FL. 
-As summaried in Table.~\ref{tab:generation}, these works can be classified into two main categories: generation for training~\cite{zhang2021subgraph, cheng2023gfl, hao2021towards, cha2019federated, yu2023turning, heinbaugh2023data, yang2023exploring, liu2021feddg, pi2022dynafed, liz2022federated, diao2022semifl}, generation for KD~\cite{zhang2022dense, chen2020fedbe, zhu2021data, zhang2022fine, jeong2018communication, jin2023feddyn, heinbaugh2023data, zhang2022fedzkt, fan2022private}, and serving three purposes: enriching the training set~\cite{zhang2022dense, chen2020fedbe, zhang2021subgraph, cheng2023gfl, cha2019federated, jin2023feddyn, zhang2022fedzkt}, improving generalization ability~\cite{zhu2021data, zhang2022fine, hao2021towards, jeong2018communication, yu2023turning, heinbaugh2023data, liu2021feddg, pi2022dynafed, liz2022federated}, and enabling semi-supervised learning~\cite{yang2023exploring, diao2022semifl, fan2022private}.
+As summaried in Table.~\ref{tab:generation}, these works can be classified into two main categories: generation for training~\cite{zhang2021subgraph, cheng2023gfl, hao2021towards, cha2019federated, yu2023turning, heinbaugh2023data, yang2023exploring, liu2021feddg, pi2023dynafed, liz2022federated, diao2022semifl}, generation for KD~\cite{zhang2022dense, chen2020fedbe, zhu2021data, zhang2022fine, jeong2018communication, jin2023feddyn, heinbaugh2023data, zhang2022fedzkt, fan2022private}, and serving three purposes: enriching the training set~\cite{zhang2022dense, chen2020fedbe, zhang2021subgraph, cheng2023gfl, cha2019federated, jin2023feddyn, zhang2022fedzkt}, improving generalization ability~\cite{zhu2021data, zhang2022fine, hao2021towards, jeong2018communication, yu2023turning, heinbaugh2023data, liu2021feddg, pi2023dynafed, liz2022federated}, and enabling semi-supervised learning~\cite{yang2023exploring, diao2022semifl, fan2022private}.
 As an example of generation for training, FedSage+~\cite{zhang2021subgraph} trains a missing neighbors generator to mend the links between cross-subgraph nodes, thereby increasing the connectivity of local data and benefiting from this collaboration across clients.
 Previous mentioned FedCAVE-KD~\cite{heinbaugh2023data} is an example of generation for KD, where locally trained CVAEs and local label distributions are uploaded to the server for DFKD, ensuring privacy while also enhancing generalization of global model.
 Another example is FedGen~\cite{zhu2021data}, where the generator is maintained by the server and sent to clients in each round.
@@ -603,7 +613,7 @@ The last application of generation is in semi-supervised learning, which is a co
 For example, FedDISC~\cite{yang2023exploring} leverages the average and cluster centroids of hidden representations across pseudo-labels as input to a pre-trained diffusion model, aiming to generate high-quality samples for training.
 
 In fact, the three purposes of generation correspond to three types of data heterogeneity in FL~\cite{liqb2022federated}: Quantity Skew, Label Distribution Skew (non-IID), and Missing Labels, which are challenging to address with traditional model amalgamation methods.
-The hybrid model reusing strategies, which leverage each other's strengths, have become a common paradigm in recent FL studies~\cite{cheng2023gfl, xie2023perada, yu2023turning, jin2023feddyn, heinbaugh2023data, yang2023exploring, zhang2023federated}.
+The hybrid model reusing strategies, which leverage each other's strengths, have become a common paradigm in recent FL studies~\cite{cheng2023gfl, xie2023perada, yu2023turning, jin2023feddyn, heinbaugh2023data, yang2023exploring, zhang2023navigating}.
 Therefore, in the next section, we will summarize the popular hybrid model reusing studies in FL and then filter the studies that are suitable for query-based FL platforms.
 
 %The third advantage is free-sharing. As mentioned in Section~\ref{sec:generated content}, many deep generative models, such as Stable Diffusion~\cite{rombach2022high} and ChatGPT, do not claim ownership rights over the generated content. Furthermore, most OSS licenses do not have defined terms for computer-generated content. Therefore, it is legally permissible to freely reuse synthetic data.
@@ -735,7 +745,7 @@ Therefore, in the next section, we will summarize the popular hybrid model reusi
     \textcolor{orange}{FedBE}~\cite{chen2020fedbe} & n/a & \textcolor{purple}{Model Avg} & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Softmax Avg}} & \textcolor{purple}{\textbf{Synthetic Model}} & [\textcolor{blue}{/}\textcolor{purple}{AGD}]*1 & H \\ \hline %CC
 
     \rowcolor[gray]{.9}
-    DynaFed~\cite{pi2022dynafed} & n/a & \textcolor{purple}{Model Avg} & n/a & \textcolor{purple}{\textbf{Synthetic Data}} & [\textcolor{blue}{/}\textcolor{purple}{A}]*N\textcolor{purple}{G}[\textcolor{purple}{A,}]*N & EH \\ \hline
+    DynaFed~\cite{pi2023dynafed} & n/a & \textcolor{purple}{Model Avg} & n/a & \textcolor{purple}{\textbf{Synthetic Data}} & [\textcolor{blue}{/}\textcolor{purple}{A}]*N\textcolor{purple}{G}[\textcolor{purple}{A,}]*N & EH \\ \hline
 
     \textcolor{orange}{FedAUX}~\cite{sattler2021fedaux} & n/a & \textcolor{purple}{Model Avg} & \textcolor{blue}{Contrastive Learning} \textcolor{purple}{\textbf{Hidden}, \textit{Hidden}} \newline \textcolor{purple}{KD} \textcolor{blue}{\textbf{Weighted Logits}} & n/a & \textcolor{purple}{,}\textcolor{blue}{D}[\textcolor{purple}{A\textcolor{blue}{/}D}]*N \newline \textcolor{purple}{,}\textcolor{blue}{D}[\textcolor{purple}{A\textcolor{blue}{/}D}]*1 & HP \\ \hline %CC
     
@@ -747,7 +757,7 @@ Therefore, in the next section, we will summarize the popular hybrid model reusi
     \rowcolor[gray]{.9}
     SDA-FL~\cite{liz2022federated} & n/a & \textcolor{purple}{Model Avg} & \textcolor{purple}{KD} \textcolor{blue}{\textbf{Argmax}} & \textcolor{blue}{\textbf{Synthetic Data}}\newline \textcolor{blue}{\textit{Augmented Data}} & \textcolor{blue}{/G}[\textcolor{blue}{G/}\textcolor{purple}{AD}]*N & HP \\ \hline
 
-    FedKT~\cite{li2020practical} & \textcolor{blue}{Voting} \textcolor{purple}{Voting} & n/a & \textcolor{blue}{KD} \textcolor{blue}{\textbf{Argmax}} \textcolor{purple}{KD} \textcolor{blue}{\textbf{Argmax}} & n/a & [\textcolor{blue}{/CD}\textcolor{purple}{CD}]*1 & HP \\ \hline %CC %是否属于KD还是train取决于数据是否由其他模型生成的
+    FedKT~\cite{li2021practical} & \textcolor{blue}{Voting} \textcolor{purple}{Voting} & n/a & \textcolor{blue}{KD} \textcolor{blue}{\textbf{Argmax}} \textcolor{purple}{KD} \textcolor{blue}{\textbf{Argmax}} & n/a & [\textcolor{blue}{/CD}\textcolor{purple}{CD}]*1 & HP \\ \hline %CC %是否属于KD还是train取决于数据是否由其他模型生成的
 
     \rowcolor[gray]{.9}
     FedMatch~\cite{jeong2020federated} & \textcolor{blue}{Voting} & \textcolor{purple}{Model Avg} & \textcolor{blue}{KD} \textcolor{blue}{\textit{Argmax}} & n/a & [\textcolor{blue}{C/D}\textcolor{purple}{AA}]*N \newline [\textcolor{purple}{,}\textcolor{blue}{CD}\textcolor{purple}{A}]*N & EH \\ \hline %CC
@@ -757,7 +767,7 @@ Therefore, in the next section, we will summarize the popular hybrid model reusi
     \rowcolor[gray]{.9}
     RSCFed~\cite{liang2022rscfed} \newline (Unlabeled Case) & n/a & \textcolor{blue}{Model EMA}\newline \textcolor{purple}{Model Avg} &\textcolor{blue}{KD} \textcolor{blue}{\textit{Softmax}} & n/a & [\textcolor{blue}{DA}\textcolor{purple}{AA}]*N & H \\ \hline
 
-    FedAlign\textsubscript{2}~\cite{zhang2023federated} & n/a &\textcolor{purple}{Model Avg}&\textcolor{blue}{Contrastive Learning}  \textcolor{purple}{\textit{Argmax, Argmin}} & n/a & [\textcolor{blue}{DD}\textcolor{purple}{AA}]*N & EH \\ \hline
+    FedAlign\textsubscript{2}~\cite{zhang2023navigating} & n/a &\textcolor{purple}{Model Avg}&\textcolor{blue}{Contrastive Learning}  \textcolor{purple}{\textit{Argmax, Argmin}} & n/a & [\textcolor{blue}{DD}\textcolor{purple}{AA}]*N & EH \\ \hline
 
     \rowcolor[gray]{.9}
     FedSSL~\cite{fan2022private} & n/a & n/a & \textcolor{blue}{KD} \textcolor{blue}{\textbf{Softmax}} \textcolor{blue}{KD} \textcolor{blue}{\textbf{Softmax}, \textit{Interpolated Softmax}} & \textcolor{blue}{\textbf{Synthetic Data}} & [\textcolor{blue}{/GD/GD}]*N & HP \\ \hline
@@ -769,7 +779,7 @@ Therefore, in the next section, we will summarize the popular hybrid model reusi
   \end{longtable}
 \end{table}
 
-\subsubsection{Hybrid Model Reusing in FL}
+\subsection{Hybrid Model Reusing in FL}
 \label{sec:hybrid}
 Following the taxonomy we introduced in Section~\ref{sec:taxonomy}, it can be observed that almost all FL studies can be regarded as a permutation of four model reuse mechanisms: Combination, Amalgamation, Distillation, and Generation.
 To enhance our understanding of current model reusing studies and identify methods applicable for constructing an open FL platform, we provide a comprehensive summary in Table~\ref{tab:flreuse}. 
@@ -833,7 +843,7 @@ Similarly, to select a suitable method for query-based FL, we can refer to Table
 \begin{itemize}
   \item \textbf{Data Dependency}. Recalling that query-based FL is contactless (Section~\ref{sec:query_overview}), which means we cannot access the training data again once the model has been uploaded by the entity.
   Therefore, any method that requires multiple communication rounds of local or sensitive data access is not applicable to query-based FL.
-  Such as, local data dependency due to local training (FedMD~\cite{li2019fedmd}, DynaFed~\cite{pi2022dynafed}, etc.), distillation (FedFusion~\cite{yao2019towards}, MOON~\cite{li2021model}, etc.), generation (SemiFL~\cite{diao2022semifl}, NeighGen~\cite{zhang2021subgraph}, etc.).
+  Such as, local data dependency due to local training (FedMD~\cite{li2019fedmd}, DynaFed~\cite{pi2023dynafed}, etc.), distillation (FedFusion~\cite{yao2019towards}, MOON~\cite{li2021model}, etc.), generation (SemiFL~\cite{diao2022semifl}, NeighGen~\cite{zhang2021subgraph}, etc.).
   So, refer to Table~\ref{tab:flreuse}, the filtering criteria for unqualified methods can be expressed as [.../...]*N, [...D...]*N with \textit{knowledge in italic} and [...G...]*N with \textit{generated content in italic}.
   \item \textbf{User Privacy}. Due to the openness of the system, directly sharing embeddings from a pre-trained encoder or mixup of local data poses a risk of leakage (FedDISC~\cite{yang2023exploring}, FRD~\cite{cha2019federated}). It is strongly discouraged to include such methods, even if they have one-shot feasibility.
   \item \textbf{Compatibility}. Additional, since query-based FL is model agnostic, it is not always possible to guarantee the compatibility of coordinate-wise operations required by model amalgamation. Therefore, the applicability of methods that involve model amalgamation may be limited in this context. We call these methods are conditional applicable to query-based FL.
@@ -851,27 +861,27 @@ By now, we have witnessed the success of using the new taxonomy, and in the next
 \begin{table}[t]
   \centering
   \footnotesize
-  \caption{Analysis of the model licensing clauses corresponding to different batch model reuse mechanisms, denoted by "keywords in licenses" -> "delineation of reused results", \ding{55}: undefined. Note: GPL-3.0, CC-BY-SA, CC-BY-NC-SA are copyleft.}
+  \caption{Analysis of the model licensing clauses corresponding to different batch model reuse mechanisms, denoted by "keywords in licenses" -> "delineation of reused results", \xmark: undefined. Note: GPL-3.0, CC-BY-SA, CC-BY-NC-SA are copyleft.}
   \label{tab:reuse}
   \begin{tabular}{|p{2.2cm}|p{3.55cm}|p{2.8cm}|p{2.8cm}|p{2.7cm}|}
     \hline
     \multirow{2}{*}{}& \textbf{Combination} & \textbf{Amalgamation} & \textbf{Distillation} & \textbf{Generation} \\ \cline{2-5}
     & Combinated Work \newline with Strong Separation & Combinated Work \newline with Weak Separation & Derivative Work \newline from Concepts & Derivative Work \newline from Distributions \\ \hline
-    Apache-2.0 & Separable -> Independent Work & Modify -> Derivative & \ding{55} & \ding{55} \\ \hline
-    MIT & \ding{55} & \ding{55} & \ding{55} & \ding{55} \\ \hline
-    AFL-3.0 & \ding{55} & Modify -> Derivative & \ding{55} & \ding{55} \\ \hline
+    Apache-2.0 & Separable -> Independent Work & Modify -> Derivative & \xmark & \xmark \\ \hline
+    MIT & \xmark & \xmark & \xmark & \xmark \\ \hline
+    AFL-3.0 & \xmark & Modify -> Derivative & \xmark & \xmark \\ \hline
     GPL-3.0 & Blackbox: Aggregate -> \newline Independent Work \newline Other: Link -> Modified Version  & Modify -> Covered Work & Output no constitutes a covered work -> \newline Independent Work & Output no constitutes a covered work -> \newline Independent Work  \\ \hline
-    Artistic-2.0 & Blackbox: Merely Extend ->\newline Own Work \newline Other: Link -> Own Work & Aggregate -> \newline Modified Version & \ding{55} & \ding{55} \\ \hline
-    BSD-3-Clause & Blackbox: Rredsitribution in \newline binary forms -> \ding{55} \newline Other: Redistribution of source code -> \ding{55} & \ding{55} & \ding{55} & \ding{55} \\ \hline
-    WTFPL-2.0 & \ding{55} & \ding{55} & \ding{55} & \ding{55} \\ \hline
+    Artistic-2.0 & Blackbox: Merely Extend ->\newline Own Work \newline Other: Link -> Own Work & Aggregate -> \newline Modified Version & \xmark & \xmark \\ \hline
+    BSD-3-Clause & Blackbox: Rredsitribution in \newline binary forms -> \xmark \newline Other: Redistribution of source code -> \xmark & \xmark & \xmark & \xmark \\ \hline
+    WTFPL-2.0 & \xmark & \xmark & \xmark & \xmark \\ \hline
     OpenRAIL Licenses & Transfer of patterns of \newline output -> Derivative & Transfer of patterns of weights -> Derivative & Transfer of patterns of activations -> Derivative & Transfer of patterns of output -> Derivative \\ \hline
-    Creative Commons \newline Licenses & Reproduce -> Adapted Material & Adapt -> \newline Adapated Material & \ding{55} & \ding{55} \\ \hline
-    CC0-1.0 & Reproduce -> \newline Independent Work & Adapt -> \newline Independent Work & \ding{55} & \ding{55} \\ \hline
+    Creative Commons \newline Licenses & Reproduce -> Adapted Material & Adapt -> \newline Adapated Material & \xmark & \xmark \\ \hline
+    CC0-1.0 & Reproduce -> \newline Independent Work & Adapt -> \newline Independent Work & \xmark & \xmark \\ \hline
   \end{tabular}
 \end{table}
 
 
-\subsubsection{Model Reusing vs. Model Licenses}
+\subsection{Model Reusing vs. Model Licenses}
 %对生成物缺乏必要的监管，使用这部分数据目前来说很安全
 \label{sec:reusing&license}
 We have demonstrated that almost all FL studies can be regarded as a permutation of model reusing methods. 
@@ -880,9 +890,9 @@ Recalling that there are four kinds of model reusing mechanisms: Combination, Am
 By interpreting "work" as "model" rather than as "software", we can easily identify the applicable clauses for different model reusing mechanisms.
 
 We present the analysis of model licenses for model reuse in Table~\ref{tab:reuse}. 
-The analysis covers the most popular model licenses (used by over 100 released models) on Hugging Face, which include free software licenses, free content licenses, and AI model licenses.
+The analysis covers the most popular model licenses (used by over 100 released models) on Hugging Face, which includes free software licenses, free content licenses, and AI model licenses.
 For simplicity, we have merged some similar licenses without loss of clarity.
-To avoid license conflicts when engaging in batch model reuse, it is preferable for the reused model to be considered an \textbf{independent} work or fall under an \textbf{undefined} category, not covered by the original license.
+To avoid license conflicts when engaging in batch model reuse, it is preferable for the reused model to be considered an \textbf{independent} work or fall under an \textbf{undefined} category that is not governed by the original license.
 Additionally, we can refer to Table~\ref{tab:reuse} and consider the following factors:
 \begin{itemize}
   \item \textbf{Differences in terminology}. In the definitions of licenses, connecting multiple works into a separable union is typically referred to as \textit{aggregation, redistribution, and reproduce}, which is completely different from the concept of \textit{model aggregation} in the ML field. Therefore, it is necessary to refer to Table~\ref{tab:reuse} for the corresponding delineations of each model reuse mechanism instead of relying solely on the technical name.
@@ -907,6 +917,7 @@ Therefore, selecting models, algorithms, datasets with more permissive licenses,
 % 但是，我们也需要解决模型归属的问题
 % Pretrain Model: Can Foundation Models Help Us Achieve Perfect Secrecy
 
+\section{Remaining Topics in Query-based FL}
 \subsection{How to Protect Models}
 \label{sec:how2protect}
 
@@ -980,7 +991,7 @@ Another example is Zest~\cite{jia2022zest}, which randomly samples several train
 However, this testing samples generation method is limited to images and may expose private training data.
 A compromise approach is to seek non-sensitive or desensitized testing set from users when they upload their models.
 Inspired by DeepJudge, we can develop an ensemble of multi-level testing strategies for query-based FL.
-In the first step, we can compare the hash codes (e.g. MD5, SHA-256) of the raw model weights or its binary execution to rapidly filter out cases of naive replication plagiarism.
+In the first step, we can compare the hash codes (e.g., MD5, SHA-256) of the raw model weights or its binary execution to rapidly filter out cases of naive replication plagiarism.
 Then, in the second step, we can filter out cases of quantization or invariant neural swapping plagiarism by comparing the distance in predictions obtained from an out-of-distribution dataset.
 In addition, we can further evaluate the similarities between models using testing-based approaches such as DeepJudge and Zest, which can detect cases of pruning and direct KD plagiarism.
 Furthermore, if the workflow information is supports it, we can swiftly eliminate batch model reusing from being suspected of plagiarism.
@@ -991,7 +1002,7 @@ It is crucial to carefully consider the trade-offs and explore alternative appro
 
 \subsection{Limitations of Query-based FL}
 In query-based FL systems, the processes of model production and reuse are decoupled to maximize the autonomy of each participant. 
-However, this losse cooperation paradigm is no longer compatiable with online collaboration ML frameworks, which means that it cannot fully harness participants' communication and computational resource to enhace the training performance.
+However, this losse cooperation paradigm is no longer compatiable with online collaboration ML frameworks, which means that it cannot fully harness participants' communicational and computational resource to enhace the training performance.
 Therefore, even though the server-dominated cooperation frameworks like FedAvg have limitations, as described in Section~\ref{sec:limitations_FL}, it is still worthwhile to provide support for its underlying distributed ML training methods to enhance the flexibility and compatibility of our open FL platforms.
 In the next section, we illustrate another cooperation framework named contract-based FL, which follows a mutual choice design philosophy similar to crowdsourcing platforms~\cite{vaughan2018making}.
 It can serve as an extension of traditional FL and query-based FL.
@@ -1005,11 +1016,6 @@ all training samples.
 The reality is that it is not possible to completely prevent all attempts of model plagiarism through technical means, similar to other forms of plagiarism in the realm of intellectual property. However, the good news is that it is not essential to identify and address every instance of plagiarism.
 Finding a balance between model protection and platform openness is indeed a challenge.
 It is crucial to carefully consider the trade-offs and explore alternative approaches that can provide a reasonable level of model protection without excessively compromising the openness and usability of query-based FL platforms.
-
-passive
-
-~\cite{chen2022copy}
-barrier~\cite{peng2022intellectual}
 \end{comment}
 
 

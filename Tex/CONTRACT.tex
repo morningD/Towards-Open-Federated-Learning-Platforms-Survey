@@ -7,14 +7,6 @@ The conditions and payment for participation are also appliable, and the final m
 In addition, privacy-enhanced technologies~\cite{hesamifard2018privacy} and fingerprint management~\cite{chen2022copy} can also be implemented by the platform to protect the IP of platform users.
 The properties of contract-based FL are: 1) \textbf{Opt-in}, as workers reserve the right to join or quit from training networks; 2) \textbf{Contractual}, enabling employers to define payment, organization mode, model quality criteria, rehire rules, etc. through contracts; 3) \textbf{Market-based}, where contracts are open and task pricing is influenced and determined by the market.
 
-In short, contract-based FL retains all functionalities related to model training at the platform and only provides task publishing services to employers, who play the role of model training in traditional FL.
-Furthermore, similar to model-reusing mechanisms (ref. Section~\ref{sec:taxonomy}) that can be applied to query-based FL, our contract-based FL is not limited to an amalgamation-based collaborative training paradigm like FedAvg.
-In fact, the contract platform is designed as a crowdsourcing platform among data miners for ML cooperation tasks, including distributed training, fine-tuning, and ensembling based on scratch or Foundation Models (FMs)~\cite{yuan2022decentralized}.
-However, most current crowdsourcing platforms like Amazon Mechanical Turk\footnote{https://www.mturk.com/} and Appen\footnote{https://appen.com/crowd-2/} primarily deal with human intelligence tasks such as data collection and annotation (aka. microtasks) rather than ML modeling tasks. 
-It remains unexplored how to design and publish an ML task to seek crowd labor.
-On the other hand, many studies~\cite{dias2022blocklearning, blythman2022decentralized, deng2021flex, guo2023blockchain, batool2022fl} and products~\cite{steeves2022incentivizing, ziller2021pysyft, mcconaghy2022ocean} emphasize monetizing ML activities through blockchain-based techniques and Decentralized Autonomous Organizations (DAOs). 
-However, both monetization and decentralization are non-essential functions for our contract platforms, and we will summarize and compare these works later.
-
 \begin{figure}[t]
     \centering
     \includegraphics[width=\linewidth]{fig/contract_frame.pdf}
@@ -23,7 +15,42 @@ However, both monetization and decentralization are non-essential functions for 
     \label{fig:contract}
 \end{figure}
 
+In short, contract-based FL retains all functionalities related to model training at the platform and only provides task publishing services to employers, who play the role of model training in traditional FL.
+Furthermore, similar to model-reusing mechanisms (ref. Section~\ref{sec:taxonomy}) that can be applied to query-based FL, our contract-based FL is not limited to an amalgamation-based collaborative training paradigm like FedAvg.
+In fact, the contract platform is designed as a crowdsourcing platform among data miners for ML cooperation tasks, including distributed training, fine-tuning, and ensembling based on scratch or Foundation Models (FMs)~\cite{yuan2022decentralized}.
+However, most current crowdsourcing platforms like Amazon Mechanical Turk\footnote{https://www.mturk.com/} and Appen\footnote{https://appen.com/crowd-2/} primarily deal with human intelligence tasks such as data collection and annotation (aka microtasks) rather than ML modeling tasks. 
+It remains unexplored how to design and publish an ML task to seek crowd labor.
+On the other hand, many studies~\cite{dias2022blocklearning, blythman2022decentralized, deng2021flex, guo2023blockchain, batool2022fl} and products~\cite{steeves2022incentivizing, ziller2021pysyft, mcconaghy2022ocean} emphasize monetizing ML activities through blockchain-based techniques and Decentralized Autonomous Organizations (DAOs). 
+However, both monetization and decentralization are non-essential functions for our contract platforms, and we will summarize and compare these works later.
 
+
+\subsection{How to Design ML Microtasks}
+
+When we come to the scenario of contract-based FL, we first need to define how to design ML microtasks for crowd workers. 
+Unfortunately, previous collaborative ML studies~\cite{li2021survey, nguyen2021federated} rarely discuss this question because they default to assuming that all employers or workers have the same resource type to fit into their modeling frameworks.
+On the contrary, in contract-based FL, we leave the freedom of design microtasks and choosing modeling method to the employers.
+
+The answer to this question depends on what resources the employers have and what tasks the workers can perform.
+For example, in horizontal FL, the server should provide an initial model, and clients should have training data under the same feature space and provide computational power. However, in vertical FL, the clients should have training data under the same sample space (i.e., ID space). 
+This difference determines which modeling framework employers can adopt. 
+Following this idea, we provide comparisons of typical FL, distributed ML, and blockchain-based modeling frameworks in Table~\ref{tab:train}.
+For simplicity, we introduce the \textbf{Platform} between Employer and Worker in some frameworks to make it adaptable for contract-based FL. 
+You can quickly restore the original structure by merging Employer and Platform columns.
+To represent the transmission of resources, we mark resources provided by each group of entities with different colors.
+The computational resource used for training is marked with $\bigstar$.
+By this way, we can conveniently find the feasible and privacy-preserving modeling frameworks for collaborative learning. 
+Here, we briefly introduce these frameworks group by scenarios\footnote{From the viewpoint of Employers.}.
+
+\subsubsection{Train from scratch with workers' private data}
+There are four frameworks that support this scenario. 
+The first is \textbf{Centralized ML}, which requires workers to upload their data to a cloud platform for modeling. However, this approach is not feasible for FL scenarios due to privacy concerns. 
+The second is \textbf{FedAvg}~\cite{mcmahan2017communication}, which requires workers to upload computed gradients upon the scratch model and their private data (horizontally split). Computing resources need to be provided by workers as well.
+The third is \textbf{SplitNN}~\cite{vepakomma2019split}, where each worker trains the cut layers of the model using their vertically split data. 
+The hidden representations from these layers are uploaded to the platform for the training of the remaining layers.
+The last and distinctive is a Web3 system named \textbf{Ocean}~\cite{mcconaghy2022ocean}.
+It enables workers to upload only the metadata of their local dataset to a blockchain-based platform to attract buyers. 
+Interested buyers then need to purchase datatokens to access the local dataset and deploy their modeling algorithm. 
+To ensure the privacy and IP security of workers, only trusted algorithms are allowed, and only model predictions will be sent to buyers.
 
 \begin{table}[t]
     \centering
@@ -67,38 +94,11 @@ However, both monetization and decentralization are non-essential functions for 
     \end{tabular}
 \end{table}
 
-\subsection{How to Design ML Microtasks}
-When we come to the scenario of contract-based FL, we first need to define how to design ML microtasks for crowd workers. 
-Unfortunately, previous collaborative ML studies~\cite{li2021survey, nguyen2021federated} rarely discuss this question because they default to assuming that all employers or workers have the same resource type to fit into their modeling frameworks.
-On the contrary, in contract-based FL, we leave the freedom of design microtasks and choosing modeling method to the employers.
-
-The answer to this question depends on what resources the employers have and what tasks the workers can perform.
-For example, in horizontal FL, the server should provide an initial model, and clients should have training data under the same feature space and provide computational power. However, in vertical FL, the clients should have training data under the same sample space (i.e. ID space). 
-This difference determines which modeling framework employers can adopt. 
-Following this idea, we provide comparisons of typical FL, distributed ML, and blockchain-based modeling frameworks in Table~\ref{tab:train}.
-For simplicity, we introduce the \textbf{Platform} between Employer and Worker in some frameworks to make it adaptable for contract-based FL. 
-You can quickly restore the original structure by merging Employer and Platform columns.
-To represent the transmission of resources, we mark resources provided by each group of entities with different colors.
-The computational resource used for training is marked with $\bigstar$.
-By this way, we can conveniently find the feasible and privacy-preserving modeling frameworks for collaborative learning. 
-Here, we briefly introduce these frameworks group by scenarios\footnote{From the viewpoint of Employers.}.
-
-\subsubsection{Train from scratch with workers' private data}
-There are four frameworks that support this scenario. 
-The first is \textbf{Centralized ML}, which requires workers to upload their data to a cloud platform for modeling. However, this approach is not feasible for FL scenarios due to privacy concerns. 
-The second is \textbf{FedAvg}~\cite{mcmahan2017communication}, which requires workers to upload computed gradients upon the scratch model and their private data (horizontally split). Computing resources need to be provided by workers as well.
-The third is \textbf{SplitNN}~\cite{vepakomma2019split}, where each worker trains the cut layers of the model using their vertically split data. 
-The hidden representations from these layers are uploaded to the platform for the training of the remaining layers.
-The last and distinctive is a Web3 system named \textbf{Ocean}~\cite{mcconaghy2022ocean}.
-It enables workers to upload only the metadata of their local dataset to a blockchain-based platform to attract buyers. 
-Interested buyers then need to purchase datatokens to access the local dataset and deploy their modeling algorithm. 
-To ensure the privacy and IP security of workers, only trusted algorithms are allowed, and only model predictions will be sent to buyers.
-
 \subsubsection{Ensemble workers' private model} %优点：支持模型异构
 As we presented in Section~\ref{sec:taxonomy}, ensembling is an effective method to integrate knowledge, and the distributed version is proposed by \textbf{DMoE}~\cite{ryabinin2020towards}. 
 It employs a Distributed Hash Table (DHT) to store metadata and worker node statuses, constructing a decentralized expert network. 
 To make inferences using this network, each model user must train a local gating network to select a subset of experts tailored to their input.
-No additional training required, Wang \textit{et al.} purposed \textbf{DeDES}~\cite{wang2023data}, which select a diverse subsect of weak models from population and make inference by voting. 
+No additional training required, Wang \textit{et al.} purposed \textbf{DeDES}~\cite{wang2023data}, which selects a diverse subsect of weak models from population and make inference by voting. 
 The unique advantage of ensembling lies in its inherent support for model heterogeneity, and its integration is extensible. 
 This capability enables the establishment of a cooperative network while maintaining flexibility and availability.
 
@@ -144,11 +144,25 @@ Three kinds of interests should be considered: 1) Interest of employers, to prev
 However, this is not only a challenge from a technical perspective but also necessitates corresponding legislative oversight to provide guidelines to standardize this kind of AI marketplace commercialization.
 We believe that a comprehensive regulatory framework is essential to ensure data privacy, and establish fair practices in the evolving landscape of open FL platforms.
 
+\subsection{Limitations of Contract-based FL}
+In contract-based FL systems, employers can publish their personalized ML crowdsourcing tasks, considering both their local resources and the resources of the target clients. 
+However, to meet the flexibility requirements of widely supporting training methods, the contract platform should offer highly compatible APIs that can integrate various distributed training frameworks. 
+Additionally, it needs to provide comprehensive audit against malicious users and plagiarism, significantly increasing the complexity compared to traditional FL and query-based FL.
+Meanwhile, to establish confidence among users, a fair and consensual third-party model evaluation mechanism should be established, which, however, is almost unexplored in the current academic studies.
+
+\begin{comment}
+In query-based FL systems, the processes of model production and reuse are decoupled to maximize the autonomy of each participant. 
+However, this losse cooperation paradigm is no longer compatiable with online collaboration ML frameworks, which means that it cannot fully harness participants' communicational and computational resource to enhace the training performance.
+Therefore, even though the server-dominated cooperation frameworks like FedAvg have limitations, as described in Section~\ref{sec:limitations_FL}, it is still worthwhile to provide support for its underlying distributed ML training methods to enhance the flexibility and compatibility of our open FL platforms.
+In the next section, we illustrate another cooperation framework named contract-based FL, which follows a mutual choice design philosophy similar to crowdsourcing platforms~\cite{vaughan2018making}.
+It can serve as an extension of traditional FL and query-based FL.
+\end{comment}
+
 
 \section{Conclusion}
 Traditional federated learning systems with a server-dominated cooperation framework suppress the enthusiasm of participants and limit the further extension of such collaboration. 
-To explore the opportunity to establish a more open and reciprocal cooperation platform, we investigate current progress in federated learning, decentralized machine learning, blockchain-based systems, and model reusing systems. 
-In this way, we depict two rough sketches of open federated learning platforms: query-based federated learning and contract-based federated learning. 
+To explore the opportunity to establish a more open and reciprocal cooperation platform, we investigate current progress in federated learning, decentralized machine learning, and model reusing systems. 
+In this way, we depict two rough sketches of open federated learning platforms: query-based federated learning paltform and contract-based federated learning paltform. 
 Based on these two proposed platforms, we survey their possible supported techniques and their related legal issues, including ML licensing and copyrightability. 
 We believe this survey can encourage a rethinking of current collaborative ML systems design and lead to the pervasive availability of AI for everyone.
 

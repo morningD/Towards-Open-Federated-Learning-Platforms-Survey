@@ -20,7 +20,7 @@ In summary, the properties of query-based FL are:
   \label{fig:query}
 \end{figure}
 
-Actually, we aim to advocate a novel SaaS~\cite{brereton1999future} ML platform with automatic batch model reuse integrated, which has potential to leverage the transportability of models to address previously unexplored ML problems.
+Actually, we aim to advocate a novel Software-as-a-Service (SaaS)~\cite{brereton1999future} ML platform with automatic batch model reuse integrated, which has potential to leverage the transportability of models to address previously unexplored ML problems.
 Due to the high computational demands of deep learning, current ML platforms primarily concentrate on computing, for example, MaaS, MLaaS, FLaaS provide ML models deployment and development services to handle user-specified tasks\textsuperscript{\ddag{I-B}}.
 On the other hand, there are several ML platforms provide open model search and download services. 
 So, can we leverage leverage off-the-shelf public model repositories to build a query-based FL system?
@@ -32,14 +32,14 @@ Unfortunately, these sites are designed solely for sharing and are not suitable 
 \label{sec:how2query}
 To establish a query-based FL platform, the first thing that comes to mind is how to query for models.
 Unlike traditional ML model sharing repositories that mainly query for a specific model by name, it requires an efficiency approach to export a batch of target models that are ready for ensemble or distillation.
-We summarized the filter conditions of existing DNNs sharing repositories\footnote{Hugging Face: \url{https://huggingface.co}; Model Zoo: \url{https://modelzoo.co}; Tensorflow Hub: \url{https://tfhub.dev}; NVIDIA NGC: \url{https://catalog.ngc.nvidia.com/models};  OpenVINO: \url{https://docs.openvino.ai/latest/model\_zoo.html}; Pytorch Hub: \url{https://pytorch.org/hub}} in TABLE.~\ref{table:repository}.
+We summarized the filter conditions of existing DNNs sharing repositories\footnote{Hugging Face: \url{https://huggingface.co}; Model Zoo: \url{https://modelzoo.co}; Tensorflow Hub: \url{https://tfhub.dev}; NVIDIA NGC: \url{https://catalog.ngc.nvidia.com/models};  OpenVINO: \url{https://docs.openvino.ai/latest/model\_zoo.html}; Pytorch Hub: \url{https://pytorch.org/hub}} in TABLE~\ref{table:repository}.
 The prevailing method for querying models involves searching for the desired model by its name, used datasets, and the associated tasks.
 For instance, one might search for the model name GPT~\cite{radford2019language}, models trained on the MNIST dataset~\cite{lecun2010mnist}, or models capable of performing image segmentation tasks.
 However, this model retrieval method requires the users have a strong priori knowledge in data science, thus raising the barrier for knowledge mining within models.
 As an example, there is no effective way to acquire a batch of image classfication models that contains the knowledge of \textit{lesser panda} for further distillation.
 A compromise solution is to manually search the schema of each dataset one-by-one and subsequently search for models trained on those datasets.
 
-As shown in TABLE.~\ref{table:repository}, most DNNs repositories are simply listing the description of input/output (e.g., NVIDIA NGC, OpenVINO) or even just present the source codes (e.g., Tensorflow Hub, Pytorch Hub).
+As shown in TABLE~\ref{table:repository}, most DNNs repositories are simply listing the description of input/output (e.g., NVIDIA NGC, OpenVINO) or even just present the source codes (e.g., Tensorflow Hub, Pytorch Hub).
 This lack of unified convention for model input/output poses a challenge for query-based FL.
 Additionally, most of DNNs repositories do not enable querying models by licenses, resulting in the cumbersome task of individually handling model licenses and ensuring compatibility among different licenses.
 Hence, it is imperative to reconsider the design of DNNs repositories to enable quick identification of readily reusable models for knowledge aggregation. 
@@ -82,7 +82,7 @@ Meanwhile, the specific model reuse techniques used are at the user's discretion
 Innovatively, we study how to reuse batch of models, from the perspective of \textbf{legal compliance}.
 %Therefore, the focus of this section is how to reuse batch of models, from the perspective of legal compliance.
 
-The machine learning community benefits from the openness of ideas and code, and many high-impact ML conferences and journals encourage authors to publish their source code and dataset to research platforms like Papers With Code\footnote{https://paperswithcode.com} and Code Ocean\footnote{https://codeocean.com} to increase exposure and facilitate reproducibility.
+The machine learning community benefits from the openness of ideas and code, and many high-impact ML conferences and journals encourage authors to publish their source code and dataset to research platforms like Papers With Code\footnote{\url{https://paperswithcode.com}} and Code Ocean\footnote{\url{https://codeocean.com}} to increase exposure and facilitate reproducibility.
 To restrict the use of ML techniques for unethical purposes (i.e., Deepfakes~\cite{mirsky2021creation}) and protect the IP of creators, models are typically published under a license agreed upon by the licensor.
 Here, we summarized the granted rights, restrictions and enforcements of licenses for ML models posted on Hugging Face in TABLE~\ref{tab:licenses}.
 The following sections will provide a detailed survey of these licenses.
@@ -308,7 +308,7 @@ In query-based FL, the model community aims to promote the reuse of models contr
   \item A model license ready for open FL paltforms should allow the \textbf{modification, combination and redistribution} of original works and any derived works.
   \item \textbf{Sublicensing} right should be granted to enable the republication of derived works after knowledge mining.
   \item Some licenses enforce the source of the derived works to be \textbf{disclosed} and prohibit their \textbf{commercial use}, which hinders model selling~\cite{chen2019towards}.
-  \item Some licenses are \textbf{copyleft} (marked with * in TABLE.~\ref{tab:licenses}), which means the derivatives must be licensed under the same license or a compatible license, leading to potential license conflicts and proliferation~\cite{gomulkiewicz2009open}.
+  \item Some licenses are \textbf{copyleft} (marked with * in TABLE~\ref{tab:licenses}), which means the derivatives must be licensed under the same license or a compatible license, leading to potential license conflicts and proliferation~\cite{gomulkiewicz2009open}.
   \item All granted rights are preferably \textbf{irrevocable} by the licensors~\cite{reddy2009jacobsen}.
 \end{itemize}
 
@@ -373,8 +373,8 @@ This reusing approach is widely used in FL works and is often referred to as "ag
 %Here, we avoid using the term "aggregation" to distinguish it from "combination" given the latter is often used interchangeably with "combination" in software licenses (e.g. Artistic, GPL).
 However, in order to avoid confusion with the term "combination," which is frequently used interchangeably with "aggregation" in software licenses (e.g., Artistic, GPL), we opt to use the term "amalgamation" instead.
 
-FedAvg~\cite{mcmahan2017communication} is the most popular model averaging method in FL with many follow-up works. 
-For instance, Sun \textit{et al.}~\cite{sun2019can} proposed applying norm thresholding of local model updates to defend against backdoor attacks.
+FedAvg~\cite{mcmahan2017communication} is the vanilla model averaging method in FL with many follow-up works. 
+For instance, Sun \textit{et al.}~\cite{sun2019can} introduced applying norm thresholding of local model updates to defend against backdoor attacks.
 Similarly, Blanchard \textit{et al.}~\cite{blanchard2017machine} proposed using more robust median-based amalgamation for resilience against Byzantine behavior.
 Consider the ordering of parameters, Wang \textit{et al.}~\cite{wang2020federated} match and average the NNs parameters layer-wise across clients, based on their similarities.
 Yu \textit{et al.}~\cite{yu2021fed2} further attribute the misalignment in FL models to the non-IID training data, and propose allocating an independent structure for each class and updating models through a feature paired averaging strategy.
@@ -461,7 +461,7 @@ Actually, such a hybrid model reuse strategy is quite common in FL.
 For example, the previously mentioned DENSE~\cite{zhang2022dense} incorporates three model reuse mechanisms: Combination (creating an ensemble), Generation (generating synthetic data), and Distillation.
 Therefore, our taxonomy can cover traditional FL works, such as FedAvg and MOON~\cite{li2021model}, as well as the broad sense FL, including Federated Distillation~\cite{jeong2018communication, jin2023feddyn} and Ensemble Learning~\cite{shi2023fed, wang2023data}.
 We provide a comparison of these hybrid works in \S\ref{sec:hybrid}. 
-The summarization of above privacy-perserving KD works is given in TABLE.~\ref{tab:distillation}.
+The summarization of above privacy-perserving KD works is given in TABLE~\ref{tab:distillation}.
 
 % the model trained in one specific domain cannot well generalize to other domains
 % KD 是用于加速网络训练，属于分布式机器学习范畴
@@ -492,7 +492,7 @@ The third advantage is multi-format sharing. Participants have the freedom to ch
 This sharing policy can greatly empower the model community in open FL platforms, fostering collaboration and knowledge sharing.
 
 Given the aforementioned advantages, generation methods have been extensively studied in the field of FL. 
-As summaried in TABLE.~\ref{tab:generation}, these works can be classified into two main categories: generation for training~\cite{zhang2021subgraph, cheng2023gfl, hao2021towards, cha2019federated, yu2023turning, heinbaugh2023data, yang2023exploring, liu2021feddg, pi2023dynafed, liz2022federated, diao2022semifl}, generation for KD~\cite{zhang2022dense, chen2020fedbe, zhu2021data, zhang2022fine, jeong2018communication, jin2023feddyn, heinbaugh2023data, zhang2022fedzkt, fan2022private}, and serving three purposes: enriching the training set~\cite{zhang2022dense, chen2020fedbe, zhang2021subgraph, cheng2023gfl, cha2019federated, jin2023feddyn, zhang2022fedzkt}, improving generalization ability~\cite{zhu2021data, zhang2022fine, hao2021towards, jeong2018communication, yu2023turning, heinbaugh2023data, liu2021feddg, pi2023dynafed, liz2022federated}, and enabling semi-supervised learning~\cite{yang2023exploring, diao2022semifl, fan2022private}.
+As summaried in TABLE~\ref{tab:generation}, these works can be classified into two main categories: generation for training~\cite{zhang2021subgraph, cheng2023gfl, hao2021towards, cha2019federated, yu2023turning, heinbaugh2023data, yang2023exploring, liu2021feddg, pi2023dynafed, liz2022federated, diao2022semifl}, generation for KD~\cite{zhang2022dense, chen2020fedbe, zhu2021data, zhang2022fine, jeong2018communication, jin2023feddyn, heinbaugh2023data, zhang2022fedzkt, fan2022private}, and serving three purposes: enriching the training set~\cite{zhang2022dense, chen2020fedbe, zhang2021subgraph, cheng2023gfl, cha2019federated, jin2023feddyn, zhang2022fedzkt}, improving generalization ability~\cite{zhu2021data, zhang2022fine, hao2021towards, jeong2018communication, yu2023turning, heinbaugh2023data, liu2021feddg, pi2023dynafed, liz2022federated}, and enabling semi-supervised learning~\cite{yang2023exploring, diao2022semifl, fan2022private}.
 As an example of generation for training, FedSage+~\cite{zhang2021subgraph} trains a missing neighbors generator to mend the links between cross-subgraph nodes, thereby increasing the connectivity of local data and benefiting from this collaboration across clients.
 Previously mentioned FedCAVE-KD~\cite{heinbaugh2023data} is an example of generation for KD, where locally trained CVAEs and local label distributions are uploaded to the server for DFKD, ensuring privacy while also enhancing generalization of global model.
 Another example is FedGen~\cite{zhu2021data}, where the generator is maintained by the server and sent to clients in each round.
@@ -536,15 +536,15 @@ We employ different colors and fonts in TABLE~\ref{tab:flreuse} to emphasize the
 In addition, we have listed the main goals of each study, and only those with explicit designs, experiments, or proof are counted.
 Please refer to the table caption for the explanation of our denotations.
 As an example, the process of RSCFed~\cite{liang2022rscfed} involves the following steps: 
-\ding{172} KD, the knowledge is extracted as the softmax values from the self model based on local private data (ref. TABLE.~\ref{tab:distillation}) and performed at the client-side;
+\ding{172} KD, the knowledge is extracted as the softmax values from the self model based on local private data (ref. TABLE~\ref{tab:distillation}) and performed at the client-side;
 \ding{173} Model exponential moving averaging performed at the client-side;
 \ding{174} Simple Model Averaging performed two times at the server-side.
 These processes are repeated across multiple communication rounds until completion.
 In this way, we can categorize these works and make intuitive comparisons between them\textsuperscript{\ddag{IV-A}}.
 %Due to page limits, we leave the detailed analysis in Appendix~IV.A.
 
-Through disassembling hybrid model reusing into the four model reuse mechanisms, we can further analyze the corresponding clauses in model licenses perspective for FL studies.
-Then we can easily identify the applicable clauses for different model reusing mechanisms\textsuperscript{\ddag{IV-A}}.
+Through disassembling hybrid model reusing into the four mechanisms, we can further analyze the corresponding clauses in model licenses perspective for FL studies.
+Then we can easily identify the applicable clauses for different reusing mechanisms\textsuperscript{\ddag{IV-B}} and analyze potential licenses conflicts\footnote{\href{https://github.com/Xtra-Computing/ModelGo}{We developed ModelGo to implement this idea.}}.
 %We present the detailed methodology in Appendix~IV.B.
 
 \begin{table*}[htp]

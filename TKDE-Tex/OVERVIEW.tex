@@ -56,7 +56,8 @@ Although the auditor component was not included in prototype FedAvg, it plays an
 However, in comparing FedAvg workflow described above with Fig.~\ref{fig:fl}, it is easy to notice that the client part has been excluded.
 %This is because we are elaborating from a server-side perspective, which is usual way how FL is presented~\cite{mcmahan2017communication, li2021ditto, caldas2018leaf}.
 %The underlying reason is that in traditional FL, the client-side process is tightly coupled with server-side process, and there is no alternative for clients other than to either accept or reject the training scheduling from the server wholesale.
-In traditional FL, the client-side process is tightly coupled with server-side process, and there is no alternative for clients other than to either accept or reject the training scheduling from the server wholesale.
+In traditional FL, the client-side process is tightly coupled with server-side process, leaving clients to either fully accept or reject the training schedule imposed by the server with compromised audit control.
+%and there is no alternative for clients other than to either accept or reject the training scheduling from the server wholesale.
 So the clients are not considered as an autonomous entities but rather work as subordinates to server.
 %In this server-domianted cooperation framework, the benefits and autonomy of clients are compromised, which hinders their enthusiasm to participate in FL network and subsequently limits the applicability of FL.
 From this perspective, we summarize the limitations of traditional FL in the next section, which motivates us to explore more innovative sustainable FL cooperation frameworks.

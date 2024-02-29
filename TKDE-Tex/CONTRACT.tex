@@ -25,7 +25,6 @@ On the other hand, many studies~\cite{dias2022blocklearning, blythman2022decentr
 However, both monetization and decentralization are non-essential functions for our contract platforms\textsuperscript{\ddag{VI}}.
 %, as we summarize and compare these works in Appendix~VI.
 
-
 \begin{table*}[t]
     \centering
     \footnotesize
@@ -78,7 +77,8 @@ On the contrary, in contract-based FL, we leave the freedom of design microtasks
 The answer depends on what resources the employers have and what tasks the workers can perform.
 For example, in horizontal FL, the server should provide an initial model, and clients should have training data under the same feature space and provide computational power. However, in vertical FL, the clients should have training data under the same sample space (i.e., ID space). 
 This difference determines which modeling framework employers can adopt. 
-Following this idea, we provide comparisons of typical FL, distributed ML, and blockchain-based modeling frameworks in TABLE~\ref{tab:train}.
+%Following this idea, we provide comparisons of typical FL~\cite{mcmahan2017communication, wang2023data, vepakomma2019split, kuang2023federatedscope, qin2023federated, berdoz2022scalable}, distributed ML~\cite{ryabinin2021moshpit, atre2021distributed, yuan2022decentralized, aketi2024cross, tan2022fedproto, michieli2021prototype, borzunov2022training}, and blockchain-based~\cite{ryabinin2020towards, mcconaghy2022ocean} modeling frameworks in TABLE~\ref{tab:train}.
+Following this idea, we provide comparisons of typical FL~\cite{mcmahan2017communication}, distributed ML~\cite{ryabinin2021moshpit}, and blockchain-based~\cite{mcconaghy2022ocean} modeling frameworks in TABLE~\ref{tab:train}.
 For simplicity, we introduce the \textbf{Platform} between Employer and Worker in some frameworks to make it adaptable for contract-based FL. 
 You can quickly restore the original structure by merging Employer and Platform columns.
 To represent the transmission of resources, we mark resources provided by each group of entities with different colors.
@@ -97,6 +97,22 @@ It enables workers to upload only the metadata of their local dataset to a block
 Interested buyers then need to purchase datatokens to access the local dataset and deploy their modeling algorithm. 
 To ensure the privacy and IP security of workers, only trusted algorithms are allowed, and only model predictions will be sent to buyers.
 
+\subsubsection{Train from FMs}
+FMs, trained on larger-scale data with robust generalization abilities across various downstream tasks, serve as a solid foundation for collaborative training. 
+Yuan \textit{et al.} proposed \textbf{DT-FM}~\cite{yuan2022decentralized} to establish an effective geo-distributed learning system across 8 regions for training the language model GPT-3.
+Similarly, Borzunov \textit{et al.}\cite{borzunov2022training} recruited volunteer nodes to train a transformer model over the Internet. 
+To enhance system robustness, \textbf{Moshpit SGD}~\cite{ryabinin2021moshpit} divides worker nodes into small, independent groups to ensure that all-reduce is not affected by the failure of a single participant.
+Additionally, \textbf{VC-ASGD}\cite{atre2021distributed} divides the deep learning training job into asynchronous parameter update subtasks to improve scalability.
+In these cases, employers are required to supply the initial model and training data needed to launch training subtasks. 
+This training paradigm is particularly suitable for worker nodes that possess computational and communication resources but lack their own training data.
+
+Instead of initiating training from scratch and consuming substantial computational resources, we can also collaboratively adapt these FMs to specific local tasks based on relatively restricted hardware and data size through fine-tuning.
+Recently, Woisetschl{\"a}ger \textit{et al.}~\cite{woisetschlager2023federated} have explored the opportunity to fine-tune large language models, such as FLAN-T5, by edge devices.
+Simultaneously, \textbf{FS-LLM}~\cite{kuang2023federatedscope} employs Parameter-Efficient Fine-Tuning (PEFT) methods for federated fine-tuning of LLaMA-7B, minimizing communication and computation costs.
+\textbf{FATE-LLM}~\cite{fan2023fate} offers a solution called FedHeteroLLM, leveraging KD to train a mentee model from its local pre-trained LLM for federated aggregation.
+To alleviate the computational burden associated with backpropagation-based optimization methods, \textbf{FedKSeed}~\cite{qin2023federated} employs zeroth-order optimization (ZOO). 
+Only seed and scalar gradients need to be transmitted for federated fine-tuning.
+
 \subsubsection{Ensemble workers' private model} %优点：支持模型异构
 As we presented in \S\ref{sec:taxonomy}, ensembling is an effective method to integrate knowledge, and the distributed version is proposed by \textbf{DMoE}~\cite{ryabinin2020towards}. 
 It employs a Distributed Hash Table (DHT) to store metadata and worker statuses, constructing a decentralized expert network. 
@@ -105,27 +121,12 @@ No additional training required, Wang \textit{et al.} purposed \textbf{DeDES}~\c
 The unique advantage of ensembling lies in its inherent support for model heterogeneity, and its integration is extensible. 
 This capability enables the establishment of a cooperative network while maintaining flexibility and availability.
 
-\subsubsection{Train from fundation model}
-Foundation models, trained on larger-scale data with robust generalization abilities across various downstream tasks, serve as a solid foundation for collaborative training. 
-Yuan \textit{et al.} proposed \textbf{DT-FM}~\cite{yuan2022decentralized} to establish an effective geo-distributed learning system across 8 regions for training the language model GPT-3.
-Similarly, Borzunov \textit{et al.}\cite{borzunov2022training} recruited volunteer nodes to train a transformer model over the Internet. 
-To enhance system robustness, \textbf{Moshpit SGD}~\cite{ryabinin2021moshpit} divides worker nodes into small, independent groups to ensure that all-reduce is not affected by the failure of a single participant.
-Additionally, \textbf{VC-ASGD}\cite{atre2021distributed} divides the deep learning training job into asynchronous parameter update subtasks to improve scalability.
-In these cases, employers are required to supply the initial model and training data needed to launch training subtasks. 
-This training paradigm is particularly suitable for worker nodes that possess computational and communication resources but lack their own training data.
 
-Instead of initiating training from scratch and consuming substantial computational resources, we can also collaboratively adapt these foundation models to specific local tasks based on relatively restricted hardware and data size through fine-tuning.
-Recently, Woisetschl{\"a}ger \textit{et al.}~\cite{woisetschlager2023federated} have explored the opportunity to fine-tune large language models, such as FLAN-T5, by edge devices.
-Simultaneously, \textbf{FS-LLM}~\cite{kuang2023federatedscope} employs Parameter-Efficient Fine-Tuning (PEFT) methods for federated fine-tuning of LLaMA-7B, minimizing communication and computation costs.
-\textbf{FATE-LLM}~\cite{fan2023fate} offers a solution called FedHeteroLLM, leveraging KD to train a mentee model from its local pre-trained LLM for federated aggregation.
-To alleviate the computational burden associated with backpropagation-based optimization methods, \textbf{FedKSeed}~\cite{qin2023federated} employs zeroth-order optimization (ZOO). 
-Only seed and scalar gradients need to be transmitted for federated fine-tuning.
-
-\subsubsection{Representations Sharing}
+\subsubsection{Aggregated workers's private representations}
 Another popular scheme for organizing ML microtasks involves sharing the learned representations of workers. 
-For instance, the use of class-conditional average of last hidden layer activations (aka. Prototypes) can enhance class discrimination across different clients~\cite{aketi2024cross, tan2022fedproto, michieli2021prototype, berdoz2022scalable}.
-To configure the microtasks, employers only need to set the target class, after which the platform can collect and distribute per-class prototypes among workers.
+For instance, the use of class-conditional average of last hidden layer activations (aka. Prototypes) can enhance class discrimination across different clients (e.g., \textbf{FedProto}~\cite{michieli2021prototype, tan2022fedproto} and \cite{berdoz2022scalable}).
 With no central server required, \textbf{CCL}~\cite{aketi2024cross} presents a decentralized learning approach based on cross-workers prototypes sharing.
+To configure the microtasks, employers only need to set the target class (no scratch model reqiured), and the platform can then collect and distribute per-class prototypes among workers.
 %However, the choosing between central solution and decentral solution is depends on what kind of infrastructure are perfered.
 %For example, we can decentralized the store of local mode by IPFS~\cite{benet2014ipfs} protocol
 

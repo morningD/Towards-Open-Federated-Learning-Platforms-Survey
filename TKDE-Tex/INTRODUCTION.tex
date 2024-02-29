@@ -8,7 +8,7 @@ Although data-centric AI is currently mainstream paradigm, Federated Learning~\c
 
 %According to the definitions of IEEE Standard for Federated Machine Learning (FML, aka FL)~\cite{IEEEstd3652}, \textit{FL is a framework or system that enables multiple participants to collaboratively build and use machine learning models without disclosing the raw and private data owned by the participants while achieving good performance.}
 %For example, a typical workflow of FL systems is that the entity with modeling demand (FL server) first deploys the FL services and initializes the training task, and then distributes this task to participants with training data (FL clients) for modeling~\cite{bonawitz2019towards}.
-A typical workflow of FL systems is that the entity with modeling demand (FL server) first deploys the FL services and initializes the training task, and then distributes this task to participants with training data (FL clients) for modeling~\cite{bonawitz2019towards}.
+A typical workflow of FL systems is presented in Fig.\ref{fig:coop}(a), where the entity with a modeling demand (FL server) first deploys the FL services, initializes the training task, and then distributes this task to participants with training data (FL clients) for modeling\cite{bonawitz2019towards}.
 Based on this workflow pattern, FL frameworks have been derived with specialized improvements in communication~\cite{konevcny2016federated, mcmahan2017communication, xu2023asynchronous}, optimizaiton~\cite{li2018federated, karimireddy2020scaffold, li2021model}, robustness~\cite{duan2020self, sattler2019robust, li2022federated} and privacy~\cite{bonawitz2017practical, geyer2017differentially, cheng2021secureboost}.
 While these fascinating improvements greatly enhance the utility of FL, they all follow a task-based interaction paradigm, in which an FL server dominates the cooperation.
 In this narrow interpretation of FL, the data owner is treated more like a worker than a collaborator and performs training primarily for the benefit of the server's goals.
@@ -26,15 +26,15 @@ This explains why current FL frameworks are more akin to private distributed mod
 In this paper, we try to answer the question: \textbf{Can we establish a sustainable open FL platform based on a novel reciprocal cooperation framework?}
 Obviously, to answer this quesion, it is insufficient to simply study the basic concepts of FL and investigate existing FL techniques.
 We also need to conduct a wide survey of potential techniques that can facilitate the construction of open FL platforms.
-To aid understanding, Fig.~\ref{fig:coop} (b) (c) provide a first glimpse of two novel FL cooperation frameworks that we advocated: 
+To aid understanding, Fig.~\ref{fig:coop}(b)(c) provide a first glimpse of two novel FL cooperation frameworks that we advocated: 
 \begin{itemize}
     \item \textbf{Query-based FL}. It follows a loosely-coupled cooperation framework between entities (we use "entities" instead of "clients" to emphasizes equality), where any entity can freely upload their local models or query models from an open repository named \textit{Model Community}.
-    There are many valuable challenges that can be explored, such as how to query for models, how to reuse the retrieved models or how to transfer knowledge from these models, how to ensure the legal compliance between different model licenses, and how to protect the intelligent properties of released models (ref. \S\ref{sec:query}, \S\ref{sec:taxonomy} and \ddag{II}, \ddag{III}, \ddag{IV}, \ddag{V}, \S~denotes main section and \ddag~denotes appendix section). %TODO: 
+    There are many valuable challenges that can be explored, such as how to query for models, how to reuse the retrieved models or how to transfer knowledge from these models, how to ensure the legal compliance between different model licenses, and how to protect the intelligent properties of released models (ref. \S\ref{sec:query}, \S\ref{sec:taxonomy} and \ddag{II}, \ddag{III}, \ddag{IV}, \ddag{V}, where \S~denotes the main section and \ddag~denotes the appendix section). %TODO: 
     \item \textbf{Contract-based FL}. It follows a mutual choice cooperation framework, where each entity can deploy model training contracts with specialized requirements such as task modality, execution environment, model architecture and license. Meanwhile, entities holding data can choose whether to accept the contract.
     We show the research topics in this setting include ML subtasks design and monetization (ref. \S\ref{sec:contract} and \ddag{VI}).
     %model pricing, model contribution evaluation and so on.% and .... (ref. Section~\ref{}) % TODO:
 \end{itemize}
-It is worth noting that the definitions of the four roles illustrated in Fig.~\ref{fig:coop} (i.e., model user, coordinator, data owner, auditor, ref. \S\ref{sec:basicdefinition}) are adopted for compatibility with the IEEE standard~\cite{IEEEstd3652}, and our proposals are also within the standard definitions of FML.
+It is worth noting that the definitions of the four roles illustrated in Fig.~\ref{fig:coop} (i.e., model user, coordinator, data owner, auditor, ref. \S\ref{sec:basicdefinition}) are adopted for compatibility with the IEEE standard~\cite{IEEEstd3652}, and our proposals are also within the standard definitions of FL.
 The diagram in Fig.~\ref{fig:coop}(a) illustrates the workflow of traditional FL, where all FL clients are required to accept the training schedule from the FL server and perform multiple rounds of local training and model averaging until the global model converges.
 In contrast, the entities in query-based FL and contract-based FL are proactive in their participation.
 We believe that these reciprocal cooperation frameworks have the potential to expand the prevalence of open FL and establish FL ecosystems.
@@ -69,7 +69,7 @@ In \S\ref{sec:basic}, we present the overview and point the limitations of tradi
 We comprehensively explore the feasibility and challenges of query-based FL in \S\ref{sec:query}, which includes model query (\S\ref{sec:how2query}), model license comparison (\S\ref{sec:licensing}) and license selection (\S\ref{sec:choosing}).
 In \S\ref{sec:taxonomy}, we present our taxonomy from a model reusing perspective.
 We introduce how to design ML microtasks in contract-based FL in \S\ref{sec:contract} and we conclude this paper in \S\ref{sec:conclusion}.
-\emph{Due to page limits, we defer some related discussions to the appendix and we use \ddag{} to remind you that detailed analysis can be found in our appendix.}
+\emph{Due to page limits, we defer some related discussions to the appendix and we use \ddag{} to remind you that detailed analysis can be found in the appendix.}
 
 \begin{figure}[h]
     \centering
@@ -175,8 +175,8 @@ We introduce how to design ML microtasks in contract-based FL in \S\ref{sec:cont
 
       \end{tikzpicture}
     }
-    \caption{Article Structure. \S: \colorbox{Worker!30}{Main Text Section}, \ddag: \colorbox{Platform!30}{Appendix Section}.}
-    %\caption{Article Structure. \S: \textcolor{Worker!30}{Main Text Section}, \ddag: \textcolor{Platform!30}{Appendix Section}.}
+    \caption{Article Structure. \S: \colorbox{Employer!30}{Main Section}\colorbox{Worker!30}{Subsection}, \ddag: \colorbox{Platform!30}{Appendix}.}
+    %\caption{Article Structure. \S: \textcolor{Employer!30}{Main Text Section}, \ddag: \textcolor{Platform!30}{Appendix Section}.}
     \label{fig:article_structure}
 \end{figure}
 

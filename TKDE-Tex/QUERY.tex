@@ -17,6 +17,7 @@ In summary, the properties of query-based FL are:
   \centering
   \includegraphics[width=\linewidth]{fig/query_frame.pdf}
   \caption{An overview of query-based FL systems. (U: model User, C: Coordinator, D: Data owner, A: Auditor)}
+  \vspace{-5mm}
   \label{fig:query}
 \end{figure}
 
@@ -62,6 +63,7 @@ We further suggest following filter conditions for query-based FL: 1) Data Descr
   OpenVINO & \textbf{!} & \cmark & \cmark & \xmark & \textbf{!} & \textbf{!} & \cmark & 277 \\ \hline
   Pytorch Hub & \textbf{!} & \cmark & \xmark & \xmark & \xmark & \textbf{!} & \xmark & 52 \\ \hline
   \end{tabular}
+  \vspace{-5mm}
 \end{table*}
 
 The aforementioned filter conditions provide comprehensive coverage of the ML modeling process. 
@@ -82,7 +84,7 @@ Meanwhile, the specific model reuse techniques used are at the user's discretion
 Innovatively, we study how to reuse batch of models, from the perspective of \textbf{legal compliance}.
 %Therefore, the focus of this section is how to reuse batch of models, from the perspective of legal compliance.
 
-The machine learning community benefits from the openness of ideas and code, and many high-impact ML conferences and journals encourage authors to publish their source code and dataset to research platforms like Papers With Code\footnote{\url{https://paperswithcode.com}} and Code Ocean\footnote{\url{https://codeocean.com}} to increase exposure and facilitate reproducibility.
+The machine learning community benefits from the openness of ideas and code, and many high-impact ML conferences and journals encourage authors to publish their source code and dataset to research platforms like Papers With Code and Code Ocean\footnote{\url{https://paperswithcode.com}; \url{https://codeocean.com}} to increase exposure and facilitate reproducibility.
 To restrict the use of ML techniques for unethical purposes (i.e., Deepfakes~\cite{mirsky2021creation}) and protect the IP of creators, models are typically published under a license agreed upon by the licensor.
 Here, we summarized the granted rights, restrictions and enforcements of licenses for ML models posted on Hugging Face in TABLE~\ref{tab:licenses}.
 The following sections will provide a detailed survey of these licenses.
@@ -264,6 +266,7 @@ The following sections will provide a detailed survey of these licenses.
 
     \bottomrule
   \end{tabular}
+  \vspace{-4mm}
 \end{table*}
 
 \subsubsection{Model Licensing Forms}
@@ -288,7 +291,7 @@ Not only limited to protecting the IP and controlling the diffusion of ideas, bu
 We can infer the concerns of unethical use of GPT-2~\cite{radford2019language} from its modified MIT license granted by its inventors, which states, \textit{We don't claim ownership of the content you create with GPT-2, so it is yours to do with as you please. We only ask that you use GPT-2 responsibly and clearly indicate your content was created using GPT-2.} 
 However, such a statement lacks legal enforcement, and users may avoid accountability by convincing themselves that despite their efforts to minimize harm, they could not predict the AI artifact they generated would be used for harmful purposes.
 On the other hand, the original licensing frameworks for software and content (e.g., MIT, CC BY) are not well suited to the data-driven ML. 
-Many ML operations, such as training, fine-tuning, inference, and distillation, are not explicitly defined in these licenses clauses, leaving a potential legal loophole for licensees.
+Many ML operations, such as training, fine-tuning, inference, and distillation, are not explicitly defined in these license clauses, leaving a potential legal loophole for licensees.
 
 To address the unique challenges and considerations surrounding the use and distribution of ML models, several specific licenses for ML models have been proposed. 
 CreativeML OpenRAIL-M license, proposed by Responsible AI~\cite{contractor2022behavioral}, is the most popular model-specific license on Hugging Face and enables legally enforceable responsible use.
@@ -333,8 +336,10 @@ As shown in Fig.~\ref{fig:flowchart}(b), there are four categories of batch mode
 \begin{figure*}[t]
     \centering
     \includegraphics[width=\linewidth]{fig/flowchart.pdf}
+    \vspace{-5mm}
     \caption{(a) Flowchart for model licenses selection in the context of model query and model reusing. (b) Proposed taxonomy categorizing batch model reuse mechanisms based on the reused results.}
     \label{fig:flowchart}
+    \vspace{-4mm}
 \end{figure*}
 
 \subsection{Combination}
@@ -415,6 +420,7 @@ For example, the coordinate-wise operations or the fusion of model parameters ge
     FedFTG~\cite{zhang2022fine} \\ \hline 
     \multicolumn{2}{|l|}{KD w/ Differential Privacy} & FedKC~\cite{wang2022fedkc}, FedSSL~\cite{fan2022private}  \\ \hline
     \end{tabular}
+    \vspace{-5mm}
 \end{table*}
 
 \subsection{Distillation}
@@ -518,6 +524,7 @@ Therefore, in the next section, we will summarize the popular hybrid model reusi
 
     \multicolumn{1}{|l|}{For KD} & DENSE~\cite{zhang2022dense}, FedBE~\cite{chen2020fedbe}, \newline FedDyn~\cite{jin2023feddyn}, FedZKT~\cite{zhang2022fedzkt} & FedGen~\cite{zhu2021data}, FedFTG~\cite{zhang2022fine}, FD+FAug~\cite{jeong2018communication}, FedCAVE-KD~\cite{heinbaugh2023data} & FedSSL~\cite{fan2022private} \\ \hline
   \end{tabular}
+  \vspace{-5mm}
 \end{table}
 
 %The third advantage is free-sharing. As mentioned in Section~\ref{sec:generated content}, many deep generative models, such as Stable Diffusion~\cite{rombach2022high} and ChatGPT, do not claim ownership rights over the generated content. Furthermore, most OSS licenses do not have defined terms for computer-generated content. Therefore, it is legally permissible to freely reuse synthetic data.

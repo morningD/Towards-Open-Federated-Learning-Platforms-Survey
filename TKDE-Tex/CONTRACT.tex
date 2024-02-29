@@ -14,6 +14,7 @@ The properties of contract-based FL are: 1) \textbf{Opt-in}, as workers reserve 
     \includegraphics[width=\linewidth]{fig/contract_frame.pdf}
     \caption{An overview of contract-based FL systems. (U: model User, C: Coordinator, D: Data owner, A: Auditor)}
     \label{fig:contract}
+    \vspace{-5mm}
 \end{figure}
 
 In short, contract-based FL retains all functionalities related to model training at the platform and only provides task publishing services to employers, who play the role of model training in traditional FL.
@@ -29,6 +30,7 @@ However, both monetization and decentralization are non-essential functions for 
     \centering
     \footnotesize
     \caption{Comparisons of typical model training frameworks with the intervention of a trustworthy platform. \colorbox{Employer!30}{\textasteriskcentered}, \colorbox{Platform!30}{\textasteriskcentered}, \colorbox{Worker!30}{\textasteriskcentered} indicate resources from \colorbox{Employer!30}{Employer}, \colorbox{Platform!30}{Platform}, and \colorbox{Worker!30}{Worker}, respectively. Resources in different color columns (e.g., \colorbox{Worker!30}{Data} in column \colorbox{Platform!30}{Platform}) represent transmission. $\bigstar$: Location of model training. \colorbox{Worker!30}{\textit{Resources}} received from other workers.}
+    \vspace{-2mm}
     \label{tab:train}
     \begin{tabular}{|l|p{2.6cm}|p{4cm}|p{5cm}|}
     \hline
@@ -65,6 +67,7 @@ However, both monetization and decentralization are non-essential functions for 
     Ocean~\cite{mcconaghy2022ocean} & \colorbox{Employer!30}{Model}\colorbox{Worker!30}{Output} & \colorbox{Worker!30}{Metadata} & \colorbox{Worker!30}{Metadata}\colorbox{Employer!30}{Model}\colorbox{Worker!30}{Data} $\bigstar$ \\ \hline
 
     \end{tabular}
+    \vspace{-5mm}
 \end{table*}
 
 \subsection{How to Design ML Microtasks}
